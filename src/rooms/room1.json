@@ -1,0 +1,39 @@
+{
+    "id": "room1", 
+    "name": "Room 1",
+    "path": "room1", 
+    "rects": [
+        {
+            "position": {
+                "x": 0, 
+                "z": 0
+            }, 
+            "size": {
+                "dimx": 6, 
+                "dimz": 7
+            },
+            "walls" : [
+            	"wall.png",
+            	"door.png",
+            	"wall.png",
+            	"wall.png"         	
+            ],
+            "arts" : [
+                {
+                    "face" : 0,
+                    "dimx" : 300,
+                    "dimz" : 200,
+                    "src" : "musicplayr.jpg",
+                    "full" : "musicplayr.jpg"
+                },
+                {
+                    "face" : 2,
+                    "dimx" : 300,
+                    "dimz" : 200,
+                    "src" : "DSC_0913_302x200.jpg",
+                    "full" : "DSC_0913_1024x678.jpg"
+                }
+            ]
+        }
+    ]
+}

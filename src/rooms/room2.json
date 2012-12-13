@@ -1,0 +1,31 @@
+{
+    "id": "room2", 
+    "name": "Room 2",
+    "path": "room2", 
+    "rects": [
+        {
+            "position": {
+                "x": 6, 
+                "z": 0
+            }, 
+            "size": {
+                "dimx": 6, 
+                "dimz": 4
+            },
+            "walls" : [
+                "wall.png",
+                "wall.png",
+                "wall.png",
+                "door.png"            
+            ],
+            "arts" : [
+                {
+                    "face" : 0,
+                    "dimx" : 300,
+                    "dimz" : 200,
+                    "src" : "DSC_0913_302x200.jpg",
+                    "full" : "DSC_0913_1024x678.jpg"                }
+            ]
+        }
+    ]
+}
