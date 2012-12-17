@@ -1,9 +1,17 @@
 var express = require('express');
 
+
 var app = express.createServer(express.logger());
 
+app.use("/js", express.static(__dirname + '/src/js'));
+app.use("/css", express.static(__dirname + '/src/css'));
+app.use("/images", express.static(__dirname + '/src/images'));
+app.use("/libs", express.static(__dirname + '/src/libs'));
+app.use("/rooms", express.static(__dirname + '/src/rooms'));
+
+
 app.get('/', function(request, response) {
-  response.send('Bienvenue sur la page de sans titre');
+	response.sendfile(__dirname + "/src/index.html");
 });
 
 var port = process.env.PORT || 5000;
