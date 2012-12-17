@@ -2,7 +2,7 @@
     "id": "room2", 
     "name": "Room 2",
     "path": "room2", 
-    "rects": [
+    "cubes": [
         {
             "position": {
                 "x": 6, 
@@ -13,18 +13,34 @@
                 "dimz": 4
             },
             "walls" : [
-                "wall.png",
-                "wall.png",
-                "wall.png",
-                "door.png"            
-            ],
-            "arts" : [
                 {
-                    "face" : 0,
-                    "dimx" : 300,
-                    "dimz" : 200,
-                    "src" : "DSC_0913_302x200.jpg",
-                    "full" : "DSC_0913_1024x678.jpg"                }
+                    "type" : "wall",
+                    "arts" : [
+                        {
+                            "type" : "image",
+                            "posz" : "0.5",
+                            "posy" : "0.5",
+                            "dimz" : 300,
+                            "dimy" : 200,
+                            "src" : "musicplayr.jpg",
+                            "full" : "musicplayr.jpg"
+                        }
+                    ]
+                },
+                {
+                    "type" : "door",
+                    "toRoom": 9,
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : [
+                    ]
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
             ]
         }
     ]

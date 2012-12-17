@@ -1,102 +1,20 @@
 {
-    "id": "room3", 
-    "name": "Room 3",
-    "path": "room3", 
+    "id": "room6", 
+    "name": "Room 6",
+    "path": "room6", 
     "cubes": [
         {
             "position": {
-                "x": 12, 
+                "x": 36, 
                 "z": 0
             }, 
             "size": {
-                "dimx": 4, 
-                "dimz": 2
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
-                },
-                {
-                    "type" : "door",
-                    "toRoom": 9,
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
-        },
-        {
-            "position": {
-                "x": 16, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 4, 
-                "dimz": 2
-            },
-            "walls" : [
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
-        },
-        {
-            "position": {
-                "x": 16, 
-                "z": 2
-            }, 
-            "size": {
-                "dimx": 4, 
+                "dimx": 2, 
                 "dimz": 3
             },
             "walls" : [
                 {
                     "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
-                },
-                {
-                    "type" : "door",
-                    "toRoom": 9,
                     "arts" : []
                 },
                 {
@@ -104,7 +22,67 @@
                     "arts" : []
                 },
                 {
-                    "type" : "none",
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
+            ]
+        },
+        {
+            "position": {
+                "x": 36, 
+                "z": 3
+            }, 
+            "size": {
+                "dimx": 2, 
+                "dimz": 3
+            },
+            "walls" : [
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
+            ]
+        },
+        {
+            "position": {
+                "x": 38, 
+                "z": 3
+            }, 
+            "size": {
+                "dimx": 5, 
+                "dimz": 3
+            },
+            "walls" : [
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
                     "arts" : []
                 }   
             ]

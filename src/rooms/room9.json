@@ -1,0 +1,35 @@
+{
+    "id": "room9", 
+    "name": "Room 9",
+    "path": "room9", 
+    "cubes": [
+        {
+            "position": {
+                "x": 0, 
+                "z": 7
+            }, 
+            "size": {
+                "dimx": 6, 
+                "dimz": 3
+            },
+            "walls" : [
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
+            ]
+        }
+    ]
+}

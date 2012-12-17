@@ -2,7 +2,7 @@
     "id": "room1", 
     "name": "Room 1",
     "path": "room1", 
-    "rects": [
+    "cubes": [
         {
             "position": {
                 "x": 0, 
@@ -13,26 +13,52 @@
                 "dimz": 7
             },
             "walls" : [
-            	"wall.png",
-            	"door.png",
-            	"wall.png",
-            	"wall.png"         	
-            ],
-            "arts" : [
                 {
-                    "face" : 0,
-                    "dimx" : 300,
-                    "dimz" : 200,
-                    "src" : "musicplayr.jpg",
-                    "full" : "musicplayr.jpg"
+                    "type" : "wall",
+                    "arts" : [
+                        {
+                            "type" : "image",
+                            "posz" : "0.5",
+                            "posy" : "0.5",
+                            "dimz" : 300,
+                            "dimy" : 200,
+                            "src" : "musicplayr.jpg",
+                            "full" : "musicplayr.jpg"
+                        }
+                    ]
                 },
                 {
-                    "face" : 2,
-                    "dimx" : 300,
-                    "dimz" : 200,
-                    "src" : "DSC_0913_302x200.jpg",
-                    "full" : "DSC_0913_1024x678.jpg"
-                }
+                    "type" : "door",
+                    "toRoom": 9,
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : [
+                        {
+                            "type" : "image",
+                            "posz" : "0.3",
+                            "posy" : "0.5",
+                            "dimz" : 300,
+                            "dimy" : 200,
+                            "src" : "DSC_0913_302x200.jpg",
+                            "full" : "DSC_0913_1024x678.jpg"
+                        },
+                        {
+                            "type" : "image",
+                            "posz" : "0.7",
+                            "posy" : "0.5",
+                            "dimz" : 300,
+                            "dimy" : 200,
+                            "src" : "DSC_0913_302x200.jpg",
+                            "full" : "DSC_0913_1024x678.jpg"
+                        }
+                    ]
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
             ]
         }
     ]

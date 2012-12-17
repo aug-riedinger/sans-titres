@@ -46,7 +46,7 @@ ge1doot.screen.InitEvents = function (setup) {
 	this.resize();
 	// ======== unified touch/mouse events handler ========
 	this.container.onmspointerdown = this.container.ontouchstart = this.container.onmousedown = function (e) {
-		if (!self.running) return true;
+		// if (!self.running) return true;
 		// ---- touchstart ----
 		if (self.canvas) {
 			if (e.target !== self.canvas) return;
@@ -115,6 +115,33 @@ ge1doot.screen.InitEvents = function (setup) {
 		self.startX = 0;
 		self.startY = 0;
 	};
+	window.addEventListener('keydown', function(event) {
+		if (event.keyCode == 38){ // Top
+			camera.moveTo({
+				x : camera.x.value+ 100
+				// z : camera.z.value+ 100
+			});
+		}
+		if (event.keyCode == 40){ // Bottom
+			camera.moveTo({
+				x : camera.x.value - 100
+				// z : camera.z.value - 100
+			});
+		}
+		if (event.keyCode == 37){ // Right
+			camera.moveTo({
+				ay : camera.ry.value - Math.PI/4
+			});
+		}
+		if (event.keyCode == 39){ // Left
+			camera.moveTo({
+				ay : camera.ry.value + Math.PI/4
+			});
+		}
+	}, false);
+
+	window.addEventListener('keyup', function(event) {
+	}, false);
 };
 
 // ==== resize ====

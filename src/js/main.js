@@ -1,12 +1,20 @@
 
-
+var cpt = 0;
 
 var params = {
 	path: "images/",
-	unit : 200,
+	unit : 300,
 	height : 300,
-	threshold : 500
-}
+	threshold : 500,
+	focalLength : 2000
+};
+
+var position = {};
+
+// var texture = {
+// 	wall : drawWall(),
+// 	door : drawDoor()
+// };
 
 var room;
 // var Room = function () {
@@ -25,7 +33,7 @@ var room;
 		rx: new tweens.Add(100, 0,0, true),
 		ry: new tweens.Add(100, 0,0, true),
 		zoom: new tweens.Add(100, 0.1, 1),
-		focalLength: 1000,
+		focalLength: params.focalLength,
 		centered: false,
 		cosX: 0,
 		cosY: 0,
@@ -43,7 +51,20 @@ var room;
 			this.zoom.setTarget(target.f.zoom ? target.f.zoom : 2);
 			this.centered = false;
 		},
+		moveTo : function(obj) {
+			// ---- set position ----
+			this.x.setTarget((obj.x||this.x.value));
+			this.y.setTarget((obj.y||this.y.value));
+			this.z.setTarget((obj.z||this.z.value));
+			// ---- set view angles ----
 
+			this.rx.setTarget((obj.ax ||this.rx.value));
+			this.ry.setTarget((obj.ay||this.ry.value));
+
+			// this.rx.setTarget((Math.PI * 0.5) - (obj.ax ||this.rx.value) - globalRX);
+			// this.ry.setTarget((Math.PI * 0.5) - (obj.ay||this.ry.value) - globalRY);
+			this.centered = false;
+		},
 		center: function () {
 			this.x.setTarget(0);
 			this.y.setTarget(0);
@@ -54,9 +75,21 @@ var room;
 		move: function () {
 			// ---- easing camera position and view angle ----
 			tweens.iterate();
+			if(cpt % 100 == 0) {
+
+				console.log('x: '+camera.x.value);
+				console.log('y: '+camera.y.value);
+				console.log('z: '+camera.z.value);
+				console.log('rx: '+camera.rx.value);
+				console.log('ry: '+camera.ry.value);
+
+			}
 			// ---- additional drag/touch rotations ----
-			globalRX += (((-scr.dragY * 0.01) - globalRX) * 0.1);
-			globalRY += (((-scr.dragX * 0.01) - globalRY) * 0.1);
+			// globalRX += (((-scr.dragY * 0.01) - globalRX) * 0.1);
+			// globalRY += (((-scr.dragX * 0.01) - globalRY) * 0.1);
+
+			// this.ry.setTarget(((-scr.dragX * 1) - this.ry.value) * 0.1);
+
 			if (!this.centered && scr.drag) {
 				// ---- reset zoom & position ----
 				this.center();
@@ -245,7 +278,7 @@ var room;
 		// scr.ctx.stroke();
 	};
 
-	var Rect = function(id,constr) {
+	var Cube = function(id,constr) {
 
 		//      ooooooooooo
 		//      o    1    o
@@ -266,6 +299,7 @@ var room;
 		this.z = constr.position.z*params.unit || 0;
 
 		var i=0;
+		var tempFace;
 
 		//         Wall 0
 		//      o..........
@@ -279,7 +313,7 @@ var room;
 		//    0---→
 		//        x
 
-		if(constr.walls[i]!= 'undefined') {
+		if(constr.walls[i].type != 'none') {
 			var f = {
 				id: this.id+':'+i, 
 				x:this.x,  
@@ -291,14 +325,25 @@ var room;
 				h: params.height,
 				select: false
 			};
-			if(typeof(constr.walls[i]) == 'object') {
-				f.image = constr.walls[i];
+			if(constr.walls[i].type == 'wall') {
+				f.image = drawWall(f.w, f.h);
 			} else {
-				f.src = (constr.walls[i]||'wall-nb.png');
+				if(constr.walls[i].type == 'door') {
+					f.image = drawDoor(f.w,f.h);
+
+					$.getJSON('/rooms/room'+constr.walls[i].toRoom+'.json', function(data) {
+						room.adj.push(new Room(reCenter(data,position.x,position.z)));
+					});
+				}
 			}
-			faces.push(
-				new Face(params.path, f)
-				);
+
+			tempFace = new Face(params.path, f);
+
+			faces.push(tempFace);
+
+			$.each(constr.walls[i].arts,$.proxy(function(ind,art) {
+				new Art(this,art);
+			},tempFace));
 		}
 		i++;
 
@@ -314,7 +359,7 @@ var room;
 		//    0---→
 		//        x
 
-		if(constr.walls[i] != 'undefined') {
+		if(constr.walls[i].type != 'none') {
 			var f = {
 				id: this.id+':'+i, 
 				x:this.x+params.unit*this.dimx/2,    
@@ -326,14 +371,26 @@ var room;
 				h: params.height,
 				select: false
 			};
-			if(typeof(constr.walls[i]) == 'object') {
-				f.image = constr.walls[i];
+			if(constr.walls[i].type == 'wall') {
+				f.image = drawWall(f.w, f.h);
+				// f.image = texture.wall;
 			} else {
-				f.src = (constr.walls[i]||'wall.png');
-			}			
-			faces.push(
-				new Face(params.path, f)
-				);
+				if(constr.walls[i].type == 'door') {
+					f.image = drawDoor(f.w,f.h);
+
+					$.getJSON('/rooms/room'+constr.walls[i].toRoom+'.json', function(data) {
+						room.adj.push(new Room(reCenter(data,position.x,position.z)));
+					});
+				}
+			}
+
+			tempFace = new Face(params.path, f);
+
+			faces.push(tempFace);
+
+			$.each(constr.walls[i].arts,$.proxy(function(ind,art) {
+				new Art(this,art);
+			},tempFace));
 		}
 		i++;
 
@@ -349,7 +406,7 @@ var room;
 		//    0---→
 		//        x
 
-		if(constr.walls[i]!= 'undefined') {
+		if(constr.walls[i].type != 'none') {
 			var f = {
 				id: this.id+':'+i, 
 				x:this.x+ params.unit*this.dimx,  
@@ -361,14 +418,26 @@ var room;
 				h: params.height,
 				select: false
 			};
-			if(typeof(constr.walls[i]) == 'object') {
-				f.image = constr.walls[i];
+			if(constr.walls[i].type == 'wall') {
+				f.image = drawWall(f.w, f.h);
+				// f.image = texture.wall;
 			} else {
-				f.src = (constr.walls[i]||'wall-nb.png');
+				if(constr.walls[i].type == 'door') {
+					f.image = drawDoor(f.w,f.h);
+
+					$.getJSON('/rooms/room'+constr.walls[i].toRoom+'.json', function(data) {
+						room.adj.push(new Room(reCenter(data,position.x,position.z)));
+					});
+				}
 			}
-			faces.push(
-				new Face(params.path, f)
-				);
+
+			tempFace = new Face(params.path, f);
+
+			faces.push(tempFace);
+
+			$.each(constr.walls[i].arts,$.proxy(function(ind,art) {
+				new Art(this,art);
+			},tempFace));
 		}
 		i++;
 
@@ -384,7 +453,7 @@ var room;
 		//    0---→
 		//        x
 
-		if(constr.walls[i]!= 'undefined') {
+		if(constr.walls[i].type != 'none') {
 			var f = {
 				id: this.id+':'+i, 
 				x:this.x+params.unit*this.dimx/2,    
@@ -396,14 +465,26 @@ var room;
 				h: params.height,
 				select: false
 			};
-			if(typeof(constr.walls[i]) == 'object') {
-				f.image = constr.walls[i];
+			if(constr.walls[i].type == 'wall') {
+				f.image = drawWall(f.w, f.h);
+				// f.image = texture.wall;
 			} else {
-				f.src = (constr.walls[i]||'wall-nb.png');
+				if(constr.walls[i].type == 'door') {
+					f.image = drawDoor(f.w,f.h);
+
+					$.getJSON('/rooms/room'+constr.walls[i].toRoom+'.json', function(data) {
+						room.adj.push(new Room(reCenter(data,position.x,position.z)));
+					});
+				}
 			}
-			faces.push(
-				new Face(params.path, f)
-				);
+
+			tempFace = new Face(params.path, f);
+
+			faces.push(tempFace);
+
+			$.each(constr.walls[i].arts,$.proxy(function(ind,art) {
+				new Art(this,art);
+			},tempFace));
 		}
 		i++;
 
@@ -449,7 +530,7 @@ var room;
 
 		var f = {
 			id: this.id+':'+i, 
-			src:"ceiling.png",    
+			image: drawWall(params.unit*this.dimx,params.unit*this.dimz),
 			x:this.x+params.unit*this.dimx/2,  
 			y:this.y-params.height/2,    
 			z:this.z+params.unit*this.dimz/2,
@@ -463,28 +544,32 @@ var room;
 			new Face(params.path, f)
 			);
 
-		$.each(constr.arts,$.proxy(function(ind,art) {
-			new Art(this,art);
-		},this));
 		return this;
 
 	};
 
-	var Art = function(rect,constr) {
-		this.face = getFaceById(rect.id+':'+constr.face);
+	var Art = function(face,constr) {
+		this.face = face;
 		var f = {
-			id: rect.id+':'+constr.face+':'+constr.id,
-			src: constr.src,
+			id: this.face.id+':'+constr.id,
 			full : constr.full,
 			x:this.face.f.x,
-			y:this.face.f.y,
-			z:this.face.f.z + 10,
+			// y:this.face.f.y,
+			y:this.face.f.y - this.face.f.h/2 + this.face.f.h*(constr.posy||0.5),
+			// z:this.face.f.z,
+			z:this.face.f.z - this.face.f.w/2 + this.face.f.w*(constr.posz||0.5),
 			rx:this.face.f.rx,
 			ry:this.face.f.ry,
-			w: constr.dimx,
-			h: constr.dimz,
+			w: constr.dimz,
+			h: constr.dimy,
 			select : true
 		};
+
+		if(constr.type == 'image') {
+			f.image = new Image();
+			f.image.src = params.path+constr.src;
+		}
+
 		faces.push(
 			new Face(params.path, f)
 			);
@@ -496,9 +581,10 @@ var room;
 		this.id = constr.id;
 		this.name = constr.name;
 		this.path = constr.path;
-		this.rects = [];
-		$.each(constr.rects,$.proxy(function(i,rect) {
-			this.rects.push(new Rect(this.id+':'+i,rect));
+		this.cubes = [];
+		this.adj = [];
+		$.each(constr.cubes,$.proxy(function(i,cube) {
+			this.cubes.push(new Cube(this.id+':'+i,cube));
 		},this));
 
 		return this;
@@ -572,10 +658,8 @@ var room;
 			click: click,
 			move: pointer
 		});
-		var parameters = getParameters();
-
 		// ---- create faces ----
-		getRoom(parameters.room||1,parameters.x||undefined,parameters.z||undefined);
+		getRoom(getParameters().room||1);
 
 		// ---- engine start ----
 		run();
@@ -612,6 +696,8 @@ var room;
 		camera.move();
 		// ---- loop ----
 
+		cpt++;
+
 		if(PAUSE == true) {
 			return true
 		} else {
@@ -630,37 +716,39 @@ var room;
 	// 	}
 // }
 
-var getRoom = function(id,x,z) {
+var getRoom = function(id) {
 	$.getJSON('/rooms/room'+id+'.json', function(data) {
-		if(x != undefined || z != undefined) {
-			var room = new Room(reCenter(data,x,z));
-		} else {
-			var bari = getBari(data);
-			var room = new Room(reCenter(data,bari.x,bari.z));
+		if(!(position.hasOwnProperty('x') || position.hasOwnProperty('z'))) {
+			setPosition(data, getParameters().x, getParameters().z);
 		}
+		room = new Room(reCenter(data,position.x,position.z));
 	});
 };
 
 var reCenter = function(data,x,z) {
 	var locData = data;
-	for(var i=0;i<locData.rects.length;i++) {
-		locData.rects[i].position.x = locData.rects[i].position.x - x;
-		locData.rects[i].position.z = locData.rects[i].position.z - z;
+	for(var i=0;i<locData.cubes.length;i++) {
+		locData.cubes[i].position.x = locData.cubes[i].position.x - x;
+		locData.cubes[i].position.z = locData.cubes[i].position.z - z;
 	}
 	return locData;
 };
 
-var getBari = function(data) {
-	var barix = 0;
-	var bariz = 0;
-	for(var i=0;i<data.rects.length;i++) {
-		barix += data.rects[i].position.x + data.rects[i].size.dimx/2;
-		bariz += data.rects[i].position.z + data.rects[i].size.dimz/2 ;
-	}
-	return {
-		x: Math.round(barix/data.rects.length),
-		z: Math.round(bariz/data.rects.length)
-	}
+var setPosition = function(data,x,z) {
+	if(x != undefined || z != undefined) {
+		position.x = x||0;
+		position.z = z||0;
+	} else {
+		var barix = 0;
+		var bariz = 0;
+		for(var i=0;i<data.cubes.length;i++) {
+			barix += data.cubes[i].position.x + data.cubes[i].size.dimx/2;
+			bariz += data.cubes[i].position.z + data.cubes[i].size.dimz/2 ;
+		}
+		position.x = Math.round(barix/data.cubes.length);
+		position.z = Math.round(bariz/data.cubes.length);
+	}		
+	return true;
 }
 
 var getFaceById = function(_id) {

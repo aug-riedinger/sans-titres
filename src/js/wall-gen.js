@@ -1,36 +1,66 @@
-var canvas2 = document.getElementById('text');
-var contexte = canvas2.getContext('2d');
+var drawCanvas = function(content) {
 
-contexte.fillStyle = '#FFFFFF';
-contexte.fillRect  (0,   0, canvas2.width, canvas2.height);  // now fill the canvas
-contexte.fillStyle = '#000000';
+	var titre = "La fin du monde est une chance ! Profitez-en !";
 
-contexte.beginPath();
-contexte.moveTo(1,1);
-contexte.lineTo(1,canvas2.height-1);
-contexte.lineTo(canvas2.width-1,canvas2.height-1);
-contexte.lineTo(canvas2.width-1,1);
-contexte.strokeStyle = '#000000';
-contexte.lineWidth = 2;
-contexte.stroke();
+	var content = "D'autres diront qu'il s'agit d'une sentence terrible qui s'abat sur l'humanité. Et si on optait pour cette petite touche d'optimisme qui fait que tout est toujours plus beau chaque jour ?";
 
-var titre = "La fin du monde est une chance ! Profitez-en !";
+	ctx.beginPath();
+	ctx.moveTo(170, 80);
+	ctx.font = "bold 24px Calibri";
+	ctx.textAlign = 'center';
+	ctx.fillText(titre, canv.width/2, 200);
+	ctx.font = "normal 14px Calibri";
+	ctx.textAlign = 'left';
+	wrapText(ctx, content, canv.width/2 - 150, 250, 300, 18);
 
-var content = "D'autres diront qu'il s'agit d'une sentence terrible qui s'abat sur l'humanité. Et si on optait pour cette petite touche d'optimisme qui fait que tout est toujours plus beau chaque jour ?";
+}
 
-contexte.beginPath();
-contexte.moveTo(170, 80);
-contexte.font = "bold 24px Calibri";
-contexte.textAlign = 'center';
-contexte.fillText(titre, canvas2.width/2, 200);
-contexte.font = "normal 14px Calibri";
-contexte.textAlign = 'left';
-wrapText(contexte, content, canvas2.width/2 - 150, 250, 300, 18);
+var drawWall = function(_w,_h) {
+	var canv = document.createElement('canvas');
+	var ctx = canv.getContext('2d');
+	var img;
+
+	canv.width = _w || 500;
+	canv.height = _h || 332;
+
+	ctx.beginPath();
+	ctx.rect(0, 0, canv.width, canv.height);
+	ctx.fillStyle = 'white';
+	ctx.fill();
+	ctx.lineWidth = 2;
+	ctx.strokeStyle = 'black';
+	ctx.stroke();
+
+	img = new Image();
+	img.src = canv.toDataURL();
+	img.className = 'Wall';
+
+	return img;
+}
+
+var drawDoor = function(_w,_h) {
+	var canv = document.createElement('canvas');
+	var ctx = canv.getContext('2d');
+	var img;
+
+	canv.width = _w || 500;
+	canv.height = _h || 332;
+
+	ctx.beginPath();
+	ctx.rect(0, 0, canv.width, canv.height);
+	ctx.rect(canv.width/2-100-2, 100-2, 200+4, canv.height-100+4);
+	ctx.fillStyle = 'white';
+	ctx.fill();
+	ctx.lineWidth = 2;
+	ctx.strokeStyle = 'black';
+	ctx.stroke();
+
+	ctx.clearRect(canv.width/2-100, 100, 200, canv.height-100);
 
 
- // var metrics = context.measureText(text);
- //      var width = metrics.width;
+	img = new Image();
+	img.src = canv.toDataURL();
+	img.className = 'Door';
 
-// contexte.strokeText('Hello', 100, 100);
-// contexte.strokeStyle = '#000000';
-// contexte.stroke();
+	return img;
+}

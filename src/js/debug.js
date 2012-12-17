@@ -23,6 +23,14 @@ var logFaces = function() {
 	}
 }
 
+var logPosition = function() {
+	console.log('x: '+camera.x.value);
+	console.log('y: '+camera.y.value);
+	console.log('z: '+camera.z.value);
+	console.log('rx: '+camera.rx.value);
+	console.log('ry: '+camera.ry.value);
+
+}
 
 ////////////////////
 // 3D debug tools //
