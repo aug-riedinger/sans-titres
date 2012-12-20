@@ -29,6 +29,62 @@ ge1doot.textureMapping.Triangle = function (parent, p0, p1, p2) {
 };
 
 // ==== image constructor ====
+
+// ==== wall constructor ====
+ge1doot.textureMapping.Monochromatic = function (canvas, p0, p1, p2, p3, edges, color, door) {
+	this.canvas        = canvas;
+	this.ctx           = canvas.getContext("2d");
+	this.p0 = p0;
+	this.p1 = p1;
+	this.p2 = p2;
+	this.p3 = p3;
+	this.edges = edges||[1,2,3,4];
+	this.color = color||'white';
+	this.door = door||false;
+};
+
+ge1doot.textureMapping.Monochromatic.prototype.render = function() {
+	this.ctx.beginPath();
+	this.ctx.moveTo(this.p0.X,this.p0.Y);
+	this.ctx.lineTo(this.p1.X,this.p1.Y);
+	this.ctx.lineTo(this.p2.X,this.p2.Y);
+	if(this.door) {
+		this.ctx.lineTo((this.p2.X*2+this.p3.X)/3,(this.p2.Y*2+this.p3.Y)/3);
+		this.ctx.lineTo((((this.p1.X*2+this.p0.X)/3)*2 + (this.p2.X*2+this.p3.X)/3)/3,(((this.p1.Y*2+this.p0.Y)/3)*2 + (this.p2.Y*2+this.p3.Y)/3)/3);
+		this.ctx.lineTo((((this.p1.X+this.p0.X*2)/3)*2 + (this.p2.X+this.p3.X*2)/3)/3,(((this.p1.Y+this.p0.Y*2)/3)*2 + (this.p2.Y+this.p3.Y*2)/3)/3);
+		this.ctx.lineTo((this.p2.X+this.p3.X*2)/3,(this.p2.Y+this.p3.Y*2)/3);		
+	}
+	this.ctx.lineTo(this.p3.X,this.p3.Y);
+	this.ctx.closePath();
+	this.ctx.fillStyle = this.color;
+	this.ctx.strokeStyle = this.color;
+	this.ctx.fill();
+	this.ctx.stroke();
+
+	this.ctx.beginPath();
+
+	if(this.edges.indexOf(1) > -1) {
+		this.ctx.moveTo(this.p0.X,this.p0.Y);
+		this.ctx.lineTo(this.p1.X,this.p1.Y);
+	} 
+	if(this.edges.indexOf(2) > -1) {
+		this.ctx.moveTo(this.p1.X,this.p1.Y);
+		this.ctx.lineTo(this.p2.X,this.p2.Y);
+	} 
+	if(this.edges.indexOf(3) > -1) {
+		this.ctx.moveTo(this.p2.X,this.p2.Y);
+		this.ctx.lineTo(this.p3.X,this.p3.Y);
+	} 
+	if(this.edges.indexOf(4) > -1) {
+		this.ctx.moveTo(this.p3.X,this.p3.Y);
+		this.ctx.lineTo(this.p0.X,this.p0.Y);
+	} 		
+	this.ctx.strokeStyle = 'black';
+	this.ctx.stroke();
+
+};
+
+// ==== image constructor ====
 ge1doot.textureMapping.Image = function (canvas, imgSrc, lev) {
 	this.canvas        = canvas;
 	this.ctx           = canvas.getContext("2d");
@@ -88,7 +144,7 @@ ge1doot.textureMapping.Image.prototype.loading = function () {
 	}
 };
 // ==== draw3D prototype ====
-ge1doot.textureMapping.Image.prototype.draw3D = function (p0, p1, p2, p3) {
+ge1doot.textureMapping.Image.prototype.render = function (p0, p1, p2, p3) {
 	// ---- loading ----
 	if (this.isLoading) {
 		this.loading();
@@ -137,8 +193,10 @@ ge1doot.textureMapping.Image.prototype.draw3D = function (p0, p1, p2, p3) {
 				d = Math.max(Math.abs(dx), Math.abs(dy));
 				this.ctx.lineTo(p2.px - 2 * (dx / d), p2.py - 2 * (dy / d));
 				this.ctx.closePath();
+				// this.ctx.fillStyle = 'white';
+				// this.ctx.fill();
 
-				// // DEBUG
+				// DEBUG
 				// this.ctx.strokeStyle = t.randColor;
 				// this.ctx.lineWidth = 2;
 				// this.ctx.lineJoin = "round";

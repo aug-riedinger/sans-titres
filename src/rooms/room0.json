@@ -9,23 +9,97 @@
                 "z": 0
             }, 
             "size": {
-                "dimx": 2, 
-                "dimz": 2
+                "dimx": 1, 
+                "dimz": 1
             },
             "walls" : [
                 {
                     "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
+                    "arts" : []
+                },
+                {
+                    "type" : "none",
+                    "arts" : []
+                },
+                {
+                    "type" : "none",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
+            ]
+        },
+        {
+            "position": {
+                "x": 1, 
+                "z": 0
+            }, 
+            "size": {
+                "dimx": 1, 
+                "dimz": 1
+            },
+            "walls" : [
+                {
+                    "type" : "none",
+                    "arts" : []
+                },
+                {
+                    "type" : "none",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "wall",
+                    "arts" : []
+                }   
+            ]
+        },
+        {
+            "position": {
+                "x": 0, 
+                "z": 1
+            }, 
+            "size": {
+                "dimx": 1, 
+                "dimz": 1
+            },
+            "walls" : [
+                {
+                    "type" : "wall",
+                    "arts" : []
+                },
+                {
+                    "type" : "door",
+                    "arts" : []
+                },
+                {
+                    "type" : "none",
+                    "arts" : []
+                },
+                {
+                    "type" : "none",
+                    "arts" : []
+                }   
+            ]
+        },
+        {
+            "position": {
+                "x": 1, 
+                "z": 1
+            }, 
+            "size": {
+                "dimx": 1, 
+                "dimz": 1
+            },
+            "walls" : [
+                {
+                    "type" : "none",
+                    "arts" : []
                 },
                 {
                     "type" : "door",
@@ -33,20 +107,10 @@
                 },
                 {
                     "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "DSC_0913_302x200.jpg",
-                            "full" : "DSC_0913_1024x678.jpg"
-                        }
-                    ]
+                    "arts" : []
                 },
                 {
-                    "type" : "wall",
+                    "type" : "none",
                     "arts" : []
                 }   
             ]

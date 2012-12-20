@@ -1,4 +1,13 @@
 
+
+var logCam = function() {
+	console.log('x: '+camera.x.value);
+	console.log('y: '+camera.y.value);
+	console.log('z: '+camera.z.value);
+	console.log('rx: '+camera.rx.value);
+	console.log('ry: '+camera.ry.value);
+};
+
 var logMyFace = function(_id) {
 	var face = null;
 	for (var i in faces) {
@@ -32,38 +41,11 @@ var logPosition = function() {
 
 }
 
-////////////////////
-// 3D debug tools //
-////////////////////
-
-	Point.prototype.highlight = function (color,size) {
-		this.projection();
-
-		scr.ctx.beginPath();
-		scr.ctx.arc(this.X, this.Y, 5, 0, 2 * Math.PI, false);
-		// scr.ctx.fillStyle = 'green';
-		// scr.ctx.fill();
-		scr.ctx.lineWidth = size || 1;
-		scr.ctx.strokeStyle = color || 'rgb(255,255,255)';
-		scr.ctx.stroke();
-	};
-
-	var Vector = function (p1, p2) {
-		this.p1 = p1;
-		this.p2 = p2;
-		this.x = p2.x - P1.x;
-		this.y = p2.y - P1.y;
-		this.z = p2.z - P1.z;
+var getFaceById = function(_id) {
+	for (var i in faces) {
+		if (faces[i].f.id == _id) {
+			return faces[i];
+		}
 	}
-
-	Vector.prototype.draw = function() {
-		this.p1.highlight();
-		this.p2.highlight();
-
-		scr.ctx.moveTo(this.p1.X, this.p1.Y);
-		scr.ctx.lineTo(this.p1.X, this.p2.Y);
-		scr.ctx.strokeStyle = rgb(128,128,128);
-		scr.ctx.lineWidth = 4;
-		scr.ctx.lineJoin = "round";
-		scr.ctx.stroke();
-	}
+	return null;
+};

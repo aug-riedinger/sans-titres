@@ -31,7 +31,12 @@ ge1doot.screen.InitEvents = function (setup) {
 	this.canvas    = false;
 	this.ctx       = false;
 	// ---- no onclick ----
-	if (setup.click) this.container.onclick = function () { return false; };
+	if (setup.click) {
+		this.container.onclick = this.container.ondblclick = function (e) { 
+			e.preventDefault();
+			return false; 
+		};
+	}
 	// ---- canvas mode ----
 	if (setup.canvas) {
 		this.canvas = document.getElementById(setup.canvas);
@@ -73,7 +78,10 @@ ge1doot.screen.InitEvents = function (setup) {
 		if (self.down) {
 			self.dragX = self.cxb + (self.mouseX - self.startX);
 			self.dragY = self.cyb - (self.mouseY - self.startY);
+			camera.left(self.dragX/(4*self.width));
 		}
+
+
 		if (Math.abs(self.mouseX - self.startX) > 10 || Math.abs(self.mouseY - self.startY) > 10) {
 			// ---- if pointer moves then cancel the tap/click ----
 			self.moved = true;
@@ -116,27 +124,37 @@ ge1doot.screen.InitEvents = function (setup) {
 		self.startY = 0;
 	};
 	window.addEventListener('keydown', function(event) {
-		if (event.keyCode == 38){ // Top
-			camera.moveTo({
-				x : camera.x.value+ 100
-				// z : camera.z.value+ 100
-			});
+		// console.log(event.keyCode);
+		if (event.keyCode == 38 || event.keyCode == 90){ // Top || Z
+			camera.up();
 		}
-		if (event.keyCode == 40){ // Bottom
-			camera.moveTo({
-				x : camera.x.value - 100
-				// z : camera.z.value - 100
-			});
+		if (event.keyCode == 40 || event.keyCode == 83){ // Bottom || s
+			camera.down();
+
 		}
-		if (event.keyCode == 37){ // Right
-			camera.moveTo({
-				ay : camera.ry.value - Math.PI/4
-			});
+		if (event.keyCode == 37 || event.keyCode == 69 ){ // Right || e
+			camera.right();
 		}
-		if (event.keyCode == 39){ // Left
-			camera.moveTo({
-				ay : camera.ry.value + Math.PI/4
-			});
+		if (event.keyCode == 39 || event.keyCode == 65){ // Left || a
+			camera.left();
+		}
+		if (event.keyCode == 68){ // d
+			camera.rght();
+		}
+		if (event.keyCode == 81){ // q
+			camera.lft();
+		}
+		if (event.keyCode == 32){ // space
+			camera.stop();
+		}
+		if (event.keyCode == 13){ // enter
+			camera.center();
+		}
+		if (event.keyCode == 82){ // r
+			camera.zoomIn();
+		}
+		if (event.keyCode == 70){ // f
+			camera.zoomOut();
 		}
 	}, false);
 

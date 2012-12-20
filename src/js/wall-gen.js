@@ -15,7 +15,7 @@ var drawCanvas = function(content) {
 
 }
 
-var drawWall = function(_w,_h) {
+var drawWall = function(_w,_h,color) {
 	var canv = document.createElement('canvas');
 	var ctx = canv.getContext('2d');
 	var img;
@@ -25,7 +25,7 @@ var drawWall = function(_w,_h) {
 
 	ctx.beginPath();
 	ctx.rect(0, 0, canv.width, canv.height);
-	ctx.fillStyle = 'white';
+	ctx.fillStyle = color || 'white';
 	ctx.fill();
 	ctx.lineWidth = 2;
 	ctx.strokeStyle = 'black';
@@ -48,7 +48,7 @@ var drawDoor = function(_w,_h) {
 
 	ctx.beginPath();
 	ctx.rect(0, 0, canv.width, canv.height);
-	ctx.rect(canv.width/2-100-2, 100-2, 200+4, canv.height-100+4);
+	ctx.rect(canv.width/2-100-1, 100-1, 200+2, canv.height-100+2);
 	ctx.fillStyle = 'white';
 	ctx.fill();
 	ctx.lineWidth = 2;
