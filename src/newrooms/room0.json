@@ -11,19 +11,20 @@
     "B._1b."
     ],
     "doors" : [
-    {
-        "id" : 0,
-        "to" : 9
-    }
+        {
+            "id" : 0,
+            "to" : 9
+        }
     ],
     "arts" : [
-    {
-    	"face" : 0,
-    	"type" : "photo",
-        "width" : 300,
-        "height" : 200,
-        "thumb" : "musicplayr.jpg",
-        "src" : "musicplayr.jpg"    
-    }
+        {
+        	"x" : 1,
+            "z" : 0,
+        	"type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "musicplayr.jpg",
+            "src" : "musicplayr.jpg"    
+        }
     ]
 }

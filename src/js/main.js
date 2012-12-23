@@ -17,6 +17,10 @@ var init = function (json) {
 	$.getJSON('/newrooms/room'+(getParameters().room||1)+'.json', function(data) {
 		console.log((data.id)+' loaded ...');
 		room = new Room(data);
+
+		for(var i=0; i< room.cubes.length;i++) {
+			faces = faces.concat(room.cubes[i].walls, room.cubes[i].arts);
+		}
 		run();
 	});
 	console.log('Loading Room'+(getParameters().room||1)+'...');
@@ -36,6 +40,7 @@ var run = function () {
 	scr.ctx.clearRect(0,0, scr.width, scr.height);
 	// ---- 3D projection ----
 	var i = 0, f;
+
 	while ( f = faces[i++] ) {
 		f.projection();
 	}

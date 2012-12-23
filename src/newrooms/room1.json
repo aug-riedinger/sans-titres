@@ -22,13 +22,23 @@
     }
     ],
     "arts" : [
-    {
-    	"face" : 0,
-    	"type" : "photo",
-        "dimz" : 300,
-        "dimy" : 200,
-        "src" : "musicplayr.jpg",
-        "full" : "musicplayr.jpg"    
-    }
+        {
+            "x" : 3,
+            "z" : 0,
+            "type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "musicplayr.jpg",
+            "src" : "musicplayr.jpg"    
+        },
+        {
+            "x" : 5,
+            "z" : 3,
+            "type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "DSC_0913_302x200.jpg",
+            "src" : "DSC_0913_1024x678.jpg"    
+        }
     ]
 }

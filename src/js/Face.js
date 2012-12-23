@@ -27,12 +27,6 @@
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform( w,  h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w,  h, 0, ax, ay));
 
-		// ---- corner points ----
-		// this.c0 = new Point(false, [f.x, f.y, f.z], transform(-w, -h, -15, ax, ay));
-		// this.c1 = new Point(false, [f.x, f.y, f.z], transform( w, -h, -15, ax, ay));
-		// this.c2 = new Point(false, [f.x, f.y, f.z], transform( w,  h, -15, ax, ay));
-		// this.c3 = new Point(false, [f.x, f.y, f.z], transform(-w,  h, -15, ax, ay));
-
 		// ---- target angle ----
 		var r = transform(ax, ay, 0, ax, ay, 0);
 		this.ax = r.x + Math.PI / 2;
@@ -154,13 +148,14 @@
 		}
 
 		if (this.f.type == 'art') {
-			this.thumb.render(this.p0, this.p1, this.p2, this.p3);				
+			this.img.render(this.p0, this.p1, this.p2, this.p3);				
 		}
 	};
 
 	var faceMaker = {
-		'top' : function(_x, _z, edges, toRoom) {
+		'top' : function(_room, _x, _z, edges, toRoom) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':top',
 				type : (toRoom && toRoom != '.')?'door':'wall',
 				x: params.unit * _x,  
 				y: 0,    
@@ -175,8 +170,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'bottom' : function(_x, _z, edges, toRoom) {
+		'bottom' : function(_room, _x, _z, edges, toRoom) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':bottom',
 				type : (toRoom && toRoom != '.')?'door':'wall',
 				x: params.unit * _x,    
 				y: 0,    
@@ -191,8 +187,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'left' : function(_x, _z, edges, toRoom) {
+		'left' : function(_room, _x, _z, edges, toRoom) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':left',
 				type : (toRoom && toRoom != '.')?'door':'wall',
 				x: params.unit * _x - params.unit/2,  
 				y: 0,    
@@ -207,8 +204,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'right' : function(_x, _z, edges, toRoom) {
+		'right' : function(_room, _x, _z, edges, toRoom) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':right',
 				type : (toRoom && toRoom != '.')?'door':'wall',
 				x: params.unit * _x + params.unit/2,  
 				y: 0,    
@@ -223,8 +221,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'ceiling' : function(_x, _z, edges) {
+		'ceiling' : function(_room, _x, _z, edges) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':ceiling',
 				type : 'ceiling',
 				x: params.unit * _x,  
 				y: - params.height/2,    
@@ -238,8 +237,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'floor' : function(_x, _z, edges) {
+		'floor' : function(_room, _x, _z, edges) {
 			var f = {
+				id: _room.id+':'+_x+':'+_z+':floor',
 				type : 'floor',
 				x: params.unit * _x,  
 				y: params.height/2,    
@@ -254,8 +254,9 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'art': function(face, _w, _h, _thumb, _src) {
+		'art': function(_room, face, _w, _h, _thumb, _src) {
 			var f = {
+				id: _room.id+':'+face.f.x+':'+face.f.z+':art',
 				type : 'art',
 				x: face.f.x, 
 				y: face.f.y,    
@@ -268,6 +269,8 @@
 				src: _src,   
 				select: true
 			};
+			console.log(f);
 			return new Face(params.path, f);			
 		}
 	}
+
