@@ -150,3 +150,25 @@ var setPosition = function(data,x,z) {
       }
     }
   };
+
+
+var showImg = function(src) {
+  var img = new Image();
+  img.src = params.path+src;
+  img.className = 'art';
+  $('#artClearView').html(img);
+  $('#artClearView').fadeIn(1000);
+  // $('#artClearView').on('click',function(eventName) {
+  //   remImg();
+  // });
+};
+
+var remImg = function() {
+  $('#artClearView').fadeOut(1000, function() {
+    $('#artClearView').empty();
+  });
+  // $('#artClearView').off('click',function(eventName) {
+  //   remImg();
+  // });
+
+}

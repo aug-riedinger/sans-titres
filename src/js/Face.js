@@ -73,7 +73,7 @@
 		// this.psc.projection();
 
 		// ---- back face culling ----
-		if(this.distance < params.threshold || 
+		if(this.distance < params.wallDist || 
 			!(((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - 
 						(this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) < 0) // Me !!! Vectorial Product
 			) || this.hidden) {
@@ -269,7 +269,6 @@
 				src: _src,   
 				select: true
 			};
-			console.log(f);
 			return new Face(params.path, f);			
 		}
 	}

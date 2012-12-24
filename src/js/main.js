@@ -55,9 +55,17 @@ var run = function () {
 		if (face.visible) {
 			// ---- draw image ----
 			face.render();
-			// if (f.locked && scr.drag) f.locked = false;
-			// if (f === faceOver) faceOver.border();
+			if(showing && showing.distance > params.artDist) {
+				remImg();
+				showing = null;
+			}
+
+			if (face.f.type == 'art' && face.distance < params.artDist && (!showing || showing.f.id != face.f.id)) {
+				showing = face;
+				showImg(face.f.src);
+			} 
 		} else break;
+
 	}
 
 	// orthoSet.draw();
@@ -78,6 +86,7 @@ var run = function () {
 		// };
 	// 	}
 // }
+
 
 
 init();

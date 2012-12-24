@@ -124,7 +124,7 @@ ge1doot.screen.InitEvents = function (setup) {
 		self.startY = 0;
 	};
 	window.addEventListener('keydown', function(event) {
-		console.log(event.keyCode);
+		// console.log(event.keyCode);
 		if (event.keyCode == 38 || event.keyCode == 90){ // Top || Z
 			camera.up();
 		}
@@ -157,7 +157,7 @@ ge1doot.screen.InitEvents = function (setup) {
 			camera.zoomOut();
 		}
 		if (event.keyCode == 27){ // f
-			camera.topShot();
+			camera.toggleGodView();
 		}
 	}, false);
 

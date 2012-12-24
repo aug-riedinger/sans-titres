@@ -35,10 +35,37 @@
             "x" : 5,
             "z" : 3,
             "type" : "photo",
-            "width" : 300,
+            "width" : 302,
             "height" : 200,
             "thumb" : "DSC_0913_302x200.jpg",
             "src" : "DSC_0913_1024x678.jpg"    
+        },
+        {
+            "x" : 0,
+            "z" : 2,
+            "type" : "photo",
+            "width" : 430,
+            "height" : 280,
+            "thumb" : "Berlin_302x200.jpg",
+            "src" : "Berlin_1024x678.jpg"    
+        },
+        {
+            "x" : 0,
+            "z" : 4,
+            "type" : "photo",
+            "width" : 302,
+            "height" : 200,
+            "thumb" : "Berlin2_302x200.jpg",
+            "src" : "Berlin2_1024x678.jpg"    
+        },
+        {
+            "x" : 0,
+            "z" : 5,
+            "type" : "photo",
+            "width" : 302,
+            "height" : 200,
+            "thumb" : "Berlin3_302x200.jpg",
+            "src" : "Berlin3_1024x678.jpg"    
         }
     ]
 }

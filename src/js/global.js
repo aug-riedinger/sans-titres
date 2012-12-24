@@ -6,11 +6,13 @@ var position = {
 	x:0,
 	z:0
 };
+var showing;
 
 var params = {
 	path: "images/",
 	unit : 500,
 	height : 300,
-	threshold : 50,
+	wallDist : 50,
+	artDist : 500,
 	focalLength : 1000
 };

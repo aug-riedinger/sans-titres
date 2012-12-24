@@ -102,9 +102,14 @@ var camera = {
 		this.ry.setTarget(this.ry.value);
 		this.zoom.setTarget(this.zoom.value);
 	},
-	topShot: function() {
-		this.y.setTarget(-8*params.unit);
-		this.rx.setTarget(-Math.PI/2);
+	toggleGodView: function() {
+		if(this.y.value < 7*params.unit) {
+			this.y.setTarget(-8*params.unit);
+			this.rx.setTarget(-Math.PI/2);
+		} else {
+			this.y.setTarget(0);
+			this.rx.setTarget(0);
+		}
 		this.zoom.setTarget(1);
 	},
 	move: function () {
