@@ -86,7 +86,7 @@ var camera = {
 		this.y.setTarget(0);
 		this.z.setTarget(0 + params.focalLength);
 		this.zoom.setTarget(1);
-		// this.centered = true;
+		this.rx.setTarget(0);
 	},
 	zoomIn: function () {
 		this.zoom.setTarget(this.zoom.target*1.25);
@@ -101,6 +101,11 @@ var camera = {
 		this.rx.setTarget(this.rx.value);
 		this.ry.setTarget(this.ry.value);
 		this.zoom.setTarget(this.zoom.value);
+	},
+	topShot: function() {
+		this.y.setTarget(-8*params.unit);
+		this.rx.setTarget(-Math.PI/2);
+		this.zoom.setTarget(1);
 	},
 	move: function () {
 		// ---- easing camera position and view angle ----

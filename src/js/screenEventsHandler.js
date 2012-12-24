@@ -124,7 +124,7 @@ ge1doot.screen.InitEvents = function (setup) {
 		self.startY = 0;
 	};
 	window.addEventListener('keydown', function(event) {
-		// console.log(event.keyCode);
+		console.log(event.keyCode);
 		if (event.keyCode == 38 || event.keyCode == 90){ // Top || Z
 			camera.up();
 		}
@@ -132,10 +132,10 @@ ge1doot.screen.InitEvents = function (setup) {
 			camera.down();
 
 		}
-		if (event.keyCode == 37 || event.keyCode == 69 ){ // Right || e
+		if (event.keyCode == 39 || event.keyCode == 69 ){ // Right || e
 			camera.right();
 		}
-		if (event.keyCode == 39 || event.keyCode == 65){ // Left || a
+		if (event.keyCode == 37 || event.keyCode == 65){ // Left || a
 			camera.left();
 		}
 		if (event.keyCode == 68){ // d
@@ -155,6 +155,9 @@ ge1doot.screen.InitEvents = function (setup) {
 		}
 		if (event.keyCode == 70){ // f
 			camera.zoomOut();
+		}
+		if (event.keyCode == 27){ // f
+			camera.topShot();
 		}
 	}, false);
 

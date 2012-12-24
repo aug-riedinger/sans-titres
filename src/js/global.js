@@ -9,8 +9,8 @@ var position = {
 
 var params = {
 	path: "images/",
-	unit : 300,
+	unit : 500,
 	height : 300,
-	threshold : 100,
+	threshold : 50,
 	focalLength : 1000
 };
