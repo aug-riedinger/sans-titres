@@ -5,8 +5,10 @@ var Point = function (parentFace, point, rotate) {
 	this.y = point[1];
 	this.z = point[2];
 	this.scale = 0;
+	this.distance = 0;
 	this.X = 0;
 	this.Y = 0;
+	this.inScreen = false;
 	if (rotate) {
 		this.x += rotate.x;
 		this.y += rotate.y;
@@ -26,18 +28,22 @@ Point.prototype.projection = function () {
 		);
 
 	// ---- distance to the camera ----
+	var z = p.z + camera.focalLength;
+	this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
 	if (this.face) {
-		var z = p.z + camera.focalLength;
-		var distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
-		if (distance > this.face.distance) {
-			this.face.distance = distance;
+		if (this.distance > this.face.distance) {
+			this.face.distance = this.distance;
 		}
 	}
 	// --- 2D projection ----
 	// this.scale = 1;
-	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value); // Me !!!
+	// this.scale = (camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value || 10000; // Me !!!
+	// var calc = ((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value)|| 10000;
+	// this.scale = calc>-params.focalLength?calc:-params.focalLength; // Me !!!
+	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
 	this.X = (scr.width  * 0.5) + (p.x * this.scale);
 	this.Y = (scr.height * 0.5) + (p.y * this.scale);
+	this.inScreen = this.X >= 0 && this.X < scr.width && this.Y >= 0 && this.Y < scr.height;
 	this.p = p;
 
 	return true;

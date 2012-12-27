@@ -1,5 +1,4 @@
 
-
 var logCam = function() {
 	console.log('x: '+camera.x.value);
 	console.log('y: '+camera.y.value);
@@ -49,3 +48,16 @@ var getFaceById = function(_id) {
 	}
 	return null;
 };
+
+var logConditions = function() {
+	var cpt = [ 0, 0, 0, 0, 0];
+	for (var i=0;i<faces.length;i++) {
+		if(!faces.visible) {
+			for(var j=0; j < faces[i].conditions.length; j++) {
+				cpt[faces[i].conditions[j]]++;
+			}
+		console.log(faces[i].conditions);
+		}
+	}
+	return cpt;
+}

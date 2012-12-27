@@ -49,10 +49,10 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 	this.ctx.lineTo(this.p1.X,this.p1.Y);
 	this.ctx.lineTo(this.p2.X,this.p2.Y);
 	if(this.door) {
-		this.ctx.lineTo((this.p2.X*2+this.p3.X)/3,(this.p2.Y*2+this.p3.Y)/3);
-		this.ctx.lineTo((((this.p1.X*2+this.p0.X)/3)*2 + (this.p2.X*2+this.p3.X)/3)/3,(((this.p1.Y*2+this.p0.Y)/3)*2 + (this.p2.Y*2+this.p3.Y)/3)/3);
-		this.ctx.lineTo((((this.p1.X+this.p0.X*2)/3)*2 + (this.p2.X+this.p3.X*2)/3)/3,(((this.p1.Y+this.p0.Y*2)/3)*2 + (this.p2.Y+this.p3.Y*2)/3)/3);
-		this.ctx.lineTo((this.p2.X+this.p3.X*2)/3,(this.p2.Y+this.p3.Y*2)/3);		
+		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
+		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6)*5 + (this.p2.X*5+this.p3.X)/6)/6,(((this.p1.Y*5+this.p0.Y)/6)*5 + (this.p2.Y*5+this.p3.Y)/6)/6);
+		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6)*5 + (this.p2.X+this.p3.X*5)/6)/6,(((this.p1.Y+this.p0.Y*5)/6)*5 + (this.p2.Y+this.p3.Y*5)/6)/6);
+		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
 	}
 	this.ctx.lineTo(this.p3.X,this.p3.Y);
 	this.ctx.closePath();
@@ -73,6 +73,14 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 	} 
 	if(this.edges.indexOf(3) > -1) {
 		this.ctx.moveTo(this.p2.X,this.p2.Y);
+
+	if(this.door) {
+		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
+		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6)*5 + (this.p2.X*5+this.p3.X)/6)/6,(((this.p1.Y*5+this.p0.Y)/6)*5 + (this.p2.Y*5+this.p3.Y)/6)/6);
+		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6)*5 + (this.p2.X+this.p3.X*5)/6)/6,(((this.p1.Y+this.p0.Y*5)/6)*5 + (this.p2.Y+this.p3.Y*5)/6)/6);
+		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
+	}
+
 		this.ctx.lineTo(this.p3.X,this.p3.Y);
 	} 
 	if(this.edges.indexOf(4) > -1) {
@@ -218,32 +226,4 @@ ge1doot.textureMapping.Image.prototype.render = function (p0, p1, p2, p3) {
 			}
 		} while ( t = t.next );
 	}
-};
-// ==== image "onmouseover" ====
-ge1doot.textureMapping.Image.prototype.pointInTriangle = function (xm, ym, p1, p2, p3) {
-	// ---- Compute vectors ----
-	var v0x = p3.X - p1.X;
-	var v0y = p3.Y - p1.Y;
-	var v1x = p2.X - p1.X;
-	var v1y = p2.Y - p1.Y;
-	var v2x = xm - p1.X;
-	var v2y = ym - p1.Y;
-	// ---- Compute dot products ----
-	var dot00 = v0x * v0x + v0y * v0y;
-	var dot01 = v0x * v1x + v0y * v1y;
-	var dot02 = v0x * v2x + v0y * v2y;
-	var dot11 = v1x * v1x + v1y * v1y;
-	var dot12 = v1x * v2x + v1y * v2y;
-	// ---- Compute barycentric coordinates ----
-	var invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
-	var u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-	var v = (dot00 * dot12 - dot01 * dot02) * invDenom;
-	// ---- Check if point is in triangle ----
-	return (u >= 0) && (v >= 0) && (u + v < 1);
-};
-ge1doot.textureMapping.Image.prototype.pointerInside = function (xm, ym, p0, p1, p2, p3) {
-	if (
-		this.pointInTriangle(xm, ym, p0, p1, p2) || 
-		this.pointInTriangle(xm, ym, p0, p2, p3)
-		) return true; else return false;
 };

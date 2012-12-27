@@ -1,0 +1,26 @@
+{
+    "id": "9", 
+    "name": "Room 9",
+    "path": "room9",
+    "position" : {
+        "x": 0,
+        "z": 7
+    },
+    "map" : [
+    "T.-.-.-.-.t.",
+    "|.,.,.,.,.!1",
+    "B._._._0_.b."
+    ],
+    "doors" : [ 1, 10],
+    "arts" : [
+        {
+            "x" : 3,
+            "z" : 2,
+            "type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "musicplayr.jpg",
+            "src" : "musicplayr.jpg"    
+        }
+    ]
+}

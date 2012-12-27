@@ -3,28 +3,38 @@
 
 var init = function (json) {
 	// ---- init script ----
-	scr = new ge1doot.screen.InitEvents({
+	scr = new Screen({
 		container: "screen",
-		canvas: "canvas",
-		click: click,
-		move: pointer
+		canvas: "canvas"
 	});
 
 	// orthoSet = new OrthonormalSet();
 	// orthoSet.draw();
 
 	// ---- create faces ----
-	$.getJSON('/newrooms/room'+(getParameters().room||1)+'.json', function(data) {
-		console.log((data.id)+' loaded ...');
-		room = new Room(data);
+	// $.getJSON('/newrooms/room'+(getParameters().room||1)+'.json', function(data) {
+	// 	// console.log((data.id)+' loaded ...');
+	// 	room = new Room(data);
 
-		for(var i=0; i< room.cubes.length;i++) {
-			faces = faces.concat(room.cubes[i].walls, room.cubes[i].arts);
-		}
-		run();
-	});
-	console.log('Loading Room'+(getParameters().room||1)+'...');
+	// 	for(var i=0; i< room.cubes.length;i++) {
+	// 		faces = faces.concat(room.cubes[i].walls, room.cubes[i].arts);
+	// 		arts = arts.concat(room.cubes[i].arts);
+	// 	}
+	// 	run();
+	// });
 
+room = new Room(getParameters().room||1, true).load();
+
+$(room).on('ready', function(e) {
+	run();
+	$(scr.canvas).fadeIn(3000);
+	camera.center();
+});
+
+	// console.log('Loading Room'+(getParameters().room||1)+'...');
+	camera = new Camera();
+	cursor = new Cursor('screen');
+	keyboard = new Keyboard();
 
 	// faces.push(faceMaker.top(0,0));
 	// run();
@@ -36,6 +46,7 @@ var init = function (json) {
 ////////////////////////////////////////////////////////////////////////////
 // ===== main loop =====
 var run = function () {
+
 	// ---- clear screen ----
 	scr.ctx.clearRect(0,0, scr.width, scr.height);
 	// ---- 3D projection ----
@@ -51,7 +62,8 @@ var run = function () {
 
 	// ---- drawing ----
 	var i = 0, face;
-	while ( face = faces[i++] ) {
+	for(var i=0;i<faces.length; i++) {
+		face = faces[i];
 		if (face.visible) {
 			// ---- draw image ----
 			face.render();
@@ -64,8 +76,12 @@ var run = function () {
 				showing = face;
 				showImg(face.f.src);
 			} 
-		} else break;
+		}
 
+	}
+
+	for(var j=0; j<points.length; j++) {
+		points[j].highlight('blue');
 	}
 
 	// orthoSet.draw();

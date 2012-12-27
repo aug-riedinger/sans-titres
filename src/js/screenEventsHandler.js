@@ -88,7 +88,7 @@ ge1doot.screen.InitEvents = function (setup) {
 			if (self.down) self.drag = true;
 		}
 		// ---- call external move function ----
-		self.setup.move && self.setup.move();
+		// self.setup.move && self.setup.move();
 	};
 	this.container.onmspointerup = this.container.ontouchend = this.container.onmouseup = function(e) {
 		if (!self.running) return true;
