@@ -2,7 +2,7 @@ var scr;
 var room;
 var cursor;
 var keyboard;
-var orthoSet;
+// var orthoSet;
 var faces = [];
 var arts = [];
 var points = [];
