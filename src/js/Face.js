@@ -91,19 +91,19 @@
 		// 	this.visible = false;
 		// 	this.distance = -99998;
 		// }
-		// var para = -1500;
-		// if(this.p0.p.z<para && this.p1.p.z<para && this.p2.p.z<para && this.p3.p.z<para) {
-		// 	this.visible = false;
-		// 	this.distance = -99999;		
-		// 	this.conditions.push(1);	
-		// }
-
-		if(!(this.p0.inScreen || this.p1.inScreen || this.p2.inScreen || this.p3.inScreen || this.pc.inScreen)) {
+		var para = -1000;
+		if(this.p0.p.z<para && this.p1.p.z<para && this.p2.p.z<para && this.p3.p.z<para) {
 			this.visible = false;
 			this.distance = -99999;		
-			this.conditions.push(2);
-
+			this.conditions.push(1);	
 		}
+
+		// if(!(this.p0.inScreen || this.p1.inScreen || this.p2.inScreen || this.p3.inScreen || this.pc.inScreen)) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;		
+		// 	this.conditions.push(2);
+
+		// }
 
 		if ((this.p1.p.y - this.p0.p.y) * (this.p3.p.x - this.p0.p.x) - (this.p1.p.x - this.p0.p.x) * (this.p3.p.y - this.p0.p.y) > 0) {	
 			this.conditions.push(3);

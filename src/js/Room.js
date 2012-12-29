@@ -2,6 +2,9 @@
 	var Room = function (id, mainRoom) {
 		this.id = id;
 		this.mainRoom = mainRoom;
+		this.cubes = [];
+		this.arts = [];
+		this.adj = [];
 		return this;
 	};
 
@@ -9,6 +12,9 @@
 		var that = this;
 		$.getJSON('/newrooms/room'+this.id+'.json', function(data) {
 			that.init(data);
+			if(that.mainRoom) {
+				camera.center();
+			}
 			$(that).trigger('ready');
 		});
 		return this;
@@ -19,10 +25,7 @@
 		this.path = constr.path;
 		this.position = constr.position;
 		this.map = constr.map;
-		this.cubes = [];
-		this.arts = [];
 		this.doors = constr.doors;
-		this.adj = [];
 		this.setCenter();
 
 		this.makeCubes();
@@ -110,7 +113,7 @@
 		for(var i=0; i< constr.length; i++) {
 			cube = this.getCube(this.position.x + constr[i].x, this.position.z + constr[i].z);
 			if(cube) {
-				cube.arts.push(faceMaker.art(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+				this.arts.push(faceMaker.art(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
 			} else {
 				console.log('cube not found');
 				console.log({
@@ -189,7 +192,7 @@ var cubeWallMaker = {
 			var top = faceMaker.top(room,_x,_z,[1,2,3]);			
 		}		
 		cube.walls.push(top);
-		if(door.type === '|') {
+		if(door.type === '!') {
 			var right = faceMaker.right(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var right = faceMaker.right(room,_x,_z,[1,3,4]);
@@ -245,7 +248,7 @@ var cubeWallMaker = {
 			var bottom = faceMaker.bottom(room,_x,_z,[1,3,4]);
 		}
 		cube.walls.push(bottom);
-		if(door.type === '|') {
+		if(door.type === '!') {
 			var right = faceMaker.right(room,_x,_z,[1,2,3], door.to);
 		} else {
 			var right = faceMaker.right(room,_x,_z,[1,2,3]);

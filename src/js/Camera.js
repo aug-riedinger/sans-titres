@@ -8,6 +8,7 @@ var Camera = function() {
 	this.rx = new ge1doot.tweens.Add(100, 0,0, true);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
+	this.inPosition = false;
 	this.trig = {
 		// that: this,
 		cosX: 1,
@@ -26,12 +27,28 @@ var Camera = function() {
 	return this;
 }
 
-Camera.prototype.targetToPosition = function(obj) {
+Camera.prototype.isInPosition = function() {
+	var dx = Math.abs(this.x.target - this.x.value);
+	var dy = Math.abs(this.y.target - this.y.value);
+	var dz = Math.abs(this.z.target - this.z.value);
+	var drx = Math.abs(this.rx.target - this.rx.value);
+	var dry = Math.abs(this.ry.target - this.ry.value);
+	var dzoom = Math.abs(this.zoom.target - this.zoom.value);
+
+	this.inPosition = (dx*dx + dy*dy + dz*dz < 10);
+
+	if(this.inPosition) {
+		$(scr.canvas).trigger('inPosition');
+	}
+}
+
+Camera.prototype.targetToPosition = function(obj, strict) {
+	var strict = (strict!=undefined?strict:true);
 	var x = (obj.x||this.x.target);
 	var y = (obj.y||this.y.target);
 	var z = (obj.z||this.z.target);
 
-	if(this.inRoom(room,x,z)) {
+	if(this.inRoom(room,x,z) || !strict) {
 		this.x.setTarget(x);
 		this.y.setTarget(y);
 		this.z.setTarget(z);
@@ -137,6 +154,9 @@ Camera.prototype.move = function () {
 		this.trig.sinX = Math.sin(this.rx.value);
 		this.trig.cosY = Math.cos(this.ry.value);
 		this.trig.sinY = -Math.sin(this.ry.value);
+
+		this.isInPosition();
+
 	};
 
 Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-folLength)

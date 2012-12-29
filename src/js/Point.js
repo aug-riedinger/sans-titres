@@ -28,7 +28,7 @@ Point.prototype.projection = function () {
 		);
 
 	// ---- distance to the camera ----
-	var z = p.z + camera.focalLength;
+	var z = Math.abs(p.z) + camera.focalLength;
 	this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
 	if (this.face) {
 		if (this.distance > this.face.distance) {
@@ -41,8 +41,11 @@ Point.prototype.projection = function () {
 	// var calc = ((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value)|| 10000;
 	// this.scale = calc>-params.focalLength?calc:-params.focalLength; // Me !!!
 	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
+	// this.X = (scr.width  * 0.5) + (p.x * this.scale);
+	// this.Y = (scr.height * 0.5) + (p.y * this.scale);
 	this.X = (scr.width  * 0.5) + (p.x * this.scale);
 	this.Y = (scr.height * 0.5) + (p.y * this.scale);
+
 	this.inScreen = this.X >= 0 && this.X < scr.width && this.Y >= 0 && this.Y < scr.height;
 	this.p = p;
 

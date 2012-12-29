@@ -28,13 +28,13 @@ room = new Room(getParameters().room||1, true).load();
 $(room).on('ready', function(e) {
 	run();
 	$(scr.canvas).fadeIn(3000);
+	cursor = new Cursor('screen');
 	camera.center();
 });
 
 	// console.log('Loading Room'+(getParameters().room||1)+'...');
 	camera = new Camera();
-	cursor = new Cursor('screen');
-	keyboard = new Keyboard();
+	keyboard = new Keyboard();	
 
 	// faces.push(faceMaker.top(0,0));
 	// run();
@@ -46,39 +46,70 @@ $(room).on('ready', function(e) {
 ////////////////////////////////////////////////////////////////////////////
 // ===== main loop =====
 var run = function () {
+	var face;
 
 	// ---- clear screen ----
 	scr.ctx.clearRect(0,0, scr.width, scr.height);
 	// ---- 3D projection ----
-	var i = 0, f;
 
-	while ( f = faces[i++] ) {
-		f.projection();
-	}
-	// ---- faces depth sorting ----
-	faces.sort(function (p0, p1) {
-		return p1.distance - p0.distance;
-	});
+	// while ( f = faces[i++] ) {
+	// 	f.projection();
+	// }
+	// // ---- faces depth sorting ----
+	// faces.sort(function (p0, p1) {
+	// 	return p1.distance - p0.distance;
+	// });
 
-	// ---- drawing ----
-	var i = 0, face;
-	for(var i=0;i<faces.length; i++) {
-		face = faces[i];
-		if (face.visible) {
-			// ---- draw image ----
-			face.render();
-			if(showing && showing.distance > params.artDist) {
-				remImg();
-				showing = null;
+	// Render Adjacent Rooms
+	for (var i=0; i < room.adj.length; i++) {
+		for (var j=0; j < room.adj[i].cubes.length; j++) {
+			for (var k=0; k < room.adj[i].cubes[j].walls.length; k++) {
+				face = room.adj[i].cubes[j].walls[k];
+					face.projection();
+				if( face.visible) {
+					face.render();
+				}
 			}
-
-			if (face.f.type == 'art' && face.distance < params.artDist && (!showing || showing.f.id != face.f.id)) {
-				showing = face;
-				showImg(face.f.src);
-			} 
 		}
-
 	}
+
+	for (var i=0; i < room.cubes.length; i++) {
+		for (var j=0; j < room.cubes[i].walls.length; j++) {
+			face = room.cubes[i].walls[j];
+				face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+	}
+
+	for (var i=0; i < room.arts.length; i++) {
+		face = room.arts[i];
+			face.projection();
+		if( face.visible) {
+			face.render();
+		}			
+	}
+
+
+	// // ---- drawing ----
+	// for(var i=0;i<faces.length; i++) {
+	// 	face = faces[i];
+	// 	if (face.visible) {
+	// 		// ---- draw image ----
+	// 		face.render();
+	// 		if(showing && showing.distance > params.artDist) {
+	// 			remImg();
+	// 			showing = null;
+	// 		}
+
+	// 		if (face.f.type == 'art' && face.distance < params.artDist && (!showing || showing.f.id != face.f.id)) {
+	// 			showing = face;
+	// 			showImg(face.f.src);
+	// 		} 
+	// 	}
+
+	// }
 
 	for(var j=0; j<points.length; j++) {
 		points[j].highlight('blue');

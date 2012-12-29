@@ -5,6 +5,7 @@ var Cursor = function (canvas_ID) {
 	this.startY = null;
 	this.aimedArt = null;
 	this.aimedDoor = null;
+	this.going = null;
 	this.container = document.getElementById(canvas_ID);
 
 	this.initEvents();
@@ -20,7 +21,7 @@ Cursor.prototype.initEvents = function () {
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
-		face = that.inFaces();
+		face = that.inFace();
 
 		if(face && face.f.type == 'art') {
 			that.aimedArt = face;
@@ -40,11 +41,10 @@ Cursor.prototype.initEvents = function () {
 	this.container.onclick = function (e) { 
 
 		if(that.aimedArt) {
-
+			camera.targetToFace(that.aimedArt);
 		} 
 
 		if (that.aimedDoor) {
-			
 			camera.targetToPosition({
 				x: that.aimedDoor.pc.x,
 				y: that.aimedDoor.pc.y,
@@ -52,10 +52,13 @@ Cursor.prototype.initEvents = function () {
 				rx: 0,
 				ry: (that.aimedDoor.ay - (Math.PI * 0.5)),
 				zoom: 1
-			}
-			);
-			// $(scr.canvas).fadeOut(2000);
-			room = new Room(that.aimedDoor.f.toRoom, true).load();
+			}, false);
+			// console.log(this)
+			that.going = that.aimedDoor.f.toRoom;
+			$(scr.canvas).one('inPosition', $.proxy(function(e){
+				room = new Room(this.going, true).load();
+				this.going = null;
+			}, that));
 		}
 
 		e.preventDefault();
@@ -124,12 +127,21 @@ Cursor.prototype.inTriangle = function (p1, p2, p3) {
 // 	return null;
 // };
 
-Cursor.prototype.inFaces = function() {
+Cursor.prototype.inFace = function() {
 	var face;
-	for (var i=0; i< faces.length; i++) {
-		face = faces[i];
-		if(face.f.select && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
+	for (var i=0; i< room.arts.length; i++) {
+		face = room.arts[i];
+		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
 			return face;
+		}
+	}
+	for (var i=0; i< room.cubes.length; i++) {
+		for (var j=0; j < room.cubes[i].walls.length; j++) {
+			face = room.cubes[i].walls[j];
+			if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
+				return face;
+			}
+			
 		}
 	}
 	return null;
