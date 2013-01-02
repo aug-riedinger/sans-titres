@@ -47,19 +47,20 @@ Cursor.prototype.initEvents = function () {
 
 	this.container.onclick = function (e) { 
 
-		if(that.aimedArt) {
-			camera.targetToFace(that.aimedArt);
-		} 
+		if (that.aimedArt || that.aimedDoor) {
+			if(that.aimedArt) {
+				camera.targetToFace(that.aimedArt);
+			} 
 
-		if (that.aimedDoor) {
-			camera.targetToPosition({
-				x: that.aimedDoor.pc.x,
-				y: that.aimedDoor.pc.y,
-				z: that.aimedDoor.pc.z + params.focalLength,
-				rx: 0,
-				ry: (that.aimedDoor.ay - (Math.PI * 0.5)),
-				zoom: 1
-			}, false);
+			if (that.aimedDoor) {
+				camera.targetToPosition({
+					x: that.aimedDoor.pc.x,
+					y: that.aimedDoor.pc.y,
+					z: that.aimedDoor.pc.z + params.focalLength,
+					rx: 0,
+					ry: (that.aimedDoor.ay - (Math.PI * 0.5)),
+					zoom: 1
+				}, false);
 			// console.log(this)
 			that.going = that.aimedDoor.f.toRoom;
 			$(scr.canvas).one('inPosition', $.proxy(function(e){
@@ -68,11 +69,18 @@ Cursor.prototype.initEvents = function () {
 			}, that));
 		}
 
-		e.preventDefault();
-		return false; 
-	};
+	} else {
+		camera.goToPosition(camera.position + 1);
+		console.log('going to position '+ (camera.position + 1));
+	}
 
-	this.container.ondblclick = function (e) {
+
+
+	e.preventDefault();
+	return false; 
+};
+
+this.container.ondblclick = function (e) {
 		// console.log('dblclick');
 
 		e.preventDefault();

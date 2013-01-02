@@ -50,18 +50,18 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 	this.ctx.lineTo(this.p2.X,this.p2.Y);
 	if(this.door) {
 		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
-		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6)*5 + (this.p2.X*5+this.p3.X)/6)/6,(((this.p1.Y*5+this.p0.Y)/6)*5 + (this.p2.Y*5+this.p3.Y)/6)/6);
-		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6)*5 + (this.p2.X+this.p3.X*5)/6)/6,(((this.p1.Y+this.p0.Y*5)/6)*5 + (this.p2.Y+this.p3.Y*5)/6)/6);
+		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
+		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
 		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
 	}
 	this.ctx.lineTo(this.p3.X,this.p3.Y);
 	this.ctx.closePath();
 	this.ctx.fillStyle = this.color;
 	this.ctx.strokeStyle = this.color;
-      var grd = this.ctx.createLinearGradient(this.p0.X, this.p0.Y, this.p3.X, this.p3.Y);
-      grd.addColorStop(0, this.color);   
-      grd.addColorStop(1, 'white');      
-      this.ctx.fillStyle = grd;
+      // var grd = this.ctx.createLinearGradient(this.p0.X, this.p0.Y, this.p3.X, this.p3.Y);
+      // grd.addColorStop(0, this.color);   
+      // grd.addColorStop(1, 'white');      
+      // this.ctx.fillStyle = grd;
 
 	this.ctx.fill();
 	this.ctx.stroke();
@@ -81,8 +81,8 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 
 	if(this.door) {
 		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
-		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6)*5 + (this.p2.X*5+this.p3.X)/6)/6,(((this.p1.Y*5+this.p0.Y)/6)*5 + (this.p2.Y*5+this.p3.Y)/6)/6);
-		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6)*5 + (this.p2.X+this.p3.X*5)/6)/6,(((this.p1.Y+this.p0.Y*5)/6)*5 + (this.p2.Y+this.p3.Y*5)/6)/6);
+		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
+		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
 		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
 	}
 

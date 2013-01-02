@@ -2,13 +2,13 @@
 var Camera = function() {
 	this.focalLength = params.focalLength;
 	this.x = new ge1doot.tweens.Add(100);
-	this.y = new ge1doot.tweens.Add(100);
-	this.z = new ge1doot.tweens.Add(100, 0,0 + params.focalLength);
-	// this.z = new ge1doot.tweens.Add(100, 0,0);
-	this.rx = new ge1doot.tweens.Add(100, 0,0, true);
+	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.humanHeight);
+	this.z = new ge1doot.tweens.Add(100, 0,0);
+	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2,0, true);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
+	this.position = 0;
 	this.trig = {
 		// that: this,
 		cosX: 1,
@@ -48,11 +48,11 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	var y = (obj.y||this.y.target);
 	var z = (obj.z||this.z.target);
 
-	if(this.inRoom(room,x,z) || !strict) {
+	if(room.inside(x,z, true) || !strict) {
 		this.x.setTarget(x);
-		this.y.setTarget(y);
 		this.z.setTarget(z);
 	}
+		this.y.setTarget(y);
 	this.rx.setTarget((obj.rx ||this.rx.target));
 	this.ry.setTarget((obj.ry||this.ry.target));
 
@@ -112,11 +112,21 @@ Camera.prototype.right = function(strength) {
 
 Camera.prototype.center = function () {
 	this.x.setTarget(room.center.x*params.unit||0);
-	this.y.setTarget(0);
+	// this.y.setTarget(0);
 	this.z.setTarget((room.center.z*params.unit||0) + this.focalLength);
 	this.zoom.setTarget(1);
-	this.rx.setTarget(0);
+	// this.rx.setTarget(0);
 };
+
+Camera.prototype.goToPosition = function(id) {
+	this.position = id % room.positions.length;
+	this.x.setTarget(room.positions[this.position].x*params.unit||0);
+	// this.y.setTarget(0);
+	this.z.setTarget((room.positions[this.position].z*params.unit||0));
+	this.zoom.setTarget(1);
+	// this.rx.setTarget(0);
+
+}
 
 Camera.prototype.zoomIn = function () {
 	this.zoom.setTarget(this.zoom.target*1.25);
@@ -180,11 +190,3 @@ Camera.prototype.coordinates = function() {
 	console.log('c: ('+Math.round(this.x.value/params.unit)+','+Math.round((this.z.value- this.focalLength)/params.unit)+')');
 };
 
-Camera.prototype.inRoom = function(room,_x,_z) {
-	var x = Math.round(_x/params.unit ) - (room.position.x||0);
-	var z = Math.round((_z - this.focalLength)/params.unit) - (room.position.z||0);
-
-	// console.log('c: ('+x+','+z+')');
-
-	return (true && room.map[room.map.length-(z+1)] && room.map[room.map.length-(z+1)][2*x] && room.map[room.map.length-(z+1)][2*x] != '.');
-};

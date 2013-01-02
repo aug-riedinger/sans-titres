@@ -15,7 +15,7 @@
 		$.getJSON('/rooms/room'+this.id+'.json', function(data) {
 			that.init(data);
 			if(that.mainRoom) {
-				camera.center();
+				camera.goToPosition(0);
 			}
 			$(that).trigger('ready');
 		});
@@ -75,14 +75,28 @@
 		}
 	}
 
+	Room.prototype.inside = function(_x,_z, big) {
+		var x, z;
+		if (big) {
+		var x = Math.round(_x/params.unit ) - (this.position.x||0);
+		var z = Math.round((_z - params.focalLength)/params.unit) - (this.position.z||0);
+		} else {
+			x = Math.round(_x) - this.position.x;
+			z= Math.round(_z) - this.position.z;
+		}
+
+		return (true && this.map[this.map.length-(z+1)] && this.map[this.map.length-(z+1)][2*x] && this.map[this.map.length-(z+1)][2*x] != '.');
+	};
+
 	Room.prototype.makePositions = function() {
-		var x, z, cpt;
+		var x = 0, z = 0, cpt = 0;
 		var zone = 3;
+		var res;
 
 		for(var h=0; h < this.map.length; h+=zone) {
 			for (var w=0; w< this.map[h].length; w+=2*zone) {
 				for (var i=0; i<zone; i++)  {
-					for (var j=0; j< zone; j++) {
+					for (var j=0; j< zone; j+=2) {
 						if(this.map[h+i] && this.map[h+i][w+j] && this.map[h+i][w+j] != '.') {
 							z += h+i;
 							x += w/2 + j;
@@ -90,12 +104,23 @@
 						}
 					}
 				}
-				this.positions.push({
+				res = {
 					x: this.position.x + x/cpt,
-					z: this.position.z + z/cpt
-				});
+					z: this.position.z + z/cpt,
+					dst: (Math.abs((this.position.x + x/cpt)*params.unit - camera.x.value) + Math.abs((this.position.z + z/cpt)*params.unit - camera.z.value))||9999999
+				}
+				if(this.inside(res.x, res.z)) {
+					this.positions.push(res);					
+				}
+				x = 0;
+				z = 0;
+				cpt = 0;
 			}
 		}
+
+		this.positions.sort(function (p0, p1) {
+			return p0.dst - p1.dst;
+		});
 
 	}
 
@@ -193,6 +218,8 @@
 			this.adj.push(new Room(roomID, false).load());
 		}
 	}
+
+
 
 
 //      ooooooooooo

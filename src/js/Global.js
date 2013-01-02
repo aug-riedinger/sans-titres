@@ -15,12 +15,13 @@ var cursor;
 
 var params = {
 	path: "images/",
-	unit : 700,
-	height : 700,
+	unit : 1000,
+	height : 2000,
 	wallColor: '#f9f9f9',
 	floorColor: '#80827d',
 	wallDist : 0,
 	artDist : 500,
-	focalLength : 700,
-	viewAngle: Math.PI/6
+	focalLength : 500,
+	viewAngle: Math.PI/6,
+	humanHeight: 400
 };
