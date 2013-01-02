@@ -146,3 +146,34 @@ var remImg = function() {
   //   remImg();
   // });
 };
+
+
+var drawCanvas = function(data) {
+  var canv = document.createElement('canvas');
+  var ctx = canv.getContext('2d');
+  var img;
+
+  canv.width = 640;
+  canv.height = 428;
+
+  var titre = data.titre;
+  var content = data.content;
+
+  ctx.beginPath();
+  ctx.rect(0, 0, canv.width, canv.height);
+  ctx.fillStyle = params.wallColor || '#f9f9f9';
+  ctx.fill();
+  ctx.moveTo(170, 80);
+  ctx.font = "bold 24px Calibri";
+  ctx.textAlign = 'center';
+  ctx.fillText(titre, canv.width/2, 200);
+  ctx.font = "normal 14px Calibri";
+  ctx.textAlign = 'left';
+  wrapText(ctx, content, canv.width/2 - 150, 250, 300, 18);
+
+  img = new Image();
+  img.src = canv.toDataURL();
+  img.className = 'txt';
+
+  return img;
+};

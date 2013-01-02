@@ -4,13 +4,14 @@
 		this.mainRoom = mainRoom;
 		this.cubes = [];
 		this.arts = [];
+		this.audios = [];
 		this.adj = [];
 		return this;
 	};
 
 	Room.prototype.load = function() {
 		var that = this;
-		$.getJSON('/newrooms/room'+this.id+'.json', function(data) {
+		$.getJSON('/rooms/room'+this.id+'.json', function(data) {
 			that.init(data);
 			if(that.mainRoom) {
 				camera.center();
@@ -111,9 +112,28 @@
 	Room.prototype.makeArts = function(constr) {
 		var cube = {};
 		for(var i=0; i< constr.length; i++) {
-			cube = this.getCube(this.position.x + constr[i].x, this.position.z + constr[i].z);
+			cube = this.getCube(constr[i].x,constr[i].z);
 			if(cube) {
-				this.arts.push(faceMaker.art(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+				if(constr[i].type === 'sound') {
+					this.arts.push(faceMaker.sound(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+
+					var audio = new Audio();
+					audio.src = constr[i].src;
+					if(constr[i].play) {
+						audio.play();
+					}
+
+					this.audios.push(audio);
+
+				}
+				if(constr[i].type === 'txt') {
+					console.log(constr[i]);
+					this.arts.push(faceMaker.txt(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+				}
+				if(constr[i].type === 'image') {
+					this.arts.push(faceMaker.image(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+				}
+
 			} else {
 				console.log('cube not found');
 				console.log({
@@ -221,7 +241,7 @@ var cubeWallMaker = {
 		}
 		cube.walls.push(bottom);
 		if(door.type === '|') {
-			var left = faceMaker.left(room,_x,_z,[1,2,3], door.to);
+			var left = faceMaker.left(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var left = faceMaker.left(room,_x,_z,[1,3,4]);			
 		}

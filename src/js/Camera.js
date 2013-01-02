@@ -63,7 +63,7 @@ Camera.prototype.targetToFace = function (face) {
 	this.targetToPosition({
 		x: face.pv.x,
 		y: face.pv.y,
-		z: face.pv.z + this.focalLength,
+		z: face.pv.z + 200,
 		rx: 0,
 		ry: (face.ay - (Math.PI * 0.5)),
 		zoom: 1

@@ -5,6 +5,7 @@ var Cursor = function (canvas_ID) {
 	this.startY = null;
 	this.aimedArt = null;
 	this.aimedDoor = null;
+	this.aimedSound = null;
 	this.going = null;
 	this.container = document.getElementById(canvas_ID);
 
@@ -23,10 +24,16 @@ Cursor.prototype.initEvents = function () {
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
 		face = that.inFace();
 
-		if(face && face.f.type == 'art') {
+		if(face && (face.f.type == 'image' || face.f.type == 'txt') ) {
 			that.aimedArt = face;
 		} else {
 			that.aimedArt = null;
+		}
+
+		if(face && face.f.type == 'sound' ) {
+			that.aimedSound = face;
+		} else {
+			that.aimedSound = null;
 		}
 
 		if(face && face.f.type == 'door') {
@@ -156,6 +163,10 @@ Cursor.prototype.setCursor = function () {
 
 	if (this.aimedDoor) {
 		return this.container.style.cursor = "url('images/arrow.png'), pointer";
+	}
+
+	if (this.aimedSound) {
+		return this.container.style.cursor = "pointer";
 	}
 
 	return this.container.style.cursor = "move";

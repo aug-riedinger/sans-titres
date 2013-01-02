@@ -35,6 +35,8 @@ Point.prototype.projection = function () {
 			this.face.distance = this.distance;
 		}
 	}
+
+	
 	// --- 2D projection ----
 	// this.scale = 1;
 	// this.scale = (camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value || 10000; // Me !!!

@@ -35,29 +35,33 @@
 
 		// ---- create 3D image ----
 
-		if (this.f.type == 'wall') {
+		if (this.f.type === 'wall') {
 			this.wall = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor);
 		}
-
-		if (this.f.type == 'door') {
+		if (this.f.type === 'door') {
 			this.door = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor ,true);
 		}
-
-		if (this.f.type == 'ceiling') {
+		if (this.f.type === 'ceiling') {
 			this.ceiling = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor);
 		}		
-
-		if (this.f.type == 'floor') {
+		if (this.f.type === 'floor') {
 			this.floor = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.floorColor);
-
-			// this.img = new ge1doot.textureMapping.Image(scr.canvas, path + f.src, f.tl || 2);
+		}
+		if (this.f.type === 'image') {
+			this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
+		}
+		if (this.f.type === 'sound') {
+			this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
+		}
+		if (this.f.type === 'txt') {
+			console.log(this.f.src);
+			$.getJSON(this.f.src, $.proxy(function(data) {
+				console.log(data);
+				this.img = new ge1doot.textureMapping.Image(scr.canvas, drawCanvas(data), f.tl || 2);			
+			}, this));
 		}
 
-		if (this.f.type == 'art') {
-			this.img = new ge1doot.textureMapping.Image(scr.canvas, path + f.thumb, f.tl || 2);			
-		}
-
-
+		return this;
 	};
 
 
@@ -139,7 +143,13 @@
 			// this.img.render(this.p0, this.p1, this.p2, this.p3);				
 		}
 
-		if (this.f.type == 'art') {
+		if (this.f.type == 'image') {
+			this.img.render(this.p0, this.p1, this.p2, this.p3);
+		}
+		if (this.f.type == 'sound') {
+			this.img.render(this.p0, this.p1, this.p2, this.p3);
+		}
+		if (this.f.type == 'txt') {
 			this.img.render(this.p0, this.p1, this.p2, this.p3);
 		}
 	};
@@ -246,10 +256,10 @@
 			};
 			return new Face(params.path, f);			
 		},
-		'art': function(_room, face, _w, _h, _thumb, _src) {
+		'image': function(_room, face, _w, _h, _thumb, _src) {
 			var f = {
-				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':art',
-				type : 'art',
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':image',
+				type : 'image',
 				x: face.f.x, 
 				y: face.f.y,    
 				z: face.f.z,
@@ -258,6 +268,40 @@
 				w: _w, 
 				h: _h, 
 				thumb: _thumb, 
+				src: _src,   
+				select: true
+			};
+			return new Face(params.path, f);			
+		},
+		'sound': function(_room, face, _w, _h, _thumb, _src) {
+			var f = {
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':sound',
+				type : 'sound',
+				x: face.f.x, 
+				y: face.f.y,    
+				z: face.f.z,
+				rx: face.f.rx,
+				ry: face.f.ry,
+				w: _w, 
+				h: _h, 
+				thumb: _thumb, 
+				src: _src,
+				select: true
+			};
+			return new Face(params.path, f);			
+		},
+		'txt': function(_room, face, _w, _h, _thumb, _src) {
+			var f = {
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':sound',
+				type : 'sound',
+				x: face.f.x, 
+				y: face.f.y,    
+				z: face.f.z,
+				rx: face.f.rx,
+				ry: face.f.ry,
+				w: _w, 
+				h: _h, 
+				thumb: _thumb,
 				src: _src,   
 				select: true
 			};

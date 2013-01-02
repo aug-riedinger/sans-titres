@@ -1,47 +1,27 @@
 {
-    "id": "room2", 
+    "id": "2", 
     "name": "Room 2",
-    "path": "room2", 
-    "cubes": [
+    "path": "room2",
+    "position" : {
+    	"x": 6,
+    	"z": 0
+    },
+    "map" : [
+    "T.-.-.-.-.t.",
+    "|.,.,.,.,.!.",
+    "|0,.,.,.,.!.",
+    "B._._._._.b1"
+    ],
+    "doors" : [1, "3!"],
+    "arts" : [
         {
-            "position": {
-                "x": 6, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 6, 
-                "dimz": 4
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
-                },
-                {
-                    "type" : "door",
-                    "toRoom": 9,
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : [
-                    ]
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
+            "x" : 3,
+            "z" : 0,
+            "type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "musicplayr.jpg",
+            "src" : "musicplayr.jpg"    
         }
     ]
 }

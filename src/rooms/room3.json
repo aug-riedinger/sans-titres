@@ -1,113 +1,83 @@
 {
-    "id": "room3", 
+    "id": "3", 
     "name": "Room 3",
-    "path": "room3", 
-    "cubes": [
+    "path": "room3",
+    "position" : {
+    	"x": 12,
+    	"z": 0
+    },
+    "map" : [
+    "........T.-.-2t.",
+    "........|.,.,.!.",
+    "........|.,.,.!.",
+    "T.-1-.-.,.,.,.!.",
+    "B0_._._._._._.b."
+    ],
+    "doors" : [ "2|", 12, 13],
+    "arts" : [
         {
-            "position": {
-                "x": 12, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 4, 
-                "dimz": 2
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
-                },
-                {
-                    "type" : "door",
-                    "toRoom": 9,
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
+            "x" : 0,
+            "z" : 1,
+            "type" : "sound",
+            "width" : 64,
+            "height" : 64,
+            "thumb" : "/images/pause.png",
+            "src": "https://s3.amazonaws.com/sans-titres/diplomondus/sound.mp3",
+            "play": "true"
         },
         {
-            "position": {
-                "x": 16, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 4, 
-                "dimz": 2
-            },
-            "walls" : [
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
+            "x" : 3,
+            "z" : 1,
+            "type" : "txt",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "/rooms/content.json",
+            "src" : "/rooms/content.json"    
         },
         {
-            "position": {
-                "x": 16, 
-                "z": 2
-            }, 
-            "size": {
-                "dimx": 4, 
-                "dimz": 3
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : [
-                        {
-                            "type" : "image",
-                            "posz" : "0.5",
-                            "posy" : "0.5",
-                            "dimz" : 300,
-                            "dimy" : 200,
-                            "src" : "musicplayr.jpg",
-                            "full" : "musicplayr.jpg"
-                        }
-                    ]
-                },
-                {
-                    "type" : "door",
-                    "toRoom": 9,
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                }   
-            ]
-        }
+            "x" : 1,
+            "z" : 0,
+            "type" : "image",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_640x428.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092.JPG"    
+        },
+        {
+            "x" : 3,
+            "z" : 0,
+            "type" : "image",
+            "width" : 200,
+            "height" : 300,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131_428x640.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131.jpg"    
+        },
+        {
+            "x" : 5,
+            "z" : 0,
+            "type" : "image",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904_640x302.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904.JPG"    
+        },
+        {
+            "x" : 7,
+            "z" : 0,
+            "type" : "image",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936_640x480.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936.JPG"    
+        },
+        {
+            "x" : 7,
+            "z" : 2,
+            "type" : "image",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943_640x480.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943.JPG"    
+        }   
     ]
 }

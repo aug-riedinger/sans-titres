@@ -1,19 +1,4 @@
-var drawCanvas = function(content) {
 
-	var titre = "La fin du monde est une chance ! Profitez-en !";
-
-	var content = "D'autres diront qu'il s'agit d'une sentence terrible qui s'abat sur l'humanité. Et si on optait pour cette petite touche d'optimisme qui fait que tout est toujours plus beau chaque jour ?";
-
-	ctx.beginPath();
-	ctx.moveTo(170, 80);
-	ctx.font = "bold 24px Calibri";
-	ctx.textAlign = 'center';
-	ctx.fillText(titre, canv.width/2, 200);
-	ctx.font = "normal 14px Calibri";
-	ctx.textAlign = 'left';
-	wrapText(ctx, content, canv.width/2 - 150, 250, 300, 18);
-
-}
 
 var drawWall = function(_w,_h,color) {
 	var canv = document.createElement('canvas');

@@ -1,119 +1,30 @@
 {
     "id": "room0", 
     "name": "Room 0",
-    "path": "room0", 
-    "cubes": [
+    "path": "room0",
+    "position" : {
+    	"x": 0,
+    	"z": 0
+    },
+    "map" : [
+    "T.-.t.",
+    "B._1b."
+    ],
+    "doors" : [
         {
-            "position": {
-                "x": 0, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 1, 
-                "dimz": 1
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
-        },
+            "id" : 0,
+            "to" : 9
+        }
+    ],
+    "arts" : [
         {
-            "position": {
-                "x": 1, 
-                "z": 0
-            }, 
-            "size": {
-                "dimx": 1, 
-                "dimz": 1
-            },
-            "walls" : [
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
-        },
-        {
-            "position": {
-                "x": 0, 
-                "z": 1
-            }, 
-            "size": {
-                "dimx": 1, 
-                "dimz": 1
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "door",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                }   
-            ]
-        },
-        {
-            "position": {
-                "x": 1, 
-                "z": 1
-            }, 
-            "size": {
-                "dimx": 1, 
-                "dimz": 1
-            },
-            "walls" : [
-                {
-                    "type" : "none",
-                    "arts" : []
-                },
-                {
-                    "type" : "door",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "none",
-                    "arts" : []
-                }   
-            ]
+        	"x" : 1,
+            "z" : 0,
+        	"type" : "photo",
+            "width" : 300,
+            "height" : 200,
+            "thumb" : "musicplayr.jpg",
+            "src" : "musicplayr.jpg"    
         }
     ]
 }

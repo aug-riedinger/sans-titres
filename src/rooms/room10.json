@@ -1,35 +1,19 @@
 {
-    "id": "room10", 
-    "name": "Room 10",
-    "path": "room10", 
-    "cubes": [
-        {
-            "position": {
-                "x": 6, 
-                "z": 4
-            }, 
-            "size": {
-                "dimx": 3, 
-                "dimz": 6
-            },
-            "walls" : [
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                },
-                {
-                    "type" : "wall",
-                    "arts" : []
-                }   
-            ]
-        }
-    ]
+    "id": "12", 
+    "name": "Room 12",
+    "path": "room12",
+    "position" : {
+        "x": 6,
+        "z": 4
+    },
+    "map" : [
+    "T.-.t.",
+    "|0,.!.",
+    "|.,.!.",
+    "|.,.!.",
+    "|.,.!1",
+    "B._.b."
+    ],
+    "doors" : [9, 11],
+    "arts" : []
 }
