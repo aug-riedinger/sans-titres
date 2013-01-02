@@ -54,15 +54,16 @@
 			this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
 		}
 		if (this.f.type === 'txt') {
-			console.log(this.f.src);
-			$.getJSON(this.f.src, $.proxy(function(data) {
-				console.log(data);
-				this.img = new ge1doot.textureMapping.Image(scr.canvas, drawCanvas(data), f.tl || 2);			
-			}, this));
-		}
+			// console.log(this.f.src);
+			// $.getJSON(this.f.src, $.proxy(function(data) {
+			// 	console.log(data);
+			// 	this.img = new ge1doot.textureMapping.Image(scr.canvas, drawCanvas(data), f.tl || 2);			
+			// }, this));
+	this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
+}
 
-		return this;
-	};
+return this;
+};
 
 
 	// ======== face projection ========

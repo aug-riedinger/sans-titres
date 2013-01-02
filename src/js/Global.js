@@ -13,16 +13,13 @@ var position = {
 var showing;
 var cursor;
 
-var cpt=0;
-var timestamp = new Date().getTime();
-
 var params = {
 	path: "images/",
 	unit : 700,
 	height : 700,
 	wallColor: '#f9f9f9',
 	floorColor: '#80827d',
-	wallDist : 50,
+	wallDist : 0,
 	artDist : 500,
 	focalLength : 700,
 	viewAngle: Math.PI/6

@@ -58,6 +58,11 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 	this.ctx.closePath();
 	this.ctx.fillStyle = this.color;
 	this.ctx.strokeStyle = this.color;
+      var grd = this.ctx.createLinearGradient(this.p0.X, this.p0.Y, this.p3.X, this.p3.Y);
+      grd.addColorStop(0, this.color);   
+      grd.addColorStop(1, 'white');      
+      this.ctx.fillStyle = grd;
+
 	this.ctx.fill();
 	this.ctx.stroke();
 

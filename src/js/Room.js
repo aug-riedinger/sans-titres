@@ -4,8 +4,9 @@
 		this.mainRoom = mainRoom;
 		this.cubes = [];
 		this.arts = [];
-		this.audios = [];
+		this.sounds = [];
 		this.adj = [];
+		this.positions = [];
 		return this;
 	};
 
@@ -31,27 +32,71 @@
 
 		this.makeCubes();
 
+
 		if(this.mainRoom) {
 			this.makeArts(constr.arts);
 			this.loadAdj();
+			this.makePositions();
 		}
-
-		this.pushGlobals();
-
-
 		return this;	
 	}
 
-	Room.prototype.pushGlobals = function() {
-		if(this.mainRoom) {
-			faces = [];
-			arts = [];
+	Room.prototype.render = function() {
+		var face;
+
+		for (var i=0; i < this.adj.length; i++) {
+			for (var j=0; j < this.adj[i].cubes.length; j++) {
+				for (var k=0; k < this.adj[i].cubes[j].walls.length; k++) {
+					face = this.adj[i].cubes[j].walls[k];
+					face.projection();
+					if( face.visible) {
+						face.render();
+					}
+				}
+			}
 		}
 
-		for(var i=0; i< this.cubes.length;i++) {
-			faces = faces.concat(this.cubes[i].walls, this.cubes[i].arts);
-			arts = arts.concat(this.cubes[i].arts);
+		for (var i=0; i < this.cubes.length; i++) {
+			for (var j=0; j < this.cubes[i].walls.length; j++) {
+				face = this.cubes[i].walls[j];
+				face.projection();
+				if( face.visible) {
+					face.render();
+				}			
+			}
 		}
+
+		for (var i=0; i < this.arts.length; i++) {
+			face = this.arts[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+	}
+
+	Room.prototype.makePositions = function() {
+		var x, z, cpt;
+		var zone = 3;
+
+		for(var h=0; h < this.map.length; h+=zone) {
+			for (var w=0; w< this.map[h].length; w+=2*zone) {
+				for (var i=0; i<zone; i++)  {
+					for (var j=0; j< zone; j++) {
+						if(this.map[h+i] && this.map[h+i][w+j] && this.map[h+i][w+j] != '.') {
+							z += h+i;
+							x += w/2 + j;
+							cpt +=1;
+						}
+					}
+				}
+				this.positions.push({
+					x: this.position.x + x/cpt,
+					z: this.position.z + z/cpt
+				});
+			}
+		}
+
 	}
 
 	Room.prototype.setCenter = function() {
@@ -116,18 +161,9 @@
 			if(cube) {
 				if(constr[i].type === 'sound') {
 					this.arts.push(faceMaker.sound(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
-
-					var audio = new Audio();
-					audio.src = constr[i].src;
-					if(constr[i].play) {
-						audio.play();
-					}
-
-					this.audios.push(audio);
-
+					this.sounds.push(new Sound(constr[i]));
 				}
 				if(constr[i].type === 'txt') {
-					console.log(constr[i]);
 					this.arts.push(faceMaker.txt(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
 				}
 				if(constr[i].type === 'image') {

@@ -159,7 +159,7 @@ Camera.prototype.move = function () {
 
 	};
 
-Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-folLength)
+Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-focalLength)
 
 	var noFocal = {
 		x: this.trig.cosY * x - this.trig.sinY * z,

@@ -29,10 +29,10 @@
             "x" : 3,
             "z" : 1,
             "type" : "txt",
-            "width" : 300,
-            "height" : 200,
-            "thumb" : "/rooms/content.json",
-            "src" : "/rooms/content.json"    
+            "width" : 600,
+            "height" : 400,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot.png",
+            "src" : "/texts/diplomondus.json"    
         },
         {
             "x" : 1,

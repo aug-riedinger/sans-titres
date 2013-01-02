@@ -17,6 +17,7 @@ var Point = function (parentFace, point, rotate) {
 	
 	return this;
 };
+
 // ======== points projection ========
 
 Point.prototype.projection = function () {

@@ -1,16 +1,5 @@
 // shim layer with setTimeout fallback
 window.requestAnimFrame = (function(){
-  cpt = cpt + 1;
-  var timeNow = new Date().getTime();
-  if (timeNow - timestamp > 1000) {
-    console.log(cpt+' frames displayed in ' (timeNow - timestamp)/1000);
-    if(cpt < 24) {
-      console.log('Warning ... Too slow !');
-    }
-    cpt = 0;
-    timestamp = timeNow;
-  }
-
   return  window.requestAnimationFrame       || 
   window.webkitRequestAnimationFrame || 
   window.mozRequestAnimationFrame    || 
@@ -86,45 +75,6 @@ var setPosition = function(data,x,z) {
   }   
   return true;
 }
-
-  // ======== onclick ========
-  var click = function () {
-    // // pointer();
-    // // ---- target image ----
-    // if (target && target.f.select != false) {
-    //   if (target == targetold) {
-    //     // ---- reset scene ----
-    //     showImg(target.f.full);
-    //   } else {
-    //     targetold = target;
-    //     target.locked = false;
-    //     // ---- target redirection ----
-    //     if (target.f.target != "") {
-    //       //                            What for ?
-    //       var i = 0, f;
-    //       while ( f = faces[i++] ) {
-    //         if (f.f.id && f.f.id == target.f.target) {
-    //           console.log('condition impossible ?');
-    //           target = f;
-    //           targetold = f;
-    //           if (f.hidden) {
-    //             f.hidden = false;
-    //             f.locked = true;
-    //             targetold = false;
-    //           }
-    //           break;
-    //         }
-    //       }
-    //     } else {
-    //       console.log('condition impossible ?');
-    //     }
-    //     // ---- move camera ----
-    //     target.pc.projection();
-    //     camera.targetToFace(target);
-    //     // target.on()
-    //   }
-    // }
-  };
 
 
   var showImg = function(src) {
