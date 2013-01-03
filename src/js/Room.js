@@ -7,6 +7,12 @@
 		this.sounds = [];
 		this.adj = [];
 		this.positions = [];
+		this.tops = [];
+		this.bottoms = [];
+		this.lefts = [];
+		this.rights = [];
+		this.ceilings = [];
+		this.floors = [];
 		return this;
 	};
 
@@ -30,8 +36,9 @@
 		this.doors = constr.doors;
 		this.setCenter();
 
-		this.makeCubes();
-
+		this.makeWalls();
+		this.walls = this.tops.concat(this.bottoms, this.lefts, this.rights);
+		this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
 
 		if(this.mainRoom) {
 			this.makeArts(constr.arts);
@@ -44,26 +51,55 @@
 	Room.prototype.render = function() {
 		var face;
 
-		for (var i=0; i < this.adj.length; i++) {
-			for (var j=0; j < this.adj[i].cubes.length; j++) {
-				for (var k=0; k < this.adj[i].cubes[j].walls.length; k++) {
-					face = this.adj[i].cubes[j].walls[k];
-					face.projection();
-					if( face.visible) {
-						face.render();
-					}
-				}
-			}
+		if(this.mainRoom) {
+			this.renderAdj();
 		}
 
-		for (var i=0; i < this.cubes.length; i++) {
-			for (var j=0; j < this.cubes[i].walls.length; j++) {
-				face = this.cubes[i].walls[j];
-				face.projection();
-				if( face.visible) {
-					face.render();
-				}			
-			}
+		for (var i=0; i < this.tops.length; i++) {
+			face = this.tops[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+
+		for (var i=0; i < this.bottoms.length; i++) {
+			face = this.bottoms[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+
+		for (var i=0; i < this.lefts.length; i++) {
+			face = this.lefts[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+
+		for (var i=0; i < this.rights.length; i++) {
+			face = this.rights[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+
+		for (var i=0; i < this.ceilings.length; i++) {
+			face = this.ceilings[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+		for (var i=0; i < this.floors.length; i++) {
+			face = this.floors[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
 		}
 
 		for (var i=0; i < this.arts.length; i++) {
@@ -78,8 +114,8 @@
 	Room.prototype.inside = function(_x,_z, big) {
 		var x, z;
 		if (big) {
-		var x = Math.round(_x/params.unit ) - (this.position.x||0);
-		var z = Math.round((_z - params.focalLength)/params.unit) - (this.position.z||0);
+			var x = Math.round(_x/params.unit ) - (this.position.x||0);
+			var z = Math.round((_z - params.focalLength)/params.unit) - (this.position.z||0);
 		} else {
 			x = Math.round(_x) - this.position.x;
 			z= Math.round(_z) - this.position.z;
@@ -162,47 +198,54 @@
 		}
 	}
 
-	Room.prototype.makeCubes = function() {
+	Room.prototype.makeWalls = function() {
 		for(var h=0; h < this.map.length; h++) {
 			for (var w=0; w< this.map[h].length; w+=2) {
-				this.cubes.push(cubeWallMaker[this.map[h][w]](this,w/2,(this.map.length-(h+1)),this.doorIDtoDoor(this.map[h][w+1])));
+				wallMaker[this.map[h][w]](this,w/2,(this.map.length-(h+1)),this.doorIDtoDoor(this.map[h][w+1]));
 			}
 		}
 	}
 
-	Room.prototype.getCube = function(_x, _z) {
-		for (var i=0; i< this.cubes.length; i++) {
-			if(this.cubes[i].x == _x && this.cubes[i].z == _z) {
-				return this.cubes[i];
+	Room.prototype.getWall = function(_x, _z, type) {
+		var ar;
+		var res = [];
+		for (var i=0; i<this.walls.length; i++) {
+			ar = this.walls[i].f.id.split(':');
+			if(parseInt(ar[1]) === _x && parseInt(ar[2]) === _z) {
+				res[res.length] = this.walls[i];
 			}
 		}
+		if(res.length === 1 || (!type && res.length > 0)) {
+			return res[0];
+		} else {
+			for(var j=0; j< res.length; j++) {
+				if (type === res[j].f.id.split(':')[3]) {
+					return res[i];
+				}
+			}
+		}
+		console.log('Face Not Found');
 		return null;
 	}
 
 	Room.prototype.makeArts = function(constr) {
-		var cube = {};
+		var cube;
 		for(var i=0; i< constr.length; i++) {
-			cube = this.getCube(constr[i].x,constr[i].z);
-			if(cube) {
+			wall = this.getWall(constr[i].x, constr[i].z, constr[i].wall || null);
+			console.log(wall);
+			if(wall) {
 				if(constr[i].type === 'sound') {
-					this.arts.push(faceMaker.sound(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
-					this.sounds.push(new Sound(constr[i]));
+					this.arts[this.arts.length] = faceMaker.sound(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
+					this.sounds[this.sounds.length] = new Sound(constr[i]);
 				}
 				if(constr[i].type === 'txt') {
-					this.arts.push(faceMaker.txt(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+					this.arts[this.arts.length] = faceMaker.txt(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
 				}
 				if(constr[i].type === 'image') {
-					this.arts.push(faceMaker.image(this, cube.walls[0], constr[i].width, constr[i].height, constr[i].thumb, constr[i].src));
+					this.arts[this.arts.length] = faceMaker.image(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
 				}
 
-			} else {
-				console.log('cube not found');
-				console.log({
-					room: this.id,
-					x: constr[i].x, 
-					z: constr[i].z
-				});
-			}
+			} 
 		}
 	}
 
@@ -219,6 +262,11 @@
 		}
 	}
 
+	Room.prototype.renderAdj = function () {
+		for (var i=0; i<this.adj.length; i++) {
+			this.adj[i].render();
+		}
+	}
 
 
 
@@ -233,191 +281,151 @@
 //    0---→
 //        x
 
-var cubeWallMaker = {
+var wallMaker = {
 	'T' : function(room,_x,_z,door) { // Top Left
-		var cube = {
-			type: 'T',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		}
+
 		if(door.type === '-') {
 			var top = faceMaker.top(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var top = faceMaker.top(room,_x,_z,[1,3,4]);			
 		}
-		cube.walls.push(top);
+		room.tops[room.tops.length] = top;
+
 		if(door.type === '|') {
 			var left = faceMaker.left(room,_x,_z,[1,2,3], door.to);
 		} else {
 			var left = faceMaker.left(room,_x,_z,[1,2,3]);			
 		}
-		cube.walls.push(left);
+		room.lefts[room.lefts.length] = left;
 		var ceiling = faceMaker.ceiling(room,_x, _z,[3,4]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[1,4]);
-		cube.walls.push(floor);
+		room.ceilings[room.ceilings.length] = ceiling;
 
-		return cube;
+		var floor = faceMaker.floor(room,_x, _z,[1,4]);
+		room.floors[room.floors.length] = floor;
+
+
 	},
 	't' : function(room,_x,_z, door) { // Top Right
-		var cube = {
-			type: 't',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
+
 		if(door.type === '-') {
 			var top = faceMaker.top(room,_x,_z,[1,2,3], door.to);
 		} else {
 			var top = faceMaker.top(room,_x,_z,[1,2,3]);			
 		}		
-		cube.walls.push(top);
+		room.tops[room.tops.length] = top;
+
 		if(door.type === '!') {
 			var right = faceMaker.right(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var right = faceMaker.right(room,_x,_z,[1,3,4]);
 		}
-		cube.walls.push(right);
-		var ceiling = faceMaker.ceiling(room,_x, _z,[2,3]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[1,2]);
-		cube.walls.push(floor);
 
-		return cube;
+		room.rights[room.rights.length] = right;
+
+		var ceiling = faceMaker.ceiling(room,_x, _z,[2,3]);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+
+		var floor = faceMaker.floor(room,_x, _z,[1,2]);
+		room.floors[room.floors.length] = floor;
 
 	},
 	'B' : function(room,_x,_z, door) { // Bottom Left
-		var cube = {
-			type: 'B',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
+
 		if(door.type === '_') {
 			var bottom = faceMaker.bottom(room,_x,_z,[1,2,3], door.to);
 		} else {
 			var bottom = faceMaker.bottom(room,_x,_z,[1,2,3]);
 		}
-		cube.walls.push(bottom);
+		room.bottoms[room.bottoms.length] = bottom;
+
 		if(door.type === '|') {
 			var left = faceMaker.left(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var left = faceMaker.left(room,_x,_z,[1,3,4]);			
 		}
-		cube.walls.push(left);
+
+		room.lefts[room.lefts.length] = left;
 		var ceiling = faceMaker.ceiling(room,_x, _z,[1,4]);
-		cube.walls.push(ceiling);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+
 		var floor = faceMaker.floor(room,_x, _z,[3,4]);
-		cube.walls.push(floor);
 
-		return cube;
-
+		room.floors[room.floors.length] = floor;
 	},
 	'b' : function(room,_x,_z, door) { // Bottom Right
-		var cube = {
-			type: 'b',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
+
 		if(door.type === '_') {
 			var bottom = faceMaker.bottom(room,_x,_z,[1,3,4], door.to);
 		} else {
 			var bottom = faceMaker.bottom(room,_x,_z,[1,3,4]);
 		}
-		cube.walls.push(bottom);
+		room.bottoms[room.bottoms.length] = bottom;
+
 		if(door.type === '!') {
 			var right = faceMaker.right(room,_x,_z,[1,2,3], door.to);
 		} else {
 			var right = faceMaker.right(room,_x,_z,[1,2,3]);
 		}
-		cube.walls.push(right);
-		var ceiling = faceMaker.ceiling(room,_x, _z,[1,2]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[2,3]);
-		cube.walls.push(floor);
 
-		return cube;
+		room.rights[room.rights.length] = right;
+
+		var ceiling = faceMaker.ceiling(room,_x, _z,[1,2]);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+
+		var floor = faceMaker.floor(room,_x, _z,[2,3]);
+
+		room.floors[room.floors.length] = floor;
 
 	},
 	'-' : function(room,_x,_z,door) { // Top
-		var cube = {
-			type: '-',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
+
 		var top = faceMaker.top(room,_x,_z,[1,3],door.to);
-		cube.walls.push(top);
+		room.tops[room.tops.length] = top;
+
 		var ceiling = faceMaker.ceiling(room,_x, _z,[3]);
-		cube.walls.push(ceiling);
+		room.ceilings[room.ceilings.length] = ceiling;
+
 		var floor = faceMaker.floor(room,_x, _z,[1]);
-		cube.walls.push(floor);
-		
-		return cube;
+		room.floors[room.floors.length] = floor;
 
 	},
 	'_' : function(room,_x,_z,door) { // Bottom
-		var cube = {
-			type: '_',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
 
 		var bottom = faceMaker.bottom(room,_x,_z,[1,3],door.to);
-		cube.walls.push(bottom);
-		var ceiling = faceMaker.ceiling(room,_x, _z,[1]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[3]);
-		cube.walls.push(floor);
+		room.bottoms[room.bottoms.length] = bottom;
 
-		return cube;
+		var ceiling = faceMaker.ceiling(room,_x, _z,[1]);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+		var floor = faceMaker.floor(room,_x, _z,[3]);
+		room.floors[room.floors.length] = floor;
 
 	},
 	'|' : function(room,_x,_z,door) { // Left
-		var cube = {
-			type: '|',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
 
 		var left = faceMaker.left(room,_x,_z,[1,3],door.to);
-		cube.walls.push(left);
-		var ceiling = faceMaker.ceiling(room,_x, _z,[4]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[4]);
-		cube.walls.push(floor);
+		room.lefts[room.lefts.length] = left;
 
-		return cube;
+		var ceiling = faceMaker.ceiling(room,_x, _z,[4]);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+		var floor = faceMaker.floor(room,_x, _z,[4]);
+		room.floors[room.floors.length] = floor;
 
 	},
 	'!' : function(room,_x,_z,door) { // Right
-		var cube = {
-			type: '!',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		};
 
 		var right = faceMaker.right(room,_x,_z,[1,3],door.to);
-		cube.walls.push(right);
-		var ceiling = faceMaker.ceiling(room,_x, _z,[2]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[2]);
-		cube.walls.push(floor);
+		room.rights[room.rights.length] = right;
 
-		return cube;
+		var ceiling = faceMaker.ceiling(room,_x, _z,[2]);
+		room.ceilings[room.ceilings.length] = ceiling;
+
+		var floor = faceMaker.floor(room,_x, _z,[2]);
+		room.floors[room.floors.length] = floor;
 
 	},
 	',' : function(room,_x,_z) { // Inside
@@ -429,23 +437,12 @@ var cubeWallMaker = {
 			arts: []
 		}
 		var ceiling = faceMaker.ceiling(room,_x, _z,[]);
-		cube.walls.push(ceiling);
-		var floor = faceMaker.floor(room,_x, _z,[]);
-		cube.walls.push(floor);
+		room.ceilings[room.ceilings.length] = ceiling;
 
-		return cube;
+		var floor = faceMaker.floor(room,_x, _z,[]);
+		room.floors[room.floors.length] = floor;
 
 	},
 	'.' : function(room,_x,_z) { // Outside
-		var cube = {
-			type: '.',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		}
-
-		return cube;
-
 	}
 }

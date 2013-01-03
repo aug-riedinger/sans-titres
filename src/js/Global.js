@@ -21,7 +21,7 @@ var params = {
 	floorColor: '#80827d',
 	wallDist : 0,
 	artDist : 500,
-	focalLength : 500,
+	focalLength : 1000,
 	viewAngle: Math.PI/6,
 	humanHeight: 400
 };

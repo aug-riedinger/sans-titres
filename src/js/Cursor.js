@@ -71,7 +71,6 @@ Cursor.prototype.initEvents = function () {
 
 	} else {
 		camera.goToPosition(camera.position + 1);
-		console.log('going to position '+ (camera.position + 1));
 	}
 
 
@@ -150,15 +149,14 @@ Cursor.prototype.inFace = function() {
 			return face;
 		}
 	}
-	for (var i=0; i< room.cubes.length; i++) {
-		for (var j=0; j < room.cubes[i].walls.length; j++) {
-			face = room.cubes[i].walls[j];
-			if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
-				return face;
-			}
-			
+	for (var i=0; i< room.walls.length; i++) {
+		face = room.walls[i];
+		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
+			return face;
 		}
+
 	}
+	
 	return null;
 };
 

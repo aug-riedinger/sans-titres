@@ -169,6 +169,7 @@ return this;
 				h: params.height,
 				edges: (edges||[1,2,3,4]),
 				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
+				color: '#F9F9F9',
 				select: (toRoom && toRoom != '.')
 			};
 			return new Face(params.path, f);			
@@ -186,6 +187,7 @@ return this;
 				h: params.height,
 				edges: (edges||[1,2,3,4]),
 				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
+				color: '#F9F9F9',
 				select: (toRoom && toRoom != '.')
 			};
 			return new Face(params.path, f);			
@@ -203,6 +205,7 @@ return this;
 				h: params.height,
 				edges: (edges||[1,2,3,4]),
 				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
+				color: '#F1F1F1',
 				select: (toRoom && toRoom != '.')
 			};
 			return new Face(params.path, f);			
@@ -219,6 +222,7 @@ return this;
 				w: params.unit, 
 				h: params.height,
 				edges: (edges||[1,2,3,4]),
+				color: '#F1F1F1',
 				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
 				select: (toRoom && toRoom != '.')
 			};
@@ -235,6 +239,7 @@ return this;
 				ry:0,  
 				w: params.unit, 
 				h: params.unit, 
+				color: '#FFFFFF',
 				edges: (edges||[1,2,3,4]),
 				select: false
 			};

@@ -35,8 +35,13 @@ Point.prototype.projection = function () {
 		if (this.distance > this.face.distance) {
 			this.face.distance = this.distance;
 		}
-	}
 
+		if (p.z <= -camera.focalLength ) {
+			this.face.visible = false;
+			this.face.distance = -99999;
+			this.face.conditions.push(2);
+		}
+	}
 	
 	// --- 2D projection ----
 	// this.scale = 1;

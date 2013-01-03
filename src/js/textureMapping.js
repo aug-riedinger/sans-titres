@@ -43,6 +43,33 @@ ge1doot.textureMapping.Monochromatic = function (canvas, p0, p1, p2, p3, edges, 
 	this.door = door||false;
 };
 
+// My.renderer = function () {
+// 	var face = face0 = face1 = face2 = face3 = room.tops[0];
+// 	for (var i=0; i<room.tops.length; i++) {
+// 		face = room.tops[i];
+// 		if(face.visible) {
+// 			if (face.X < face0.X) {
+// 				face0 = face;
+// 			}
+// 			if (face.Y < face1.Y) {
+// 				face1 = face;
+// 			}
+// 			if (face.X > face2.X) {
+// 				face2 = face;
+// 			}
+// 			if (face.Y > face3.Y) {
+// 				face3 = face;
+// 			}
+// 		}
+// 	}
+
+// 	this.ctx.beginPath();
+// 	this.ctx.moveTo(this.p0.X,this.p0.Y);
+// 	this.ctx.lineTo(this.p1.X,this.p1.Y);
+// 	this.ctx.lineTo(this.p2.X,this.p2.Y);
+
+// }
+
 ge1doot.textureMapping.Monochromatic.prototype.render = function() {
 	this.ctx.beginPath();
 	this.ctx.moveTo(this.p0.X,this.p0.Y);
@@ -63,37 +90,37 @@ ge1doot.textureMapping.Monochromatic.prototype.render = function() {
       // grd.addColorStop(1, 'white');      
       // this.ctx.fillStyle = grd;
 
-	this.ctx.fill();
-	this.ctx.stroke();
+      this.ctx.fill();
+      this.ctx.stroke();
 
-	this.ctx.beginPath();
+	// this.ctx.beginPath();
 
-	if(this.edges.indexOf(1) > -1) {
-		this.ctx.moveTo(this.p0.X,this.p0.Y);
-		this.ctx.lineTo(this.p1.X,this.p1.Y);
-	} 
-	if(this.edges.indexOf(2) > -1) {
-		this.ctx.moveTo(this.p1.X,this.p1.Y);
-		this.ctx.lineTo(this.p2.X,this.p2.Y);
-	} 
-	if(this.edges.indexOf(3) > -1) {
-		this.ctx.moveTo(this.p2.X,this.p2.Y);
+	// if(this.edges.indexOf(1) > -1) {
+	// 	this.ctx.moveTo(this.p0.X,this.p0.Y);
+	// 	this.ctx.lineTo(this.p1.X,this.p1.Y);
+	// } 
+	// if(this.edges.indexOf(2) > -1) {
+	// 	this.ctx.moveTo(this.p1.X,this.p1.Y);
+	// 	this.ctx.lineTo(this.p2.X,this.p2.Y);
+	// } 
+	// if(this.edges.indexOf(3) > -1) {
+	// 	this.ctx.moveTo(this.p2.X,this.p2.Y);
 
-	if(this.door) {
-		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
-		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
-		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
-		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
-	}
+	// if(this.door) {
+	// 	this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
+	// 	this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
+	// 	this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
+	// 	this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
+	// }
 
-		this.ctx.lineTo(this.p3.X,this.p3.Y);
-	} 
-	if(this.edges.indexOf(4) > -1) {
-		this.ctx.moveTo(this.p3.X,this.p3.Y);
-		this.ctx.lineTo(this.p0.X,this.p0.Y);
-	} 		
-	this.ctx.strokeStyle = 'black';
-	this.ctx.stroke();
+	// 	this.ctx.lineTo(this.p3.X,this.p3.Y);
+	// } 
+	// if(this.edges.indexOf(4) > -1) {
+	// 	this.ctx.moveTo(this.p3.X,this.p3.Y);
+	// 	this.ctx.lineTo(this.p0.X,this.p0.Y);
+	// } 		
+	// this.ctx.strokeStyle = 'black';
+	// this.ctx.stroke();
 
 };
 
