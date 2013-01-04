@@ -22,3 +22,4 @@ var params = {
 	viewAngle: Math.PI/6,
 	humanHeight: 600
 };
+
