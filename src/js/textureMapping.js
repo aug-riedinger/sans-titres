@@ -43,48 +43,232 @@ ge1doot.textureMapping.Monochromatic = function (canvas, p0, p1, p2, p3, edges, 
 	this.door = door||false;
 };
 
-// My.renderer = function () {
-// 	var face = face0 = face1 = face2 = face3 = room.tops[0];
-// 	for (var i=0; i<room.tops.length; i++) {
-// 		face = room.tops[i];
-// 		if(face.visible) {
-// 			if (face.X < face0.X) {
-// 				face0 = face;
-// 			}
-// 			if (face.Y < face1.Y) {
-// 				face1 = face;
-// 			}
-// 			if (face.X > face2.X) {
-// 				face2 = face;
-// 			}
-// 			if (face.Y > face3.Y) {
-// 				face3 = face;
-// 			}
-// 		}
-// 	}
-
-// 	this.ctx.beginPath();
-// 	this.ctx.moveTo(this.p0.X,this.p0.Y);
-// 	this.ctx.lineTo(this.p1.X,this.p1.Y);
-// 	this.ctx.lineTo(this.p2.X,this.p2.Y);
-
-// }
-
-ge1doot.textureMapping.Monochromatic.prototype.render = function() {
-	this.ctx.beginPath();
-	this.ctx.moveTo(this.p0.X,this.p0.Y);
-	this.ctx.lineTo(this.p1.X,this.p1.Y);
-	this.ctx.lineTo(this.p2.X,this.p2.Y);
-	if(this.door) {
-		this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
-		this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
-		this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
-		this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
+var topRenderer = function () {
+	var face, face0, face1;
+	for (var i=0; i<room.tops.length; i++) {
+		face = room.tops[i];
+		if(face.visible) {
+			if(face0===undefined && face1 === undefined) {
+				face0 = face1 = face;
+			} 
+			if (face.f.x > face0.f.x) {
+				face0 = face;
+			}
+			if (face.f.x < face1.f.x) {
+				face1 = face;
+			}
+		}
 	}
-	this.ctx.lineTo(this.p3.X,this.p3.Y);
-	this.ctx.closePath();
-	this.ctx.fillStyle = this.color;
-	this.ctx.strokeStyle = this.color;
+	if (face0 !== undefined && face1 !== undefined) {
+		scr.ctx.beginPath();
+		scr.ctx.moveTo(face0.p1.X,face0.p1.Y);
+		scr.ctx.lineTo(face0.p2.X,face0.p2.Y);
+		scr.ctx.lineTo(face1.p3.X,face1.p3.Y);
+		scr.ctx.lineTo(face1.p0.X,face1.p0.Y);
+		scr.ctx.lineTo(face0.p1.X,face0.p1.Y);
+		scr.ctx.closePath();
+		// scr.ctx.fillStyle = '#f9f9f9';
+		var grd = scr.ctx.createLinearGradient(face0.p1.X, face0.p1.Y, face1.p0.X, face1.p0.Y);
+		grd.addColorStop(0, '#f9f9f9');   
+		grd.addColorStop(1, '#A1A1A1');      
+		scr.ctx.fillStyle = grd;
+
+		scr.ctx.fill();
+		scr.ctx.stroke();
+	}
+}
+
+var bottomRenderer = function () {
+	var face, face0, face1;
+	for (var i=0; i<room.bottoms.length; i++) {
+		face = room.bottoms[i];
+		if(face.visible) {
+			if(face0===undefined && face1 === undefined) {
+				face0 = face1 = face;
+			} 
+			if (face.f.x > face0.f.x) {
+				face0 = face;
+			}
+			if (face.f.x < face1.f.x) {
+				face1 = face;
+			}
+		}
+	}
+	if (face0 !== undefined && face1 !== undefined) {
+		scr.ctx.beginPath();
+		scr.ctx.moveTo(face0.p3.X,face0.p3.Y);
+		scr.ctx.lineTo(face0.p0.X,face0.p0.Y);
+		scr.ctx.lineTo(face1.p1.X,face1.p1.Y);
+		scr.ctx.lineTo(face1.p2.X,face1.p2.Y);
+		scr.ctx.lineTo(face0.p3.X,face0.p3.Y);
+		scr.ctx.closePath();
+		scr.ctx.fillStyle = '#f9f9f9';
+		var grd = scr.ctx.createLinearGradient(face0.p1.X, face0.p1.Y, face1.p0.X, face1.p0.Y);
+		grd.addColorStop(0, '#A1A1A1');      
+		grd.addColorStop(1, '#f9f9f9');   
+		scr.ctx.fillStyle = grd;
+
+		scr.ctx.fill();
+		scr.ctx.stroke();
+	}
+
+}
+
+var floorRenderer = function () {
+	var face, face0, face1, face2, face3;
+	for (var i=0; i<room.floors.length; i++) {
+		face = room.floors[i];
+		if(face.visible) {
+			if(face0===undefined && face1 === undefined && face2 === undefined && face3 === undefined) {
+				face0 = face1 = face2 = face3 = face;
+			} 
+
+			if (face.f.x >= face0.f.x && face.f.z >= face0.f.z) {
+				face0 = face;
+			}
+			if (face.f.x <= face1.f.x && face.f.z >= face1.f.z) {
+				face1 = face;
+			}
+			if (face.f.x <= face2.f.x && face.f.z <= face2.f.z) {
+				face2 = face;
+			}
+			if (face.f.x >= face3.f.x && face.f.z <= face3.f.z) {
+				face3 = face;
+			}
+		}
+	}
+	// console.log(face0);
+	// console.log(face1);
+	// console.log(face2);
+	// console.log(face3);
+	if (face0 !== undefined && face1 !== undefined) {
+		scr.ctx.beginPath();
+		scr.ctx.moveTo(face0.p1.X,face0.p1.Y);
+		scr.ctx.lineTo(face1.p0.X,face1.p0.Y);
+		scr.ctx.lineTo(face2.p3.X,face2.p3.Y);
+		scr.ctx.lineTo(face3.p2.X,face3.p2.Y);
+		scr.ctx.moveTo(face0.p1.X,face0.p1.Y);
+		scr.ctx.closePath();
+		scr.ctx.fillStyle = '#80827d';
+		// var grd = scr.ctx.createLinearGradient(face0.p1.X, face0.p1.Y, face1.p0.X, face1.p0.Y);
+		// grd.addColorStop(0, '#A1A1A1');      
+		// grd.addColorStop(1, '#f9f9f9');   
+		// scr.ctx.fillStyle = grd;
+
+		scr.ctx.fill();
+		scr.ctx.stroke();
+	}
+
+}
+var floorRenderer2 = function () {
+	var face, point;
+	var points = [];
+	var sortedPoints = [];
+	var toAdd;
+	for (var i=0; i<room.floors.length; i++) {
+		face = room.floors[i];
+		if(face.visible) {
+			toAdd = {
+				p0: true,
+				p1: true,
+				p2: true,
+				p3: true
+			};
+
+			for(var j=0; j< points.length; j++) {
+				point = points[j];
+				if(face.p0.x === point.x && face.p0.z === point.z) {
+					point.cpt++;
+					toAdd.p0 = false;
+				}
+				if(face.p1.x === point.x && face.p1.z === point.z) {
+					point.cpt++;
+					toAdd.p1 = false;
+				}
+				if(face.p2.x === point.x && face.p2.z === point.z) {
+					point.cpt++;
+					toAdd.p2 = false;
+				}
+				if(face.p3.x === point.x && face.p3.z === point.z) {
+					point.cpt++;
+					toAdd.p3 = false;
+				}
+			}	
+
+			if(toAdd.p0) {
+				points.push({
+					x: face.p0.x,
+					z: face.p0.z,
+					X: face.p0.X,
+					Y: face.p0.Y,
+					cpt: 1
+				});
+			}
+			if(toAdd.p1) {
+				points.push({
+					x: face.p1.x,
+					z: face.p1.z,
+					X: face.p1.X,
+					Y: face.p1.Y,
+					cpt: 1
+				});
+			}
+			if(toAdd.p2) {
+				points.push({
+					x: face.p2.x,
+					z: face.p2.z,
+					X: face.p2.X,
+					Y: face.p2.Y,
+					cpt: 1
+				});
+			}
+			if(toAdd.p3) {
+				points.push({
+					x: face.p3.x,
+					z: face.p3.z,
+					X: face.p3.X,
+					Y: face.p3.Y,
+					cpt: 1
+				});
+			}
+		}
+	}
+
+
+	scr.ctx.beginPath();
+	for(var k=0; k<points.length; k++) {
+		point = points[k];
+		if(point.cpt === 1) {
+			scr.ctx.lineTo(point.X,point.Y);
+		}
+	}
+	scr.ctx.closePath();
+	scr.ctx.fillStyle = '#80827d';
+		// var grd = scr.ctx.createLinearGradient(face0.p1.X, face0.p1.Y, face1.p0.X, face1.p0.Y);
+		// grd.addColorStop(0, '#A1A1A1');      
+		// grd.addColorStop(1, '#f9f9f9');   
+		// scr.ctx.fillStyle = grd;
+
+		scr.ctx.fill();
+		scr.ctx.stroke();
+
+	}
+
+	ge1doot.textureMapping.Monochromatic.prototype.render = function() {
+		this.ctx.beginPath();
+		this.ctx.moveTo(this.p0.X,this.p0.Y);
+		this.ctx.lineTo(this.p1.X,this.p1.Y);
+		this.ctx.lineTo(this.p2.X,this.p2.Y);
+		if(this.door) {
+			this.ctx.lineTo((this.p2.X*5+this.p3.X)/6,(this.p2.Y*5+this.p3.Y)/6);
+			this.ctx.lineTo((((this.p1.X*5+this.p0.X)/6) + (this.p2.X*5+this.p3.X)/6)/2,(((this.p1.Y*5+this.p0.Y)/6) + (this.p2.Y*5+this.p3.Y)/6)/2);
+			this.ctx.lineTo((((this.p1.X+this.p0.X*5)/6) + (this.p2.X+this.p3.X*5)/6)/2,(((this.p1.Y+this.p0.Y*5)/6) + (this.p2.Y+this.p3.Y*5)/6)/2);
+			this.ctx.lineTo((this.p2.X+this.p3.X*5)/6,(this.p2.Y+this.p3.Y*5)/6);		
+		}
+		this.ctx.lineTo(this.p3.X,this.p3.Y);
+		this.ctx.closePath();
+		this.ctx.fillStyle = this.color;
+		this.ctx.strokeStyle = this.color;
       // var grd = this.ctx.createLinearGradient(this.p0.X, this.p0.Y, this.p3.X, this.p3.Y);
       // grd.addColorStop(0, this.color);   
       // grd.addColorStop(1, 'white');      

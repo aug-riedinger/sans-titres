@@ -2,7 +2,6 @@
 	var Room = function (id, mainRoom) {
 		this.id = id;
 		this.mainRoom = mainRoom;
-		this.cubes = [];
 		this.arts = [];
 		this.sounds = [];
 		this.adj = [];
@@ -52,24 +51,46 @@
 		var face;
 
 		if(this.mainRoom) {
-			this.renderAdj();
+			// this.renderAdj();
 		}
+
+		for (var i=0; i < this.ceilings.length; i++) {
+			face = this.ceilings[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
+		for (var i=0; i < this.floors.length; i++) {
+			face = this.floors[i];
+			face.projection();
+			// if( face.visible) {
+			// 	face.render();
+			// }			
+		}
+
+		floorRenderer2();
 
 		for (var i=0; i < this.tops.length; i++) {
 			face = this.tops[i];
 			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
+			// if( face.visible) {
+			// 	face.render();
+			// }			
 		}
+
+		topRenderer();
+
 
 		for (var i=0; i < this.bottoms.length; i++) {
 			face = this.bottoms[i];
 			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
+			// if( face.visible) {
+			// 	face.render();
+			// }			
 		}
+
+		bottomRenderer();
 
 		for (var i=0; i < this.lefts.length; i++) {
 			face = this.lefts[i];
@@ -87,21 +108,6 @@
 			}			
 		}
 
-		for (var i=0; i < this.ceilings.length; i++) {
-			face = this.ceilings[i];
-			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
-		}
-		for (var i=0; i < this.floors.length; i++) {
-			face = this.floors[i];
-			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
-		}
-
 		for (var i=0; i < this.arts.length; i++) {
 			face = this.arts[i];
 			face.projection();
@@ -109,6 +115,7 @@
 				face.render();
 			}			
 		}
+
 	}
 
 	Room.prototype.inside = function(_x,_z, big) {
@@ -232,7 +239,6 @@
 		var cube;
 		for(var i=0; i< constr.length; i++) {
 			wall = this.getWall(constr[i].x, constr[i].z, constr[i].wall || null);
-			console.log(wall);
 			if(wall) {
 				if(constr[i].type === 'sound') {
 					this.arts[this.arts.length] = faceMaker.sound(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
@@ -290,6 +296,8 @@ var wallMaker = {
 			var top = faceMaker.top(room,_x,_z,[1,3,4]);			
 		}
 		room.tops[room.tops.length] = top;
+
+		// room.topLines[_z][room.topLines[_z].length] = top;
 
 		if(door.type === '|') {
 			var left = faceMaker.left(room,_x,_z,[1,2,3], door.to);

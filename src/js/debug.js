@@ -40,7 +40,7 @@ var logPosition = function() {
 
 }
 
-var getFaceById = function(_id) {
+var getFaceById = function(faces, _id) {
 	for (var i in faces) {
 		if (faces[i].f.id == _id) {
 			return faces[i];
@@ -51,12 +51,11 @@ var getFaceById = function(_id) {
 
 var logConditions = function() {
 	var cpt = [ 0, 0, 0, 0, 0];
-	for (var i=0;i<faces.length;i++) {
-		if(!faces.visible) {
-			for(var j=0; j < faces[i].conditions.length; j++) {
-				cpt[faces[i].conditions[j]]++;
+	for (var i=0;i<room.faces.length;i++) {
+		if(!room.faces[i].visible) {
+			for(var j=0; j < room.faces[i].conditions.length; j++) {
+				cpt[room.faces[i].conditions[j]]++;
 			}
-		console.log(faces[i].conditions);
 		}
 	}
 	return cpt;

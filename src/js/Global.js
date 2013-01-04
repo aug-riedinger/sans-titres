@@ -3,9 +3,6 @@ var room;
 var cursor;
 var keyboard;
 // var orthoSet;
-var faces = [];
-var arts = [];
-var points = [];
 var position = {
 	x:0,
 	z:0

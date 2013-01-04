@@ -41,6 +41,10 @@ Point.prototype.projection = function () {
 			this.face.distance = -99999;
 			this.face.conditions.push(2);
 		}
+
+		// if (p.z > -2*camera.focalLength && p.z <= -camera.focalLength) {
+		// 	p.z = -450;
+		// }
 	}
 	
 	// --- 2D projection ----
@@ -51,10 +55,14 @@ Point.prototype.projection = function () {
 	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
 	// this.X = (scr.width  * 0.5) + (p.x * this.scale);
 	// this.Y = (scr.height * 0.5) + (p.y * this.scale);
-	this.X = (scr.width  * 0.5) + (p.x * this.scale);
-	this.Y = (scr.height * 0.5) + (p.y * this.scale);
+	// this.X = Math.round((scr.width  * 0.5) + (p.x * this.scale));
+	// this.Y = Math.round((scr.height * 0.5) + (p.y * this.scale));
+	// Hack to Math.round
+	this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) << 0;
+	this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) << 0;
 
-	this.inScreen = this.X >= 0 && this.X < scr.width && this.Y >= 0 && this.Y < scr.height;
+	var margin = 200;
+	this.inScreen = this.X >= -margin && this.X < scr.width + margin && this.Y >= -margin && this.Y < scr.height + margin;
 	this.p = p;
 
 	return true;

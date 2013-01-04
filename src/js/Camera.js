@@ -28,12 +28,12 @@ var Camera = function() {
 }
 
 Camera.prototype.isInPosition = function() {
-	var dx = Math.abs(this.x.target - this.x.value);
-	var dy = Math.abs(this.y.target - this.y.value);
-	var dz = Math.abs(this.z.target - this.z.value);
-	var drx = Math.abs(this.rx.target - this.rx.value);
-	var dry = Math.abs(this.ry.target - this.ry.value);
-	var dzoom = Math.abs(this.zoom.target - this.zoom.value);
+	var dx = this.x.target - this.x.value;
+	var dy = this.y.target - this.y.value;
+	var dz = this.z.target - this.z.value;
+	var drx = this.rx.target - this.rx.value;
+	var dry = this.ry.target - this.ry.value;
+	var dzoom = this.zoom.target - this.zoom.value;
 
 	this.inPosition = (dx*dx + dy*dy + dz*dz < 10);
 
