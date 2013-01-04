@@ -60,56 +60,44 @@
 
 		for (var depth in this.ceilings) {
 			if (this.ceilings.hasOwnProperty(depth)) {
-				render(this.ceilings[depth],'y', '#ffffff');
+				renderer.facesMerged(this.ceilings[depth],'y', '#ffffff');
 			}
 		}
 
 		for (var depth in this.floors) {
 			if (this.floors.hasOwnProperty(depth)) {
-				render(this.floors[depth],'y', '#80827d');
+				renderer.facesMerged(this.floors[depth],'y', '#80827d');
 			}
 		}
 
 		for (var depth in this.tops) {
 			if (this.tops.hasOwnProperty(depth)) {
-				render(this.tops[depth],'z', '#f9f9f9', '#D9D9D9');
+				renderer.facesMerged(this.tops[depth],'z', '#f9f9f9', '#D9D9D9');
 			}
 		}
 
 
 		for (var depth in this.bottoms) {
 			if (this.bottoms.hasOwnProperty(depth)) {
-				render(this.bottoms[depth],'z', '#f9f9f9', '#D9D9D9');
+				renderer.facesMerged(this.bottoms[depth],'z', '#f9f9f9', '#D9D9D9');
 			}
 		}
 
 		for (var depth in this.lefts) {
 			if (this.lefts.hasOwnProperty(depth)) {
-				render(this.lefts[depth],'x', '#E9E9E9', '#f9f9f9');
+				renderer.facesMerged(this.lefts[depth],'x', '#E9E9E9', '#f9f9f9');
 			}
 		}
 
 		for (var depth in this.rights) {
 			if (this.rights.hasOwnProperty(depth)) {
-				render(this.rights[depth],'x', '#E9E9E9', '#f9f9f9');
+				renderer.facesMerged(this.rights[depth],'x', '#E9E9E9', '#f9f9f9');
 			}
 		}
 
 		for (var i=0; i< this.doors.length; i++) {
-			door = this.doors[i];
-			door.face.projection();
-			if(door.face.visible) {
+			renderer.renderDoor(this.doors[i]);
 
-				scr.ctx.beginPath();
-				scr.ctx.lineTo(door.face.p0.X,door.face.p0.Y);
-				scr.ctx.lineTo(door.face.p1.X,door.face.p1.Y);
-				scr.ctx.lineTo(door.face.p2.X,door.face.p2.Y);
-				scr.ctx.lineTo(door.face.p3.X,door.face.p3.Y);
-				scr.ctx.closePath();
-				scr.ctx.fillStyle = 'rgba(50,50,50,1)';
-				scr.ctx.fill();
-				
-			}
 		}
 
 		for (var i=0; i < this.arts.length; i++) {

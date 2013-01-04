@@ -1,4 +1,6 @@
-var render = function (faces, dim, color, color2) {
+var renderer = {};
+
+renderer.facesMerged = function (faces, dim, color, color2) {
 	var point;
 	var points = getEdges(faces, dim);
 	if(points.length>0) {
@@ -22,264 +24,163 @@ var render = function (faces, dim, color, color2) {
 	}
 }
 
+renderer.renderDoor = function(door) {
+	door.face.projection();
+	if(door.face.visible) {
 
-var getEdges = function(faces, dim) {
-	var points = [];
-	var goodPoints = [];
-	var face, point;
-	var toAdd;
-	var cx, cy, cz;
-	var ux, uy, uz, vx, vy, vz, cosTheta, sinTheta, theta;
+		scr.ctx.beginPath();
+		scr.ctx.lineTo(door.face.p0.X,door.face.p0.Y);
+		scr.ctx.lineTo(door.face.p1.X,door.face.p1.Y);
+		scr.ctx.lineTo(door.face.p2.X,door.face.p2.Y);
+		scr.ctx.lineTo(door.face.p3.X,door.face.p3.Y);
+		scr.ctx.closePath();
+		scr.ctx.fillStyle = 'rgba(50,50,50,1)';
+		scr.ctx.fill();
 
-	for (var i=0; i<faces.length; i++) {
-		face = faces[i];
-		face.projection();
-		if(face.visible) {
-			toAdd = {
-				p0: true,
-				p1: true,
-				p2: true,
-				p3: true
-			};
-
-			for(var j=0; j< points.length; j++) {
-				point = points[j];
-				if(face.p0.x === point.x && face.p0.y === point.y && face.p0.z === point.z) {
-					point.cpt++;
-					toAdd.p0 = false;
-				}
-				if(face.p1.x === point.x && face.p1.y === point.y && face.p1.z === point.z) {
-					point.cpt++;
-					toAdd.p1 = false;
-				}
-				if(face.p2.x === point.x && face.p2.y === point.y && face.p2.z === point.z) {
-					point.cpt++;
-					toAdd.p2 = false;
-				}
-				if(face.p3.x === point.x && face.p3.y === point.y && face.p3.z === point.z) {
-					point.cpt++;
-					toAdd.p3 = false;
-				}
-			}	
-			if(toAdd.p0) {
-				points.push({
-					x: face.p0.x,
-					y: face.p0.y,
-					z: face.p0.z,
-					X: face.p0.X,
-					Y: face.p0.Y,
-					cpt: 1
-				});
-			}
-			if(toAdd.p1) {
-				points.push({
-					x: face.p1.x,
-					y: face.p1.y,
-					z: face.p1.z,
-					X: face.p1.X,
-					Y: face.p1.Y,
-					cpt: 1
-				});
-			}
-			if(toAdd.p2) {
-				points.push({
-					x: face.p2.x,
-					y: face.p2.y,
-					z: face.p2.z,
-					X: face.p2.X,
-					Y: face.p2.Y,
-					cpt: 1
-				});
-			}
-			if(toAdd.p3) {
-				points.push({
-					x: face.p3.x,
-					y: face.p3.y,
-					z: face.p3.z,
-					X: face.p3.X,
-					Y: face.p3.Y,
-					cpt: 1
-				});
-			}
-		}
 	}
+}
 
-	cx = cy = cz = 0;
+renderer.Triangle = function (parent, p0, p1, p2) {
+	// this.randColor = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
+	this.p0 = p0;
+	this.p1 = p1;
+	this.p2 = p2;
+	this.next = false;
+	// ---- pre calculation for transform----
+	this.d    = p0.tx * (p2.ty - p1.ty) - p1.tx * p2.ty + p2.tx * p1.ty + (p1.tx - p2.tx) * p0.ty;
+	this.pmy  = p1.ty - p2.ty;
+	this.pmx  = p1.tx - p2.tx;
+	this.pxy  = p2.tx * p1.ty - p1.tx * p2.ty;
+	// ---- link for iteration ----
+	if (!parent.firstTriangle) parent.firstTriangle = this; else parent.prev.next = this;
+	parent.prev = this;
+};
 
-	for(var k=0; k< points.length; k++) {
-		if(points[k].cpt === 1) {
-			goodPoints.push(points[k]);
-			cx += points[k].x;
-			cy += points[k].y;
-			cz += points[k].z;
-		}
+// ==== image constructor ====
+renderer.Image = function (canvas, imgSrc, lev) {
+	this.canvas        = canvas;
+	this.ctx           = canvas.getContext("2d");
+	if(typeof(imgSrc) == 'string') {
+		this.texture       = new Image();
+		this.texture.src   = imgSrc;
 	}
+	if(typeof(imgSrc) == 'object') {
+		this.texture = imgSrc;
+	}
+	this.lev           = lev;
+	this.isLoading     = true;
+	this.firstPoint    = false;
+	this.firstTriangle = false;
+	this.prev          = false;
+};
 
-	cx = cx/goodPoints.length;
-	cy = cy/goodPoints.length;
-	cz = cz/goodPoints.length;
 
-
-	if(goodPoints.length>0) {
-		point = goodPoints[0];
-		for(var k=0; k<goodPoints.length; k++) {
-			var ux = point.x - cx;
-			var uy = point.y - cy;
-			var uz = point.z - cz;
-			var vx = goodPoints[k].x - cx;
-			var vy = goodPoints[k].y - cy;
-			var vz = goodPoints[k].z - cz;
-			if(dim === 'x') {
-					// var norm = Math.sqrt((uy*uy + uz*uz)*(vy*vy + vz*vz));
-					var cosTheta = (uy*vy + uz*vz);
-					var sinTheta = (uy*vz - uz*vy);
-				}
-				if(dim === 'y') {
-					// var norm = Math.sqrt((ux*ux + uz*uz)*(vx*vx + vz*vz));
-					var cosTheta = (ux*vx + uz*vz);
-					var sinTheta = (uz*vx - ux*vz);
-				}
-				if(dim === 'z') {
-					// var norm = Math.sqrt((ux*ux + uy*uy)*(vx*vx + vy*vy));
-					var cosTheta = (ux*vx + uy*vy);
-					var sinTheta = (ux*vy - uy*vx);
-				}
-				var theta = Math.atan(sinTheta / cosTheta);
-				if(cosTheta>=0) {
-					goodPoints[k].theta = theta;
-				} else {
-					goodPoints[k].theta = theta + Math.PI;
-				}
-
-				// goodPoints[k].cosTheta = cosTheta;
-				// goodPoints[k].sinTheta = sinTheta;
-				// goodPoints[k].cx = cx;
-				// goodPoints[k].cy = cy;
-				// goodPoints[k].cz = cz;
-			}
-
-			goodPoints.sort(function(p0,p1) {
-				return p0.theta - p1.theta
-			});
-
-		}
-		return goodPoints;
-	}	
-
-	var getEdges2 = function(faces) {
-		var face, point;
+renderer.Image.prototype.loading = function () {
+	if (this.texture.complete && this.texture.width) {
+		this.isLoading = false;
 		var points = [];
-		var goodPoints = [];
-		var toAdd;
-		for (var i=0; i<faces.length; i++) {
-			face = faces[i];
-			if(face.visible) {
-				toAdd = {
-					p0: true,
-					p1: true,
-					p2: true,
-					p3: true
+		// ---- create points ----
+		for (var i = 0; i <= this.lev; i++) {
+			for (var j = 0; j <= this.lev; j++) {
+				var tx = (i * (this.texture.width / this.lev));
+				var ty = (j * (this.texture.height / this.lev));
+				var p = {
+					tx: tx,
+					ty: ty,
+					nx: tx / this.texture.width,
+					ny: ty / this.texture.height,
+					next: false
 				};
-
-				for(var j=0; j< points.length; j++) {
-					point = points[j];
-					if(face.p0.x === point.x && face.p0.z === point.z) {
-						point.cpt++;
-						toAdd.p0 = false;
-					}
-					if(face.p1.x === point.x && face.p1.z === point.z) {
-						point.cpt++;
-						toAdd.p1 = false;
-					}
-					if(face.p2.x === point.x && face.p2.z === point.z) {
-						point.cpt++;
-						toAdd.p2 = false;
-					}
-					if(face.p3.x === point.x && face.p3.z === point.z) {
-						point.cpt++;
-						toAdd.p3 = false;
-					}
-				}	
-				if(toAdd.p0) {
-					points.push({
-						x: face.p0.x,
-						z: face.p0.z,
-						X: face.p0.X,
-						Y: face.p0.Y,
-						cpt: 1
-					});
-				}
-				if(toAdd.p1) {
-					points.push({
-						x: face.p1.x,
-						z: face.p1.z,
-						X: face.p1.X,
-						Y: face.p1.Y,
-						cpt: 1
-					});
-				}
-				if(toAdd.p2) {
-					points.push({
-						x: face.p2.x,
-						z: face.p2.z,
-						X: face.p2.X,
-						Y: face.p2.Y,
-						cpt: 1
-					});
-				}
-				if(toAdd.p3) {
-					points.push({
-						x: face.p3.x,
-						z: face.p3.z,
-						X: face.p3.X,
-						Y: face.p3.Y,
-						cpt: 1
-					});
-				}
+				points.push(p);
+				if (!this.firstPoint) this.firstPoint = p; else this.prev.next = p;
+				this.prev = p;
 			}
 		}
-
-		var cx = cz = 0;
-
-		for(var k=0; k< points.length; k++) {
-			if(points[k].cpt === 1) {
-				goodPoints.push(points[k]);
-				cx += points[k].x;
-				cz += points[k].z;
-				// points.splice(k,1);
+		var lev = this.lev + 1;
+		for (var i = 0; i < this.lev; i++) {
+			for (var j = 0; j < this.lev; j++) {
+				// ---- up ----
+				var t = new renderer.Triangle(this, 
+					points[j + i * lev],
+					points[j + i * lev + 1],
+					points[j + (i + 1) * lev]
+					);
+				// ---- down ----
+				var t = new renderer.Triangle(this,
+					points[j + (i + 1) * lev + 1],
+					points[j + (i + 1) * lev],
+					points[j + i * lev + 1]
+					);
 			}
 		}
-
-		cx = cx/goodPoints.length;
-		cz = cz/goodPoints.length;
-
-
-		if(goodPoints.length>0) {
-			// goodPoints[0].theta=0;
-			// point = goodPoints.shift();
-			point = goodPoints[0];
-
-
-			for(var k=0; k<goodPoints.length; k++) {
-				var ux = point.x - cx;
-				var uz = point.z - cz;
-				var vx = goodPoints[k].x - cx;
-				var vz = goodPoints[k].z - cz;
-				// var norm = Math.sqrt((ux*ux + uz*uz)*(vx*vx + vz*vz));
-				var cosTheta = (ux*vx + uz*vz);
-				var sinTheta = -(ux*vz - uz*vx);
-				var theta = Math.atan(sinTheta / cosTheta);
-				if(cosTheta>=0) {
-					goodPoints[k].theta = theta;
-				} else {
-					goodPoints[k].theta = theta + Math.PI;
-				}
-			}
-
-			goodPoints.sort(function(p0,p1) {
-				return p0.theta - p1.theta
-			});
-
-		}
-		return goodPoints;
 	}
+};
+
+// ==== draw3D prototype ====
+renderer.Image.prototype.render = function (p0, p1, p2, p3) {
+	// ---- loading ----
+	if (this.isLoading) {
+		this.loading();
+	} else {
+		// ---- project points ----
+		var p = this.firstPoint;
+		do {
+			var mx = p0.X + p.ny * (p3.X - p0.X);
+			var my = p0.Y + p.ny * (p3.Y - p0.Y);
+			p.px = (mx + p.nx * (p1.X + p.ny * (p2.X - p1.X) - mx));
+			p.py = (my + p.nx * (p1.Y + p.ny * (p2.Y - p1.Y) - my));
+		} while ( p = p.next );
+		// ---- draw triangles ----
+		var w = this.canvas.width;
+		var h = this.canvas.height;
+		var t = this.firstTriangle;
+		do {
+			var p0 = t.p0;
+			var p1 = t.p1;
+			var p2 = t.p2;
+			// ---- centroid ----
+			var xc = (p0.px + p1.px + p2.px) / 3;
+			var yc = (p0.py + p1.py + p2.py) / 3;
+			// ---- clipping ----
+			var isTriangleVisible = true;
+			if (xc < 0 || xc > w || yc < 0 || yc > h) {
+				if (Math.max(p0.px, p1.px, p2.px) < 0 || Math.min(p0.px, p1.px, p2.px) > w || Math.max(p0.py, p1.py, p2.py) < 0 || Math.min(p0.py, p1.py, p2.py) > h) {
+					isTriangleVisible = false;
+				}
+			}
+			if (isTriangleVisible) {
+				this.ctx.save();
+				this.ctx.beginPath();
+				var dx, dy, d;
+				// ---- draw non anti-aliased triangle ----
+				dx = xc - p0.px;
+				dy = yc - p0.py;
+				d = Math.max(Math.abs(dx), Math.abs(dy));
+				this.ctx.moveTo(p0.px - 2 * (dx / d), p0.py - 2 * (dy / d));
+				dx = xc - p1.px;
+				dy = yc - p1.py;
+				d = Math.max(Math.abs(dx), Math.abs(dy));
+				this.ctx.lineTo(p1.px - 2 * (dx / d), p1.py - 2 * (dy / d));
+				dx = xc - p2.px;
+				dy = yc - p2.py;
+				d = Math.max(Math.abs(dx), Math.abs(dy));
+				this.ctx.lineTo(p2.px - 2 * (dx / d), p2.py - 2 * (dy / d));
+				this.ctx.closePath();
+
+				// ---- clip ----
+				this.ctx.clip();
+				// ---- texture mapping ----
+				this.ctx.transform(
+					-(p0.ty * (p2.px - p1.px) -  p1.ty * p2.px  + p2.ty *  p1.px + t.pmy * p0.px) / t.d, // m11
+					 (p1.ty *  p2.py + p0.ty  * (p1.py - p2.py) - p2.ty *  p1.py - t.pmy * p0.py) / t.d, // m12
+					 (p0.tx * (p2.px - p1.px) -  p1.tx * p2.px  + p2.tx *  p1.px + t.pmx * p0.px) / t.d, // m21
+					-(p1.tx *  p2.py + p0.tx  * (p1.py - p2.py) - p2.tx *  p1.py - t.pmx * p0.py) / t.d, // m22
+					 (p0.tx * (p2.ty * p1.px  -  p1.ty * p2.px) + p0.ty * (p1.tx *  p2.px - p2.tx  * p1.px) + t.pxy * p0.px) / t.d, // dx
+					 (p0.tx * (p2.ty * p1.py  -  p1.ty * p2.py) + p0.ty * (p1.tx *  p2.py - p2.tx  * p1.py) + t.pxy * p0.py) / t.d  // dy
+					 );
+				this.ctx.drawImage(this.texture, 0, 0);
+				this.ctx.restore();
+			}
+		} while ( t = t.next );
+	}
+};

@@ -8,6 +8,8 @@ var init = function () {
 	});
 
 	room = new Room(getParameters().room||1, true).load();
+	camera = new Camera();
+	keyboard = new Keyboard();	
 
 	$(room).one('ready', function(e) {
 		// ---- engine start ----
@@ -16,14 +18,11 @@ var init = function () {
 		cursor = new Cursor('screen');
 	});
 
-	camera = new Camera();
-	keyboard = new Keyboard();	
 
 };
 
 
-////////////////////////////////////////////////////////////////////////////
-// ===== main loop =====
+
 var run = function () {
 	// ---- loop ----
 	requestAnimFrame(run);

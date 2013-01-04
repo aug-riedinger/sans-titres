@@ -34,36 +34,12 @@
 		this.ay = r.y + Math.PI / 2;
 
 		// ---- create 3D image ----
+		if (this.f.type === 'image' || this.f.type === 'txt') {
+			this.img = new renderer.Image(scr.canvas, this.f.thumb, f.tl || 2);			
+		}
 
-		if (this.f.type === 'wall') {
-			this.wall = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor);
-		}
-		if (this.f.type === 'door') {
-			this.door = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor ,true);
-		}
-		if (this.f.type === 'ceiling') {
-			this.ceiling = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.wallColor);
-		}		
-		if (this.f.type === 'floor') {
-			this.floor = new ge1doot.textureMapping.Monochromatic(scr.canvas, this.p0, this.p1, this.p2, this.p3, this.f.edges, this.f.color||params.floorColor);
-		}
-		if (this.f.type === 'image') {
-			this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
-		}
-		if (this.f.type === 'sound') {
-			this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
-		}
-		if (this.f.type === 'txt') {
-			// console.log(this.f.src);
-			// $.getJSON(this.f.src, $.proxy(function(data) {
-			// 	console.log(data);
-			// 	this.img = new ge1doot.textureMapping.Image(scr.canvas, drawCanvas(data), f.tl || 2);			
-			// }, this));
-	this.img = new ge1doot.textureMapping.Image(scr.canvas, this.f.thumb, f.tl || 2);			
-}
-
-return this;
-};
+		return this;
+	};
 
 
 	// ======== face projection ========
@@ -127,30 +103,7 @@ return this;
 	};
 
 	Face.prototype.render = function() {
-		if (this.f.type == 'wall') {
-			this.wall.render();
-		}
-
-		if (this.f.type == 'door') {
-			this.door.render();
-		}
-
-		if (this.f.type == 'ceiling') {
-			this.ceiling.render();
-		}		
-
-		if (this.f.type == 'floor') {
-			this.floor.render();
-			// this.img.render(this.p0, this.p1, this.p2, this.p3);				
-		}
-
-		if (this.f.type == 'image') {
-			this.img.render(this.p0, this.p1, this.p2, this.p3);
-		}
-		if (this.f.type == 'sound') {
-			this.img.render(this.p0, this.p1, this.p2, this.p3);
-		}
-		if (this.f.type == 'txt') {
+		if (this.f.type === 'image' || this.f.type === 'txt') {
 			this.img.render(this.p0, this.p1, this.p2, this.p3);
 		}
 	};
