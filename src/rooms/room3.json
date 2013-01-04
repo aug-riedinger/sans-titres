@@ -7,17 +7,32 @@
     	"z": 0
     },
     "map" : [
-    "........T.-.-2t.",
-    "........|.,.,.!.",
-    "........|.,.,.!.",
-    "T.-1-.-.,.,.,.!.",
-    "B0_._._._._._.b."
+    "........╔----2╗.",
+    "........|.,.,.║.",
+    "........|e,.,.║d",
+    "╔--1----,.,.,.║.",
+    "╚0═══a═c════¤═╝."
     ],
-    "doors" : [ "2|", 12, 13],
+    "doors" : [ 
+        {
+            "id": "0",
+            "side": "|",
+            "to": 2     
+        },
+        {
+            "id": "1",
+            "side": "|",
+            "to": 12     
+        },
+        {
+            "id": "2",
+            "side": "|",
+            "to": 13     
+        }
+        ],
     "arts" : [
         {
-            "x" : 0,
-            "z" : 1,
+            "id": "a",
             "type" : "sound",
             "width" : 64,
             "height" : 64,
@@ -26,8 +41,7 @@
             "play": "true"
         },
         {
-            "x" : 3,
-            "z" : 1,
+            "id": "a",
             "type" : "txt",
             "width" : 600,
             "height" : 400,
@@ -35,8 +49,7 @@
             "src" : "/texts/diplomondus.json"    
         },
         {
-            "x" : 1,
-            "z" : 0,
+            "id": "a",
             "type" : "image",
             "width" : 300,
             "height" : 200,
@@ -44,8 +57,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092.JPG"    
         },
         {
-            "x" : 3,
-            "z" : 0,
+            "id": "a",
             "type" : "image",
             "width" : 200,
             "height" : 300,
@@ -53,8 +65,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131.jpg"    
         },
         {
-            "x" : 5,
-            "z" : 0,
+            "id": "a",
             "type" : "image",
             "width" : 300,
             "height" : 200,
@@ -62,8 +73,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904.JPG"    
         },
         {
-            "x" : 7,
-            "z" : 0,
+            "id": "a",
             "type" : "image",
             "width" : 300,
             "height" : 200,
@@ -71,8 +81,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936.JPG"    
         },
         {
-            "x" : 7,
-            "z" : 2,
+            "id": "a",
             "type" : "image",
             "width" : 300,
             "height" : 200,

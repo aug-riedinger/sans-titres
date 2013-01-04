@@ -6,12 +6,12 @@
 		this.sounds = [];
 		this.adj = [];
 		this.positions = [];
-		this.tops = [];
-		this.bottoms = [];
-		this.lefts = [];
-		this.rights = [];
-		this.ceilings = [];
-		this.floors = [];
+		this.tops = {};
+		this.bottoms = {};
+		this.lefts = {};
+		this.rights = {};
+		this.ceilings = {};
+		this.floors = {};
 		return this;
 	};
 
@@ -36,8 +36,8 @@
 		this.setCenter();
 
 		this.makeWalls();
-		this.walls = this.tops.concat(this.bottoms, this.lefts, this.rights);
-		this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
+		this.walls = []; //this.tops.concat(this.bottoms, this.lefts, this.rights);
+		// this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
 
 		if(this.mainRoom) {
 			this.makeArts(constr.arts);
@@ -48,72 +48,54 @@
 	}
 
 	Room.prototype.render = function() {
-		var face;
 
 		if(this.mainRoom) {
-			// this.renderAdj();
+			this.renderAdj();
+		}	
+
+		for (var depth in this.ceilings) {
+			if (this.ceilings.hasOwnProperty(depth)) {
+				render(this.ceilings[depth],'y', '#ffffff');
+			}
 		}
 
-		for (var i=0; i < this.ceilings.length; i++) {
-			face = this.ceilings[i];
-			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
-		}
-		for (var i=0; i < this.floors.length; i++) {
-			face = this.floors[i];
-			face.projection();
-			// if( face.visible) {
-			// 	face.render();
-			// }			
+		for (var depth in this.floors) {
+			if (this.floors.hasOwnProperty(depth)) {
+				render(this.floors[depth],'y', '#80827d');
+			}
 		}
 
-		floorRenderer2();
-
-		for (var i=0; i < this.tops.length; i++) {
-			face = this.tops[i];
-			face.projection();
-			// if( face.visible) {
-			// 	face.render();
-			// }			
+		for (var depth in this.tops) {
+			if (this.tops.hasOwnProperty(depth)) {
+				render(this.tops[depth],'z', '#f9f9f9', '#D9D9D9');
+			}
 		}
 
-		topRenderer();
 
-
-		for (var i=0; i < this.bottoms.length; i++) {
-			face = this.bottoms[i];
-			face.projection();
-			// if( face.visible) {
-			// 	face.render();
-			// }			
+		for (var depth in this.bottoms) {
+			if (this.bottoms.hasOwnProperty(depth)) {
+				render(this.bottoms[depth],'z', '#f9f9f9', '#D9D9D9');
+			}
 		}
 
-		bottomRenderer();
-
-		for (var i=0; i < this.lefts.length; i++) {
-			face = this.lefts[i];
-			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
+		for (var depth in this.lefts) {
+			if (this.lefts.hasOwnProperty(depth)) {
+				render(this.lefts[depth],'x', '#E9E9E9', '#f9f9f9');
+			}
 		}
 
-		for (var i=0; i < this.rights.length; i++) {
-			face = this.rights[i];
-			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
+		for (var depth in this.rights) {
+			if (this.rights.hasOwnProperty(depth)) {
+				render(this.rights[depth],'x', '#E9E9E9', '#f9f9f9');
+			}
 		}
 
 		for (var i=0; i < this.arts.length; i++) {
 			face = this.arts[i];
 			face.projection();
-			if( face.visible) {
-				face.render();
-			}			
+			// if( face.visible) {
+			// 	face.render();
+			// }			
 		}
 
 	}
@@ -208,7 +190,7 @@
 	Room.prototype.makeWalls = function() {
 		for(var h=0; h < this.map.length; h++) {
 			for (var w=0; w< this.map[h].length; w+=2) {
-				wallMaker[this.map[h][w]](this,w/2,(this.map.length-(h+1)),this.doorIDtoDoor(this.map[h][w+1]));
+				this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
 			}
 		}
 	}
@@ -274,183 +256,134 @@
 		}
 	}
 
-
-
-//      ooooooooooo
-//      o    1    o
-//      o         o
-//      o 0     2 o   4\5
-//      o    3    o
-//      ooooooooooo
-//   z↑
-//    |
-//    0---→
-//        x
-
-var wallMaker = {
-	'T' : function(room,_x,_z,door) { // Top Left
-
-		if(door.type === '-') {
-			var top = faceMaker.top(room,_x,_z,[1,3,4], door.to);
-		} else {
-			var top = faceMaker.top(room,_x,_z,[1,3,4]);			
+	Room.prototype.wallMaker = function(charType, _x, _z) {
+		if(this.wallE[charType].top) {
+			if(!this.tops.hasOwnProperty(_z)) {
+				this.tops[_z] = [];
+			}
+			this.tops[_z].push(faceMaker.top(this,_x,_z));
 		}
-		room.tops[room.tops.length] = top;
-
-		// room.topLines[_z][room.topLines[_z].length] = top;
-
-		if(door.type === '|') {
-			var left = faceMaker.left(room,_x,_z,[1,2,3], door.to);
-		} else {
-			var left = faceMaker.left(room,_x,_z,[1,2,3]);			
+		if(this.wallE[charType].bottom) {
+			if(!this.bottoms.hasOwnProperty(_z)) {
+				this.bottoms[_z] = [];
+			}
+			this.bottoms[_z].push(faceMaker.bottom(this,_x,_z));
 		}
-		room.lefts[room.lefts.length] = left;
-		var ceiling = faceMaker.ceiling(room,_x, _z,[3,4]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[1,4]);
-		room.floors[room.floors.length] = floor;
-
-
-	},
-	't' : function(room,_x,_z, door) { // Top Right
-
-		if(door.type === '-') {
-			var top = faceMaker.top(room,_x,_z,[1,2,3], door.to);
-		} else {
-			var top = faceMaker.top(room,_x,_z,[1,2,3]);			
-		}		
-		room.tops[room.tops.length] = top;
-
-		if(door.type === '!') {
-			var right = faceMaker.right(room,_x,_z,[1,3,4], door.to);
-		} else {
-			var right = faceMaker.right(room,_x,_z,[1,3,4]);
+		if(this.wallE[charType].left) {
+			if(!this.lefts.hasOwnProperty(_x)) {
+				this.lefts[_x] = [];
+			}
+			this.lefts[_x].push(faceMaker.left(this,_x,_z));
 		}
-
-		room.rights[room.rights.length] = right;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[2,3]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-
-		var floor = faceMaker.floor(room,_x, _z,[1,2]);
-		room.floors[room.floors.length] = floor;
-
-	},
-	'B' : function(room,_x,_z, door) { // Bottom Left
-
-		if(door.type === '_') {
-			var bottom = faceMaker.bottom(room,_x,_z,[1,2,3], door.to);
-		} else {
-			var bottom = faceMaker.bottom(room,_x,_z,[1,2,3]);
+		if(this.wallE[charType].right) {
+			if(!this.rights.hasOwnProperty(_x)) {
+				this.rights[_x] = [];
+			}
+			this.rights[_x].push(faceMaker.right(this,_x,_z));
 		}
-		room.bottoms[room.bottoms.length] = bottom;
-
-		if(door.type === '|') {
-			var left = faceMaker.left(room,_x,_z,[1,3,4], door.to);
-		} else {
-			var left = faceMaker.left(room,_x,_z,[1,3,4]);			
+		if(this.wallE[charType].ceiling) {
+			if(!this.ceilings.hasOwnProperty(0)) {
+				this.ceilings[0] = [];
+			}
+			this.ceilings[0].push(faceMaker.ceiling(this,_x, _z));		
 		}
-
-		room.lefts[room.lefts.length] = left;
-		var ceiling = faceMaker.ceiling(room,_x, _z,[1,4]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-
-		var floor = faceMaker.floor(room,_x, _z,[3,4]);
-
-		room.floors[room.floors.length] = floor;
-	},
-	'b' : function(room,_x,_z, door) { // Bottom Right
-
-		if(door.type === '_') {
-			var bottom = faceMaker.bottom(room,_x,_z,[1,3,4], door.to);
-		} else {
-			var bottom = faceMaker.bottom(room,_x,_z,[1,3,4]);
+		if(this.wallE[charType].floor) {
+			if(!this.floors.hasOwnProperty(0)) {
+				this.floors[0] = [];
+			}
+			this.floors[0].push(faceMaker.floor(this,_x, _z));	
 		}
-		room.bottoms[room.bottoms.length] = bottom;
-
-		if(door.type === '!') {
-			var right = faceMaker.right(room,_x,_z,[1,2,3], door.to);
-		} else {
-			var right = faceMaker.right(room,_x,_z,[1,2,3]);
-		}
-
-		room.rights[room.rights.length] = right;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[1,2]);
-		room.ceilings[room.ceilings.length] = ceiling;
+	};
 
 
-		var floor = faceMaker.floor(room,_x, _z,[2,3]);
+    // "╔------0--╗.",
+    // "|.,.,.,.,.║.",
+    // "|.,.,.,.,.║.",
+    // "|.,.,.,.,.║.",
+    // "|.,.,.,.,.║.",
+    // "|.,.,.,.,.║1",
+    // "╚═════════╝."
 
-		room.floors[room.floors.length] = floor;
 
+Room.prototype.wallE = {
+	'╔': { // Top Left
+		top: true,
+		bottom: false,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
 	},
-	'-' : function(room,_x,_z,door) { // Top
-
-		var top = faceMaker.top(room,_x,_z,[1,3],door.to);
-		room.tops[room.tops.length] = top;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[3]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[1]);
-		room.floors[room.floors.length] = floor;
-
+	'╗': { // Top Right
+		top: true,
+		bottom: false,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
 	},
-	'_' : function(room,_x,_z,door) { // Bottom
-
-		var bottom = faceMaker.bottom(room,_x,_z,[1,3],door.to);
-		room.bottoms[room.bottoms.length] = bottom;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[1]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[3]);
-		room.floors[room.floors.length] = floor;
-
+	'╚': { // Bottom Left
+		top: false,
+		bottom: true,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
 	},
-	'|' : function(room,_x,_z,door) { // Left
-
-		var left = faceMaker.left(room,_x,_z,[1,3],door.to);
-		room.lefts[room.lefts.length] = left;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[4]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[4]);
-		room.floors[room.floors.length] = floor;
-
+	'╝': { // Bottom Right
+		top: false,
+		bottom: true,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
 	},
-	'!' : function(room,_x,_z,door) { // Right
-
-		var right = faceMaker.right(room,_x,_z,[1,3],door.to);
-		room.rights[room.rights.length] = right;
-
-		var ceiling = faceMaker.ceiling(room,_x, _z,[2]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[2]);
-		room.floors[room.floors.length] = floor;
-
+	'-': { // Top 
+		top: true,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
 	},
-	',' : function(room,_x,_z) { // Inside
-		var cube = {
-			type: '*',
-			x: _x,
-			z: _z,
-			walls : [],
-			arts: []
-		}
-		var ceiling = faceMaker.ceiling(room,_x, _z,[]);
-		room.ceilings[room.ceilings.length] = ceiling;
-
-		var floor = faceMaker.floor(room,_x, _z,[]);
-		room.floors[room.floors.length] = floor;
-
+	'═': { // Bottom
+		top: false,
+		bottom: true,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
 	},
-	'.' : function(room,_x,_z) { // Outside
+	'|': { // Left
+		top: false,
+		bottom: false,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'║': { // Right
+		top: false,
+		bottom: false,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
+	},
+	',': { // Inside
+		top: false,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'.': { // Outside
+		top: false,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: false,
+		floor: false
 	}
 }
