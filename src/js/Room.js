@@ -12,6 +12,8 @@
 		this.rights = {};
 		this.ceilings = {};
 		this.floors = {};
+		this.walls = [];
+		this.doors = [];
 		return this;
 	};
 
@@ -32,22 +34,25 @@
 		this.path = constr.path;
 		this.position = constr.position;
 		this.map = constr.map;
-		this.doors = constr.doors;
+		this.doorsConstr = constr.doors||[];
+		this.artsConstr = constr.arts||[];
+		this.soundsConstr = constr.sounds||[];
 		this.setCenter();
 
-		this.makeWalls();
-		this.walls = []; //this.tops.concat(this.bottoms, this.lefts, this.rights);
+		this.readMap();
 		// this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
 
 		if(this.mainRoom) {
-			this.makeArts(constr.arts);
+			// this.makeArts(constr.arts);
 			this.loadAdj();
 			this.makePositions();
+			this.makeSounds();
 		}
 		return this;	
 	}
 
 	Room.prototype.render = function() {
+		var face, door;
 
 		if(this.mainRoom) {
 			this.renderAdj();
@@ -90,12 +95,29 @@
 			}
 		}
 
+		for (var i=0; i< this.doors.length; i++) {
+			door = this.doors[i];
+			door.face.projection();
+			if(door.face.visible) {
+
+				scr.ctx.beginPath();
+				scr.ctx.lineTo(door.face.p0.X,door.face.p0.Y);
+				scr.ctx.lineTo(door.face.p1.X,door.face.p1.Y);
+				scr.ctx.lineTo(door.face.p2.X,door.face.p2.Y);
+				scr.ctx.lineTo(door.face.p3.X,door.face.p3.Y);
+				scr.ctx.closePath();
+				scr.ctx.fillStyle = 'rgba(50,50,50,1)';
+				scr.ctx.fill();
+				
+			}
+		}
+
 		for (var i=0; i < this.arts.length; i++) {
 			face = this.arts[i];
 			face.projection();
-			// if( face.visible) {
-			// 	face.render();
-			// }			
+			if( face.visible) {
+				face.render();
+			}			
 		}
 
 	}
@@ -168,29 +190,20 @@
 		};
 	};
 
-	Room.prototype.doorIDtoDoor = function(doorID) {
-		if (doorID !== '.') {
-			if(typeof(this.doors[doorID]) == 'string') {
-				return {
-					to: this.doors[doorID].substring(0,this.doors[doorID].length-1),
-					type: this.doors[doorID].substring(this.doors[doorID].length-1,this.doors[doorID].length)
-				};
-			} else {
-				return {
-					to: this.doors[doorID]
-				};
-			}
-		} else {
-			return {
-				to : '.'
-			};
-		}
-	}
-
-	Room.prototype.makeWalls = function() {
+	Room.prototype.readMap = function() {
+		var potentialWalls, next, doorId, artId;
 		for(var h=0; h < this.map.length; h++) {
 			for (var w=0; w< this.map[h].length; w+=2) {
-				this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
+				potentialWalls = this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
+				next = this.map[h][w+1];
+				doorId = next.replace(/^[^0-9]$/,'');
+				artId = next.replace(/^[^a-zA-Z]$/,'');
+				if(doorId !== '' && this.mainRoom) {
+					this.makeDoor(doorId, potentialWalls);
+				}
+				if(artId !== '' && this.mainRoom) {
+					this.makeArt(artId, potentialWalls);
+				}
 			}
 		}
 	}
@@ -217,36 +230,72 @@
 		return null;
 	}
 
-	Room.prototype.makeArts = function(constr) {
-		var cube;
-		for(var i=0; i< constr.length; i++) {
-			wall = this.getWall(constr[i].x, constr[i].z, constr[i].wall || null);
-			if(wall) {
-				if(constr[i].type === 'sound') {
-					this.arts[this.arts.length] = faceMaker.sound(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
-					this.sounds[this.sounds.length] = new Sound(constr[i]);
-				}
-				if(constr[i].type === 'txt') {
-					this.arts[this.arts.length] = faceMaker.txt(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
-				}
-				if(constr[i].type === 'image') {
-					this.arts[this.arts.length] = faceMaker.image(this, wall, constr[i].width, constr[i].height, constr[i].thumb, constr[i].src);
+	Room.prototype.makeArt = function(id, potentialWalls) {
+		var art, wall;
+		for(var i=0; i< this.artsConstr.length; i++) {
+			art = this.artsConstr[i];
+			if (art.id === id) {
+
+				if(potentialWalls.length === 1 ) {
+					wall = potentialWalls[0];
+				} else {
+					for(var j=0; j<potentialWalls.length; j++) {
+						if(potentialWalls[j].f.type === art.side) {
+							wall = potentialWalls[j];
+						}
+					}
 				}
 
-			} 
+				if(wall !== undefined) {
+					if(art.type === 'txt') {
+						return this.arts.push(faceMaker.txt(this, wall, art.width, art.height, art.thumb, art.src));
+					}
+					if(art.type === 'image') {
+						return this.arts.push(faceMaker.image(this, wall, art.width, art.height, art.thumb, art.src));
+					}
+					
+				}
+
+			}
 		}
+		console.log('ArtId not found');
+		return false;
+	}
+	Room.prototype.makeDoor = function(id, potentialWalls) {
+		var door;
+		for(var i=0; i< this.doorsConstr.length; i++) {
+			door = this.doorsConstr[i];
+			if (door.id === id) {
+				if(potentialWalls.length === 1 || door.side === undefined ) {
+					wall = potentialWalls[0];
+				} else {
+					for(var j=0; j<potentialWalls.length; j++) {
+						if(potentialWalls[j].f.type === door.side) {
+							wall = potentialWalls[j];
+						}
+					}
+				}
+				if (wall !== undefined) {
+					door.face = faceMaker.door(this, wall, door.to);
+					return this.doors.push(door);
+				}
+			}
+		}
+		console.log('DoorId not found');
+		return false;
+	}
+
+	Room.prototype.makeSounds = function() {
+		var sound;
+		for(var i=0; i< this.soundsConstr.length; i++) {
+			sound = this.soundsConstr[i];
+			this.sounds.push(new Sound(sound));
+		}		
 	}
 
 	Room.prototype.loadAdj = function() {
-		var roomID;
 		for(var i=0; i< this.doors.length; i++) {
-			if (typeof(this.doors[i]) === 'string') {
-				roomID = this.doors[i].substring(0,this.doors[i].length-1);
-			} else {
-				roomID = this.doors[i];
-			}
-			// console.log('creating room '+roomID);
-			this.adj.push(new Room(roomID, false).load());
+			this.adj.push(new Room(this.doors[i].to, false).load());
 		}
 	}
 
@@ -257,56 +306,71 @@
 	}
 
 	Room.prototype.wallMaker = function(charType, _x, _z) {
+		var wall;
+		var potentialWalls = [];
 		if(this.wallE[charType].top) {
 			if(!this.tops.hasOwnProperty(_z)) {
 				this.tops[_z] = [];
 			}
-			this.tops[_z].push(faceMaker.top(this,_x,_z));
+			wall = faceMaker.top(this,_x,_z)
+			this.tops[_z].push(wall);
+			this.walls.push(wall);
+			potentialWalls.push(wall);
 		}
 		if(this.wallE[charType].bottom) {
 			if(!this.bottoms.hasOwnProperty(_z)) {
 				this.bottoms[_z] = [];
 			}
-			this.bottoms[_z].push(faceMaker.bottom(this,_x,_z));
+			wall = faceMaker.bottom(this,_x,_z);
+			this.bottoms[_z].push(wall);
+			this.walls.push(wall);
+			potentialWalls.push(wall);
 		}
 		if(this.wallE[charType].left) {
 			if(!this.lefts.hasOwnProperty(_x)) {
 				this.lefts[_x] = [];
 			}
-			this.lefts[_x].push(faceMaker.left(this,_x,_z));
+			wall = faceMaker.left(this,_x,_z);
+			this.lefts[_x].push(wall);
+			this.walls.push(wall);
+			potentialWalls.push(wall);
 		}
 		if(this.wallE[charType].right) {
 			if(!this.rights.hasOwnProperty(_x)) {
 				this.rights[_x] = [];
 			}
-			this.rights[_x].push(faceMaker.right(this,_x,_z));
+			wall = faceMaker.right(this,_x,_z);
+			this.rights[_x].push(wall);
+			this.walls.push(wall);
+			potentialWalls.push(wall);
 		}
 		if(this.wallE[charType].ceiling) {
 			if(!this.ceilings.hasOwnProperty(0)) {
 				this.ceilings[0] = [];
 			}
-			this.ceilings[0].push(faceMaker.ceiling(this,_x, _z));		
+			wall = faceMaker.ceiling(this,_x, _z);		
+			this.ceilings[0].push(wall);
 		}
 		if(this.wallE[charType].floor) {
 			if(!this.floors.hasOwnProperty(0)) {
 				this.floors[0] = [];
 			}
-			this.floors[0].push(faceMaker.floor(this,_x, _z));	
+			wall = faceMaker.floor(this,_x, _z);	
+			this.floors[0].push(wall);
 		}
+
+		return potentialWalls;
 	};
 
 
-    // "╔------0--╗.",
-    // "|.,.,.,.,.║.",
-    // "|.,.,.,.,.║.",
-    // "|.,.,.,.,.║.",
-    // "|.,.,.,.,.║.",
-    // "|.,.,.,.,.║1",
-    // "╚═════════╝."
+    // "#---------+.",
+    // "|.,.,.,.,.!.",
+    // "|0,.,.,.,.!.",
+    // "%_________¤1"
 
 
-Room.prototype.wallE = {
-	'╔': { // Top Left
+    Room.prototype.wallE = {
+	'#': { // Top Left
 		top: true,
 		bottom: false,
 		left: true,
@@ -314,7 +378,7 @@ Room.prototype.wallE = {
 		ceiling: true,
 		floor: true
 	},
-	'╗': { // Top Right
+	'+': { // Top Right
 		top: true,
 		bottom: false,
 		left: false,
@@ -322,7 +386,7 @@ Room.prototype.wallE = {
 		ceiling: true,
 		floor: true
 	},
-	'╚': { // Bottom Left
+	'%': { // Bottom Left
 		top: false,
 		bottom: true,
 		left: true,
@@ -330,7 +394,7 @@ Room.prototype.wallE = {
 		ceiling: true,
 		floor: true
 	},
-	'╝': { // Bottom Right
+	'¤': { // Bottom Right
 		top: false,
 		bottom: true,
 		left: false,
@@ -346,7 +410,7 @@ Room.prototype.wallE = {
 		ceiling: true,
 		floor: true
 	},
-	'═': { // Bottom
+	'_': { // Bottom
 		top: false,
 		bottom: true,
 		left: false,
@@ -362,7 +426,7 @@ Room.prototype.wallE = {
 		ceiling: true,
 		floor: true
 	},
-	'║': { // Right
+	'!': { // Right
 		top: false,
 		bottom: false,
 		left: false,

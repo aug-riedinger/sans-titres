@@ -36,7 +36,7 @@ Cursor.prototype.initEvents = function () {
 			that.aimedSound = null;
 		}
 
-		if(face && face.f.type == 'door') {
+		if(face && face.f.type == '@') {
 			that.aimedDoor = face;
 		} else {
 			that.aimedDoor = null;
@@ -61,19 +61,18 @@ Cursor.prototype.initEvents = function () {
 					ry: (that.aimedDoor.ay - (Math.PI * 0.5)),
 					zoom: 1
 				}, false);
-			// console.log(this)
-			that.going = that.aimedDoor.f.toRoom;
+
+			that.going = that.aimedDoor.f.to;
 			$(scr.canvas).one('inPosition', $.proxy(function(e){
+				for(var i=0; i<room.sounds.length; i++) {
+					room.sounds[i].remove();
+				}
 				room = new Room(this.going, true).load();
 				this.going = null;
 			}, that));
 		}
 
-	} else {
-		camera.goToPosition(camera.position + 1);
 	}
-
-
 
 	e.preventDefault();
 	return false; 
@@ -81,6 +80,7 @@ Cursor.prototype.initEvents = function () {
 
 this.container.ondblclick = function (e) {
 		// console.log('dblclick');
+		camera.goToPosition(camera.position + 1);
 
 		e.preventDefault();
 		return false;
@@ -149,14 +149,14 @@ Cursor.prototype.inFace = function() {
 			return face;
 		}
 	}
-	for (var i=0; i< room.walls.length; i++) {
-		face = room.walls[i];
+	for (var i=0; i< room.doors.length; i++) {
+		face = room.doors[i].face;
 		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
 			return face;
 		}
 
 	}
-	
+
 	return null;
 };
 

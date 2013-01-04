@@ -20,5 +20,5 @@ var params = {
 	artDist : 500,
 	focalLength : 1000,
 	viewAngle: Math.PI/6,
-	humanHeight: 400
+	humanHeight: 600
 };

@@ -7,60 +7,26 @@
     	"z": 0
     },
     "map" : [
-    "╔------0--╗.",
-    "|.,.,.,.,.║.",
-    "|.,.,.,.,.║.",
-    "|.,.,.,.,.║.",
-    "|.,.,.,.,.║.",
-    "|.,.,.,.,.║1",
-    "╚═════════╝."
+    "#------0--+.",
+    "|.,.,.,.,.!.",
+    "|.,.,.,.,.!.",
+    "|.,.,.,.,.!.",
+    "|.,.,.,.,.!.",
+    "|.,.,.,.,.!1",
+    "%_________¤."
     ],
-    "doors" : [ 9, 2],
-    "arts" : [
+    "doors" : [
         {
-            "x" : 3,
-            "z" : 0,
-            "type" : "photo",
-            "width" : 300,
-            "height" : 200,
-            "thumb" : "musicplayr.jpg",
-            "src" : "musicplayr.jpg"    
+            "id": "0",
+            "side": "-",
+            "to": 9     
         },
         {
-            "x" : 5,
-            "z" : 3,
-            "type" : "photo",
-            "width" : 302,
-            "height" : 200,
-            "thumb" : "DSC_0913_302x200.jpg",
-            "src" : "DSC_0913_1024x678.jpg"    
-        },
-        {
-            "x" : 0,
-            "z" : 2,
-            "type" : "photo",
-            "width" : 430,
-            "height" : 280,
-            "thumb" : "Berlin_1024x678.jpg",
-            "src" : "Berlin_1024x678.jpg"    
-        },
-        {
-            "x" : 0,
-            "z" : 4,
-            "type" : "photo",
-            "width" : 302,
-            "height" : 200,
-            "thumb" : "Berlin2_302x200.jpg",
-            "src" : "Berlin2_1024x678.jpg"    
-        },
-        {
-            "x" : 0,
-            "z" : 5,
-            "type" : "photo",
-            "width" : 302,
-            "height" : 200,
-            "thumb" : "Berlin3_302x200.jpg",
-            "src" : "Berlin3_1024x678.jpg"    
+            "id": "1",
+            "side": "!",
+            "to": 2     
         }
+    ],
+    "arts" : [
     ]
 }

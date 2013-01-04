@@ -2,7 +2,7 @@
 var Camera = function() {
 	this.focalLength = params.focalLength;
 	this.x = new ge1doot.tweens.Add(100);
-	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.humanHeight);
+	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.unit - params.humanHeight);
 	this.z = new ge1doot.tweens.Add(100, 0,0);
 	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2,0, true);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);

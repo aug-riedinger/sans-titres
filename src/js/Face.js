@@ -156,10 +156,10 @@ return this;
 	};
 
 	var faceMaker = {
-		'top' : function(_room, _x, _z, edges, toRoom) {
+		'top' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':top',
-				type : (toRoom && toRoom != '.')?'door':'wall',
+				id: _room.id+':'+_x+':'+_z+':-',
+				type : '-',
 				x: params.unit * (_x + _room.position.x),  
 				y: 0,    
 				z: params.unit * (_z + 1/2 + _room.position.z),    
@@ -167,17 +167,14 @@ return this;
 				ry: 0, 
 				w: params.unit, 
 				h: params.height,
-				edges: (edges||[1,2,3,4]),
-				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
-				color: '#F9F9F9',
-				select: (toRoom && toRoom != '.')
+				select: false
 			};
 			return new Face(params.path, f);			
 		},
-		'bottom' : function(_room, _x, _z, edges, toRoom) {
+		'bottom' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':bottom',
-				type : (toRoom && toRoom != '.')?'door':'wall',
+				id: _room.id+':'+_x+':'+_z+':_',
+				type : '_',
 				x: params.unit * (_x + _room.position.x),    
 				y: 0,    
 				z: params.unit * (_z - 1/2 + + _room.position.z),  
@@ -185,17 +182,14 @@ return this;
 				ry:-2,  
 				w: params.unit, 
 				h: params.height,
-				edges: (edges||[1,2,3,4]),
-				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
-				color: '#F9F9F9',
-				select: (toRoom && toRoom != '.')
+				select: false
 			};
 			return new Face(params.path, f);			
 		},
-		'left' : function(_room, _x, _z, edges, toRoom) {
+		'left' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':left',
-				type : (toRoom && toRoom != '.')?'door':'wall',
+				id: _room.id+':'+_x+':'+_z+':|',
+				type : '|',
 				x: params.unit * (_x - 1/2 + _room.position.x),  
 				y: 0,    
 				z: params.unit * (_z + _room.position.z),    
@@ -203,17 +197,14 @@ return this;
 				ry:1,  
 				w: params.unit, 
 				h: params.height,
-				edges: (edges||[1,2,3,4]),
-				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
-				color: '#F1F1F1',
-				select: (toRoom && toRoom != '.')
+				select: false
 			};
 			return new Face(params.path, f);			
 		},
-		'right' : function(_room, _x, _z, edges, toRoom) {
+		'right' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':right',
-				type : (toRoom && toRoom != '.')?'door':'wall',
+				id: _room.id+':'+_x+':'+_z+':!',
+				type : '!',
 				x: params.unit * (_x + 1/2 + _room.position.x),  
 				y: 0,    
 				z: params.unit * (_z + _room.position.z),    
@@ -221,17 +212,14 @@ return this;
 				ry:-1, 
 				w: params.unit, 
 				h: params.height,
-				edges: (edges||[1,2,3,4]),
-				color: '#F1F1F1',
-				toRoom : (toRoom && toRoom != '.')?toRoom:-1,
-				select: (toRoom && toRoom != '.')
+				select: false
 			};
 			return new Face(params.path, f);			
 		},
-		'ceiling' : function(_room, _x, _z, edges) {
+		'ceiling' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':ceiling',
-				type : 'ceiling',
+				id: _room.id+':'+_x+':'+_z+':£',
+				type : '£',
 				x: params.unit * (_x + _room.position.x),  
 				y: - params.height/2,    
 				z: params.unit * (_z + _room.position.z),
@@ -239,16 +227,14 @@ return this;
 				ry:0,  
 				w: params.unit, 
 				h: params.unit, 
-				color: '#FFFFFF',
-				edges: (edges||[1,2,3,4]),
 				select: false
 			};
 			return new Face(params.path, f);			
 		},
-		'floor' : function(_room, _x, _z, edges) {
+		'floor' : function(_room, _x, _z) {
 			var f = {
-				id: _room.id+':'+_x+':'+_z+':floor',
-				type : 'floor',
+				id: _room.id+':'+_x+':'+_z+':€',
+				type : '€',
 				x: params.unit * (_x + _room.position.x),  
 				y: params.height/2,    
 				z: params.unit * (_z + _room.position.z),
@@ -256,9 +242,25 @@ return this;
 				ry:0,  
 				w: params.unit, 
 				h: params.unit, 
-				src:"floor-tx.png",    
-				edges: (edges||[1,2,3,4]),
 				select: false
+			};
+			return new Face(params.path, f);			
+		},
+		'door': function(_room, face, to) {
+			var f = {
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':@',
+				type : '@',
+				x: face.f.x, 
+				y: params.height/2 - params.humanHeight*3/4,    
+				z: face.f.z,
+				rx: face.f.rx,
+				ry: face.f.ry,
+				// w: 100, 
+				// h: 200,   
+				w: params.unit*2/3, 
+				h: params.humanHeight*3/2, 
+				to: to,  
+				select: true
 			};
 			return new Face(params.path, f);			
 		},

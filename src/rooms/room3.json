@@ -7,11 +7,11 @@
     	"z": 0
     },
     "map" : [
-    "........╔----2╗.",
-    "........|.,.,.║.",
-    "........|e,.,.║d",
-    "╔--1----,.,.,.║.",
-    "╚0═══a═c════¤═╝."
+    "........#.-.-2+.",
+    "........|.,.,.!.",
+    "........|e,.,.!d",
+    "#.-1-.-f,.,.,.!.",
+    "%0_._a_._b_._c¤."
     ],
     "doors" : [ 
         {
@@ -21,33 +21,16 @@
         },
         {
             "id": "1",
-            "side": "|",
+            "side": "-",
             "to": 12     
         },
         {
             "id": "2",
-            "side": "|",
+            "side": "-",
             "to": 13     
         }
         ],
     "arts" : [
-        {
-            "id": "a",
-            "type" : "sound",
-            "width" : 64,
-            "height" : 64,
-            "thumb" : "/images/pause.png",
-            "src": "https://s3.amazonaws.com/sans-titres/diplomondus/sound.mp3",
-            "play": "true"
-        },
-        {
-            "id": "a",
-            "type" : "txt",
-            "width" : 600,
-            "height" : 400,
-            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot.png",
-            "src" : "/texts/diplomondus.json"    
-        },
         {
             "id": "a",
             "type" : "image",
@@ -57,7 +40,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092.JPG"    
         },
         {
-            "id": "a",
+            "id": "b",
             "type" : "image",
             "width" : 200,
             "height" : 300,
@@ -65,7 +48,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131.jpg"    
         },
         {
-            "id": "a",
+            "id": "c",
             "type" : "image",
             "width" : 300,
             "height" : 200,
@@ -73,7 +56,7 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904.JPG"    
         },
         {
-            "id": "a",
+            "id": "d",
             "type" : "image",
             "width" : 300,
             "height" : 200,
@@ -81,12 +64,28 @@
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936.JPG"    
         },
         {
-            "id": "a",
+            "id": "e",
             "type" : "image",
-            "width" : 300,
-            "height" : 200,
+            "width" : 600,
+            "height" : 400,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943_640x480.jpg",
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943.JPG"    
-        }   
+        },
+        {
+            "id": "f",
+            "type" : "txt",
+            "width" : 600,
+            "height" : 400,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot.png",
+            "src" : "/texts/diplomondus.json"    
+        }
+    ],
+    "sounds" :[
+        {
+            "id": "g",
+            "type" : "sound",
+            "src": "https://s3.amazonaws.com/sans-titres/diplomondus/sound.mp3",
+            "play": "true"
+        }
     ]
 }
