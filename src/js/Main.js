@@ -8,14 +8,15 @@ var init = function () {
 	});
 
 	room = new Room(getParameters().room||1, true).load();
-	camera = new Camera();
-	keyboard = new Keyboard();	
 
 	$(room).one('ready', function(e) {
 		// ---- engine start ----
+		camera = new Camera(room.positions[0].x * params.unit, room.positions[0].z * params.unit);
+		keyboard = new Keyboard();	
+		cursor = new Cursor('screen');
+
 		run();
 		$(scr.canvas).fadeIn(3000);
-		cursor = new Cursor('screen');
 	});
 
 
@@ -34,6 +35,7 @@ var run = function () {
 	room.render();
 
 	// ---- camera ----
+	cursor.move();
 	camera.move();
 };
 

@@ -7,11 +7,11 @@
     	"z": 0
     },
     "map" : [
-    "........#.-.-2+.",
-    "........|.,.,.!.",
+    "........#.-.-2+2",
+    "........|i,.,.!.",
     "........|e,.,.!d",
     "#.-1-.-f,.,.,.!.",
-    "%0_._a_._b_._c¤."
+    "%0_._a_g_b_h_c¤."
     ],
     "doors" : [ 
         {
@@ -34,34 +34,34 @@
         {
             "id": "a",
             "type" : "image",
-            "width" : 300,
-            "height" : 200,
+            "width" : 600,
+            "height" : 400,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_640x428.jpg",
-            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092.JPG"    
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_1198x800.jpg"    
         },
         {
             "id": "b",
             "type" : "image",
-            "width" : 200,
-            "height" : 300,
+            "width" : 400,
+            "height" : 600,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131_428x640.jpg",
-            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131.jpg"    
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131_800x1198.jpg"    
         },
         {
             "id": "c",
             "type" : "image",
-            "width" : 300,
-            "height" : 200,
+            "width" : 600,
+            "height" : 400,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904_640x302.jpg",
-            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904.JPG"    
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1890904_1280x604.jpg"    
         },
         {
             "id": "d",
             "type" : "image",
-            "width" : 300,
-            "height" : 200,
+            "width" : 1200,
+            "height" : 800,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936_640x480.jpg",
-            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936.JPG"    
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910936_1067x800.jpg"    
         },
         {
             "id": "e",
@@ -69,15 +69,39 @@
             "width" : 600,
             "height" : 400,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943_640x480.jpg",
-            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943.JPG"    
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1910943_1067x800.jpg"    
         },
         {
             "id": "f",
             "type" : "txt",
-            "width" : 600,
-            "height" : 400,
-            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot.png",
-            "src" : "/texts/diplomondus.json"    
+            "width" : 900,
+            "height" : 600,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot-tr.png",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/text.html"    
+        },
+        {
+            "id": "g",
+            "type" : "image",
+            "width" : 900,
+            "height" : 600,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920155_640x480.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920155_1067x800.jpg"    
+        },
+        {
+            "id": "h",
+            "type" : "image",
+            "width" : 900,
+            "height" : 600,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920146_640x428.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920146_1198x800.jpg"    
+        },
+        {
+            "id": "i",
+            "type" : "image",
+            "width" : 900,
+            "height" : 600,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920151_640x480.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1920151_1067x800.jpg"    
         }
     ],
     "sounds" :[

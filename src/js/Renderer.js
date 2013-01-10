@@ -3,24 +3,55 @@ var renderer = {};
 renderer.facesMerged = function (faces, dim, color, color2) {
 	var point;
 	var points = getEdges(faces, dim);
+
+
 	if(points.length>0) {
+		var minX=points[0].X, maxX=points[0].X;
+		var minY=points[0].Y, maxY=points[0].Y;
 		scr.ctx.beginPath();
 		for(var k=0; k<points.length; k++) {
 			point = points[k];
 			scr.ctx.lineTo(point.X,point.Y);
+
+			if(point.X < minX) {
+				minX = point.X;
+			}
+			if(point.X > maxX) {
+				maxX = point.X;
+			}
+			if(point.Y < minY) {
+				minY = point.Y;
+			}
+			if(point.Y > maxY) {
+				maxY = point.Y;
+			}
+
+		}
+		if(maxX > scr.height) {
+			maxX = scr.height;
+		}
+		if(minX < 0) {
+			minX = 0;
+		}
+		if(maxY > scr.width) {
+			maxY = scr.width;
+		}
+		if(minY < 0) {
+			minY = 0;
 		}
 		scr.ctx.closePath();
 		if(color2 === undefined) {
 			scr.ctx.fillStyle = color||'white';
 		} else {
 			var grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt(points.length/2)].X, points[parseInt(points.length/2)].Y);
+			// var grd = scr.ctx.createLinearGradient(minX, minY, maxX, maxY);
 			grd.addColorStop(0, color);      
 			grd.addColorStop(1, color2);   
 			scr.ctx.fillStyle = grd;
 		}
-
+		scr.ctx.strokeStyle = color||'white';
 		scr.ctx.fill();
-		// scr.ctx.stroke();
+		scr.ctx.stroke();
 	}
 }
 

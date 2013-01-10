@@ -34,7 +34,7 @@
 		this.ay = r.y + Math.PI / 2;
 
 		// ---- create 3D image ----
-		if (this.f.type === 'image' || this.f.type === 'txt') {
+		if (this.f.type === 'art') {
 			this.img = new renderer.Image(scr.canvas, this.f.thumb, f.tl || 2);			
 		}
 
@@ -103,7 +103,7 @@
 	};
 
 	Face.prototype.render = function() {
-		if (this.f.type === 'image' || this.f.type === 'txt') {
+		if (this.f.type === 'art') {
 			this.img.render(this.p0, this.p1, this.p2, this.p3);
 		}
 	};
@@ -204,25 +204,27 @@
 				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':@',
 				type : '@',
 				x: face.f.x, 
-				y: params.height/2 - params.humanHeight*3/4,    
+				y: face.f.y,    
 				z: face.f.z,
 				rx: face.f.rx,
 				ry: face.f.ry,
 				// w: 100, 
 				// h: 200,   
-				w: params.unit*2/3, 
-				h: params.humanHeight*3/2, 
+				w: face.f.w, 
+				h: face.f.h, 
 				to: to,  
 				select: true
 			};
 			return new Face(params.path, f);			
 		},
-		'image': function(_room, face, _w, _h, _thumb, _src) {
+		'art': function(_room, face, _type, _w, _h, _thumb, _src) {
 			var f = {
-				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':image',
-				type : 'image',
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':art',
+				type : 'art',
+				subtype: _type,
+				// type : 'art',
 				x: face.f.x, 
-				y: params.humanHeight,    
+				y: params.height/2 - params.humanHeight*1.8,    
 				z: face.f.z,
 				rx: face.f.rx,
 				ry: face.f.ry,

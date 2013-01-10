@@ -20,12 +20,14 @@ ge1doot.tweens = {
 	}
 };
 
-ge1doot.tweens.Add = function (steps, initValue, initValueTarget, isAngle) {
+ge1doot.tweens.Add = function (steps, initValue, initValueTarget, isAngle, minValue, maxValue) {
 	this.target  = initValueTarget || 0;
 	this.value   = initValue  || 0;
 	this.steps   = steps;
 	this.isAngle = isAngle || false;
 	this.speedMod = 1;
+	this.minValue = minValue;
+	this.maxValue = maxValue;
 	// ---- used for normalizing angles ----
 	if (isAngle) {
 		this.normalizePI = function () {
@@ -36,19 +38,23 @@ ge1doot.tweens.Add = function (steps, initValue, initValueTarget, isAngle) {
 		};
 	}
 	// ---- init target ----
-	this.setTarget(this.target);
+	this.setTarget(this.target, 1, false);
 	// ---- add tween in queue ----
 	if (!ge1doot.tweens.first) ge1doot.tweens.first = this; else ge1doot.tweens.prev.next = this;
 	ge1doot.tweens.prev = this;
 };
 // ---- set target ----
-ge1doot.tweens.Add.prototype.setTarget = function (target, speedMod) {
+ge1doot.tweens.Add.prototype.setTarget = function (target, speedMod, strict) {
 	this.speedMod = (speedMod) ? speedMod : 1;
+	var strict = (strict!==undefined?strict:true);
 	this.target  = target;
 	// ---- normalize PI ----
 	if (this.isAngle) {
 		this.target = this.target % (2 * Math.PI);
 		this.normalizePI();
+	}
+	if(strict) {
+		this.checkMinMax();
 	}
 	// ---- set target ----
 	if (this.running && this.oldTarget === target) return;
@@ -73,3 +79,21 @@ ge1doot.tweens.Add.prototype.ease = function () {
 		this.value = this.target;
 	}
 };
+
+ge1doot.tweens.Add.prototype.setValue = function(value) {
+	this.running = false;
+	this.value = this.target = value;
+	this.checkMinMax();
+}
+
+ge1doot.tweens.Add.prototype.checkMinMax = function() {
+	if(this.isAngle) {
+		this.normalizePI();
+	}
+	if(this.minValue && this.value < this.minValue) {
+		this.target = this.value = this.minValue;
+	}
+	if(this.maxValue && this.value > this.maxValue) {
+		this.target = this.value = this.maxValue;
+	}
+}

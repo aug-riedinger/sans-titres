@@ -8,8 +8,10 @@ var Cursor = function (canvas_ID) {
 	this.aimedSound = null;
 	this.going = null;
 	this.container = document.getElementById(canvas_ID);
-
+	this.strengthX = 0;
+	this.strengthY = 0;
 	this.initEvents();
+	this.moving = false;
 
 	return this;
 };
@@ -19,21 +21,45 @@ Cursor.prototype.initEvents = function () {
 
 	this.container.onmspointermove = this.container.ontouchmove = this.container.onmousemove = function(e) {
 		var face;
+		var segmentX = 8;
+		var segmentY = 15;
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
 		face = that.inFace();
 
-		if(face && (face.f.type == 'image' || face.f.type == 'txt') ) {
+		if(that.X > scr.width/segmentX && that.X < scr.width - scr.width/segmentX) {
+			that.strengthX = 0;
+			that.moving = false;
+		}
+
+		if(that.X < scr.width/segmentX) {
+			that.strengthX = (that.X - scr.width/segmentX) / (scr.width/segmentX), that.strengthX;
+			that.moving = true;
+		}
+		if(that.X > scr.width - scr.width/segmentX) {
+			that.strengthX =  1 - (scr.width - that.X )/(scr.width/segmentX), that.strengthX;
+			that.moving = true;
+		}
+
+		if(that.Y > scr.height/segmentY && that.Y < scr.height - scr.height/segmentY) {
+			that.strengthY = 0;
+			that.moving = false;
+		}
+
+		if(that.Y < scr.height/segmentY) {
+			that.strengthY = (that.Y - scr.height/segmentY) / (scr.height/segmentY), that.strengthY;
+			that.moving = true;
+		}
+		if(that.Y > scr.height - scr.height/segmentY) {
+			that.strengthY =  1 - (scr.height - that.Y )/(scr.height/segmentY), that.strengthY;
+			that.moving = true;
+		}
+
+		if(face && (face.f.type == 'art') ) {
 			that.aimedArt = face;
 		} else {
 			that.aimedArt = null;
-		}
-
-		if(face && face.f.type == 'sound' ) {
-			that.aimedSound = face;
-		} else {
-			that.aimedSound = null;
 		}
 
 		if(face && face.f.type == '@') {
@@ -49,7 +75,12 @@ Cursor.prototype.initEvents = function () {
 
 		if (that.aimedArt || that.aimedDoor) {
 			if(that.aimedArt) {
-				camera.targetToFace(that.aimedArt);
+				if (that.aimedArt.f.subtype === 'image') {
+				showImg(that.aimedArt.f.src);
+				}
+				if (that.aimedArt.f.subtype === 'txt') {
+					showTxt(that.aimedArt.f.src);
+				}
 			} 
 
 			if (that.aimedDoor) {
@@ -62,23 +93,23 @@ Cursor.prototype.initEvents = function () {
 					zoom: 1
 				}, false);
 
-			that.going = that.aimedDoor.f.to;
-			$(scr.canvas).one('inPosition', $.proxy(function(e){
-				for(var i=0; i<room.sounds.length; i++) {
-					room.sounds[i].remove();
-				}
-				room = new Room(this.going, true).load();
-				this.going = null;
-			}, that));
+				that.going = that.aimedDoor.f.to;
+				$(scr.canvas).one('inPosition', $.proxy(function(e){
+					for(var i=0; i<room.sounds.length; i++) {
+						room.sounds[i].remove();
+					}
+					room = new Room(this.going, true).load();
+					this.going = null;
+				}, that));
+			}
+
 		}
 
-	}
+		e.preventDefault();
+		return false; 
+	};
 
-	e.preventDefault();
-	return false; 
-};
-
-this.container.ondblclick = function (e) {
+	this.container.ondblclick = function (e) {
 		// console.log('dblclick');
 		camera.goToPosition(camera.position + 1);
 
@@ -150,7 +181,8 @@ Cursor.prototype.inFace = function() {
 		}
 	}
 	for (var i=0; i< room.doors.length; i++) {
-		face = room.doors[i].face;
+		face = room.doors[i];
+		face.projection();
 		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
 			return face;
 		}
@@ -161,19 +193,23 @@ Cursor.prototype.inFace = function() {
 };
 
 
+Cursor.prototype.move = function () {
+	if (camera.rx.target === camera.rx.value) {
+		camera.rx.setValue(camera.rx.value - 0.02*this.strengthY);
+	}
+	if (camera.ry.target === camera.ry.value) {
+		camera.ry.setValue(camera.ry.value - 0.02*this.strengthX);
+	}	
+}
+
 Cursor.prototype.setCursor = function () {
 	if (this.aimedArt) {
-		// return this.container.style.cursor = "pointer";
-		return this.container.style.cursor = "url('images/eye_icon.png'), pointer";
+		return this.container.className = 'eye' ;
 	} 
 
 	if (this.aimedDoor) {
-		return this.container.style.cursor = "url('images/arrow.png'), pointer";
+		return this.container.className = 'go';
 	}
 
-	if (this.aimedSound) {
-		return this.container.style.cursor = "pointer";
-	}
-
-	return this.container.style.cursor = "move";
+	return this.container.className = '';
 };

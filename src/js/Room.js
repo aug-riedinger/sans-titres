@@ -6,14 +6,16 @@
 		this.sounds = [];
 		this.adj = [];
 		this.positions = [];
-		this.tops = {};
-		this.bottoms = {};
-		this.lefts = {};
-		this.rights = {};
-		this.ceilings = {};
-		this.floors = {};
+		this.tops = [];
+		this.bottoms = [];
+		this.lefts = [];
+		this.rights = [];
+		this.ceilings = [];
+		this.floors = [];
 		this.walls = [];
 		this.doors = [];
+		this.images = [];
+		this.texts = [];
 		return this;
 	};
 
@@ -21,9 +23,9 @@
 		var that = this;
 		$.getJSON('/rooms/room'+this.id+'.json', function(data) {
 			that.init(data);
-			if(that.mainRoom) {
-				camera.goToPosition(0);
-			}
+			// if(that.mainRoom) {
+			// 	camera.goToPosition(0);
+			// }
 			$(that).trigger('ready');
 		});
 		return this;
@@ -58,17 +60,11 @@
 			this.renderAdj();
 		}	
 
-		for (var depth in this.ceilings) {
-			if (this.ceilings.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.ceilings[depth],'y', '#ffffff');
-			}
-		}
+		// for (var depth in this.ceilings) {
+		// 	renderer.facesMerged(this.ceilings,'y', '#ffffff');
+		// }
 
-		for (var depth in this.floors) {
-			if (this.floors.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.floors[depth],'y', '#80827d');
-			}
-		}
+		renderer.facesMerged(this.floors,'y', '#80827d');
 
 		for (var depth in this.tops) {
 			if (this.tops.hasOwnProperty(depth)) {
@@ -95,10 +91,9 @@
 			}
 		}
 
-		for (var i=0; i< this.doors.length; i++) {
-			renderer.renderDoor(this.doors[i]);
-
-		}
+		// for (var i=0; i< this.doors.length; i++) {
+		// 	renderer.renderDoor(this.doors[i]);
+		// }
 
 		for (var i=0; i < this.arts.length; i++) {
 			face = this.arts[i];
@@ -142,7 +137,8 @@
 				res = {
 					x: this.position.x + x/cpt,
 					z: this.position.z + z/cpt,
-					dst: (Math.abs((this.position.x + x/cpt)*params.unit - camera.x.value) + Math.abs((this.position.z + z/cpt)*params.unit - camera.z.value))||9999999
+					dst: 999999
+					// dst: (Math.abs((this.position.x + x/cpt)*params.unit - (camera.x.value||0) ) + Math.abs((this.position.z + z/cpt)*params.unit - (camera.z.value||0) ))||9999999
 				}
 				if(this.inside(res.x, res.z)) {
 					this.positions.push(res);					
@@ -179,22 +175,243 @@
 	};
 
 	Room.prototype.readMap = function() {
-		var potentialWalls, next, doorId, artId;
-		for(var h=0; h < this.map.length; h++) {
-			for (var w=0; w< this.map[h].length; w+=2) {
-				potentialWalls = this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
-				next = this.map[h][w+1];
-				doorId = next.replace(/^[^0-9]$/,'');
-				artId = next.replace(/^[^a-zA-Z]$/,'');
-				if(doorId !== '' && this.mainRoom) {
-					this.makeDoor(doorId, potentialWalls);
-				}
-				if(artId !== '' && this.mainRoom) {
-					this.makeArt(artId, potentialWalls);
-				}
+
+		this.readHorizontally();
+		this.readVertically();
+
+		// var potentialWalls, next, doorId, artId;
+		// for(var h=0; h < this.map.length; h++) {
+		// 	for (var w=0; w< this.map[h].length; w+=2) {
+		// 		potentialWalls = this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
+		// 		next = this.map[h][w+1];
+		// 		doorId = next.replace(/^[^0-9]$/,'');
+		// 		artId = next.replace(/^[^a-zA-Z]$/,'');
+		// 		if(doorId !== '' && this.mainRoom) {
+		// 			this.makeDoor(doorId, potentialWalls);
+		// 		}
+		// 		if(artId !== '' && this.mainRoom) {
+		// 			this.makeArt(artId, potentialWalls);
+		// 		}
+		// 	}
+		// }
+	}
+
+	Room.prototype.expandCharType = function(charType) {
+		if( charType === '-' || charType === '_' || charType === '|' || charType === '!') {
+			return [charType];
+		} else {
+			if (charType == '#') {
+				return ['|', '-'];
+			}
+			if (charType == '%') {
+				return ['|', '_'];
+			}
+			if (charType == '+') {
+				return ['!', '-'];
+			}
+			if (charType == '¤') {
+				return ['!', '_'];
 			}
 		}
 	}
+
+	Room.prototype.isTop = function(charType) {
+		return (charType === '#' || charType === '-' || charType === '+')
+	}
+	Room.prototype.isBottom = function(charType) {
+		return (charType === '%' || charType === '_' || charType === '¤')
+	}
+	Room.prototype.isLeft = function(charType) {
+		return (charType === '#' || charType === '|' || charType === '%')
+	}
+	Room.prototype.isRight = function(charType) {
+		return (charType === '+' || charType === '!' || charType === '¤')
+	}
+	Room.prototype.isInside = function(charType) {
+		return (charType !== '.')
+	}
+
+	Room.prototype.getDoor = function(doorId) {
+		var door;
+		for(var i=0; i< this.doorsConstr.length; i++) {
+			door = this.doorsConstr[i];
+			if (door.id === doorId) {
+				return door
+			}
+		}
+		console.log('DoorId not found')
+		return false
+	}
+
+	Room.prototype.getArt = function(artId) {
+		var art;
+		for(var i=0; i< this.artsConstr.length; i++) {
+			art = this.artsConstr[i];
+			if (art.id === artId) {
+				return art
+			}
+		}
+		console.log('artId not found')
+		return false
+	}
+
+	Room.prototype.addWall = function(wall) {
+		if (wall.length === 0 || wall[wall.length-1].length > 0) {
+			wall.push([]);
+		}
+	}
+
+	Room.prototype.readHorizontally = function() {
+		var x, z, charType;
+		var next, doorId, artId;
+		var door, art;
+		var top, bottom;
+
+		for(var h=0; h < this.map.length; h++) {
+			this.addWall(this.tops);
+			this.addWall(this.bottoms);
+			for (var w=0; w< this.map[h].length; w+=2) {
+				x = w/2;
+				z = this.map.length-(h+1);
+				charType = this.map[h][w];
+				next = this.map[h][w+1];
+				doorId = next.replace(/^[^0-9]$/,'');
+				artId = next.replace(/^[^a-zA-Z]$/,'');
+				top = faceMaker.top(this, x, z);
+				bottom = faceMaker.bottom(this, x, z);
+
+				if (this.isInside(charType)) {
+					this.floors.push(faceMaker.floor(this, x, z));
+					this.ceilings.push(faceMaker.ceiling(this, x, z));
+				}
+
+				if(doorId === '') {
+					if(this.isTop(charType)) {
+						this.tops[this.tops.length-1].push(top);
+					}
+					if(this.isBottom(charType)) {
+						this.bottoms[this.bottoms.length-1].push(bottom);
+					}
+				} else {
+					door = this.getDoor(doorId);
+					if (!this.isTop(door.side) && this.isTop(charType)) {
+						this.tops[this.tops.length-1].push(top);
+					} else {
+						if (this.isTop(charType)) {}
+							this.doors.push(faceMaker.door(this, top, door.to));
+						this.addWall(this.tops);
+					}
+					if (!this.isBottom(door.side) && this.isBottom(charType)) {
+						this.bottoms[this.bottoms.length-1].push(bottom);
+					} else {
+						if (this.isBottom(charType)) {
+							this.doors.push(faceMaker.door(this, bottom, door.to));
+						}
+						this.addWall(this.bottoms);
+					}
+				}
+
+				if(artId !== '') {
+					art = this.getArt(artId);
+					if(this.isTop(charType)) {
+						this.arts.push(faceMaker.art(this, top, art.type, art.width, art.height, art.thumb, art.src));
+					}
+					if(this.isBottom(charType)) {
+						this.arts.push(faceMaker.art(this, bottom, art.type, art.width, art.height, art.thumb, art.src));
+					}
+
+					if (art.type === 'image') {
+						var img = new Image();
+						img.src = art.src;
+						img.className = 'art';
+						this.images.push(img);
+					}
+
+					if (art.type === 'txt') {
+						var ifrm = document.createElement('iframe'); 
+						ifrm.setAttribute('src', art.src); 
+						ifrm.className = 'txt';
+						this.texts.push(ifrm);
+					}
+
+				} 
+			}
+		}
+	}
+	Room.prototype.readVertically = function() {
+		var x, z, charType;
+		var next, doorId, artId;
+		var door, art;
+		var left, right;
+
+		for (var w=0; w< this.map[0].length; w+=2) {
+			this.addWall(this.lefts);
+			this.addWall(this.rights);
+			for(var h=0; h < this.map.length; h++) {
+				x = w/2;
+				z = this.map.length-(h+1);
+				charType = this.map[h][w];
+				next = this.map[h][w+1];
+				doorId = next.replace(/^[^0-9]$/,'');
+				artId = next.replace(/^[^a-zA-Z]$/,'');
+				left = faceMaker.left(this, x, z);
+				right = faceMaker.right(this, x, z);
+
+				if(doorId === '') {
+					if(this.isLeft(charType)) {
+						this.lefts[this.lefts.length-1].push(left);
+					}
+					if(this.isRight(charType)) {
+						this.rights[this.rights.length-1].push(right);
+					}
+				} else {
+					door = this.getDoor(doorId);
+					if (!this.isLeft(door.side) && this.isLeft(charType)) {
+						this.lefts[this.lefts.length-1].push(left);
+					} else {
+						if (this.isLeft(charType)) {
+							this.doors.push(faceMaker.door(this, left, door.to));
+						}
+						this.addWall(this.lefts);
+					}
+					if (!this.isRight(door.side) && this.isRight(charType)) {
+						this.rights[this.rights.length-1].push(right);
+					} else {
+						if (this.isRight(charType)) {
+							this.doors.push(faceMaker.door(this, right, door.to));
+						}
+						this.addWall(this.rights);
+					}
+				}
+
+				if(artId !== '') {
+					art = this.getArt(artId);
+					if(this.isLeft(charType)) {
+						this.arts.push(faceMaker.art(this, left, art.type, art.width, art.height, art.thumb, art.src));
+					}
+					if(this.isRight(charType)) {
+						this.arts.push(faceMaker.art(this, right, art.type, art.width, art.height, art.thumb, art.src));
+					}
+
+					if (art.type === 'image') {
+						var img = new Image();
+						img.src = art.src;
+						img.className = 'art';
+						this.images.push(img);
+					}
+
+					if (art.type === 'txt') {
+						var ifrm = document.createElement('iframe'); 
+						ifrm.setAttribute('src', art.src); 
+						ifrm.className = 'txt';
+						this.texts.push(ifrm);
+					}
+
+				} 
+			}
+		}
+	}
+
 
 	Room.prototype.getWall = function(_x, _z, type) {
 		var ar;
@@ -264,6 +481,7 @@
 					}
 				}
 				if (wall !== undefined) {
+					wall.doorTo = door.to;
 					door.face = faceMaker.door(this, wall, door.to);
 					return this.doors.push(door);
 				}
@@ -282,8 +500,8 @@
 	}
 
 	Room.prototype.loadAdj = function() {
-		for(var i=0; i< this.doors.length; i++) {
-			this.adj.push(new Room(this.doors[i].to, false).load());
+		for(var i=0; i< this.doorsConstr.length; i++) {
+			this.adj.push(new Room(this.doorsConstr[i].to, false).load());
 		}
 	}
 
