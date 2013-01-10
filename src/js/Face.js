@@ -25,7 +25,7 @@
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform( w,  h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w,  h, 0, ax, ay));
 
-		this.pv = new Point(null, [f.x, f.y, f.z], transform(0, 0, params.unit, ax, ay));
+		this.pv = new Point(null, [f.x, f.y, f.z], transform(0, 0, 0, ax, ay));
 
 
 		// ---- target angle ----

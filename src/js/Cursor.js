@@ -211,5 +211,32 @@ Cursor.prototype.setCursor = function () {
 		return this.container.className = 'go';
 	}
 
+	if(this.strengthY < 0 && this.strengthX < 0) {
+		return this.container.className = 'top-left';
+	}
+	if(this.strengthY < 0 && this.strengthX > 0) {
+		return this.container.className = 'top-right';
+	}
+	if(this.strengthY > 0 && this.strengthX < 0) {
+		return this.container.className = 'bottom-left';
+	}
+	if(this.strengthY > 0 && this.strengthX > 0) {
+		return this.container.className = 'bottom-right';
+	}
+
+	if (this.strengthY < 0) {
+		return this.container.className = 'top';
+	}
+	if (this.strengthY > 0) {
+		return this.container.className = 'bottom';
+	}
+
+	if (this.strengthX > 0) {
+		return this.container.className = 'right';
+	}
+	if (this.strengthX < 0) {
+		return this.container.className = 'left';
+	}
+
 	return this.container.className = '';
 };

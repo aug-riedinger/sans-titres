@@ -37,6 +37,30 @@ body {
 #screen.go canvas {
 	cursor: url('../images/arrow.png'), pointer;
 }
+#screen.top canvas {
+	cursor: url('../images/top.png'), pointer;
+}
+#screen.bottom canvas {
+	cursor: url('../images/bottom.png'), pointer;
+}
+#screen.left canvas {
+	cursor: url('../images/left.png'), pointer;
+}
+#screen.right canvas {
+	cursor: url('../images/right.png'), pointer;
+}
+#screen.top-right canvas {
+	cursor: url('../images/top-right.png'), pointer;
+}
+#screen.bottom-right canvas {
+	cursor: url('../images/bottom-right.png'), pointer;
+}
+#screen.top-left canvas {
+	cursor: url('../images/top-left.png'), pointer;
+}
+#screen.bottom-left canvas {
+	cursor: url('../images/bottom-left.png'), pointer;
+}
 
 #artClearView {
 	position: fixed;

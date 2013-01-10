@@ -84,9 +84,9 @@ Camera.prototype.targetToFace = function (face) {
 	this.targetToPosition({
 		x: face.pv.x,
 		y: face.pv.y,
-		z: face.pv.z + 200,
+		z: face.pv.z,
 		rx: 0,
-		ry: (face.ay - (Math.PI * 0.5)),
+		ry: (face.ay + (Math.PI)),
 		zoom: 1
 	});
 };
@@ -190,7 +190,7 @@ Camera.prototype.move = function () {
 		this.trig.cosY = Math.cos(this.ry.value);
 		this.trig.sinY = -Math.sin(this.ry.value);
 
-		
+
 
 		this.isInPosition();
 
