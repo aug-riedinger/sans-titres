@@ -73,9 +73,9 @@ Point.prototype.highlight = function (color,size) {
 	this.projection();
 
 	scr.ctx.beginPath();
-	scr.ctx.arc(this.X, this.Y, 5, 0, 2 * Math.PI, false);
-	scr.ctx.lineWidth = size || 1;
-	scr.ctx.strokeStyle = color || 'rgb(255,255,255)';
+	scr.ctx.arc(this.X, this.Y, 25, 0, 2 * Math.PI, false);
+	scr.ctx.lineWidth = size || 5;
+	scr.ctx.strokeStyle = color || 'rgb(0,0,255)';
 	scr.ctx.stroke();
 };
 

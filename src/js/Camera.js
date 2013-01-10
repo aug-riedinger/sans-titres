@@ -12,6 +12,7 @@ var Camera = function(_x, _z) {
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
 	this.position = 0;
+	this.godView = false;
 	this.trig = {
 		// that: this,
 		cosX: 1,
@@ -56,25 +57,9 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 		this.z.setTarget(z);
 	}
 	this.y.setTarget(y);
-	this.rx.setTarget((obj.rx ||this.rx.target));
+	// this.rx.setTarget(-Math.PI/2);
+	// this.rx.setTarget((obj.rx ||this.rx.target));
 	this.ry.setTarget((obj.ry||this.ry.target));
-
-	this.zoom.setTarget((obj.zoom||this.zoom.target));
-};
-
-Camera.prototype.addMouvement = function(obj, strict) {
-	var strict = (strict!==undefined?strict:true);
-	var x = (obj.x + this.x.target||this.x.target);
-	var y = (obj.y + this.y.target||this.y.target);
-	var z = (obj.z + this.z.target||this.z.target);
-
-	if(room.inside(x,z, true) || !strict) {
-		this.x.setTarget(x);
-		this.z.setTarget(z);
-	}
-	this.y.setTarget(y);
-	this.rx.setTarget((obj.rx + this.rx.target||this.rx.target));
-	this.ry.setTarget((obj.ry + this.ry.target||this.ry.target));
 
 	this.zoom.setTarget((obj.zoom||this.zoom.target));
 };
@@ -166,17 +151,15 @@ Camera.prototype.stop = function() {
 	this.zoom.setTarget(this.zoom.value);
 };
 
-Camera.prototype.stopRy = function() {
-	this.ry.setTarget(this.ry.value);
-};
-
 Camera.prototype.toggleGodView = function() {
 	if(this.y.value > -7*params.unit) {
 		this.y.setTarget(-8*params.unit);
-		this.rx.setTarget(-Math.PI/2);
+		this.rx.setTarget(-Math.PI/2+0.001);
+		this.godView = true;
 	} else {
 		this.y.setTarget(params.height/2 - params.humanHeight);
 		this.rx.setTarget(0);
+		this.godView = false;
 	}
 	this.zoom.setTarget(1);
 };
@@ -189,9 +172,6 @@ Camera.prototype.move = function () {
 		this.trig.sinX = Math.sin(this.rx.value);
 		this.trig.cosY = Math.cos(this.ry.value);
 		this.trig.sinY = -Math.sin(this.ry.value);
-
-
-
 		this.isInPosition();
 
 	};

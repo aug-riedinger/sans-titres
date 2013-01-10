@@ -10,20 +10,27 @@
 
 </head>
 <body oncontextmenu="return false;">
+	<div id="content">
+		<div id="screen">
+			<canvas id="canvas"></canvas>
+		</div>
 
-	<div id="screen">
-		<canvas id="canvas"></canvas>
-	</div>
+		<div id="artClearView">
+			<div id="full-screen">
+				<h2>Appuyez sur Entrer pour passer en plein écran</h2>
+				<p>(Echap pour quitter)</p>
+			</div>
+		</div>
 
-	<div id="artClearView">
-	</div>
+		<div id="audio">
+			<img src="images/sound_mute.png" id="s_mute" />
+			<img src="images/sound_low.png" id="s_lower" />
+			<img src="images/sound_high.png" id="s_higher" />
+		</div>
 
-	<div id="audio">
-		<img src="images/sound_mute.png" id="s_mute" />
-		<img src="images/sound_low.png" id="s_lower" />
-		<img src="images/sound_high.png" id="s_higher" />
 	</div>
 	<script type="text/javascript" src="./libs/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="./libs/jquery.fullscreen.js"></script>
 	<!-- ge1doot libraries -->
 	<script type="text/javascript" src="./js/EasingInOut.js"></script>
 

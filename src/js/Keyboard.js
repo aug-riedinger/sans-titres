@@ -29,9 +29,6 @@ Keyboard.prototype.initEvents = function() {
 		if (event.keyCode == 32){ // space
 			camera.stop();
 		}
-		if (event.keyCode == 13){ // enter
-			camera.center();
-		}
 		if (event.keyCode == 82){ // r
 			camera.zoomIn();
 		}

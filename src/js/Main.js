@@ -16,12 +16,19 @@ var init = function () {
 		cursor = new Cursor('screen');
 
 		run();
-		$(scr.canvas).fadeIn(3000);
+		$(scr.canvas).fadeIn(3000, function() {
+			setTimeout(remImg, 1000);
+		});
 	});
 
+	$(document).keypress(function(e) {
+						if (e.keyCode == 13){ // enter
+							window.fullScreenApi.requestFullScreen(document.getElementsByTagName('body')[0]);
+						}
+					});
 
-};
 
+}
 
 
 var run = function () {

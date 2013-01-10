@@ -100,6 +100,7 @@
 			face.projection();
 			if( face.visible) {
 				face.render();
+				face.pv.highlight();
 			}			
 		}
 
@@ -108,8 +109,8 @@
 	Room.prototype.inside = function(_x,_z, big) {
 		var x, z;
 		if (big) {
-			var x = Math.round(_x/params.unit ) - (this.position.x||0);
-			var z = Math.round((_z - params.focalLength)/params.unit) - (this.position.z||0);
+			x = Math.round(_x/params.unit ) - (this.position.x||0);
+			z = Math.round((_z - params.focalLength)/params.unit) - (this.position.z||0);
 		} else {
 			x = Math.round(_x) - this.position.x;
 			z= Math.round(_z) - this.position.z;

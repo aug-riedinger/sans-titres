@@ -194,10 +194,10 @@ Cursor.prototype.inFace = function() {
 
 
 Cursor.prototype.move = function () {
-	if (camera.rx.target === camera.rx.value) {
+	if (!camera.godView && camera.rx.target === camera.rx.value) {
 		camera.rx.setValue(camera.rx.value - 0.02*this.strengthY);
 	}
-	if (camera.ry.target === camera.ry.value) {
+	if (!camera.godView && camera.ry.target === camera.ry.value) {
 		camera.ry.setValue(camera.ry.value - 0.02*this.strengthX);
 	}	
 }
