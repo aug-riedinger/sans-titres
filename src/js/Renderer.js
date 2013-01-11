@@ -6,38 +6,10 @@ renderer.facesMerged = function (faces, dim, color, color2) {
 
 
 	if(points.length>0) {
-		var minX=points[0].X, maxX=points[0].X;
-		var minY=points[0].Y, maxY=points[0].Y;
 		scr.ctx.beginPath();
 		for(var k=0; k<points.length; k++) {
 			point = points[k];
 			scr.ctx.lineTo(point.X,point.Y);
-
-			if(point.X < minX) {
-				minX = point.X;
-			}
-			if(point.X > maxX) {
-				maxX = point.X;
-			}
-			if(point.Y < minY) {
-				minY = point.Y;
-			}
-			if(point.Y > maxY) {
-				maxY = point.Y;
-			}
-
-		}
-		if(maxX > scr.height) {
-			maxX = scr.height;
-		}
-		if(minX < 0) {
-			minX = 0;
-		}
-		if(maxY > scr.width) {
-			maxY = scr.width;
-		}
-		if(minY < 0) {
-			minY = 0;
 		}
 		scr.ctx.closePath();
 		if(color2 === undefined) {
@@ -49,25 +21,10 @@ renderer.facesMerged = function (faces, dim, color, color2) {
 			grd.addColorStop(1, color2);   
 			scr.ctx.fillStyle = grd;
 		}
+		scr.ctx.lineWidth = 1;
 		scr.ctx.strokeStyle = color||'white';
 		scr.ctx.fill();
 		scr.ctx.stroke();
-	}
-}
-
-renderer.renderDoor = function(door) {
-	door.face.projection();
-	if(door.face.visible) {
-
-		scr.ctx.beginPath();
-		scr.ctx.lineTo(door.face.p0.X,door.face.p0.Y);
-		scr.ctx.lineTo(door.face.p1.X,door.face.p1.Y);
-		scr.ctx.lineTo(door.face.p2.X,door.face.p2.Y);
-		scr.ctx.lineTo(door.face.p3.X,door.face.p3.Y);
-		scr.ctx.closePath();
-		scr.ctx.fillStyle = 'rgba(50,50,50,1)';
-		scr.ctx.fill();
-
 	}
 }
 
@@ -149,6 +106,7 @@ renderer.Image.prototype.loading = function () {
 
 // ==== draw3D prototype ====
 renderer.Image.prototype.render = function (p0, p1, p2, p3) {
+	var array = [p0, p1, p2, p3];
 	// ---- loading ----
 	if (this.isLoading) {
 		this.loading();
@@ -213,5 +171,17 @@ renderer.Image.prototype.render = function (p0, p1, p2, p3) {
 				this.ctx.restore();
 			}
 		} while ( t = t.next );
+
+
+		this.ctx.beginPath();
+		for (var i=0; i< array.length; i++) {
+			this.ctx.lineTo(array[i].X,array[i].Y);
+
+		}
+		this.ctx.closePath();
+		this.ctx.lineWidth = 1;
+		this.ctx.strokeStyle = 'white';
+		this.ctx.stroke();
+
 	}
 };

@@ -49,6 +49,14 @@ var getFaceById = function(faces, _id) {
 	return null;
 };
 
+var getFloor = function(_x, _z) {
+	for (var i=0; i< room.floors.length; i++) {
+		if(parseInt(room.floors[i].f.id.split(':')[1]) === _x && parseInt(room.floors[i].f.id.split(':')[2]) === _z) {
+			return room.floors[i];
+		}
+	}
+}
+
 var logConditions = function() {
 	var cpt = [ 0, 0, 0, 0, 0];
 	for (var i=0;i<room.faces.length;i++) {
@@ -59,4 +67,52 @@ var logConditions = function() {
 		}
 	}
 	return cpt;
+}
+
+String.prototype.replaceAt=function(index, char) {
+	return this.substr(0, index) + char + this.substr(index+char.length);
+}
+
+var strGen = function(length) {
+	var res = '';
+	for(var i=0; i< length; i++) {
+		res+='.';
+	}
+	return res
+}
+
+var logFloor = function() {
+	var map = [];
+	var floor;
+	var x, z;
+	var res;
+
+	for (var k=0; k< room.map.length; k++) {
+		map.push(strGen(parseInt(room.map[k].length/2)*6));
+	}
+	for(var i=0; i<room.floors.length; i++) {
+		floor = room.floors[i];
+
+		x = floor.f.id.split(':')[1];
+		z = floor.f.id.split(':')[2];
+
+		if (room.map[room.map.length-1-z][2*x] !== '.') {
+			if(floor.visible) {
+				res = ',,,,,';
+			} else {
+				res = ''+(floor.conditions+10000);
+			}
+			if(parseInt(camera.x.value/params.unit) === parseInt(x) && parseInt(camera.z.value/params.unit) === parseInt(z)) {
+				res += 'x';
+			} else {
+				res += '-';
+			}
+		}
+		map[map.length-1-z] = map[map.length-1-z].replaceAt(6*x,res);
+	}
+
+	for (var j=0; j<map.length; j++) {
+		console.log(map[j]);
+	}
+	// return map;
 }

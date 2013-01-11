@@ -6,6 +6,8 @@ var Cursor = function (canvas_ID) {
 	this.aimedArt = null;
 	this.aimedDoor = null;
 	this.aimedSound = null;
+	this.aimedPosition = null;
+	this.aimedFloor = null;
 	this.going = null;
 	this.container = document.getElementById(canvas_ID);
 	this.strengthX = 0;
@@ -20,13 +22,14 @@ Cursor.prototype.initEvents = function () {
 	var that = this;
 
 	this.container.onmspointermove = this.container.ontouchmove = this.container.onmousemove = function(e) {
-		var face;
+		var face, point;
 		var segmentX = 8;
 		var segmentY = 15;
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
 		face = that.inFace();
+		point = that.inPointView();
 
 		if(that.X > scr.width/segmentX && that.X < scr.width - scr.width/segmentX) {
 			that.strengthX = 0;
@@ -68,15 +71,27 @@ Cursor.prototype.initEvents = function () {
 			that.aimedDoor = null;
 		}
 
+		if(face && face.f.type === 'position') {
+			that.aimedPosition = face;
+		} else {
+			that.aimedPosition = null;
+		}
+
+		if(face && face.f.type === '€') {
+			that.aimedFloor = face;
+		} else {
+			that.aimedFloor = null;
+		}
+
 		that.setCursor();
 	}
 
 	this.container.onclick = function (e) { 
 
-		if (that.aimedArt || that.aimedDoor) {
+		if (that.aimedArt || that.aimedDoor || that.aimedPosition || that.aimedFloor) {
 			if(that.aimedArt) {
 				if (that.aimedArt.f.subtype === 'image') {
-				showImg(that.aimedArt.f.src);
+					showImg(that.aimedArt.f.src);
 				}
 				if (that.aimedArt.f.subtype === 'txt') {
 					showTxt(that.aimedArt.f.src);
@@ -84,14 +99,8 @@ Cursor.prototype.initEvents = function () {
 			} 
 
 			if (that.aimedDoor) {
-				camera.targetToPosition({
-					x: that.aimedDoor.pc.x,
-					y: that.aimedDoor.pc.y,
-					z: that.aimedDoor.pc.z + params.focalLength,
-					rx: 0,
-					ry: (that.aimedDoor.ay - (Math.PI * 0.5)),
-					zoom: 1
-				}, false);
+				camera.targetToFace(that.aimedDoor);
+
 
 				that.going = that.aimedDoor.f.to;
 				$(scr.canvas).one('inPosition', $.proxy(function(e){
@@ -103,6 +112,13 @@ Cursor.prototype.initEvents = function () {
 				}, that));
 			}
 
+			if(that.aimedPosition) {
+				camera.targetToFace(that.aimedPosition);
+			}
+			if(that.aimedFloor) {
+				camera.targetToFace(that.aimedFloor);
+			}
+
 		}
 
 		e.preventDefault();
@@ -111,8 +127,7 @@ Cursor.prototype.initEvents = function () {
 
 	this.container.ondblclick = function (e) {
 		// console.log('dblclick');
-		camera.goToPosition(camera.position + 1);
-
+		// camera.goToPosition(camera.position + 1);
 		e.preventDefault();
 		return false;
 	}
@@ -188,9 +203,40 @@ Cursor.prototype.inFace = function() {
 		}
 
 	}
+	for (var i=0; i< room.positions.length; i++) {
+		face = room.positions[i];
+		face.projection();
+		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
+			return face;
+		}
+
+	}
+
+	for (var i=0; i< room.floors.length; i++) {
+		face = room.floors[i];
+		face.projection();
+		if(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3))) {
+			return face;
+		}
+
+	}
+
+
+
 
 	return null;
 };
+
+Cursor.prototype.inPointView = function() {
+	// var threshold = 300;
+	// var point;
+	// for(var i=0; i<room.arts.length; i++) {
+	// 	point = room.arts[i].pv;
+	// 	if ((this.X - point.X)*(this.X - point.X) + (this.Y - point.Y)*(this.Y - point.Y) < threshold) {
+	// 		return point;
+	// 	}
+	// }
+}
 
 
 Cursor.prototype.move = function () {
@@ -204,10 +250,18 @@ Cursor.prototype.move = function () {
 
 Cursor.prototype.setCursor = function () {
 	if (this.aimedArt) {
-		return this.container.className = 'eye' ;
+		return this.container.className = 'see' ;
 	} 
 
 	if (this.aimedDoor) {
+		return this.container.className = 'goroom';
+	}
+
+	if (this.aimedPosition) {
+		return this.container.className = 'gonsee';
+	}
+
+	if (this.aimedFloor) {
 		return this.container.className = 'go';
 	}
 

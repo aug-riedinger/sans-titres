@@ -28,15 +28,20 @@ body {
 	height: 100%;
 	background: #F9F9F9;
 	/*background: black;*/
-	cursor: move;
 }
 
-#screen.eye canvas {
-	cursor: url('../images/eye_icon.png'), pointer;
+#screen.see canvas {
+	cursor: none;
 }
 
+#screen.goroom canvas {
+	cursor: url('../images/goroom.png'), pointer;
+}
 #screen.go canvas {
-	cursor: url('../images/arrow.png'), pointer;
+	cursor: url('../images/go.png'), pointer;
+}
+#screen.gonsee canvas {
+	cursor: url('../images/gonsee.png'), pointer;
 }
 #screen.top canvas {
 	cursor: url('../images/top.png'), pointer;

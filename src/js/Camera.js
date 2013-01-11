@@ -50,7 +50,7 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	var strict = (strict!==undefined?strict:true);
 	var x = (obj.x||this.x.target);
 	var y = (obj.y||this.y.target);
-	var z = (obj.z||this.z.target);
+	var z = (obj.z||this.z.target) ;
 
 	if(room.inside(x,z, true) || !strict) {
 		this.x.setTarget(x);
@@ -58,7 +58,7 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	}
 	this.y.setTarget(y);
 	// this.rx.setTarget(-Math.PI/2);
-	// this.rx.setTarget((obj.rx ||this.rx.target));
+	this.rx.setTarget((obj.rx ||this.rx.target));
 	this.ry.setTarget((obj.ry||this.ry.target));
 
 	this.zoom.setTarget((obj.zoom||this.zoom.target));
@@ -67,13 +67,12 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 
 Camera.prototype.targetToFace = function (face) {
 	this.targetToPosition({
-		x: face.pv.x,
-		y: face.pv.y,
-		z: face.pv.z,
-		rx: 0,
-		ry: (face.ay + (Math.PI)),
+		x: face.pc.x,
+		z: face.pc.z + this.focalLength,
+		rx: (face.f.ryf?Math.PI/20:0),
+		ry: face.f.ryf*Math.PI/2||(face.ay - (Math.PI/2)),
 		zoom: 1
-	});
+	}, false);
 };
 
 Camera.prototype.up = function(strength) {

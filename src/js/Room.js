@@ -24,7 +24,7 @@
 		$.getJSON('/rooms/room'+this.id+'.json', function(data) {
 			that.init(data);
 			// if(that.mainRoom) {
-			// 	camera.goToPosition(0);
+			// 	camera.targetToFace(that.floors[parseInt(that.floors.length/2)]);
 			// }
 			$(that).trigger('ready');
 		});
@@ -36,6 +36,7 @@
 		this.path = constr.path;
 		this.position = constr.position;
 		this.map = constr.map;
+		this.color = constr.color;
 		this.doorsConstr = constr.doors||[];
 		this.artsConstr = constr.arts||[];
 		this.soundsConstr = constr.sounds||[];
@@ -47,7 +48,7 @@
 		if(this.mainRoom) {
 			// this.makeArts(constr.arts);
 			this.loadAdj();
-			this.makePositions();
+			// this.makePositions();
 			this.makeSounds();
 		}
 		return this;	
@@ -64,30 +65,38 @@
 		// 	renderer.facesMerged(this.ceilings,'y', '#ffffff');
 		// }
 
-		renderer.facesMerged(this.floors,'y', '#80827d');
+		renderer.facesMerged(this.floors,'y', this.color||'#80827d');
+
+		for (var i=0; i < this.positions.length; i++) {
+			face = this.positions[i];
+			face.projection();
+			if( face.visible) {
+				face.render();
+			}			
+		}
 
 		for (var depth in this.tops) {
 			if (this.tops.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.tops[depth],'z', '#f9f9f9', '#D9D9D9');
+				renderer.facesMerged(this.tops[depth],'z', this.color||'#f9f9f9', this.color||'#D9D9D9');
 			}
 		}
 
 
 		for (var depth in this.bottoms) {
 			if (this.bottoms.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.bottoms[depth],'z', '#f9f9f9', '#D9D9D9');
+				renderer.facesMerged(this.bottoms[depth],'z', this.color||'#f9f9f9', this.color||'#D9D9D9');
 			}
 		}
 
 		for (var depth in this.lefts) {
 			if (this.lefts.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.lefts[depth],'x', '#E9E9E9', '#f9f9f9');
+				renderer.facesMerged(this.lefts[depth],'x', this.color||'#D9D9D9', this.color||'#f9f9f9');
 			}
 		}
 
 		for (var depth in this.rights) {
 			if (this.rights.hasOwnProperty(depth)) {
-				renderer.facesMerged(this.rights[depth],'x', '#E9E9E9', '#f9f9f9');
+				renderer.facesMerged(this.rights[depth],'x', this.color||'#D9D9D9', this.color||'#f9f9f9');
 			}
 		}
 
@@ -100,7 +109,6 @@
 			face.projection();
 			if( face.visible) {
 				face.render();
-				face.pv.highlight();
 			}			
 		}
 
@@ -231,6 +239,9 @@
 	Room.prototype.isInside = function(charType) {
 		return (charType !== '.')
 	}
+	Room.prototype.isNoWall = function(charType) {
+		return (charType === ',')
+	}
 
 	Room.prototype.getDoor = function(doorId) {
 		var door;
@@ -286,6 +297,10 @@
 					this.ceilings.push(faceMaker.ceiling(this, x, z));
 				}
 
+				if (this.isNoWall(charType)) {
+					// this.positions.push(faceMaker.position(this, x, z));
+				}
+
 				if(doorId === '') {
 					if(this.isTop(charType)) {
 						this.tops[this.tops.length-1].push(top);
@@ -316,9 +331,11 @@
 					art = this.getArt(artId);
 					if(this.isTop(charType)) {
 						this.arts.push(faceMaker.art(this, top, art.type, art.width, art.height, art.thumb, art.src));
+						this.positions.push(faceMaker.positionArt(this, top));
 					}
 					if(this.isBottom(charType)) {
 						this.arts.push(faceMaker.art(this, bottom, art.type, art.width, art.height, art.thumb, art.src));
+						this.positions.push(faceMaker.positionArt(this, bottom));
 					}
 
 					if (art.type === 'image') {
@@ -389,9 +406,11 @@
 					art = this.getArt(artId);
 					if(this.isLeft(charType)) {
 						this.arts.push(faceMaker.art(this, left, art.type, art.width, art.height, art.thumb, art.src));
+						this.positions.push(faceMaker.positionArt(this, left));
 					}
 					if(this.isRight(charType)) {
 						this.arts.push(faceMaker.art(this, right, art.type, art.width, art.height, art.thumb, art.src));
+						this.positions.push(faceMaker.positionArt(this, right));
 					}
 
 					if (art.type === 'image') {

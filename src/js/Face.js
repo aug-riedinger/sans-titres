@@ -1,5 +1,5 @@
 	// ======= faces constructor ========
-	var Face = function (path, f) {
+	var Face = function (f) {
 		this.f = f;
 		var w  = f.w * 0.5;
 		var h  = f.h * 0.5;
@@ -18,15 +18,13 @@
 			}
 		};
 		// ---- center point ----
-		this.pc = new Point(this, [f.x, f.y, f.z]);
+		this.pc = new Point(this, [f.x, f.y, f.z], transform(0, 0, 0, ax, ay));
 		// ---- quad points ----
 		this.p0 = new Point(this, [f.x, f.y, f.z], transform(-w, -h, 0, ax, ay));
 		this.p1 = new Point(this, [f.x, f.y, f.z], transform( w, -h, 0, ax, ay));
+		// this.p12 = new Point(this, [f.x, f.y, f.z], transform( w, -h, 0, ax, ay));
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform( w,  h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w,  h, 0, ax, ay));
-
-		this.pv = new Point(null, [f.x, f.y, f.z], transform(0, params.height/2, - params.unit, ax, ay));
-
 
 		// ---- target angle ----
 		var r = transform(ax, ay, 0, ax, ay, 0);
@@ -44,7 +42,7 @@
 
 	// ======== face projection ========
 	Face.prototype.projection = function () {
-		this.conditions = [];
+		this.conditions = 0;
 		this.visible = true;
 		this.distance = -99999;
 		// ---- points projection ----
@@ -53,16 +51,14 @@
 		this.p1.projection();
 		this.p2.projection();
 		this.p3.projection();
-		this.pv.projection();
 
 		// ---- back face culling ----
-		if (this.distance < params.wallDist) {
-			this.visible = false;
-			this.distance = -99999;		
+		// if (this.distance < params.wallDist) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;		
 
-			this.conditions.push(0);
-		}
-
+		// 	// this.conditions = 1;
+		// }
 
 		// if(!(
 		// 	((this.p1.Y - this.p0.Y) / (this.p1.X - this.p0.X) - 
@@ -76,17 +72,24 @@
 		if(this.p0.p.z<para && this.p1.p.z<para && this.p2.p.z<para && this.p3.p.z<para) {
 			this.visible = false;
 			this.distance = -99999;		
-			this.conditions.push(1);	
+			this.conditions += 1;
 		}
 
-		if(!(this.p0.inScreen || this.p1.inScreen || this.p2.inScreen || this.p3.inScreen || this.pc.inScreen)) {
+		var para2 = -2*camera.focalLength;
+		if (this.p0.p.z <= para2 || this.p1.p.z <= para2 || this.p2.p.z <= para2 || this.p3.p.z <= para2) {
+			this.visible = false;
+			this.distance = -99999;
+			this.conditions += 10;
+		}
+
+		if((!this.p0.inScreen && !this.p1.inScreen && !this.p2.inScreen && !this.p3.inScreen && !this.pc.inScreen)) {
 			this.visible = false;
 			this.distance = -99999;		
-			this.conditions.push(5);
+			this.conditions += 100;
 		}
 
 		if ((this.p1.p.y - this.p0.p.y) * (this.p3.p.x - this.p0.p.x) - (this.p1.p.x - this.p0.p.x) * (this.p3.p.y - this.p0.p.y) > 0) {	
-			this.conditions.push(3);
+			// this.conditions.push(3);
 			// this.visible = false;
 			// this.distance = -99999;	
 		}
@@ -94,7 +97,7 @@
 		if ((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - (this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) > 0) {
 			this.visible = false;
 			this.distance = -99999;		
-			this.conditions.push(4);
+			this.conditions += 1000;
 		}
 		// if (this.pc.distance < this.pv.distance) {
 		// 	this.visible = false;
@@ -105,6 +108,35 @@
 	Face.prototype.render = function() {
 		if (this.f.type === 'art') {
 			this.img.render(this.p0, this.p1, this.p2, this.p3);
+		}
+		if(this.f.type === 'position') {
+			scr.ctx.beginPath();
+			if(this.f.ryf === 0) {
+				scr.ctx.lineTo(this.p2.X,this.p2.Y);
+				scr.ctx.lineTo(this.p3.X,this.p3.Y);
+				scr.ctx.lineTo(this.pc.X,this.pc.Y);
+			}
+			if(this.f.ryf === 1) {
+				scr.ctx.lineTo(this.p1.X,this.p1.Y);
+				scr.ctx.lineTo(this.pc.X,this.pc.Y);
+				scr.ctx.lineTo(this.p2.X,this.p2.Y);
+			}
+			if(this.f.ryf === -1) {
+				scr.ctx.lineTo(this.p0.X,this.p0.Y);
+				scr.ctx.lineTo(this.pc.X,this.pc.Y);
+				scr.ctx.lineTo(this.p3.X,this.p3.Y);
+			}
+			if(this.f.ryf === -2) {
+				scr.ctx.lineTo(this.p0.X,this.p0.Y);
+				scr.ctx.lineTo(this.p1.X,this.p1.Y);
+				scr.ctx.lineTo(this.pc.X,this.pc.Y);
+			}
+			// scr.ctx.lineTo(this.p2.X,this.p2.Y);
+			// scr.ctx.lineTo(this.p3.X,this.p3.Y);
+			scr.ctx.closePath();
+			scr.ctx.lineWidth = 1;
+			scr.ctx.fillStyle = '#70726d';
+			scr.ctx.fill();
 		}
 	};
 
@@ -122,7 +154,7 @@
 				h: params.height,
 				select: false
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'bottom' : function(_room, _x, _z) {
 			var f = {
@@ -137,7 +169,7 @@
 				h: params.height,
 				select: false
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'left' : function(_room, _x, _z) {
 			var f = {
@@ -152,7 +184,7 @@
 				h: params.height,
 				select: false
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'right' : function(_room, _x, _z) {
 			var f = {
@@ -167,7 +199,7 @@
 				h: params.height,
 				select: false
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'ceiling' : function(_room, _x, _z) {
 			var f = {
@@ -182,7 +214,7 @@
 				h: params.unit, 
 				select: false
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'floor' : function(_room, _x, _z) {
 			var f = {
@@ -195,9 +227,9 @@
 				ry:0,  
 				w: params.unit, 
 				h: params.unit, 
-				select: false
+				select: true
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'door': function(_room, face, to) {
 			var f = {
@@ -215,7 +247,7 @@
 				to: to,  
 				select: true
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'art': function(_room, face, _type, _w, _h, _thumb, _src) {
 			var f = {
@@ -234,7 +266,7 @@
 				src: _src,   
 				select: true
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'sound': function(_room, face, _w, _h, _thumb, _src) {
 			var f = {
@@ -251,7 +283,7 @@
 				src: _src,
 				select: true
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
 		},
 		'txt': function(_room, face, _w, _h, _thumb, _src) {
 			var f = {
@@ -268,7 +300,38 @@
 				src: _src,   
 				select: true
 			};
-			return new Face(params.path, f);			
+			return new Face(f);			
+		},
+		'positionArt': function(_room, face) {
+			var f = {
+				id: _room.id+':'+Math.floor(face.f.x/params.unit)+':'+Math.floor(face.f.z/params.unit)+':position',
+				type : 'position',
+				x: parseInt(face.f.x + params.unit*Math.sin(face.f.ry*Math.PI/2)), 
+				y: params.height/2,    
+				z: parseInt(face.f.z - params.unit*Math.cos(face.f.ry*Math.PI/2)),
+				rx: 1,
+				ry: 0,
+				w: 500, 
+				h: 500,   
+				ryf: face.f.ry,
+				select: true
+			};
+			return new Face(f);			
+		},
+		'position': function(_room, _x, _z) {
+			var f = {
+				id: _room.id+':'+_x+':'+_z+':position',
+				type : 'position',
+				x: params.unit * (_x + _room.position.x),  
+				y: params.height/2,    
+				z: params.unit * (_z + _room.position.z),
+				rx:1,  
+				ry:0, 
+				w: 500, 
+				h: 500,   
+				select: true
+			};
+			return new Face(f);			
 		}
 	}
 

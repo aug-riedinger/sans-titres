@@ -36,12 +36,6 @@ Point.prototype.projection = function () {
 			this.face.distance = this.distance;
 		}
 
-		if (p.z <= -camera.focalLength ) {
-			this.face.visible = false;
-			this.face.distance = -99999;
-			this.face.conditions.push(2);
-		}
-
 		// if (p.z > -2*camera.focalLength && p.z <= -camera.focalLength) {
 		// 	p.z = -450;
 		// }
@@ -70,10 +64,19 @@ Point.prototype.projection = function () {
 };
 
 Point.prototype.highlight = function (color,size) {
+
+	var distH = Math.sqrt((this.x - camera.x.value)*(this.x - camera.x.value)+(this.z - camera.z.value)*(this.z - camera.z.value));
+	var h = Math.abs(this.y - camera.y.value);
+
 	this.projection();
 
+	scr.ctx.save();
 	scr.ctx.beginPath();
-	scr.ctx.arc(this.X, this.Y, 25, 0, 2 * Math.PI, false);
+	scr.ctx.translate(this.X, this.Y);
+	scr.ctx.scale(1, Math.sin(camera.rx.value + Math.asin(distH/this.distance)));
+	scr.ctx.arc(0, 0, 25*this.distance/distH, 0, 2 * Math.PI, false);
+	scr.ctx.restore();
+
 	scr.ctx.lineWidth = size || 5;
 	scr.ctx.strokeStyle = color || 'rgb(0,0,255)';
 	scr.ctx.stroke();

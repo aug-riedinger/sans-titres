@@ -7,13 +7,13 @@
     	"z": 0
     },
     "map" : [
-    "#------0-0+.",
+    "#--a---0-0+.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!1",
-    "%_________¤."
+    "%._.______¤."
     ],
     "doors" : [
         {
@@ -28,5 +28,13 @@
         }
     ],
     "arts" : [
+        {
+            "id": "a",
+            "type" : "image",
+            "width" : 600,
+            "height" : 400,
+            "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_640x428.jpg",
+            "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_1198x800.jpg"    
+        }
     ]
 }
