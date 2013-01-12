@@ -23,9 +23,12 @@
 		var that = this;
 		$.getJSON('/rooms/room'+this.id+'.json', function(data) {
 			that.init(data);
-			// if(that.mainRoom) {
-			// 	camera.targetToFace(that.floors[parseInt(that.floors.length/2)]);
-			// }
+			if(that.mainRoom) {
+				if (camera) {
+					camera.targetToFace(getFloor(parseInt(camera.x.value/params.unit - that.position.x), parseInt(camera.z.value/params.unit - that.position.z)));
+					
+				}
+			}
 			$(that).trigger('ready');
 		});
 		return this;
@@ -66,6 +69,20 @@
 		// }
 
 		renderer.facesMerged(this.floors,'y', this.color||'#80827d');
+
+		for (var i=0; i<this.floors.length; i++) {
+			face = this.floors[i];
+			if (cursor.aimedFloor && face.f.id === cursor.aimedFloor.f.id) {
+				scr.ctx.beginPath();
+				scr.ctx.lineTo(face.p0.X, face.p0.Y);
+				scr.ctx.lineTo(face.p1.X, face.p1.Y);
+				scr.ctx.lineTo(face.p2.X, face.p2.Y);
+				scr.ctx.lineTo(face.p3.X, face.p3.Y);
+				scr.ctx.closePath();
+				scr.ctx.strokeStyle = '#000000';
+				scr.ctx.stroke();
+			}
+		}
 
 		for (var i=0; i < this.positions.length; i++) {
 			face = this.positions[i];
@@ -279,12 +296,22 @@
 		var door, art;
 		var top, bottom;
 
+
+		for (var h=-1; h< this.map.length+1; h++) {
+			z = this.map.length-(h+1);
+			for (var w=-2; w< this.map[0].length+2; w+=2) {
+				x = w/2;
+				this.floors.push(faceMaker.floor(this, x, z));
+				this.ceilings.push(faceMaker.ceiling(this, x, z));
+			}
+		}
+
 		for(var h=0; h < this.map.length; h++) {
+			z = this.map.length-(h+1);
 			this.addWall(this.tops);
 			this.addWall(this.bottoms);
 			for (var w=0; w< this.map[h].length; w+=2) {
 				x = w/2;
-				z = this.map.length-(h+1);
 				charType = this.map[h][w];
 				next = this.map[h][w+1];
 				doorId = next.replace(/^[^0-9]$/,'');
@@ -292,10 +319,10 @@
 				top = faceMaker.top(this, x, z);
 				bottom = faceMaker.bottom(this, x, z);
 
-				if (this.isInside(charType)) {
-					this.floors.push(faceMaker.floor(this, x, z));
-					this.ceilings.push(faceMaker.ceiling(this, x, z));
-				}
+				// if (this.isInside(charType)) {
+				// 	this.floors.push(faceMaker.floor(this, x, z));
+				// 	this.ceilings.push(faceMaker.ceiling(this, x, z));
+				// }
 
 				if (this.isNoWall(charType)) {
 					// this.positions.push(faceMaker.position(this, x, z));
@@ -313,8 +340,9 @@
 					if (!this.isTop(door.side) && this.isTop(charType)) {
 						this.tops[this.tops.length-1].push(top);
 					} else {
-						if (this.isTop(charType)) {}
+						if (this.isTop(charType)) {
 							this.doors.push(faceMaker.door(this, top, door.to));
+						}
 						this.addWall(this.tops);
 					}
 					if (!this.isBottom(door.side) && this.isBottom(charType)) {

@@ -253,18 +253,6 @@ Cursor.prototype.setCursor = function () {
 		return this.container.className = 'see' ;
 	} 
 
-	if (this.aimedDoor) {
-		return this.container.className = 'goroom';
-	}
-
-	if (this.aimedPosition) {
-		return this.container.className = 'gonsee';
-	}
-
-	if (this.aimedFloor) {
-		return this.container.className = 'go';
-	}
-
 	if(this.strengthY < 0 && this.strengthX < 0) {
 		return this.container.className = 'top-left';
 	}
@@ -291,6 +279,18 @@ Cursor.prototype.setCursor = function () {
 	if (this.strengthX < 0) {
 		return this.container.className = 'left';
 	}
+
+	if (this.aimedDoor) {
+		return this.container.className = 'goroom';
+	}
+
+	if (this.aimedPosition) {
+		return this.container.className = 'gonsee';
+	}
+
+	if (this.aimedFloor) {
+		return this.container.className = 'go';
+	}	
 
 	return this.container.className = '';
 };

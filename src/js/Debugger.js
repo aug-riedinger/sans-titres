@@ -86,32 +86,31 @@ var logFloor = function() {
 	var floor;
 	var x, z;
 	var res;
-
-	for (var k=0; k< room.map.length; k++) {
-		map.push(strGen(parseInt(room.map[k].length/2)*6));
+	for (var k=0; k< room.map.length +2; k++) {
+		map.push(strGen(parseInt(room.map[0].length/2+2)*6));
 	}
 	for(var i=0; i<room.floors.length; i++) {
 		floor = room.floors[i];
 
-		x = floor.f.id.split(':')[1];
-		z = floor.f.id.split(':')[2];
+		x = parseInt(floor.f.id.split(':')[1]) +1;
+		z = parseInt(floor.f.id.split(':')[2])+1;
 
-		if (room.map[room.map.length-1-z][2*x] !== '.') {
+		// if (room.map[room.map.length-1-z][2*x] !== '.') {
 			if(floor.visible) {
 				res = ',,,,,';
 			} else {
 				res = ''+(floor.conditions+10000);
 			}
-			if(parseInt(camera.x.value/params.unit) === parseInt(x) && parseInt(camera.z.value/params.unit) === parseInt(z)) {
+			if(parseInt(camera.x.value/params.unit - room.position.x) === x && parseInt(camera.z.value/params.unit - room.position.z) === z) {
 				res += 'x';
 			} else {
 				res += '-';
 			}
-		}
-		map[map.length-1-z] = map[map.length-1-z].replaceAt(6*x,res);
+		// }
+		map[z] = map[z].replaceAt(6*x,res);
 	}
 
-	for (var j=0; j<map.length; j++) {
+	for (var j=map.length-1; j>=0; j--) {
 		console.log(map[j]);
 	}
 	// return map;

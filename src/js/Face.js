@@ -83,15 +83,15 @@
 		}
 
 		if((!this.p0.inScreen && !this.p1.inScreen && !this.p2.inScreen && !this.p3.inScreen && !this.pc.inScreen)) {
-			this.visible = false;
-			this.distance = -99999;		
+			// this.visible = false;
+			// this.distance = -99999;		
 			this.conditions += 100;
 		}
 
-		if ((this.p1.p.y - this.p0.p.y) * (this.p3.p.x - this.p0.p.x) - (this.p1.p.x - this.p0.p.x) * (this.p3.p.y - this.p0.p.y) > 0) {	
-			// this.conditions.push(3);
-			// this.visible = false;
-			// this.distance = -99999;	
+		if((!this.p0.inScreen2 && !this.p1.inScreen2 && !this.p2.inScreen2 && !this.p3.inScreen2 && !this.pc.inScreen2)) {
+			this.visible = false;
+			this.distance = -99999;		
+			this.conditions += 200;
 		}
 
 		if ((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - (this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) > 0) {
@@ -99,10 +99,18 @@
 			this.distance = -99999;		
 			this.conditions += 1000;
 		}
+		// if ((this.p1.p.y - this.p0.p.y) * (this.p3.p.x - this.p0.p.x) - (this.p1.p.x - this.p0.p.x) * (this.p3.p.y - this.p0.p.y) > 0) {	
+		// 	this.visible = false;
+		// 	this.distance = -99999;	
+		// 	this.conditions += 20000;
+		// }
 		// if (this.pc.distance < this.pv.distance) {
 		// 	this.visible = false;
 		// 	this.distance = -99998;
 		// }
+
+		this.visible = (this.forceVisible!==undefined?this.forceVisible:this.visible);
+
 	};
 
 	Face.prototype.render = function() {

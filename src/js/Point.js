@@ -57,6 +57,8 @@ Point.prototype.projection = function () {
 
 	var margin = 200;
 	this.inScreen = this.X >= -margin && this.X < scr.width + margin && this.Y >= -margin && this.Y < scr.height + margin;
+	var margin2 = 600;
+	this.inScreen2 = this.X >= -margin2 && this.X < scr.width + margin2 && this.Y >= -margin2 && this.Y < scr.height + margin2;
 	this.p = p;
 
 	return true;

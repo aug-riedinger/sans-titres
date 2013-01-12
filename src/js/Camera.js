@@ -4,7 +4,7 @@ var Camera = function(_x, _z) {
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
 	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.height/2 - params.humanHeight);
 	this.z = new ge1doot.tweens.Add(100, _z, _z);
-	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/16, Math.PI/8);
+	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/20, Math.PI/8);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
 	// this.ry = {
 	// 	value:0
@@ -48,9 +48,9 @@ Camera.prototype.isInPosition = function() {
 
 Camera.prototype.targetToPosition = function(obj, strict) {
 	var strict = (strict!==undefined?strict:true);
-	var x = (obj.x||this.x.target);
-	var y = (obj.y||this.y.target);
-	var z = (obj.z||this.z.target) ;
+	var x = (obj.x!==undefined?obj.x:this.x.target);
+	var y = (obj.y!==undefined?obj.y:this.y.target);
+	var z = (obj.z!==undefined?obj.z:this.z.target) ;
 
 	if(room.inside(x,z, true) || !strict) {
 		this.x.setTarget(x);
