@@ -76,27 +76,30 @@ var setPosition = function(data,x,z) {
 return true;
 }
 
-var showTxt = function(src) {
+var showTxt = function(face) {
 	var txt;
 	for (var i=0; i< room.texts.length; i++) {
 		txt = room.texts[i];
-		if(txt.src === src) {
+		if(txt.src === face.f.src) {
 			break;
 		}
 	}
 
 	$('#artClearView').html(txt);
+
+	// autoResize(face.f.id)
+
 	$('#artClearView').fadeIn(1000);
 	$('#artClearView').one('click',function(eventName) {
 		remImg();
 	}); 
 }
 
-var showImg = function(src) {
+var showImg = function(face) {
 	var img;
 	for (var i=0; i< room.images.length; i++) {
 		img = room.images[i];
-		if(img.src === src) {
+		if(img.src === face.f.src) {
 			break;
 		}
 	}
@@ -304,7 +307,7 @@ var getEdges = function(faces, dim) {
       if(cosTheta>=0) {
       	goodPoints[k].theta = theta;
       } else {
-      	goodPoints[k].theta = theta + Math.PI;
+		goodPoints[k].theta = theta + Math.PI;
       }
 
         // goodPoints[k].cosTheta = cosTheta;
@@ -315,9 +318,23 @@ var getEdges = function(faces, dim) {
     }
 
     goodPoints.sort(function(p0,p1) {
-    	return p0.theta - p1.theta
+		return p0.theta - p1.theta;
     });
 
 }
 return goodPoints;
-} 
+};
+
+
+function autoResize(id){
+	var newheight;
+	var newwidth;
+
+	if(document.getElementById){
+		newheight=document.getElementById(id).contentWindow.document .body.scrollHeight;
+		newwidth=document.getElementById(id).contentWindow.document .body.scrollWidth;
+	}
+
+	document.getElementById(id).height= (newheight) + "px";
+	document.getElementById(id).width= (newwidth) + "px";
+}

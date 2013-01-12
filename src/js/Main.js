@@ -12,8 +12,8 @@ var init = function () {
 	$(room).one('ready', function(e) {
 		// ---- engine start ----
 		camera = new Camera(room.floors[parseInt(room.floors.length/2)].pc.x, room.floors[parseInt(room.floors.length/2)].pc.z);
-		keyboard = new Keyboard();	
-		cursor = new Cursor('screen');
+		// keyboard = new Keyboard();	
+		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
 		run();
 		$(scr.canvas).fadeIn(3000, function() {

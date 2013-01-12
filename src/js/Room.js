@@ -25,14 +25,13 @@
 			that.init(data);
 			if(that.mainRoom) {
 				if (camera) {
-					camera.targetToFace(getFloor(parseInt(camera.x.value/params.unit - that.position.x), parseInt(camera.z.value/params.unit - that.position.z)));
-					
+					camera.targetToFace(getFloor(parseInt(camera.x.value/params.unit - that.position.x, 10), parseInt(camera.z.value/params.unit - that.position.z, 10)));
 				}
 			}
 			$(that).trigger('ready');
 		});
 		return this;
-	}
+	};
 
 	Room.prototype.init = function(constr) {
 		this.name = constr.name;
@@ -43,7 +42,6 @@
 		this.doorsConstr = constr.doors||[];
 		this.artsConstr = constr.arts||[];
 		this.soundsConstr = constr.sounds||[];
-		this.setCenter();
 
 		this.readMap();
 		// this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
@@ -54,25 +52,22 @@
 			// this.makePositions();
 			this.makeSounds();
 		}
-		return this;	
-	}
+		return this;
+	};
 
 	Room.prototype.render = function() {
+		var i, depth;
 		var face, door;
 
 		if(this.mainRoom) {
 			this.renderAdj();
-		}	
-
-		// for (var depth in this.ceilings) {
-		// 	renderer.facesMerged(this.ceilings,'y', '#ffffff');
-		// }
+		}
 
 		renderer.facesMerged(this.floors,'y', this.color||'#80827d');
 
-		for (var i=0; i<this.floors.length; i++) {
+		for (i=0; i<this.floors.length; i++) {
 			face = this.floors[i];
-			if (cursor.aimedFloor && face.f.id === cursor.aimedFloor.f.id) {
+			if (cursor.aimedFace && face.f.id === cursor.aimedFace.f.id) {
 				scr.ctx.beginPath();
 				scr.ctx.lineTo(face.p0.X, face.p0.Y);
 				scr.ctx.lineTo(face.p1.X, face.p1.Y);
@@ -84,52 +79,48 @@
 			}
 		}
 
-		for (var i=0; i < this.positions.length; i++) {
+		for (i=0; i < this.positions.length; i++) {
 			face = this.positions[i];
 			face.projection();
 			if( face.visible) {
 				face.render();
-			}			
+			}
 		}
 
-		for (var depth in this.tops) {
+		for (depth in this.tops) {
 			if (this.tops.hasOwnProperty(depth)) {
 				renderer.facesMerged(this.tops[depth],'z', this.color||'#f9f9f9', this.color||'#D9D9D9');
 			}
 		}
 
 
-		for (var depth in this.bottoms) {
+		for (depth in this.bottoms) {
 			if (this.bottoms.hasOwnProperty(depth)) {
 				renderer.facesMerged(this.bottoms[depth],'z', this.color||'#f9f9f9', this.color||'#D9D9D9');
 			}
 		}
 
-		for (var depth in this.lefts) {
+		for (depth in this.lefts) {
 			if (this.lefts.hasOwnProperty(depth)) {
 				renderer.facesMerged(this.lefts[depth],'x', this.color||'#D9D9D9', this.color||'#f9f9f9');
 			}
 		}
 
-		for (var depth in this.rights) {
+		for (depth in this.rights) {
 			if (this.rights.hasOwnProperty(depth)) {
 				renderer.facesMerged(this.rights[depth],'x', this.color||'#D9D9D9', this.color||'#f9f9f9');
 			}
 		}
 
-		// for (var i=0; i< this.doors.length; i++) {
-		// 	renderer.renderDoor(this.doors[i]);
-		// }
-
-		for (var i=0; i < this.arts.length; i++) {
+		for (i=0; i < this.arts.length; i++) {
 			face = this.arts[i];
 			face.projection();
 			if( face.visible) {
 				face.render();
-			}			
+			}
 		}
 
-	}
+	};
 
 	Room.prototype.inside = function(_x,_z, big) {
 		var x, z;
@@ -144,83 +135,13 @@
 		return (true && this.map[this.map.length-(z+1)] && this.map[this.map.length-(z+1)][2*x] && this.map[this.map.length-(z+1)][2*x] != '.');
 	};
 
-	Room.prototype.makePositions = function() {
-		var x = 0, z = 0, cpt = 0;
-		var zone = 3;
-		var res;
 
-		for(var h=0; h < this.map.length; h+=zone) {
-			for (var w=0; w< this.map[h].length; w+=2*zone) {
-				for (var i=0; i<zone; i++)  {
-					for (var j=0; j< zone; j+=2) {
-						if(this.map[h+i] && this.map[h+i][w+j] && this.map[h+i][w+j] != '.') {
-							z += h+i;
-							x += w/2 + j;
-							cpt +=1;
-						}
-					}
-				}
-				res = {
-					x: this.position.x + x/cpt,
-					z: this.position.z + z/cpt,
-					dst: 999999
-					// dst: (Math.abs((this.position.x + x/cpt)*params.unit - (camera.x.value||0) ) + Math.abs((this.position.z + z/cpt)*params.unit - (camera.z.value||0) ))||9999999
-				}
-				if(this.inside(res.x, res.z)) {
-					this.positions.push(res);					
-				}
-				x = 0;
-				z = 0;
-				cpt = 0;
-			}
-		}
-
-		this.positions.sort(function (p0, p1) {
-			return p0.dst - p1.dst;
-		});
-
-	}
-
-	Room.prototype.setCenter = function() {
-		var z = 0;
-		var x = 0;
-		var cpt = 0;
-		for(var h=0; h < this.map.length; h++) {
-			for (var w=0; w< this.map[h].length; w+=2) {
-				if(this.map[h][w] == 'T' || this.map[h][w] == 't' || this.map[h][w] == 'B' || this.map[h][w] == 'b') {
-					z += h;
-					x += w/2;
-					cpt += 1;
-				}
-			}
-		}
-		return this.center = {
-			x: this.position.x + x/cpt,
-			z: this.position.z + z/cpt
-		};
-	};
 
 	Room.prototype.readMap = function() {
 
 		this.readHorizontally();
 		this.readVertically();
-
-		// var potentialWalls, next, doorId, artId;
-		// for(var h=0; h < this.map.length; h++) {
-		// 	for (var w=0; w< this.map[h].length; w+=2) {
-		// 		potentialWalls = this.wallMaker(this.map[h][w],w/2,(this.map.length-(h+1)));
-		// 		next = this.map[h][w+1];
-		// 		doorId = next.replace(/^[^0-9]$/,'');
-		// 		artId = next.replace(/^[^a-zA-Z]$/,'');
-		// 		if(doorId !== '' && this.mainRoom) {
-		// 			this.makeDoor(doorId, potentialWalls);
-		// 		}
-		// 		if(artId !== '' && this.mainRoom) {
-		// 			this.makeArt(artId, potentialWalls);
-		// 		}
-		// 	}
-		// }
-	}
+	};
 
 	Room.prototype.expandCharType = function(charType) {
 		if( charType === '-' || charType === '_' || charType === '|' || charType === '!') {
@@ -239,78 +160,79 @@
 				return ['!', '_'];
 			}
 		}
-	}
+	};
 
 	Room.prototype.isTop = function(charType) {
-		return (charType === '#' || charType === '-' || charType === '+')
-	}
+		return (charType === '#' || charType === '-' || charType === '+');
+	};
 	Room.prototype.isBottom = function(charType) {
-		return (charType === '%' || charType === '_' || charType === '¤')
-	}
+		return (charType === '%' || charType === '_' || charType === '¤');
+	};
 	Room.prototype.isLeft = function(charType) {
-		return (charType === '#' || charType === '|' || charType === '%')
-	}
+		return (charType === '#' || charType === '|' || charType === '%');
+	};
 	Room.prototype.isRight = function(charType) {
-		return (charType === '+' || charType === '!' || charType === '¤')
-	}
+		return (charType === '+' || charType === '!' || charType === '¤');
+	};
 	Room.prototype.isInside = function(charType) {
-		return (charType !== '.')
-	}
+		return (charType !== '.');
+	};
 	Room.prototype.isNoWall = function(charType) {
-		return (charType === ',')
-	}
+		return (charType === ',');
+	};
 
 	Room.prototype.getDoor = function(doorId) {
 		var door;
 		for(var i=0; i< this.doorsConstr.length; i++) {
 			door = this.doorsConstr[i];
 			if (door.id === doorId) {
-				return door
+				return door;
 			}
 		}
-		console.log('DoorId not found')
-		return false
-	}
+		console.log('DoorId not found');
+		return false;
+	};
 
 	Room.prototype.getArt = function(artId) {
 		var art;
 		for(var i=0; i< this.artsConstr.length; i++) {
 			art = this.artsConstr[i];
 			if (art.id === artId) {
-				return art
+				return art;
 			}
 		}
-		console.log('artId not found')
-		return false
-	}
+		console.log('artId not found');
+		return false;
+	};
 
 	Room.prototype.addWall = function(wall) {
 		if (wall.length === 0 || wall[wall.length-1].length > 0) {
 			wall.push([]);
 		}
-	}
+	};
 
 	Room.prototype.readHorizontally = function() {
+		var h, w;
 		var x, z, charType;
 		var next, doorId, artId;
-		var door, art;
+		var door, art, artConstr;
 		var top, bottom;
 
 
-		for (var h=-1; h< this.map.length+1; h++) {
+		for (h=-1; h< this.map.length+1; h++) {
 			z = this.map.length-(h+1);
-			for (var w=-2; w< this.map[0].length+2; w+=2) {
+			for (w=-2; w< this.map[0].length+2; w+=2) {
 				x = w/2;
 				this.floors.push(faceMaker.floor(this, x, z));
 				this.ceilings.push(faceMaker.ceiling(this, x, z));
 			}
 		}
 
-		for(var h=0; h < this.map.length; h++) {
+		for(h=0; h < this.map.length; h++) {
 			z = this.map.length-(h+1);
 			this.addWall(this.tops);
 			this.addWall(this.bottoms);
-			for (var w=0; w< this.map[h].length; w+=2) {
+			for (w=0; w< this.map[h].length; w+=2) {
 				x = w/2;
 				charType = this.map[h][w];
 				next = this.map[h][w+1];
@@ -355,45 +277,57 @@
 					}
 				}
 
+
 				if(artId !== '') {
-					art = this.getArt(artId);
+					artConstr = this.getArt(artId);
 					if(this.isTop(charType)) {
-						this.arts.push(faceMaker.art(this, top, art.type, art.width, art.height, art.thumb, art.src));
-						this.positions.push(faceMaker.positionArt(this, top));
+						art = faceMaker.art(this, top, artConstr.type, artConstr.width, artConstr.height, artConstr.thumb, artConstr.src);
+						this.arts.push(art);
+						this.positions.push(faceMaker.position(this, top));
 					}
 					if(this.isBottom(charType)) {
-						this.arts.push(faceMaker.art(this, bottom, art.type, art.width, art.height, art.thumb, art.src));
-						this.positions.push(faceMaker.positionArt(this, bottom));
+						art = faceMaker.art(this, bottom, artConstr.type, artConstr.width, artConstr.height, artConstr.thumb, artConstr.src);
+						this.arts.push(art);
+						this.positions.push(faceMaker.position(this, bottom));
 					}
 
-					if (art.type === 'image') {
-						var img = new Image();
-						img.src = art.src;
-						img.className = 'art';
-						this.images.push(img);
+					if(art) {
+
+						if (art.f.subtype === 'image') {
+							var img = new Image();
+							img.src = art.f.src;
+							img.id = art.f.id;
+							img.className = 'art';
+							this.images.push(img);
+						}
+
+						if (art.f.subtype === 'html') {
+							var ifrm = document.createElement('iframe');
+							ifrm.setAttribute('src', art.f.src);
+							ifrm.className = 'html';
+							ifrm.id = art.f.id;
+							ifrm.height = artConstr.iFrameHeight||600;
+							ifrm.width = artConstr.iFrameWidth||800;
+							this.texts.push(ifrm);
+						}
 					}
 
-					if (art.type === 'txt') {
-						var ifrm = document.createElement('iframe'); 
-						ifrm.setAttribute('src', art.src); 
-						ifrm.className = 'txt';
-						this.texts.push(ifrm);
-					}
+				}
 
-				} 
 			}
 		}
-	}
+	};
 	Room.prototype.readVertically = function() {
+		var w, h;
 		var x, z, charType;
 		var next, doorId, artId;
-		var door, art;
+		var door, art, artConstr;
 		var left, right;
 
-		for (var w=0; w< this.map[0].length; w+=2) {
+		for (w=0; w< this.map[0].length; w+=2) {
 			this.addWall(this.lefts);
 			this.addWall(this.rights);
-			for(var h=0; h < this.map.length; h++) {
+			for(h=0; h < this.map.length; h++) {
 				x = w/2;
 				z = this.map.length-(h+1);
 				charType = this.map[h][w];
@@ -431,34 +365,43 @@
 				}
 
 				if(artId !== '') {
-					art = this.getArt(artId);
+					artConstr = this.getArt(artId);
 					if(this.isLeft(charType)) {
-						this.arts.push(faceMaker.art(this, left, art.type, art.width, art.height, art.thumb, art.src));
-						this.positions.push(faceMaker.positionArt(this, left));
+						art = faceMaker.art(this, left, artConstr.type, artConstr.width, artConstr.height, artConstr.thumb, artConstr.src);
+						this.arts.push(art);
+						this.positions.push(faceMaker.position(this, left));
 					}
 					if(this.isRight(charType)) {
-						this.arts.push(faceMaker.art(this, right, art.type, art.width, art.height, art.thumb, art.src));
-						this.positions.push(faceMaker.positionArt(this, right));
+						art = faceMaker.art(this, right, artConstr.type, artConstr.width, artConstr.height, artConstr.thumb, artConstr.src);
+						this.arts.push(art);
+						this.positions.push(faceMaker.position(this, right));
 					}
 
-					if (art.type === 'image') {
-						var img = new Image();
-						img.src = art.src;
-						img.className = 'art';
-						this.images.push(img);
+					if(art) {
+						if (art.f.subtype === 'image') {
+							var img = new Image();
+							img.src = art.f.src;
+							img.id = art.f.id;
+							img.className = 'art';
+							this.images.push(img);
+						}
+
+						if (art.f.subtype === 'html') {
+							var ifrm = document.createElement('iframe');
+							ifrm.setAttribute('src', art.f.src);
+							ifrm.className = 'html';
+							ifrm.id = art.f.id;
+							ifrm.height = artConstr.iFrameHeight||600;
+							ifrm.width = artConstr.iFrameWidth||800;
+							this.texts.push(ifrm);
+						}
+						
 					}
 
-					if (art.type === 'txt') {
-						var ifrm = document.createElement('iframe'); 
-						ifrm.setAttribute('src', art.src); 
-						ifrm.className = 'txt';
-						this.texts.push(ifrm);
-					}
-
-				} 
+				}
 			}
 		}
-	}
+	};
 
 
 	Room.prototype.getWall = function(_x, _z, type) {
@@ -466,7 +409,7 @@
 		var res = [];
 		for (var i=0; i<this.walls.length; i++) {
 			ar = this.walls[i].f.id.split(':');
-			if(parseInt(ar[1]) === _x && parseInt(ar[2]) === _z) {
+			if(parseInt(ar[1], 10) === _x && parseInt(ar[2], 10) === _z) {
 				res[res.length] = this.walls[i];
 			}
 		}
@@ -481,7 +424,7 @@
 		}
 		console.log('Face Not Found');
 		return null;
-	}
+	},
 
 	Room.prototype.makeArt = function(id, potentialWalls) {
 		var art, wall;
@@ -513,7 +456,8 @@
 		}
 		console.log('ArtId not found');
 		return false;
-	}
+	};
+
 	Room.prototype.makeDoor = function(id, potentialWalls) {
 		var door;
 		for(var i=0; i< this.doorsConstr.length; i++) {
@@ -537,27 +481,27 @@
 		}
 		console.log('DoorId not found');
 		return false;
-	}
+	};
 
 	Room.prototype.makeSounds = function() {
 		var sound;
 		for(var i=0; i< this.soundsConstr.length; i++) {
 			sound = this.soundsConstr[i];
 			this.sounds.push(new Sound(sound));
-		}		
-	}
+		}
+	};
 
 	Room.prototype.loadAdj = function() {
 		for(var i=0; i< this.doorsConstr.length; i++) {
 			this.adj.push(new Room(this.doorsConstr[i].to, false).load());
 		}
-	}
+	};
 
 	Room.prototype.renderAdj = function () {
 		for (var i=0; i<this.adj.length; i++) {
 			this.adj[i].render();
 		}
-	}
+	};
 
 	Room.prototype.wallMaker = function(charType, _x, _z) {
 		var wall;
@@ -566,7 +510,7 @@
 			if(!this.tops.hasOwnProperty(_z)) {
 				this.tops[_z] = [];
 			}
-			wall = faceMaker.top(this,_x,_z)
+			wall = faceMaker.top(this,_x,_z);
 			this.tops[_z].push(wall);
 			this.walls.push(wall);
 			potentialWalls.push(wall);
@@ -602,14 +546,14 @@
 			if(!this.ceilings.hasOwnProperty(0)) {
 				this.ceilings[0] = [];
 			}
-			wall = faceMaker.ceiling(this,_x, _z);		
+			wall = faceMaker.ceiling(this,_x, _z);
 			this.ceilings[0].push(wall);
 		}
 		if(this.wallE[charType].floor) {
 			if(!this.floors.hasOwnProperty(0)) {
 				this.floors[0] = [];
 			}
-			wall = faceMaker.floor(this,_x, _z);	
+			wall = faceMaker.floor(this,_x, _z);
 			this.floors[0].push(wall);
 		}
 
@@ -656,7 +600,7 @@
 		ceiling: true,
 		floor: true
 	},
-	'-': { // Top 
+	'-': { // Top
 		top: true,
 		bottom: false,
 		left: false,
@@ -704,4 +648,4 @@
 		ceiling: false,
 		floor: false
 	}
-}
+};

@@ -7,7 +7,7 @@
     	"z": 0
     },
     "map" : [
-    "#---------+.",
+    "#----a----+.",
     "|.,.,.,.,.!.",
     "|0,.,.,.,.!.",
     "%_________¤1"
@@ -25,5 +25,15 @@
         }    
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "html",
+        "width" : 400,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/dialogue-dans-un-monde-en-hiver/gmusset8_533x800.jpg",
+        "src" : "https://s3.amazonaws.com/dialogue-dans-un-monde-en-hiver/page.html",
+        "iFrameHeight" : 500, 
+        "iFrameWidth" : 1300
+    }
     ]
 }

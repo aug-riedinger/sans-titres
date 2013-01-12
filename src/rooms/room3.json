@@ -73,7 +73,7 @@
         },
         {
             "id": "f",
-            "type" : "txt",
+            "type" : "html",
             "width" : 900,
             "height" : 600,
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/screenshot-tr.png",

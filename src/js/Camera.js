@@ -6,26 +6,15 @@ var Camera = function(_x, _z) {
 	this.z = new ge1doot.tweens.Add(100, _z, _z);
 	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/20, Math.PI/8);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
-	// this.ry = {
-	// 	value:0
-	// }
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
 	this.position = 0;
 	this.godView = false;
 	this.trig = {
-		// that: this,
 		cosX: 1,
 		cosY: 1,
 		sinX: 0,
 		sinY: 0
-		// calc : function() {
-		// 	// ---- pre calculate trigo ----
-		// 	this.cosX = Math.cos(this.that.rx.value);
-		// 	this.sinX = Math.sin(this.that.rx.value);
-		// 	this.cosY = Math.cos(this.that.ry.value);
-		// 	this.sinY = Math.sin(this.that.ry.value);
-		// }
 	};
 
 	return this;
@@ -57,22 +46,46 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 		this.z.setTarget(z);
 	}
 	this.y.setTarget(y);
-	// this.rx.setTarget(-Math.PI/2);
-	this.rx.setTarget((obj.rx ||this.rx.target));
-	this.ry.setTarget((obj.ry||this.ry.target));
+	this.rx.setTarget((obj.rx!==undefined?obj.rx:this.rx.target));
+	this.ry.setTarget((obj.ry!==undefined?obj.ry:this.ry.target));
 
-	this.zoom.setTarget((obj.zoom||this.zoom.target));
+	this.zoom.setTarget((obj.zoom!==undefined?obj.zoom:this.zoom.target));
 };
 
 
 Camera.prototype.targetToFace = function (face) {
-	this.targetToPosition({
-		x: face.pc.x,
-		z: face.pc.z + this.focalLength,
-		rx: (face.f.ryf?Math.PI/20:0),
-		ry: face.f.ryf*Math.PI/2||(face.ay - (Math.PI/2)),
-		zoom: 1
-	}, false);
+
+	if (face.f.type === 'door') {
+		return this.targetToPosition({
+			x: face.pc.x,
+			z: face.pc.z + this.focalLength,
+			rx: 0,
+			ry: face.ay - Math.PI/2,
+			zoom: 1
+		}, false);	
+	}
+
+	if (face.f.type === 'position') {
+		return this.targetToPosition({
+			x: face.pc.x,
+			z: face.pc.z + this.focalLength,
+			rx: Math.PI/20,
+			ry: face.f.ryf*Math.PI/2,
+			zoom: 1
+		}, true);	
+
+	}
+
+	if (face.f.type === 'floor') {
+		return this.targetToPosition({
+			x: face.pc.x,
+			z: face.pc.z + this.focalLength,
+			rx: 0,
+			zoom: 1
+		}, true);	
+
+	}
+
 };
 
 Camera.prototype.up = function(strength) {
@@ -164,16 +177,24 @@ Camera.prototype.toggleGodView = function() {
 };
 
 Camera.prototype.move = function () {
-		// ---- easing camera position and view angle ----
-		ge1doot.tweens.iterate();
-		// ---- pre calculate trigo ----
-		this.trig.cosX = Math.cos(this.rx.value);
-		this.trig.sinX = Math.sin(this.rx.value);
-		this.trig.cosY = Math.cos(this.ry.value);
-		this.trig.sinY = -Math.sin(this.ry.value);
-		this.isInPosition();
 
-	};
+	if (cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
+		this.rx.setValue(this.rx.value - 0.02*cursor.strengthY);
+	}
+	if (cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
+		this.ry.setValue(this.ry.value - 0.02*cursor.strengthX);
+	}
+
+	// ---- easing camera position and view angle ----
+	ge1doot.tweens.iterate();
+	// ---- pre calculate trigo ----
+	this.trig.cosX = Math.cos(this.rx.value);
+	this.trig.sinX = Math.sin(this.rx.value);
+	this.trig.cosY = Math.cos(this.ry.value);
+	this.trig.sinY = -Math.sin(this.ry.value);
+	this.isInPosition();
+
+};
 
 Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-focalLength)
 
