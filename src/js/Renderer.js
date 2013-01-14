@@ -1,11 +1,12 @@
 var renderer = {};
 
 renderer.facesMerged = function (faces, dim, color, color2) {
+	var grd;
 	var point;
-	var points = getEdges(faces, dim);
+	var points = getEdges3(faces, dim);
 
 
-	if(points.length>0) {
+	if(points.length>2) {
 		scr.ctx.beginPath();
 		for(var k=0; k<points.length; k++) {
 			point = points[k];
@@ -15,10 +16,9 @@ renderer.facesMerged = function (faces, dim, color, color2) {
 		if(color2 === undefined) {
 			scr.ctx.fillStyle = color||'white';
 		} else {
-			var grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt(points.length/2)].X, points[parseInt(points.length/2)].Y);
-			// var grd = scr.ctx.createLinearGradient(minX, minY, maxX, maxY);
-			grd.addColorStop(0, color);      
-			grd.addColorStop(1, color2);   
+			grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length-1)/2, 10)].X, points[parseInt((points.length-1)/2, 10)].Y);
+			grd.addColorStop(0, color);
+			grd.addColorStop(1, color2);
 			scr.ctx.fillStyle = grd;
 		}
 		scr.ctx.lineWidth = 1;
@@ -26,7 +26,7 @@ renderer.facesMerged = function (faces, dim, color, color2) {
 		scr.ctx.fill();
 		scr.ctx.stroke();
 	}
-}
+};
 
 renderer.Triangle = function (parent, p0, p1, p2) {
 	// this.randColor = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
@@ -64,15 +64,21 @@ renderer.Image = function (canvas, imgSrc, lev) {
 
 
 renderer.Image.prototype.loading = function () {
+	var i, j;
+	var tx, ty;
+	var p;
+	var t;
+	var lev;
+	var points;
 	if (this.texture.complete && this.texture.width) {
 		this.isLoading = false;
-		var points = [];
+		points = [];
 		// ---- create points ----
-		for (var i = 0; i <= this.lev; i++) {
-			for (var j = 0; j <= this.lev; j++) {
-				var tx = (i * (this.texture.width / this.lev));
-				var ty = (j * (this.texture.height / this.lev));
-				var p = {
+		for (i = 0; i <= this.lev; i++) {
+			for (j = 0; j <= this.lev; j++) {
+				tx = (i * (this.texture.width / this.lev));
+				ty = (j * (this.texture.height / this.lev));
+				p = {
 					tx: tx,
 					ty: ty,
 					nx: tx / this.texture.width,
@@ -84,17 +90,17 @@ renderer.Image.prototype.loading = function () {
 				this.prev = p;
 			}
 		}
-		var lev = this.lev + 1;
-		for (var i = 0; i < this.lev; i++) {
-			for (var j = 0; j < this.lev; j++) {
+		lev = this.lev + 1;
+		for (i = 0; i < this.lev; i++) {
+			for (j = 0; j < this.lev; j++) {
 				// ---- up ----
-				var t = new renderer.Triangle(this, 
+				t = new renderer.Triangle(this,
 					points[j + i * lev],
 					points[j + i * lev + 1],
 					points[j + (i + 1) * lev]
 					);
 				// ---- down ----
-				var t = new renderer.Triangle(this,
+				t = new renderer.Triangle(this,
 					points[j + (i + 1) * lev + 1],
 					points[j + (i + 1) * lev],
 					points[j + i * lev + 1]

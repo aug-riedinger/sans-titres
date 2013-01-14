@@ -8,11 +8,6 @@ var Cursor = function (canvas_ID, segmentX, segmentY) {
 	this.strengthX = 0;
 	this.strengthY = 0;
 	this.aimedFace = null;
-	// this.aimedArt = null;
-	// this.aimedDoor = null;
-	// this.aimedSound = null;
-	// this.aimedPosition = null;
-	// this.aimedFloor = null;
 	this.going = null;
 	this.moving = false;
 	this.initEvents();
@@ -31,9 +26,15 @@ Cursor.prototype.initEvents = function () {
 
 		that.aimedFace = that.inFace();
 		that.setCursor();
-	}
+	};
 
-	this.container.onclick = function (e) { 
+	this.container.onclick = function (e) {
+
+		if($('#artInfo').css('top') === '0px') {
+			$('#artInfo').animate({
+				top: -50
+			}, 1000);
+		}
 
 		if (that.aimedFace) {
 			if(that.aimedFace.f.type === 'art') {
@@ -43,7 +44,7 @@ Cursor.prototype.initEvents = function () {
 				if (that.aimedFace.f.subtype === 'html') {
 					showTxt(that.aimedFace);
 				}
-			} 
+			}
 
 			if(that.aimedFace.f.type === 'door') {
 				camera.targetToFace(that.aimedFace);
@@ -53,13 +54,22 @@ Cursor.prototype.initEvents = function () {
 					for(var i=0; i<room.sounds.length; i++) {
 						room.sounds[i].remove();
 					}
-					room = new Room(this.going, true).load();
+					newRoom = new Room(this.going, true);
+					newRoom.load();
 					this.going = null;
 				}, that));
 			}
 
 			if(that.aimedFace.f.type === 'position') {
 				camera.targetToFace(that.aimedFace);
+				$('#artTitle').html(that.aimedFace.f.info.title||'Inconnu');
+				$('#artAuthor').html(that.aimedFace.f.info.author||'Inconnu');
+				$('#artCategory').html(that.aimedFace.f.info.category||'Inconnu');
+				$(scr.canvas).one('inPosition',function() {
+					$('#artInfo').animate({
+						top: 0
+					}, 1000);
+				});
 			}
 			if(that.aimedFace.f.type === 'floor') {
 				camera.targetToFace(that.aimedFace);
@@ -68,25 +78,25 @@ Cursor.prototype.initEvents = function () {
 		}
 
 		e.preventDefault();
-		return false; 
+		return false;
 	};
 
 	this.container.ondblclick = function (e) {
 		camera.toggleGodView();
 		e.preventDefault();
 		return false;
-	}
+	};
 
 	this.container.onmspointerdown = this.container.ontouchstart = this.container.onmousedown = function (e) {
-	}
+	};
 
 	this.container.onmspointerup = this.container.ontouchend = this.container.onmouseup = function(e) {
-	}
+	};
 
 	this.container.onmspointercancel = this.container.ontouchcancel = function(e) {
-	}
+	};
 
-}
+};
 
 Cursor.prototype.calcStrength = function() {
 	if(this.X > scr.width/this.segmentX && this.X < scr.width - scr.width/this.segmentX) {
@@ -116,7 +126,7 @@ Cursor.prototype.calcStrength = function() {
 		this.strengthY =  1 - (scr.height - this.Y )/(scr.height/this.segmentY);
 		this.moving = true;
 	}
-}
+};
 
 Cursor.prototype.inTriangle = function (p1, p2, p3) {
 	// ---- Compute vectors ----
@@ -141,16 +151,34 @@ Cursor.prototype.inTriangle = function (p1, p2, p3) {
 };
 
 Cursor.prototype.inFace = function() {
+	var i, j;
 	var face;
 
-	for (var i=0; i< room.arts.length; i++) {
+	for (var j=0; j< room.adj.length; j++) {
+		for (i=0; i< room.adj[j].walls.length; i++) {
+			face = room.adj[j].walls[i];
+			if(this.faceSelected(face)) {
+				console.log(face);
+			}
+		}
+	}
+
+	for (i=0; i< room.walls.length; i++) {
+		face = room.walls[i];
+		if(this.faceSelected(face)) {
+			console.log(face);
+		}
+	}
+	
+
+	for (i=0; i< room.arts.length; i++) {
 		face = room.arts[i];
 		if(this.faceSelected(face)) {
 			return face;
 		}
 	}
 
-	for (var i=0; i< room.doors.length; i++) {
+	for (i=0; i< room.doors.length; i++) {
 		face = room.doors[i];
 		face.projection();
 		if(this.faceSelected(face)) {
@@ -158,7 +186,7 @@ Cursor.prototype.inFace = function() {
 		}
 	}
 
-	for (var i=0; i< room.positions.length; i++) {
+	for (i=0; i< room.positions.length; i++) {
 		face = room.positions[i];
 		face.projection();
 		if(this.faceSelected(face)) {
@@ -166,11 +194,13 @@ Cursor.prototype.inFace = function() {
 		}
 	}
 
-	for (var i=0; i< room.floors.length; i++) {
-		face = room.floors[i];
-		face.projection();
-		if(this.faceSelected(face)) {
-			return face;
+	for (i=0; i< room.floors.length; i++) {
+		for (j=0; j<room.floors[i].length; j++) {
+			face = room.floors[i][j];
+			face.projection();
+			if(this.faceSelected(face)) {
+				return face;
+			}
 		}
 
 	}
@@ -179,12 +209,9 @@ Cursor.prototype.inFace = function() {
 };
 
 Cursor.prototype.faceSelected = function(face) {
+	// return (face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3)));
 	return (face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3)));
-}
-
-Cursor.prototype.move = function () {
-
-}
+};
 
 Cursor.prototype.setCursor = function () {
 	if (this.aimedFace) {

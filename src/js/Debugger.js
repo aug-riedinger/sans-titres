@@ -38,7 +38,7 @@ var logPosition = function() {
 	console.log('rx: '+camera.rx.value);
 	console.log('ry: '+camera.ry.value);
 
-}
+};
 
 var getFaceById = function(faces, _id) {
 	for (var i in faces) {
@@ -49,13 +49,28 @@ var getFaceById = function(faces, _id) {
 	return null;
 };
 
-var getFloor = function(_x, _z) {
-	for (var i=0; i< room.floors.length; i++) {
-		if(parseInt(room.floors[i].f.id.split(':')[1]) === _x && parseInt(room.floors[i].f.id.split(':')[2]) === _z) {
-			return room.floors[i];
+var getFloor = function(_x, _z, _room) {
+	var i, j;
+	var floor;
+	_room = _room||room;
+	for (i=0; i< _room.floors.length; i++) {
+		for (j=0; j<_room.floors[i].length; j++) {
+			floor = _room.floors[i][j];
+			if(parseInt(floor.f.id.split(':')[1], 10) === _x && parseInt(floor.f.id.split(':')[2], 10) === _z) {
+				return floor;
+			}
 		}
 	}
-}
+};
+
+var getWall = function(_x, _z, wall, _room) {
+	_room = _room||room;
+	for (var i=0; i< wall.length; i++) {
+		if(parseInt(wall[i].f.id.split(':')[1], 10) === _x && parseInt(wall[i].f.id.split(':')[2], 10) === _z) {
+			return wall[i];
+		}
+	}
+};
 
 var logConditions = function() {
 	var cpt = [ 0, 0, 0, 0, 0];
@@ -81,27 +96,61 @@ var strGen = function(length) {
 	return res
 }
 
-var logFloor = function() {
+var logFloor = function(_room) {
+	var _room = _room||room;
 	var map = [];
 	var floor;
 	var x, z;
 	var res;
-	for (var k=0; k< room.map.length +2; k++) {
-		map.push(strGen(parseInt(room.map[0].length/2+2)*6));
+	for (var k=0; k< _room.map.length +2; k++) {
+		map.push(strGen(parseInt(_room.map[0].length/2+2, 10)*6));
 	}
-	for(var i=0; i<room.floors.length; i++) {
-		floor = room.floors[i];
+	for(var i=0; i<_room.floors.length; i++) {
+		for(var j=0; j<_room.floors[i].length; j++) {
+			floor = _room.floors[i][j];
 
-		x = parseInt(floor.f.id.split(':')[1]) +1;
-		z = parseInt(floor.f.id.split(':')[2])+1;
+			x = parseInt(floor.f.id.split(':')[1], 10) +1;
+			z = parseInt(floor.f.id.split(':')[2], 10)+1;
 
-		// if (room.map[room.map.length-1-z][2*x] !== '.') {
-			if(floor.visible) {
-				res = ',,,,,';
+		// if (_room.map[_room.map.length-1-z][2*x] !== '.') {
+
+			res = ''+(floor.conditions+10000);
+			if(parseInt(camera.x.value/params.unit - _room.position.x, 10) === x && parseInt((camera.z.value - camera.focalLength)/params.unit - _room.position.z, 10) === z) {
+				res += 'x';
 			} else {
-				res = ''+(floor.conditions+10000);
+				res += '-';
 			}
-			if(parseInt(camera.x.value/params.unit - room.position.x) === x && parseInt(camera.z.value/params.unit - room.position.z) === z) {
+		// }
+		map[z] = map[z].replaceAt(6*x,res);
+
+	}
+}
+
+for (var j=map.length-1; j>=0; j--) {
+	console.log(map[j]);
+}
+	// return map;
+};
+
+var logFaces = function(faces, _room) {
+	var _room = _room||room;
+	var map = [];
+	var face;
+	var x, z;
+	var res;
+	for (var k=0; k< _room.map.length; k++) {
+		map.push(strGen(parseInt(_room.map[0].length/2, 10)*6));
+	}
+	for(var i=0; i<faces.length; i++) {
+		face = faces[i];
+
+		x = parseInt(face.f.id.split(':')[1], 10);
+		z = parseInt(face.f.id.split(':')[2], 10);
+
+		// if (_room.map[_room.map.length-1-z][2*x] !== '.') {
+
+			res = ''+(face.conditions+10000);
+			if(parseInt(camera.x.value/params.unit - _room.position.x, 10) === x && parseInt((camera.z.value - camera.focalLength)/params.unit - _room.position.z, 10) === z) {
 				res += 'x';
 			} else {
 				res += '-';
@@ -114,4 +163,52 @@ var logFloor = function() {
 		console.log(map[j]);
 	}
 	// return map;
+};
+
+var concatWall = function(faces) {
+	var depth, depth2;
+	var res = [];
+	for(depth in faces) {
+		if(faces.hasOwnProperty(depth)) {
+			for(depth2 in faces[depth]) {
+				if (faces[depth].hasOwnProperty(depth2)) {
+					for (var i=0; i< faces[depth][depth2].length; i++){
+						res.push(faces[depth][depth2][i]);
+					}
+				}
+			}
+		}
+	}
+	return res;
+};
+
+
+var getWalls = function(_room) {
+	var _room = _room||room;
+	var faces = [];
+
+	for(var j=0; j< concatWall(rooms[i].tops).length; j++){
+		faces.push(concatWall(rooms[i].tops)[j]);
+	}
+	for(var j=0; j< concatWall(rooms[i].bottoms).length; j++){
+		faces.push(concatWall(rooms[i].bottoms)[j]);
+	}
+	for(var j=0; j< concatWall(rooms[i].lefts).length; j++){
+		faces.push(concatWall(rooms[i].lefts)[j]);
+	}
+	for(var j=0; j< concatWall(rooms[i].rights).length; j++){
+		faces.push(concatWall(rooms[i].rights)[j]);
+	}
+
+	return faces;
+};
+
+var getTargetedFace = function() {
+	var faces = getWalls();
+	for (var i=0; i< faces.length; i++) {
+		face = room.faces[i];
+		if(cursor.faceSelected(face)) {
+			console.log(face);
+		}
+	}
 }

@@ -14,6 +14,10 @@ var Point = function (parentFace, point, rotate) {
 		this.y += rotate.y;
 		this.z += rotate.z;
 	}
+
+	this.x = parseInt(this.x, 10);
+	this.y = parseInt(this.y, 10);
+	this.z = parseInt(this.z, 10);
 	
 	return this;
 };
@@ -35,31 +39,19 @@ Point.prototype.projection = function () {
 		if (this.distance > this.face.distance) {
 			this.face.distance = this.distance;
 		}
-
-		// if (p.z > -2*camera.focalLength && p.z <= -camera.focalLength) {
-		// 	p.z = -450;
-		// }
 	}
 	
 	// --- 2D projection ----
-	// this.scale = 1;
-	// this.scale = (camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value || 10000; // Me !!!
-	// var calc = ((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value)|| 10000;
-	// this.scale = calc>-params.focalLength?calc:-params.focalLength; // Me !!!
 	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
-	// this.X = (scr.width  * 0.5) + (p.x * this.scale);
-	// this.Y = (scr.height * 0.5) + (p.y * this.scale);
-	// this.X = Math.round((scr.width  * 0.5) + (p.x * this.scale));
-	// this.Y = Math.round((scr.height * 0.5) + (p.y * this.scale));
-	// Hack to Math.round
-	this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) << 0;
-	this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) << 0;
 
-	var margin = 200;
-	this.inScreen = this.X >= -margin && this.X < scr.width + margin && this.Y >= -margin && this.Y < scr.height + margin;
-	var margin2 = 600;
-	this.inScreen2 = this.X >= -margin2 && this.X < scr.width + margin2 && this.Y >= -margin2 && this.Y < scr.height + margin2;
+	// Hack to Math.round
+	this.X = parseInt(((scr.width  * 0.5) + (p.x * this.scale)), 10);
+	this.Y = parseInt(((scr.height * 0.5) + (p.y * this.scale)), 10);
+	// this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) << 0;
+	// this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) << 0;
+
 	this.p = p;
+	this.behind = this.p.z < -1.2*params.focalLength;
 
 	return true;
 
@@ -90,7 +82,7 @@ var Vector = function (p1, p2) {
 	this.x = p2.x - p1.x;
 	this.y = p2.y - p1.y;
 	this.z = p2.z - p1.z;
-}
+};
 
 Vector.prototype.draw = function(color) {
 	this.p1.projection();
@@ -103,7 +95,7 @@ Vector.prototype.draw = function(color) {
 	scr.ctx.lineWidth = 4;
 	scr.ctx.lineJoin = "round";
 	scr.ctx.stroke();
-}
+};
 
 var OrthonormalSet = function() {
 	this.origin = new Point(null, [0,0,0]);
@@ -114,14 +106,14 @@ var OrthonormalSet = function() {
 	this.vx = new Vector(this.origin,this.px);
 	this.vy = new Vector(this.origin,this.py);
 	this.vz = new Vector(this.origin,this.pz);
-}
+};
 
 OrthonormalSet.prototype.draw = function () {
 	this.origin.highlight('green');
 	this.vx.draw('yellow');
-	this.px.highlight('yellow')
+	this.px.highlight('yellow');
 	this.vy.draw('orange');
 	this.py.highlight('orange');
 	this.vz.draw('red');
 	this.pz.highlight('red');
-}
+};

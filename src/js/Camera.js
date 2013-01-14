@@ -4,7 +4,7 @@ var Camera = function(_x, _z) {
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
 	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.height/2 - params.humanHeight);
 	this.z = new ge1doot.tweens.Add(100, _z, _z);
-	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/20, Math.PI/8);
+	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/36, Math.PI/8);
 	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
@@ -18,7 +18,7 @@ var Camera = function(_x, _z) {
 	};
 
 	return this;
-}
+};
 
 Camera.prototype.isInPosition = function() {
 	var dx = this.x.target - this.x.value;
@@ -33,7 +33,7 @@ Camera.prototype.isInPosition = function() {
 	if(this.inPosition) {
 		$(scr.canvas).trigger('inPosition');
 	}
-}
+};
 
 Camera.prototype.targetToPosition = function(obj, strict) {
 	var strict = (strict!==undefined?strict:true);
@@ -62,7 +62,7 @@ Camera.prototype.targetToFace = function (face) {
 			rx: 0,
 			ry: face.ay - Math.PI/2,
 			zoom: 1
-		}, false);	
+		}, false);
 	}
 
 	if (face.f.type === 'position') {
@@ -72,7 +72,7 @@ Camera.prototype.targetToFace = function (face) {
 			rx: Math.PI/20,
 			ry: face.f.ryf*Math.PI/2,
 			zoom: 1
-		}, true);	
+		}, true);
 
 	}
 
@@ -82,7 +82,7 @@ Camera.prototype.targetToFace = function (face) {
 			z: face.pc.z + this.focalLength,
 			rx: 0,
 			zoom: 1
-		}, true);	
+		}, true);
 
 	}
 

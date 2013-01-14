@@ -1,5 +1,5 @@
 var scr;
-var room;
+var room, newRoom;
 var cursor;
 var keyboard;
 var camera;
