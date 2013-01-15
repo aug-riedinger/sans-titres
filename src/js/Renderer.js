@@ -3,7 +3,7 @@ var renderer = {};
 renderer.facesMerged = function (faces, dim, color, color2) {
 	var grd;
 	var point;
-	var points = getEdges3(faces, dim);
+	var points = getEdges(faces, dim);
 
 
 	if(points.length>2) {
@@ -13,7 +13,7 @@ renderer.facesMerged = function (faces, dim, color, color2) {
 			scr.ctx.lineTo(point.X,point.Y);
 		}
 		scr.ctx.closePath();
-		if(color2 === undefined) {
+		if(SLOW || color2 === undefined) {
 			scr.ctx.fillStyle = color||'white';
 		} else {
 			grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length-1)/2, 10)].X, points[parseInt((points.length-1)/2, 10)].Y);

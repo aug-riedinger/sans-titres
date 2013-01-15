@@ -32,14 +32,24 @@ Point.prototype.projection = function () {
 		this.z - camera.z.value
 		);
 
+	this.p = p;
+	if(this.face.f.type === 'floor') {
+	this.behind = this.p.z <= -2*params.focalLength;
+		
+	} else {
+		this.behind = this.p.z <= -1*params.focalLength;
+	}
+	// this.behind = this.p.z < -1.5*params.focalLength;
+
 	// ---- distance to the camera ----
-	var z = Math.abs(p.z) + camera.focalLength;
+	var z = p.z + camera.focalLength;
 	this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
 	if (this.face) {
 		if (this.distance > this.face.distance) {
 			this.face.distance = this.distance;
 		}
 	}
+	
 	
 	// --- 2D projection ----
 	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
@@ -50,8 +60,6 @@ Point.prototype.projection = function () {
 	// this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) << 0;
 	// this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) << 0;
 
-	this.p = p;
-	this.behind = this.p.z < -1.2*params.focalLength;
 
 	return true;
 

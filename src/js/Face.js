@@ -273,6 +273,7 @@
 				info: artConstr.info || {},
 				iFrameHeight: artConstr.iFrameHeight,
 				iFrameWidth: artConstr.iFrameWidth,
+				artId: artConstr.id,
 				select: true
 			};
 			return new Face(f);

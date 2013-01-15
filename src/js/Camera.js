@@ -2,10 +2,11 @@
 var Camera = function(_x, _z) {
 	this.focalLength = params.focalLength;
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
-	this.y = new ge1doot.tweens.Add(100, -8*params.unit, params.height/2 - params.humanHeight);
+	this.y = new ge1doot.tweens.Add(100, -8 * params.unit, params.height / 2 - params.humanHeight);
 	this.z = new ge1doot.tweens.Add(100, _z, _z);
-	this.rx = new ge1doot.tweens.Add(100, -Math.PI/2, 0, true,- Math.PI/36, Math.PI/8);
-	this.ry = new ge1doot.tweens.Add(100, 0,0, true);
+	// this.rx = new ge1doot.tweens.Add(100, 0, 0, true, -Math.PI / 36, Math.PI / 8);
+	this.rx = new ge1doot.tweens.Add(100, -Math.PI / 2, 0, true, -Math.PI / 36, Math.PI / 8);
+	this.ry = new ge1doot.tweens.Add(100, 0, 0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
 	this.position = 0;
@@ -28,7 +29,7 @@ Camera.prototype.isInPosition = function() {
 	var dry = this.ry.target - this.ry.value;
 	var dzoom = this.zoom.target - this.zoom.value;
 
-	this.inPosition = (dx*dx + dy*dy + dz*dz < 10);
+	this.inPosition = (dx * dx + dy * dy + dz * dz < 10);
 
 	if(this.inPosition) {
 		$(scr.canvas).trigger('inPosition');
@@ -36,47 +37,46 @@ Camera.prototype.isInPosition = function() {
 };
 
 Camera.prototype.targetToPosition = function(obj, strict) {
-	var strict = (strict!==undefined?strict:true);
-	var x = (obj.x!==undefined?obj.x:this.x.target);
-	var y = (obj.y!==undefined?obj.y:this.y.target);
-	var z = (obj.z!==undefined?obj.z:this.z.target) ;
+	var strict = (strict !== undefined ? strict : true);
+	var x = (obj.x !== undefined ? obj.x : this.x.target);
+	var y = (obj.y !== undefined ? obj.y : this.y.target);
+	var z = (obj.z !== undefined ? obj.z : this.z.target);
 
-	if(room.inside(x,z, true) || !strict) {
+	if(room.inside(x, z, true) || !strict) {
 		this.x.setTarget(x);
 		this.z.setTarget(z);
 	}
 	this.y.setTarget(y);
-	this.rx.setTarget((obj.rx!==undefined?obj.rx:this.rx.target));
-	this.ry.setTarget((obj.ry!==undefined?obj.ry:this.ry.target));
+	this.rx.setTarget((obj.rx !== undefined ? obj.rx : this.rx.target));
+	this.ry.setTarget((obj.ry !== undefined ? obj.ry : this.ry.target));
 
-	this.zoom.setTarget((obj.zoom!==undefined?obj.zoom:this.zoom.target));
+	this.zoom.setTarget((obj.zoom !== undefined ? obj.zoom : this.zoom.target));
 };
 
 
-Camera.prototype.targetToFace = function (face) {
+Camera.prototype.targetToFace = function(face) {
 
-	if (face.f.type === 'door') {
+	if(face.f.type === 'door') {
 		return this.targetToPosition({
 			x: face.pc.x,
 			z: face.pc.z + this.focalLength,
 			rx: 0,
-			ry: face.ay - Math.PI/2,
+			ry: face.ay - Math.PI / 2,
 			zoom: 1
 		}, false);
 	}
 
-	if (face.f.type === 'position') {
+	if(face.f.type === 'position') {
 		return this.targetToPosition({
 			x: face.pc.x,
 			z: face.pc.z + this.focalLength,
-			rx: Math.PI/20,
-			ry: face.f.ryf*Math.PI/2,
+			rx: Math.PI/16,
+			ry: face.f.ryf * Math.PI / 2,
 			zoom: 1
 		}, true);
-
 	}
 
-	if (face.f.type === 'floor') {
+	if(face.f.type === 'floor') {
 		return this.targetToPosition({
 			x: face.pc.x,
 			z: face.pc.z + this.focalLength,
@@ -90,68 +90,67 @@ Camera.prototype.targetToFace = function (face) {
 
 Camera.prototype.up = function(strength) {
 	this.targetToPosition({
-		x : this.x.target + params.unit*this.trig.sinY*(strength||1),
-		z : this.z.target + params.unit*this.trig.cosY*(strength||1)
+		x: this.x.target + params.unit * this.trig.sinY * (strength || 1),
+		z: this.z.target + params.unit * this.trig.cosY * (strength || 1)
 	});
 };
 
 Camera.prototype.down = function(strength) {
 	this.targetToPosition({
-		x : this.x.target - params.unit*this.trig.sinY*(strength||1),
-		z : this.z.target - params.unit*this.trig.cosY*(strength||1)
+		x: this.x.target - params.unit * this.trig.sinY * (strength || 1),
+		z: this.z.target - params.unit * this.trig.cosY * (strength || 1)
 	});
 };
 
 Camera.prototype.lft = function(strength) {
 	this.targetToPosition({
-		x : this.x.target - params.unit*this.trig.cosY*(strength||1),
-		z : this.z.target + params.unit*this.trig.sinY*(strength||1)
+		x: this.x.target - params.unit * this.trig.cosY * (strength || 1),
+		z: this.z.target + params.unit * this.trig.sinY * (strength || 1)
 	});
 };
 
 Camera.prototype.rght = function(strength) {
 	this.targetToPosition({
-		x : this.x.target + params.unit*this.trig.cosY*(strength||1),
-		z : this.z.target - params.unit*this.trig.sinY*(strength||1)
+		x: this.x.target + params.unit * this.trig.cosY * (strength || 1),
+		z: this.z.target - params.unit * this.trig.sinY * (strength || 1)
 	});
 };
 
 Camera.prototype.left = function(strength) {
 	this.targetToPosition({
-		ry : this.ry.target + Math.PI/4*(strength||1) + 2*Math.PI
+		ry: this.ry.target + Math.PI / 4 * (strength || 1) + 2 * Math.PI
 	});
 };
 
 Camera.prototype.right = function(strength) {
 	this.targetToPosition({
-		ry : this.ry.target - Math.PI/4*(strength||1) + 2*Math.PI
+		ry: this.ry.target - Math.PI / 4 * (strength || 1) + 2 * Math.PI
 	});
 };
 
-Camera.prototype.center = function () {
-	this.x.setTarget(room.center.x*params.unit||0);
+Camera.prototype.center = function() {
+	this.x.setTarget(room.center.x * params.unit || 0);
 	// this.y.setTarget(0);
-	this.z.setTarget((room.center.z*params.unit||0) + this.focalLength);
+	this.z.setTarget((room.center.z * params.unit || 0) + this.focalLength);
 	this.zoom.setTarget(1);
 	// this.rx.setTarget(0);
 };
 
 Camera.prototype.goToPosition = function(id) {
 	this.position = id % room.positions.length;
-	this.x.setTarget(room.positions[this.position].x*params.unit||0);
+	this.x.setTarget(room.positions[this.position].x * params.unit || 0);
 	// this.y.setTarget(0);
-	this.z.setTarget((room.positions[this.position].z*params.unit||0));
+	this.z.setTarget((room.positions[this.position].z * params.unit || 0));
 	this.zoom.setTarget(1);
 	// this.rx.setTarget(0);
-
 }
 
-Camera.prototype.zoomIn = function () {
-	this.zoom.setTarget(this.zoom.target*1.25);
+Camera.prototype.zoomIn = function() {
+	this.zoom.setTarget(this.zoom.target * 1.25);
 };
 
-Camera.prototype.zoomOut = function () {
-	this.zoom.setTarget(this.zoom.target*0.8);
+Camera.prototype.zoomOut = function() {
+	this.zoom.setTarget(this.zoom.target * 0.8);
 };
 
 Camera.prototype.stop = function() {
@@ -164,29 +163,29 @@ Camera.prototype.stop = function() {
 };
 
 Camera.prototype.toggleGodView = function() {
-	if(this.y.value > -7*params.unit) {
-		this.y.setTarget(-8*params.unit);
-		this.rx.setTarget(-Math.PI/2+0.001);
+	if(this.y.value > -7 * params.unit) {
+		this.y.setTarget(-8 * params.unit);
+		this.rx.setTarget(-Math.PI / 2 + 0.001);
 		this.godView = true;
 	} else {
-		this.y.setTarget(params.height/2 - params.humanHeight);
+		this.y.setTarget(params.height / 2 - params.humanHeight);
 		this.rx.setTarget(0);
 		this.godView = false;
 	}
 	this.zoom.setTarget(1);
 };
 
-Camera.prototype.move = function () {
-
-	if (cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
-		this.rx.setValue(this.rx.value - 0.02*cursor.strengthY);
-	}
-	if (cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
-		this.ry.setValue(this.ry.value - 0.02*cursor.strengthX);
-	}
-
+Camera.prototype.move = function() {
 	// ---- easing camera position and view angle ----
 	ge1doot.tweens.iterate();
+
+	if(cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
+		this.rx.setValue(this.rx.value - 0.02 * cursor.strengthY, true);
+	}
+	if(cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
+		this.ry.setValue(this.ry.value - 0.02 * cursor.strengthX, true);
+	}
+
 	// ---- pre calculate trigo ----
 	this.trig.cosX = Math.cos(this.rx.value);
 	this.trig.sinX = Math.sin(this.rx.value);
@@ -196,12 +195,11 @@ Camera.prototype.move = function () {
 
 };
 
-Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-focalLength)
-
+Camera.prototype.rotate = function(x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-focalLength)
 	var noFocal = {
 		x: this.trig.cosY * x - this.trig.sinY * z,
 		y: this.trig.sinX * (this.trig.cosY * z + this.trig.sinY * x) + this.trig.cosX * y,
-		z: this.trig.cosX * (this.trig.cosY * z + this.trig.sinY * x) - this.trig.sinX * y			
+		z: this.trig.cosX * (this.trig.cosY * z + this.trig.sinY * x) - this.trig.sinX * y
 	}
 
 	var withFocal = {
@@ -214,6 +212,5 @@ Camera.prototype.rotate = function (x, y, z) { // 2 Versions: 1 rotating around 
 };
 
 Camera.prototype.coordinates = function() {
-	console.log('c: ('+Math.round(this.x.value/params.unit)+','+Math.round((this.z.value- this.focalLength)/params.unit)+')');
+	console.log('c: (' + Math.round(this.x.value / params.unit) + ',' + Math.round((this.z.value - this.focalLength) / params.unit) + ')');
 };
-

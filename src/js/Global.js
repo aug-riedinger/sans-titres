@@ -2,14 +2,12 @@ var scr;
 var room, newRoom;
 var cursor;
 var keyboard;
-var camera;
-// var orthoSet;
-var position = {
-	x:0,
-	z:0
-};
-var showing;
 var cursor;
+var camera;
+
+var SLOW = false;
+
+var showing;
 
 var params = {
 	unit : 1000,
@@ -24,3 +22,4 @@ var params = {
 	cursorY: 15
 };
 
+var cpt =0;

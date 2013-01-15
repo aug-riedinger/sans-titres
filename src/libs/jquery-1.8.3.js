@@ -5297,10 +5297,30 @@ if ( document.querySelectorAll ) {
 
 				// This should fail with an exception
 				// Gecko does not error, returns false instead
-				try {
-					matches.call( div, "[test!='']:sizzle" );
-					rbuggyMatches.push( "!=", pseudos );
-				} catch ( e ) {}
+				// try {
+				// 	matches.call( div, "[test!='']:sizzle" );
+				// 	rbuggyMatches.push( "!=", pseudos );
+				// } catch ( e ) {}
+
+				 try {
+				// This should fail with an exception
+				// Gecko does not error, returns false instead
+				// <orig. $jquery-1.5:>
+				// matches.call( document.documentElement, "[test!='']:sizzle" );
+				// <proposal to Ticket #7535, 2011-03-24:>
+				  if( ! html.mozMatchesSelector || document.currentScript ){
+				    matches.call( html, "[test!='']:sizzle" );
+				  }
+				//else{
+				// /*FF lt 4*/
+				//}
+
+
+				} catch( pseudoError ) {
+				    pseudoWorks = true;
+				  }
+				  // <testing only>
+				  // alert('MalformedSelectorException thrown: ' + pseudoWorks );
 			});
 
 			// rbuggyMatches always contains :active and :focus, so no need for a length check

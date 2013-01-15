@@ -99,6 +99,7 @@ body {
 	left: 0;
 	right: 0;
 	background: white;
+	border: none;
 }
 
 #audio {
