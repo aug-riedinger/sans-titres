@@ -6,7 +6,6 @@
 		var ax = f.rx * Math.PI * 0.5;
 		var ay = f.ry * Math.PI * 0.5;
 		this.visible = true;
-		this.distance = 0;
 		// ---- 3D transform ----
 		var transform = function(x, y, z, ax, ay) {
 			var tz = z * Math.cos(ay) + x * Math.sin(ay);
@@ -42,6 +41,7 @@
 
 	// ======== face projection ========
 	Face.prototype.projection = function() {
+		this.distance = 0;
 		this.conditions = 0;
 		this.visible = true;
 		this.distance = -99999;

@@ -4,13 +4,11 @@ var Camera = function(_x, _z) {
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
 	this.y = new ge1doot.tweens.Add(100, -8 * params.unit, params.height / 2 - params.humanHeight);
 	this.z = new ge1doot.tweens.Add(100, _z, _z);
-	// this.rx = new ge1doot.tweens.Add(100, 0, 0, true, -Math.PI / 36, Math.PI / 8);
 	this.rx = new ge1doot.tweens.Add(100, -Math.PI / 2, 0, true, -Math.PI / 36, Math.PI / 8);
 	this.ry = new ge1doot.tweens.Add(100, 0, 0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
 	this.inPosition = false;
 	this.position = 0;
-	this.godView = false;
 	this.trig = {
 		cosX: 1,
 		cosY: 1,
@@ -37,18 +35,18 @@ Camera.prototype.isInPosition = function() {
 };
 
 Camera.prototype.targetToPosition = function(obj, strict) {
-	var strict = (strict !== undefined ? strict : true);
+	strict = (strict !== undefined ? strict : true);
 	var x = (obj.x !== undefined ? obj.x : this.x.target);
-	var y = (obj.y !== undefined ? obj.y : this.y.target);
+	var y = (obj.y !== undefined ? obj.y : params.height / 2 - params.humanHeight);
 	var z = (obj.z !== undefined ? obj.z : this.z.target);
 
 	if(room.inside(x, z, true) || !strict) {
-		this.x.setTarget(x);
-		this.z.setTarget(z);
+		this.x.setTarget(x, strict);
+		this.z.setTarget(z, strict);
 	}
-	this.y.setTarget(y);
-	this.rx.setTarget((obj.rx !== undefined ? obj.rx : this.rx.target));
-	this.ry.setTarget((obj.ry !== undefined ? obj.ry : this.ry.target));
+	this.y.setTarget(y, strict);
+	this.rx.setTarget((obj.rx !== undefined ? obj.rx : this.rx.target), strict);
+	this.ry.setTarget((obj.ry !== undefined ? obj.ry : this.ry.target), strict);
 
 	this.zoom.setTarget((obj.zoom !== undefined ? obj.zoom : this.zoom.target));
 };
@@ -70,7 +68,7 @@ Camera.prototype.targetToFace = function(face) {
 		return this.targetToPosition({
 			x: face.pc.x,
 			z: face.pc.z + this.focalLength,
-			rx: Math.PI/16,
+			rx: Math.PI / 16,
 			ry: face.f.ryf * Math.PI / 2,
 			zoom: 1
 		}, true);
@@ -143,7 +141,7 @@ Camera.prototype.goToPosition = function(id) {
 	this.z.setTarget((room.positions[this.position].z * params.unit || 0));
 	this.zoom.setTarget(1);
 	// this.rx.setTarget(0);
-}
+};
 
 Camera.prototype.zoomIn = function() {
 	this.zoom.setTarget(this.zoom.target * 1.25);
@@ -162,17 +160,11 @@ Camera.prototype.stop = function() {
 	this.zoom.setTarget(this.zoom.value);
 };
 
-Camera.prototype.toggleGodView = function() {
-	if(this.y.value > -7 * params.unit) {
-		this.y.setTarget(-8 * params.unit);
-		this.rx.setTarget(-Math.PI / 2 + 0.001);
-		this.godView = true;
-	} else {
-		this.y.setTarget(params.height / 2 - params.humanHeight);
-		this.rx.setTarget(0);
-		this.godView = false;
-	}
-	this.zoom.setTarget(1);
+Camera.prototype.godView = function() {
+	this.targetToPosition({
+		y: -8 * params.unit,
+		rx: -Math.PI / 2 + 0.001
+	}, false);
 };
 
 Camera.prototype.move = function() {
@@ -180,10 +172,10 @@ Camera.prototype.move = function() {
 	ge1doot.tweens.iterate();
 
 	if(cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
-		this.rx.setValue(this.rx.value - 0.02 * cursor.strengthY, true);
+		this.rx.setValue(this.rx.value - 0.02 * cursor.strengthY);
 	}
 	if(cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
-		this.ry.setValue(this.ry.value - 0.02 * cursor.strengthX, true);
+		this.ry.setValue(this.ry.value - 0.02 * cursor.strengthX);
 	}
 
 	// ---- pre calculate trigo ----
@@ -200,13 +192,13 @@ Camera.prototype.rotate = function(x, y, z) { // 2 Versions: 1 rotating around (
 		x: this.trig.cosY * x - this.trig.sinY * z,
 		y: this.trig.sinX * (this.trig.cosY * z + this.trig.sinY * x) + this.trig.cosX * y,
 		z: this.trig.cosX * (this.trig.cosY * z + this.trig.sinY * x) - this.trig.sinX * y
-	}
+	};
 
 	var withFocal = {
 		x: this.trig.cosY * x - this.trig.sinY * (z + this.focalLength),
 		y: this.trig.sinX * (this.trig.cosY * (z + this.focalLength) + this.trig.sinY * x) + this.trig.cosX * y,
 		z: this.trig.cosX * (this.trig.cosY * (z + this.focalLength) + this.trig.sinY * x) - this.trig.sinX * y - this.focalLength
-	}
+	};
 
 	return withFocal;
 };

@@ -91,7 +91,7 @@ Cursor.prototype.initEvents = function() {
 	};
 
 	this.container.ondblclick = function(e) {
-		camera.toggleGodView();
+		camera.godView();
 		e.preventDefault();
 		return false;
 	};
@@ -160,23 +160,6 @@ Cursor.prototype.inFace = function() {
 	var i, j;
 	var face;
 
-	for(var j = 0; j < room.adj.length; j++) {
-		for(i = 0; i < room.adj[j].walls.length; i++) {
-			face = room.adj[j].walls[i];
-			if(this.faceSelected(face)) {
-				console.log(face);
-			}
-		}
-	}
-
-	for(i = 0; i < room.walls.length; i++) {
-		face = room.walls[i];
-		if(this.faceSelected(face)) {
-			console.log(face);
-		}
-	}
-
-
 	for(i = 0; i < room.arts.length; i++) {
 		face = room.arts[i];
 		if(this.faceSelected(face)) {
@@ -215,7 +198,6 @@ Cursor.prototype.inFace = function() {
 };
 
 Cursor.prototype.faceSelected = function(face) {
-	// return (face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3)));
 	return(face.f.select && face.visible && (this.inTriangle(face.p0, face.p1, face.p2) || this.inTriangle(face.p0, face.p2, face.p3)));
 };
 

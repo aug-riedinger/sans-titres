@@ -22,14 +22,14 @@ var logMyFace = function(_id) {
 	console.log(face.p1.X +' - '+ face.p1.Y +' - '+ face.p1.scale);
 	console.log(face.p2.X +' - '+ face.p2.Y +' - '+ face.p2.scale);
 	console.log(face.p3.X +' - '+ face.p3.Y +' - '+ face.p3.scale);
-}
+};
 
 var logFaces = function() {
 	for (var i in faces) {
 		console.log( i +'- id:' + faces[i].f.id + ' distance:'+ faces[i].distance);
 		console.log(faces[i].pc);
 	}
-}
+};
 
 var logPosition = function() {
 	console.log('x: '+camera.x.value);

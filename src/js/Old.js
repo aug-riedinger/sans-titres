@@ -532,3 +532,299 @@ var getEdges2 = function(faces, dim) {
 	}
 	return points;
 };
+
+Room.prototype.getWall = function(_x, _z, type) {
+	var ar;
+	var res = [];
+	for(var i = 0; i < this.walls.length; i++) {
+		ar = this.walls[i].f.id.split(':');
+		if(parseInt(ar[1], 10) === _x && parseInt(ar[2], 10) === _z) {
+			res[res.length] = this.walls[i];
+		}
+	}
+	if(res.length === 1 || (!type && res.length > 0)) {
+		return res[0];
+	} else {
+		for(var j = 0; j < res.length; j++) {
+			if(type === res[j].f.id.split(':')[3]) {
+				return res[i];
+			}
+		}
+	}
+	console.log('Face Not Found');
+	return null;
+};
+
+
+Room.prototype.makeArt = function(id, potentialWalls) {
+	var art, wall;
+	for(var i = 0; i < this.artsConstr.length; i++) {
+		art = this.artsConstr[i];
+		if(art.id === id) {
+
+			if(potentialWalls.length === 1) {
+				wall = potentialWalls[0];
+			} else {
+				for(var j = 0; j < potentialWalls.length; j++) {
+					if(potentialWalls[j].f.type === art.side) {
+						wall = potentialWalls[j];
+					}
+				}
+			}
+
+			if(wall !== undefined) {
+				if(art.type === 'txt') {
+					return this.arts.push(faceMaker.txt(this, wall, art.width, art.height, art.thumb, art.src));
+				}
+				if(art.type === 'image') {
+					return this.arts.push(faceMaker.image(this, wall, art.width, art.height, art.thumb, art.src));
+				}
+
+			}
+
+		}
+	}
+	console.log('ArtId not found');
+	return false;
+};
+
+Room.prototype.makeDoor = function(id, potentialWalls) {
+	var door;
+	for(var i = 0; i < this.doorsConstr.length; i++) {
+		door = this.doorsConstr[i];
+		if(door.id === id) {
+			if(potentialWalls.length === 1 || door.side === undefined) {
+				wall = potentialWalls[0];
+			} else {
+				for(var j = 0; j < potentialWalls.length; j++) {
+					if(potentialWalls[j].f.type === door.side) {
+						wall = potentialWalls[j];
+					}
+				}
+			}
+			if(wall !== undefined) {
+				wall.doorTo = door.to;
+				door.face = faceMaker.door(this, wall, door.to);
+				return this.doors.push(door);
+			}
+		}
+	}
+	console.log('DoorId not found');
+	return false;
+};
+
+Room.prototype.wallMaker = function(charType, _x, _z) {
+	var wall;
+	var potentialWalls = [];
+	if(this.wallE[charType].top) {
+		if(!this.tops.hasOwnProperty(_z)) {
+			this.tops[_z] = [];
+		}
+		wall = faceMaker.top(this, _x, _z);
+		this.tops[_z].push(wall);
+		this.walls.push(wall);
+		potentialWalls.push(wall);
+	}
+	if(this.wallE[charType].bottom) {
+		if(!this.bottoms.hasOwnProperty(_z)) {
+			this.bottoms[_z] = [];
+		}
+		wall = faceMaker.bottom(this, _x, _z);
+		this.bottoms[_z].push(wall);
+		this.walls.push(wall);
+		potentialWalls.push(wall);
+	}
+	if(this.wallE[charType].left) {
+		if(!this.lefts.hasOwnProperty(_x)) {
+			this.lefts[_x] = [];
+		}
+		wall = faceMaker.left(this, _x, _z);
+		this.lefts[_x].push(wall);
+		this.walls.push(wall);
+		potentialWalls.push(wall);
+	}
+	if(this.wallE[charType].right) {
+		if(!this.rights.hasOwnProperty(_x)) {
+			this.rights[_x] = [];
+		}
+		wall = faceMaker.right(this, _x, _z);
+		this.rights[_x].push(wall);
+		this.walls.push(wall);
+		potentialWalls.push(wall);
+	}
+	if(this.wallE[charType].ceiling) {
+		if(!this.ceilings.hasOwnProperty(0)) {
+			this.ceilings[0] = [];
+		}
+		wall = faceMaker.ceiling(this, _x, _z);
+		this.ceilings[0].push(wall);
+	}
+	if(this.wallE[charType].floor) {
+		if(!this.floors.hasOwnProperty(0)) {
+			this.floors[0] = [];
+		}
+		wall = faceMaker.floor(this, _x, _z);
+		this.floors[0].push(wall);
+	}
+
+	return potentialWalls;
+};
+
+
+
+
+// "#---------+.",
+// "|.,.,.,.,.!.",
+// "|0,.,.,.,.!.",
+// "%_________¤1"
+Room.prototype.wallE = {
+	'#': { // Top Left
+		top: true,
+		bottom: false,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'+': { // Top Right
+		top: true,
+		bottom: false,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
+	},
+	'%': { // Bottom Left
+		top: false,
+		bottom: true,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'¤': { // Bottom Right
+		top: false,
+		bottom: true,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
+	},
+	'-': { // Top
+		top: true,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'_': { // Bottom
+		top: false,
+		bottom: true,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'|': { // Left
+		top: false,
+		bottom: false,
+		left: true,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'!': { // Right
+		top: false,
+		bottom: false,
+		left: false,
+		right: true,
+		ceiling: true,
+		floor: true
+	},
+	',': { // Inside
+		top: false,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: true,
+		floor: true
+	},
+	'.': { // Outside
+		top: false,
+		bottom: false,
+		left: false,
+		right: false,
+		ceiling: false,
+		floor: false
+	}
+};
+
+Point.prototype.highlight = function(color, size) {
+
+	var distH = Math.sqrt((this.x - camera.x.value) * (this.x - camera.x.value) + (this.z - camera.z.value) * (this.z - camera.z.value));
+	var h = Math.abs(this.y - camera.y.value);
+
+	this.projection();
+
+	scr.ctx.save();
+	scr.ctx.beginPath();
+	scr.ctx.translate(this.X, this.Y);
+	scr.ctx.scale(1, Math.sin(camera.rx.value + Math.asin(distH / this.distance)));
+	scr.ctx.arc(0, 0, 25 * this.distance / distH, 0, 2 * Math.PI, false);
+	scr.ctx.restore();
+
+	scr.ctx.lineWidth = size || 5;
+	scr.ctx.strokeStyle = color || 'rgb(0,0,255)';
+	scr.ctx.stroke();
+};
+
+var Vector = function(p1, p2) {
+	this.p1 = p1;
+	this.p2 = p2;
+	this.x = p2.x - p1.x;
+	this.y = p2.y - p1.y;
+	this.z = p2.z - p1.z;
+};
+
+Vector.prototype.draw = function(color) {
+	this.p1.projection();
+	this.p2.projection();
+
+	scr.ctx.beginPath();
+	scr.ctx.moveTo(this.p1.X, this.p1.Y);
+	scr.ctx.lineTo(this.p2.X, this.p2.Y);
+	scr.ctx.strokeStyle = (color || 'rgb(128,128,128)');
+	scr.ctx.lineWidth = 4;
+	scr.ctx.lineJoin = "round";
+	scr.ctx.stroke();
+};
+
+var OrthonormalSet = function() {
+	this.origin = new Point(null, [0, 0, 0]);
+	this.px = new Point(null, [200, 0, 0]);
+	this.py = new Point(null, [0, 200, 0]);
+	this.pz = new Point(null, [0, 0, 200]);
+
+	this.vx = new Vector(this.origin, this.px);
+	this.vy = new Vector(this.origin, this.py);
+	this.vz = new Vector(this.origin, this.pz);
+};
+
+OrthonormalSet.prototype.draw = function() {
+	this.origin.highlight('green');
+	this.vx.draw('yellow');
+	this.px.highlight('yellow');
+	this.vy.draw('orange');
+	this.py.highlight('orange');
+	this.vz.draw('red');
+	this.pz.highlight('red');
+};
+
+Sound.prototype.increaseVolume = function() {
+	for(var i = 0; i < 10; i++) {
+		setTimeout($.proxy(function() {
+			this.audio.volume += 0.1;
+		}, this), 100 * i);
+	}
+};

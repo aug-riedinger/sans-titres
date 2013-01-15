@@ -6,13 +6,13 @@ window.requestAnimFrame = (function() {
 	};
 })();
 
-var canvasToImage = function (canvas) {
+var canvasToImage = function(canvas) {
 	var image = new Image();
 	image.src = canvas.toDataURL("image/png");
 	return image;
 };
 
-var wrapText = function (context, text, x, y, maxWidth, lineHeight) {
+var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
 	var words = text.split(' ');
 	var line = '';
 
@@ -38,7 +38,7 @@ var getParameters = function() {
 	for(var i = 0; i < tab.length; i++) {
 		var subtab = tab[i].split('=');
 		obj[subtab[0]] = subtab[1];
-	};
+	}
 	return obj;
 };
 
@@ -53,7 +53,7 @@ var reCenter = function(data, x, z) {
 };
 
 var setPosition = function(data, x, z) {
-	if(x != undefined || z != undefined) {
+	if(x !== undefined || z !== undefined) {
 		position.x = x || 0;
 		position.z = z || 0;
 	} else {
@@ -69,7 +69,7 @@ var setPosition = function(data, x, z) {
 		position.z = Math.round(bariz / data.cubes.length);
 	}
 	return true;
-}
+};
 
 var showTxt = function(face) {
 	var txt;
@@ -87,7 +87,7 @@ var showTxt = function(face) {
 	$('#artClearView').one('click', function(eventName) {
 		remImg();
 	});
-}
+};
 
 var showImg = function(face) {
 	var img;
@@ -148,8 +148,8 @@ var drawCanvas = function(data) {
 var barycenter = function(points) {
 	var point;
 	var x = 0,
-	y = 0,
-	z = 0;
+		y = 0,
+		z = 0;
 	if(!points.length) {
 		points = [points];
 	}
@@ -171,6 +171,7 @@ var getEdges = function(faces, dim) {
 	var face, point;
 	var cx, cy, cz, cpt;
 	var ux, uy, uz, vx, vy, vz, cosTheta, sinTheta, theta;
+	var maxDist = 0;
 
 	cx = cy = cz = 0;
 	cpt = 0;
@@ -200,15 +201,20 @@ var getEdges = function(faces, dim) {
 		}
 	}
 
-	cx = cx / cpt||0;
-	cy = cy / cpt||0;
-	cz = cz / cpt||0;
+	cx = cx / cpt || 0;
+	cy = cy / cpt || 0;
+	cz = cz / cpt || 0;
 
 	points = remMany(points, equalsCoord, 4);
 
 	if(points.length > 0) {
 		point = points[0];
 		for(k = 0; k < points.length; k++) {
+
+			if(maxDist < points[k].distance) {
+				maxDist = points[k].distance;
+			}
+
 			ux = point.x - cx;
 			uy = point.y - cy;
 			uz = point.z - cz;
@@ -230,8 +236,8 @@ var getEdges = function(faces, dim) {
 				cosTheta = (ux * vx + uy * vy);
 				sinTheta = (ux * vy - uy * vx);
 			}
-			// console.log()
-			theta = Math.atan(sinTheta / cosTheta)||0;
+
+			theta = Math.atan(sinTheta / cosTheta) || 0;
 			if(cosTheta >= 0) {
 				points[k].theta = theta;
 			} else {
@@ -250,7 +256,10 @@ var getEdges = function(faces, dim) {
 		});
 
 	}
-	return points;
+	return {
+		distance: maxDist,
+		points: points
+	};
 };
 
 var remMany = function(array, eqFn, many) {
@@ -259,11 +268,11 @@ var remMany = function(array, eqFn, many) {
 	var res = [];
 	var present;
 
-	for(i=0; i<array.length; i++) {
+	for(i = 0; i < array.length; i++) {
 		present = false;
-		for(j=0; j<res.length; j++) {
+		for(j = 0; j < res.length; j++) {
 			if(eqFn(array[i], res[j])) {
-				cpt[j] = cpt[j]+1;
+				cpt[j] = cpt[j] + 1;
 				present = true;
 			}
 		}
@@ -273,7 +282,7 @@ var remMany = function(array, eqFn, many) {
 		}
 	}
 
-	for(i=0; i<res.length; i++) {
+	for(i = 0; i < res.length; i++) {
 		if(cpt[i] >= many) {
 			res.splice(i, 1);
 			cpt.splice(i, 1);
@@ -310,17 +319,17 @@ var getCenter = function(faces) {
 		}
 	}
 
-	cx = cx / cpt||0;
-	cy = cy / cpt||0;
-	cz = cz / cpt||0;
+	cx = cx / cpt || 0;
+	cy = cy / cpt || 0;
+	cz = cz / cpt || 0;
 
 	console.log(cx);
 	console.log(cy);
 	console.log(cz);
 
-	var x = parseInt(cx/params.unit - room.position.x, 10);
-	var z = parseInt(cz/params.unit - room.position.z, 10);
-	console.log(room.map[room.map.length -1 - z][2*x]);
+	var x = parseInt(cx / params.unit - room.position.x, 10);
+	var z = parseInt(cz / params.unit - room.position.z, 10);
+	console.log(room.map[room.map.length - 1 - z][2 * x]);
 	console.log(x);
 	console.log(z);
 

@@ -23,11 +23,6 @@ var Room = function(id, mainRoom) {
 Room.prototype.load = function() {
 	$.getJSON('/rooms/room' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
-		// if(this.mainRoom) {
-		// 	if(camera) {
-		// 		camera.targetToFace(getFloor(parseInt(camera.x.value / params.unit - this.position.x, 10), parseInt( (camera.z.value - camera.focalLength) / params.unit - this.position.z, 10)));
-		// 	}
-		// }
 		$(scr.container).trigger('loaded');
 	}, this));
 	return this;
@@ -44,11 +39,8 @@ Room.prototype.init = function(constr) {
 	this.soundsConstr = constr.sounds || [];
 
 	this.readMap();
-	// this.faces = this.tops.concat(this.bottoms, this.lefts, this.rights, this.ceilings, this.floors);
 	if(this.mainRoom) {
-		// this.makeArts(constr.arts);
 		this.loadAdj();
-		// this.makePositions();
 		this.makeSounds();
 	}
 	this.ready = true;
@@ -58,6 +50,8 @@ Room.prototype.init = function(constr) {
 Room.prototype.render = function() {
 	var i, j, depth, depth2;
 	var face, door;
+	var toRender = [];
+	var points;
 
 	if(this.ready) {
 
@@ -67,7 +61,10 @@ Room.prototype.render = function() {
 
 
 		for(i = 0; i < this.floors.length; i++) {
-			renderer.facesMerged(this.floors[i], 'y', this.color || '#80827d');
+			points = getEdges(this.floors[i], 'y');
+			points.type = 'floor';
+			points.color = this.color || '#80827d';
+			renderer.facesMerged(points);
 
 			for (j=0; j < this.floors[i].length; j++ ) {
 				face = this.floors[i][j];
@@ -92,14 +89,18 @@ Room.prototype.render = function() {
 				if(face.visible) {
 					face.render();
 				}
-			}	
+			}
 		}
 
 		for(depth in this.tops) {
 			if(this.tops.hasOwnProperty(depth)) {
 				for(depth2 in this.tops[depth]) {
 					if(this.tops[depth].hasOwnProperty(depth2)) {
-						renderer.facesMerged(this.tops[depth][depth2], 'z', this.color || '#f9f9f9', (this.mainRoom && !this.color ?'#D9D9D9': undefined));
+						points = getEdges(this.tops[depth][depth2], 'z');
+						points.type = 'wall';
+						points.color = this.color || '#E9E9E9';
+						points.color2 = (this.mainRoom && !this.color ?'#F9F9F9': undefined);
+						toRender.push(points);
 					}
 				}
 			}
@@ -108,7 +109,11 @@ Room.prototype.render = function() {
 			if(this.bottoms.hasOwnProperty(depth)) {
 				for(depth2 in this.bottoms[depth]) {
 					if(this.bottoms[depth].hasOwnProperty(depth2)) {
-						renderer.facesMerged(this.bottoms[depth][depth2], 'z', this.color || '#f9f9f9',(this.mainRoom && !this.color ?'#D9D9D9': undefined));
+						points = getEdges(this.bottoms[depth][depth2], 'z');
+						points.type = 'wall';
+						points.color = this.color || '#E9E9E9';
+						points.color2 = (this.mainRoom && !this.color ?'#F9F9F9': undefined);
+						toRender.push(points);
 					}
 				}
 			}
@@ -117,7 +122,11 @@ Room.prototype.render = function() {
 			if(this.lefts.hasOwnProperty(depth)) {
 				for(depth2 in this.lefts[depth]) {
 					if(this.lefts[depth].hasOwnProperty(depth2)) {
-						renderer.facesMerged(this.lefts[depth][depth2], 'x', this.color || '#D9D9D9',(this.mainRoom && !this.color ?'#f9f9f9': undefined));
+						points = getEdges(this.lefts[depth][depth2], 'x');
+						points.type = 'wall';
+						points.color = this.color || '#D9D9D9';
+						points.color2 = (this.mainRoom && !this.color ?'#F9F9F9': undefined);
+						toRender.push(points);
 					}
 				}
 			}
@@ -126,7 +135,11 @@ Room.prototype.render = function() {
 			if(this.rights.hasOwnProperty(depth)) {
 				for(depth2 in this.rights[depth]) {
 					if(this.rights[depth].hasOwnProperty(depth2)) {
-						renderer.facesMerged(this.rights[depth][depth2], 'x', this.color || '#D9D9D9',(this.mainRoom && !this.color ?'#f9f9f9': undefined));
+						points = getEdges(this.rights[depth][depth2], 'x');
+						points.type = 'wall';
+						points.color = this.color || '#D9D9D9';
+						points.color2 = (this.mainRoom && !this.color ?'#F9F9F9': undefined);
+						toRender.push(points);
 					}
 				}
 			}
@@ -137,10 +150,28 @@ Room.prototype.render = function() {
 				face = this.arts[i];
 				face.projection();
 				if(face.visible) {
-					face.render();
+					toRender.push({
+						type: 'art',
+						distance: this.arts[i].distance,
+						art: this.arts[i]
+					});
 				}
 			}
 		}
+
+		toRender.sort(function(points1, points2) {
+			return points2.distance - points1.distance;
+		});
+
+		for(i=0; i< toRender.length; i++) {
+			if(toRender[i].type === 'wall') {
+				renderer.facesMerged(toRender[i]);
+			}
+			if(toRender[i].type === 'art') {
+				toRender[i].art.render();
+			}
+		}
+
 	}
 
 };

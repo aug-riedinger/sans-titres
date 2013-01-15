@@ -4,7 +4,6 @@
 // last update: Jan 12, 2012
 // Licensed under CC-BY - do not remove this notice
 ////////////////////////////////////////////////////////////
-
 var ge1doot = ge1doot || {};
 
 ge1doot.tweens = {
@@ -48,8 +47,8 @@ ge1doot.tweens.Add = function(steps, initValue, initValueTarget, isAngle, minVal
 };
 
 // ---- set target ----
-ge1doot.tweens.Add.prototype.setTarget = function(target, speedMod, strict) {
-	this.speedMod = (speedMod) ? speedMod : 1;
+ge1doot.tweens.Add.prototype.setTarget = function(target, strict) {
+	this.speedMod = 1;
 	strict = (strict !== undefined ? strict : true);
 	this.target = target;
 	// ---- normalize PI ----
@@ -57,12 +56,17 @@ ge1doot.tweens.Add.prototype.setTarget = function(target, speedMod, strict) {
 		this.target = this.target % (2 * Math.PI);
 		this.normalizePI();
 	}
+	this.locked = false;
 	if(strict) {
 		if(this.minValue && target < this.minValue) {
 			this.target = this.minValue;
 		}
 		if(this.maxValue && target > this.maxValue) {
 			this.target = this.maxValue;
+		}
+	} else {
+		if(this.minValue && target < this.minValue || this.maxValue && target > this.maxValue) {
+			this.locked = true;
 		}
 	}
 	// ---- set target ----
@@ -93,20 +97,19 @@ ge1doot.tweens.Add.prototype.ease = function() {
 	}
 };
 
-ge1doot.tweens.Add.prototype.setValue = function(value, strict) {
-	strict = (strict !== undefined ? strict : true);
+ge1doot.tweens.Add.prototype.setValue = function(value) {
 
 	if(this.isAngle) {
 		this.normalizePI();
 	}
-	this.running = false;
-	if(strict) {
+	// this.running = false;
+	if(!this.locked) {
 		if(this.minValue && value < this.minValue) {
 			return this.target = this.value = this.minValue;
 		}
 		if(this.maxValue && value > this.maxValue) {
 			return this.target = this.value = this.maxValue;
 		}
+		return this.target = this.value = value;
 	}
-	return this.target = this.value = value;
 };

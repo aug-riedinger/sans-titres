@@ -4,11 +4,10 @@ var Sound = function(constr) {
 	if(constr.play === 'true') {
 		this.audio.volume = 0.8;
 		this.audio.play();
-		// this.increaseVolume();
 	}
 
 	this.activateControls();
-}
+};
 
 Sound.prototype.activateControls = function() {
 	if($('#audio').css('display') === 'none') {
@@ -16,35 +15,28 @@ Sound.prototype.activateControls = function() {
 	}
 
 	$('#s_mute').click($.proxy(function(e) {
-		this.formerVolume = this.audio.volume; 
+		this.formerVolume = this.audio.volume;
 		this.audio.volume = 0;
 	}, this));
 	$('#s_lower').click($.proxy(function(e) {
 		if(this.audio.volume === 0) {
 			this.audio.volume = this.formerVolume || 0;
 		} else {
-		this.audio.volume -= 0.1; 
+			this.audio.volume -= 0.1;
 		}
 	}, this));
 	$('#s_higher').click($.proxy(function(e) {
 		if(this.audio.volume === 0) {
 			this.audio.volume = this.formerVolume || 1;
 		} else {
-		this.audio.volume += 0.1; 
-		}	}, this));
-	
-}
-
-Sound.prototype.increaseVolume = function() {
-	for(var i=0; i < 10; i++) {
-		setTimeout($.proxy(function() {
 			this.audio.volume += 0.1;
-		}, this), 100*i);
-	}
-}
+		}
+	}, this));
+
+};
 
 Sound.prototype.remove = function() {
 	this.audio.pause();
 	$('#audio').fadeOut(1000);
 	// this.removeChild(audio);
-}
+};
