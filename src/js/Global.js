@@ -18,8 +18,8 @@ var params = {
 	floorColor: '#80827d',
 	wallDist: 0,
 	artDist: 500,
-	cursorX: 8,
-	cursorY: 15
+	cursorX: 6,
+	cursorY: 8
 };
 
 var cpt = 100;

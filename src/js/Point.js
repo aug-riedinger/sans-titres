@@ -28,7 +28,7 @@ Point.prototype.projection = function() {
 	this.x - camera.x.value, this.y - camera.y.value, this.z - camera.z.value);
 
 	this.p = p;
-	if(this.face.f.type === 'floor') {
+	if(this.face && this.face.f.type === 'floor') {
 		this.behind = this.p.z <= -2 * params.focalLength;
 
 	} else {

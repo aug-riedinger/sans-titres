@@ -31,9 +31,13 @@ var init = function() {
 		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
 		if(parameters.art !== undefined) {
-			for(i = 0; i < room.positions.length; i++) {
-				if(room.positions[i].f.art.f.artId === parameters.art) {
-					camera.targetToFace(room.positions[i]);
+			var i, j;
+			for(i = 0; i < room.floors.length; i++) {
+				for (j=0; j< room.floors[i].length; j++) {
+					console.log(room.floors[i][j]);
+						if(room.floors[i][j].f.art && room.floors[i][j].f.art.f.artId === parameters.art) {
+							camera.targetToFace(room.floors[i][j]);
+						}
 				}
 			}
 		}

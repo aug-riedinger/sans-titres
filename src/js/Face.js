@@ -24,6 +24,11 @@
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform(w, h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w, h, 0, ax, ay));
 
+		this.c0 = new Point(null, [f.x, f.y, f.z], transform(-w-10, -h-10, 0, ax, ay));
+		this.c1 = new Point(null, [f.x, f.y, f.z], transform(w+10, -h-10, 0, ax, ay));
+		this.c2 = new Point(null, [f.x, f.y, f.z], transform(w+10, h+10, 0, ax, ay));
+		this.c3 = new Point(null, [f.x, f.y, f.z], transform(-w-10, h+10, 0, ax, ay));
+
 		this.points = [this.p0, this.p1, this.p2, this.p3];
 
 		this.pv = this.makePv();
@@ -155,37 +160,41 @@
 
 	Face.prototype.render = function() {
 		if(this.f.type === 'art') {
-			this.img.render(this.p0, this.p1, this.p2, this.p3);
+			if(cursor.aimedFace && this.f.id === cursor.aimedFace.f.id) {
+				this.img.render(this.p0, this.p1, this.p2, this.p3, 'black');
+			} else {
+				this.img.render(this.p0, this.p1, this.p2, this.p3, 'white');
+			}
 		}
-		if(this.f.type === 'position') {
-			scr.ctx.beginPath();
-			if(this.f.ryf === 0) {
-				scr.ctx.lineTo(this.p2.X, this.p2.Y);
-				scr.ctx.lineTo(this.p3.X, this.p3.Y);
-				scr.ctx.lineTo(this.pc.X, this.pc.Y);
-			}
-			if(this.f.ryf === 1) {
-				scr.ctx.lineTo(this.p1.X, this.p1.Y);
-				scr.ctx.lineTo(this.pc.X, this.pc.Y);
-				scr.ctx.lineTo(this.p2.X, this.p2.Y);
-			}
-			if(this.f.ryf === -1) {
-				scr.ctx.lineTo(this.p0.X, this.p0.Y);
-				scr.ctx.lineTo(this.pc.X, this.pc.Y);
-				scr.ctx.lineTo(this.p3.X, this.p3.Y);
-			}
-			if(this.f.ryf === -2) {
-				scr.ctx.lineTo(this.p0.X, this.p0.Y);
-				scr.ctx.lineTo(this.p1.X, this.p1.Y);
-				scr.ctx.lineTo(this.pc.X, this.pc.Y);
-			}
-			// scr.ctx.lineTo(this.p2.X,this.p2.Y);
-			// scr.ctx.lineTo(this.p3.X,this.p3.Y);
-			scr.ctx.closePath();
-			scr.ctx.lineWidth = 1;
-			scr.ctx.fillStyle = '#70726d';
-			scr.ctx.fill();
-		}
+		// if(this.f.type === 'position') {
+		// 	scr.ctx.beginPath();
+		// 	if(this.f.ryf === 0) {
+		// 		scr.ctx.lineTo(this.p2.X, this.p2.Y);
+		// 		scr.ctx.lineTo(this.p3.X, this.p3.Y);
+		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
+		// 	}
+		// 	if(this.f.ryf === 1) {
+		// 		scr.ctx.lineTo(this.p1.X, this.p1.Y);
+		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
+		// 		scr.ctx.lineTo(this.p2.X, this.p2.Y);
+		// 	}
+		// 	if(this.f.ryf === -1) {
+		// 		scr.ctx.lineTo(this.p0.X, this.p0.Y);
+		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
+		// 		scr.ctx.lineTo(this.p3.X, this.p3.Y);
+		// 	}
+		// 	if(this.f.ryf === -2) {
+		// 		scr.ctx.lineTo(this.p0.X, this.p0.Y);
+		// 		scr.ctx.lineTo(this.p1.X, this.p1.Y);
+		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
+		// 	}
+		// 	// scr.ctx.lineTo(this.p2.X,this.p2.Y);
+		// 	// scr.ctx.lineTo(this.p3.X,this.p3.Y);
+		// 	scr.ctx.closePath();
+		// 	scr.ctx.lineWidth = 1;
+		// 	scr.ctx.fillStyle = '#70726d';
+		// 	scr.ctx.fill();
+		// }
 	};
 
 	var faceMaker = {

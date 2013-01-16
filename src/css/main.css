@@ -27,10 +27,12 @@ body {
 	width: 100%;
 	height: 100%;
 	background: #F9F9F9;
+	cursor: url('../images/hash-compact.png'), normal;
 	/*background: black;*/
 }
 
 #screen.see canvas {
+	/*cursor: url('../images/hash-large.png'), pointer;*/
 	cursor: none;
 }
 
@@ -38,34 +40,44 @@ body {
 	cursor: url('../images/goroom.png'), pointer;
 }
 #screen.go canvas {
-	cursor: url('../images/go.png'), pointer;
+	cursor: url('../images/hash-normal.png'), pointer;
+	/*cursor: url('../images/diese2.png'), pointer;*/
 }
 #screen.gonsee canvas {
-	cursor: url('../images/gonsee.png'), pointer;
+	cursor: url('../images/hash-normal.png'), pointer;
+	/*cursor: url('../images/gonsee.png'), pointer;*/
 }
 #screen.top canvas {
-	cursor: url('../images/top.png'), pointer;
+	cursor: url('../images/hash-top.png'), pointer;
+	/*cursor: url('../images/top.png'), pointer;*/
 }
 #screen.bottom canvas {
-	cursor: url('../images/bottom.png'), pointer;
+	cursor: url('../images/hash-bottom.png'), pointer;
+	/*cursor: url('../images/bottom.png'), pointer;*/
 }
 #screen.left canvas {
-	cursor: url('../images/left.png'), pointer;
+	cursor: url('../images/hash-left.png'), pointer;
+	/*cursor: url('../images/left.png'), pointer;*/
 }
 #screen.right canvas {
-	cursor: url('../images/right.png'), pointer;
+	cursor: url('../images/hash-right.png'), pointer;
+	/*cursor: url('../images/right.png'), pointer;*/
 }
 #screen.top-right canvas {
-	cursor: url('../images/top-right.png'), pointer;
+	cursor: url('../images/hash-top-right.png'), pointer;
+	/*cursor: url('../images/top-right.png'), pointer;*/
 }
 #screen.bottom-right canvas {
-	cursor: url('../images/bottom-right.png'), pointer;
+	cursor: url('../images/hash-bottom-right.png'), pointer;
+	/*cursor: url('../images/bottom-right.png'), pointer;*/
 }
 #screen.top-left canvas {
-	cursor: url('../images/top-left.png'), pointer;
+	cursor: url('../images/hash-top-left.png'), pointer;
+	/*cursor: url('../images/top-left.png'), pointer;*/
 }
 #screen.bottom-left canvas {
-	cursor: url('../images/bottom-left.png'), pointer;
+	cursor: url('../images/hash-bottom-left.png'), pointer;
+	/*cursor: url('../images/bottom-left.png'), pointer;*/
 }
 
 #artClearView {
@@ -76,6 +88,7 @@ body {
 	left: 0;
 	background: rgba(0,0,0,0.8); 
 	/*display: none;*/
+	cursor: none;
 }
 
 .art {

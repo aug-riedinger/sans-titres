@@ -240,9 +240,9 @@ Cursor.prototype.setCursor = function() {
 		if(this.aimedFace.f.type === 'door') {
 			return this.container.className = 'goroom';
 		}
-		if(this.aimedFace.f.type === 'position') {
-			return this.container.className = 'gonsee';
-		}
+		// if(this.aimedFace.f.type === 'position') {
+		// 	return this.container.className = 'gonsee';
+		// }
 		if(this.aimedFace.f.type === 'floor') {
 			return this.container.className = 'go';
 		}

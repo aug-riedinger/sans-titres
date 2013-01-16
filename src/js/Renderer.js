@@ -106,7 +106,7 @@ renderer.Image.prototype.loading = function() {
 };
 
 // ==== draw3D prototype ====
-renderer.Image.prototype.render = function(p0, p1, p2, p3) {
+renderer.Image.prototype.render = function(p0, p1, p2, p3, color) {
 	var array = [p0, p1, p2, p3];
 	// ---- loading ----
 	if(this.isLoading) {
@@ -183,7 +183,7 @@ renderer.Image.prototype.render = function(p0, p1, p2, p3) {
 		}
 		this.ctx.closePath();
 		this.ctx.lineWidth = 1;
-		this.ctx.strokeStyle = 'white';
+		this.ctx.strokeStyle = color||'white';
 		this.ctx.stroke();
 
 	}

@@ -72,16 +72,33 @@ Room.prototype.render = function() {
 					if(face.f.id === cursor.aimedFace.f.id) {
 						scr.ctx.beginPath();
 						scr.ctx.lineTo(face.p0.X, face.p0.Y);
+						if(!cursor.aimedFace.f.art) {
+							scr.ctx.lineTo((face.p0.X*5+face.p1.X)/6, (face.p0.Y*5+face.p1.Y)/6);
+							scr.ctx.moveTo((face.p0.X+face.p1.X*5)/6, (face.p0.Y+face.p1.Y*5)/6);
+						}
 						scr.ctx.lineTo(face.p1.X, face.p1.Y);
+						if(!cursor.aimedFace.f.art) {
+							scr.ctx.lineTo((face.p1.X*5+face.p2.X)/6, (face.p1.Y*5+face.p2.Y)/6);
+							scr.ctx.moveTo((face.p1.X+face.p2.X*5)/6, (face.p1.Y+face.p2.Y*5)/6);
+						}
 						scr.ctx.lineTo(face.p2.X, face.p2.Y);
+						if(!cursor.aimedFace.f.art) {
+							scr.ctx.lineTo((face.p2.X*5+face.p3.X)/6, (face.p2.Y*5+face.p3.Y)/6);
+							scr.ctx.moveTo((face.p2.X+face.p3.X*5)/6, (face.p2.Y+face.p3.Y*5)/6);
+						}
 						scr.ctx.lineTo(face.p3.X, face.p3.Y);
+						if(!cursor.aimedFace.f.art) {
+							scr.ctx.lineTo((face.p3.X*5+face.p0.X)/6, (face.p3.Y*5+face.p0.Y)/6);
+							scr.ctx.moveTo((face.p3.X+face.p0.X*5)/6, (face.p3.Y+face.p0.Y*5)/6);
+						}
+						scr.ctx.lineTo(face.p0.X, face.p0.Y);
 						scr.ctx.closePath();
 						if(cursor.aimedFace.f.art) {
-						scr.ctx.fillStyle = '#70726D';
-						scr.ctx.fill();
+							scr.ctx.fillStyle = '#70726D';
+							scr.ctx.fill();
 						} else {
-						scr.ctx.strokeStyle = '#70726D';
-						scr.ctx.stroke();
+							scr.ctx.strokeStyle = '#70726D';
+							scr.ctx.stroke();
 						}
 					}
 
@@ -176,7 +193,28 @@ Room.prototype.render = function() {
 				renderer.facesMerged(toRender[i]);
 			}
 			if(toRender[i].type === 'art') {
-				toRender[i].art.render();
+				face = toRender[i].art;
+				face.render();
+				// if(cursor.aimedFace && face.f.id === cursor.aimedFace.f.id) {
+				// 	scr.ctx.beginPath();
+				// 	scr.ctx.moveTo(face.p0.X, face.p0.Y);
+				// 	scr.ctx.moveTo((face.p0.X*5+face.p1.X)/6, (face.p0.Y*5+face.p1.Y)/6);
+				// 	scr.ctx.lineTo((face.p0.X+face.p1.X*5)/6, (face.p0.Y+face.p1.Y*5)/6);
+				// 	scr.ctx.moveTo(face.p1.X, face.p1.Y);
+				// 	scr.ctx.moveTo((face.p1.X*5+face.p2.X)/6, (face.p1.Y*5+face.p2.Y)/6);
+				// 	scr.ctx.lineTo((face.p1.X+face.p2.X*5)/6, (face.p1.Y+face.p2.Y*5)/6);
+				// 	scr.ctx.moveTo(face.p2.X, face.p2.Y);
+				// 	scr.ctx.moveTo((face.p2.X*5+face.p3.X)/6, (face.p2.Y*5+face.p3.Y)/6);
+				// 	scr.ctx.lineTo((face.p2.X+face.p3.X*5)/6, (face.p2.Y+face.p3.Y*5)/6);
+				// 	scr.ctx.moveTo(face.p3.X, face.p3.Y);
+				// 	scr.ctx.moveTo((face.p3.X*5+face.p0.X)/6, (face.p3.Y*5+face.p0.Y)/6);
+				// 	scr.ctx.lineTo((face.p3.X+face.p0.X*5)/6, (face.p3.Y+face.p0.Y*5)/6);
+				// 	scr.ctx.moveTo(face.p0.X, face.p0.Y);
+				// 	scr.ctx.closePath();
+				// 	scr.ctx.strokeStyle = 'black';
+				// 	scr.ctx.lineWidth = 1;
+				// 	scr.ctx.stroke();
+				// }
 			}
 		}
 
