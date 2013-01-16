@@ -21,7 +21,7 @@ var Room = function(id, mainRoom) {
 };
 
 Room.prototype.load = function() {
-	$.getJSON('/rooms/room' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('/numero0/room' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));
@@ -55,21 +55,24 @@ Room.prototype.render = function() {
 
 	if(this.ready) {
 
+
 		if(this.mainRoom) {
+			renderer.renderFloor();
 			this.renderAdj();
 		}
 
 
 		for(i = 0; i < this.floors.length; i++) {
-			points = getEdges(this.floors[i], 'y');
-			points.type = 'floor';
-			points.color = this.color || '#80827d';
-			renderer.facesMerged(points);
+			// points = getEdges(this.floors[i], 'y');
+			// points.type = 'floor';
+			// points.color = this.color || '#80827d';
+			// renderer.facesMerged(points);
 
 			if(cursor.aimedFace) {
 				for(j = 0; j < this.floors[i].length; j++) {
 					face = this.floors[i][j];
 					if(face.f.id === cursor.aimedFace.f.id) {
+						face.projection();
 						scr.ctx.beginPath();
 						scr.ctx.lineTo(face.p0.X, face.p0.Y);
 						if(!cursor.aimedFace.f.art) {

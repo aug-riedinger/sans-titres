@@ -1,5 +1,20 @@
 var renderer = {};
 
+renderer.renderFloor = function() {
+	var y = camera.trig.sinX * (100*params.unit + camera.focalLength);
+	var z = camera.trig.cosX * (100*params.unit + camera.focalLength) - camera.focalLength;
+
+	var scale = Math.abs((camera.focalLength / (z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
+	var horizonLine = parseInt(((scr.height * 0.5) + (y * scale)), 10);
+
+	if(horizonLine<scr.height) {
+		scr.ctx.beginPath();
+		scr.ctx.rect(0, horizonLine, scr.width, scr.height - horizonLine);
+		scr.ctx.fillStyle = '#80827d';
+		scr.ctx.fill();
+	}
+};
+
 renderer.facesMerged = function(pointList) {
 	var grd;
 	var point;
@@ -17,7 +32,8 @@ renderer.facesMerged = function(pointList) {
 		if(SLOW || color2 === undefined) {
 			scr.ctx.fillStyle = color || 'white';
 		} else {
-			grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
+			grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
+			// grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
 			grd.addColorStop(0, color);
 			grd.addColorStop(1, color2);
 			scr.ctx.fillStyle = grd;

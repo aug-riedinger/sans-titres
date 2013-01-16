@@ -59,7 +59,7 @@ Camera.prototype.targetToFace = function(face) {
 			x: face.pv.x,
 			z: face.pv.z + this.focalLength,
 			rx: 0,
-			ry: face.ay - Math.PI / 2,
+			// ry: face.ay - Math.PI / 2,
 			zoom: 1
 		}, false);
 	}
