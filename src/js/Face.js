@@ -17,13 +17,16 @@
 			};
 		};
 		// ---- center point ----
-		this.pc = new Point(this, [f.x, f.y, f.z], transform(0, 0, 0, ax, ay));
+		this.pc = new Point(this, [f.x, f.y, f.z]);
 		// ---- quad points ----
 		this.p0 = new Point(this, [f.x, f.y, f.z], transform(-w, -h, 0, ax, ay));
 		this.p1 = new Point(this, [f.x, f.y, f.z], transform(w, -h, 0, ax, ay));
-		// this.p12 = new Point(this, [f.x, f.y, f.z], transform( w, -h, 0, ax, ay));
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform(w, h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w, h, 0, ax, ay));
+
+		this.points = [this.p0, this.p1, this.p2, this.p3];
+
+		this.pv = this.makePv();
 
 		// ---- target angle ----
 		var r = transform(ax, ay, 0, ax, ay, 0);
@@ -38,6 +41,44 @@
 		return this;
 	};
 
+	Face.prototype.makePv = function() {
+		if(this.f.adj) {
+
+			var res = [];
+			var found;
+			for (i=0; i<this.points.length; i++) {
+				found = false;
+				for (j=0; j<this.f.adj.length; j++){
+					for (k=0; k<this.f.adj[j].points.length; k++) {
+						if(equalsCoord(this.points[i], this.f.adj[j].points[k])) {
+							found = true;
+						}
+					}
+				}
+				if(!found) {
+					res.push(this.points[i]);
+				}
+			}
+
+			var pvx, pvy, pvz;
+			pvx=0;
+			pvy=0;
+			pvz=0;
+			for (i=0; i<res.length; i++) {
+				pvx+=res[i].x;
+				pvy+=res[i].y;
+				pvz+=res[i].z;
+			}
+			pvx = pvx/res.length;
+			pvy = pvy/res.length;
+			pvz = pvz/res.length;
+
+			this.res = res;
+			return new Point(null, [pvx, pvy, pvz]);
+		} else {
+			return this.pc;
+		}
+	};
 
 	// ======== face projection ========
 	Face.prototype.projection = function() {
@@ -223,7 +264,7 @@
 			};
 			return new Face(f);
 		},
-		'floor': function(_room, _x, _z) {
+		'floor': function(_room, _x, _z, adj, art) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':floor',
 				type: 'floor',
@@ -234,6 +275,8 @@
 				ry: 0,
 				w: params.unit,
 				h: params.unit,
+				adj: adj,
+				art: art,
 				select: true
 			};
 			return new Face(f);

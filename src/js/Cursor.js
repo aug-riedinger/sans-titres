@@ -57,31 +57,35 @@ Cursor.prototype.initEvents = function() {
 					for(var i = 0; i < room.sounds.length; i++) {
 						room.sounds[i].remove();
 					}
-					newRoom = new Room(this.going, true);
-					newRoom.load();
 					history.pushState({
 						goToRoom: this.going
 					}, 'Sans-titres, Salle ' + this.going, '#!room=' + this.going);
+					newRoom = new Room(this.going, true);
+					newRoom.load();
 					this.going = null;
 				}, that));
 			}
 
-			if(that.aimedFace.f.type === 'position') {
+			// if(that.aimedFace.f.type === 'position') {
+			// }
+			if(that.aimedFace.f.type === 'floor') {
+				if(that.aimedFace.f.art) {
 				camera.targetToFace(that.aimedFace);
 				history.pushState({
 					goToArt: that.aimedFace.f.art.f.artId
 				}, 'Sans-titres, Salle ' + room.id + ' Oeuvre' + that.aimedFace.f.art.f.artId, '#!room=' + room.id + '&art=' + that.aimedFace.f.art.f.artId);
-				$('#artTitle').html(that.aimedFace.f.info.title || 'Inconnu');
-				$('#artAuthor').html(that.aimedFace.f.info.author || 'Inconnu');
-				$('#artCategory').html(that.aimedFace.f.info.category || 'Inconnu');
+				$('#artTitle').html(that.aimedFace.f.art.f.info.title || 'Inconnu');
+				$('#artAuthor').html(that.aimedFace.f.art.f.info.author || 'Inconnu');
+				$('#artCategory').html(that.aimedFace.f.art.f.info.category || 'Inconnu');
 				$(scr.canvas).one('inPosition', function() {
 					$('#artInfo').animate({
 						top: 0
 					}, 1000);
 				});
-			}
-			if(that.aimedFace.f.type === 'floor') {
+				} else {
 				camera.targetToFace(that.aimedFace);
+					
+				}
 			}
 
 		}
@@ -175,13 +179,13 @@ Cursor.prototype.inFace = function() {
 		}
 	}
 
-	for(i = 0; i < room.positions.length; i++) {
-		face = room.positions[i];
-		face.projection();
-		if(this.faceSelected(face)) {
-			return face;
-		}
-	}
+	// for(i = 0; i < room.positions.length; i++) {
+	// 	face = room.positions[i];
+	// 	face.projection();
+	// 	if(this.faceSelected(face)) {
+	// 		return face;
+	// 	}
+	// }
 
 	for(i = 0; i < room.floors.length; i++) {
 		for(j = 0; j < room.floors[i].length; j++) {
@@ -243,7 +247,6 @@ Cursor.prototype.setCursor = function() {
 			return this.container.className = 'go';
 		}
 	}
-
 
 	return this.container.className = '';
 };

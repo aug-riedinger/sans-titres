@@ -56,31 +56,31 @@ Camera.prototype.targetToFace = function(face) {
 
 	if(face.f.type === 'door') {
 		return this.targetToPosition({
-			x: face.pc.x,
-			z: face.pc.z + this.focalLength,
+			x: face.pv.x,
+			z: face.pv.z + this.focalLength,
 			rx: 0,
 			ry: face.ay - Math.PI / 2,
 			zoom: 1
 		}, false);
 	}
 
-	if(face.f.type === 'position') {
-		return this.targetToPosition({
-			x: face.pc.x,
-			z: face.pc.z + this.focalLength,
-			rx: Math.PI / 16,
-			ry: face.f.ryf * Math.PI / 2,
-			zoom: 1
-		}, true);
-	}
-
 	if(face.f.type === 'floor') {
-		return this.targetToPosition({
-			x: face.pc.x,
-			z: face.pc.z + this.focalLength,
-			rx: 0,
-			zoom: 1
-		}, true);
+		if(face.f.art) {
+			return this.targetToPosition({
+				x: face.pv.x,
+				z: face.pv.z + this.focalLength,
+				rx: Math.PI / 16,
+				ry: face.f.art.f.ry * Math.PI / 2,
+				zoom: 1
+			}, true);
+		} else {
+			return this.targetToPosition({
+				x: face.pv.x,
+				z: face.pv.z + this.focalLength,
+				rx: 0,
+				zoom: 1
+			}, true);
+		}
 
 	}
 

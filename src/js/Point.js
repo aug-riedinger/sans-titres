@@ -14,9 +14,9 @@ var Point = function(parentFace, point, rotate) {
 		this.y += rotate.y;
 		this.z += rotate.z;
 	}
-	this.x = parseInt(this.x, 10);
-	this.y = parseInt(this.y, 10);
-	this.z = parseInt(this.z, 10);
+	this.x = Math.round(this.x);
+	this.y = Math.round(this.y);
+	this.z = Math.round(this.z);
 
 	return this;
 };
