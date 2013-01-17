@@ -36,7 +36,8 @@ Point.prototype.projection = function() {
 	}
 	// ---- distance to the camera ----
 	var z = p.z + camera.focalLength;
-	this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
+	this.distance = Math.sqrt(p.x * p.x + z * z);
+	// this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
 	if(this.face) {
 		if(this.distance > this.face.distance) {
 			this.face.distance = this.distance;

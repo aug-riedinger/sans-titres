@@ -28,8 +28,8 @@ var enteredRoom = function(roomId) {
 			newRoom = rooms[0];
 			for(i = 0; i < newRoom.adj.length; i++) {
 				room = null;
-				for(j = 0; j < rooms.length; j++) {
-					if(rooms[j].id === newRoom.adj[i].id) {
+				for(j = 1; j < rooms.length; j++) {
+					if(rooms[j].id === newRoom.adj[i]) {
 						// Found in rooms
 						room = rooms[j];
 						break;
@@ -41,13 +41,10 @@ var enteredRoom = function(roomId) {
 				}
 
 			}
-			for(j = 0; j < rooms.length; j++) {
+			for(j = 1; j < rooms.length; j++) {
 				room = null;
-				if(newRoom.id === rooms[j].id) {
-					room = newRoom;
-				}
 				for(i = 0; i < newRoom.adj.length; i++) {
-					if(rooms[j].id === newRoom.adj[i].id) {
+					if(rooms[j].id === newRoom.adj[i]) {
 						// Found in adj
 						room = rooms[j];
 						break;
