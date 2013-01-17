@@ -196,40 +196,45 @@ Cursor.prototype.faceSelected = function(face) {
 
 Cursor.prototype.setCursor = function() {
 	if(this.strengthY < 0 && this.strengthX < 0) {
-		return this.container.className = 'top-left';
+		return this.changeClass('top-left');
 	}
 	if(this.strengthY < 0 && this.strengthX > 0) {
-		return this.container.className = 'top-right';
+		return this.changeClass('top-right');
 	}
 	if(this.strengthY > 0 && this.strengthX < 0) {
-		return this.container.className = 'bottom-left';
+		return this.changeClass('bottom-left');
 	}
 	if(this.strengthY > 0 && this.strengthX > 0) {
-		return this.container.className = 'bottom-right';
+		return this.changeClass('bottom-right');
 	}
 
 	if(this.strengthY < 0) {
-		return this.container.className = 'top';
+		return this.changeClass('top');
 	}
 	if(this.strengthY > 0) {
-		return this.container.className = 'bottom';
+		return this.changeClass('bottom');
 	}
 
 	if(this.strengthX > 0) {
-		return this.container.className = 'right';
+		return this.changeClass('right');
 	}
 	if(this.strengthX < 0) {
-		return this.container.className = 'left';
+		return this.changeClass('left');
 	}
 
 	if(this.aimedFace) {
 		if(this.aimedFace.f.type === 'art') {
-			return this.container.className = 'see';
+			return this.changeClass('see');
 		}
 		if(this.aimedFace.f.type === 'floor') {
-			return this.container.className = 'go';
+			return this.changeClass('go');
 		}
 	}
-
-	return this.container.className = '';
+	return this.changeClass('');
 };
+
+Cursor.prototype.changeClass = function(class_name) {
+	if(this.container.className !== class_name) {
+		return this.container.className = class_name;
+	}
+}

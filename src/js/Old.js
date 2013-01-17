@@ -910,3 +910,20 @@ Room.prototype.inside = function(_x, _z, big) {
 
 	return(true && this.map[this.map.length - (z + 1)] && this.map[this.map.length - (z + 1)][2 * x] && this.map[this.map.length - (z + 1)][2 * x] != '.');
 };
+
+Camera.prototype.center = function() {
+	this.x.setTarget(room.center.x * params.unit || 0);
+	// this.y.setTarget(0);
+	this.z.setTarget((room.center.z * params.unit || 0) + this.focalLength);
+	this.zoom.setTarget(1);
+	// this.rx.setTarget(0);
+};
+
+Camera.prototype.goToPosition = function(id) {
+	this.position = id % room.positions.length;
+	this.x.setTarget(room.positions[this.position].x * params.unit || 0);
+	// this.y.setTarget(0);
+	this.z.setTarget((room.positions[this.position].z * params.unit || 0));
+	this.zoom.setTarget(1);
+	// this.rx.setTarget(0);
+};

@@ -36,7 +36,7 @@ Room.prototype.init = function(constr) {
 
 	this.readMap();
 	this.ready = true;
-	rooms.push(this);
+	rooms[rooms.length] = this;
 	return this;
 };
 
@@ -44,6 +44,7 @@ Room.prototype.getElementsToRender = function() {
 	var i, j, depth, depth2;
 	var face;
 	var toRender = [];
+	var cptToRender = 0;
 	var points;
 
 	if(this.ready) {
@@ -52,11 +53,12 @@ Room.prototype.getElementsToRender = function() {
 			if(this.tops.hasOwnProperty(depth)) {
 				for(depth2 in this.tops[depth]) {
 					if(this.tops[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.tops[depth][depth2], 'z');
+						points = getEdges2(this.tops[depth][depth2], 'z');
 						points.type = 'wall';
 						points.color = this.color || '#E9E9E9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender.push(points);
+						toRender[cptToRender] = points;
+						cptToRender +=1;
 					}
 				}
 			}
@@ -65,11 +67,12 @@ Room.prototype.getElementsToRender = function() {
 			if(this.bottoms.hasOwnProperty(depth)) {
 				for(depth2 in this.bottoms[depth]) {
 					if(this.bottoms[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.bottoms[depth][depth2], 'z');
+						points = getEdges2(this.bottoms[depth][depth2], 'z');
 						points.type = 'wall';
 						points.color = this.color || '#E9E9E9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender.push(points);
+						toRender[cptToRender] = points;
+						cptToRender +=1;
 					}
 				}
 			}
@@ -78,11 +81,12 @@ Room.prototype.getElementsToRender = function() {
 			if(this.lefts.hasOwnProperty(depth)) {
 				for(depth2 in this.lefts[depth]) {
 					if(this.lefts[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.lefts[depth][depth2], 'x');
+						points = getEdges2(this.lefts[depth][depth2], 'x');
 						points.type = 'wall';
 						points.color = this.color || '#D9D9D9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender.push(points);
+						toRender[cptToRender] = points;
+						cptToRender +=1;
 					}
 				}
 			}
@@ -91,11 +95,12 @@ Room.prototype.getElementsToRender = function() {
 			if(this.rights.hasOwnProperty(depth)) {
 				for(depth2 in this.rights[depth]) {
 					if(this.rights[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.rights[depth][depth2], 'x');
+						points = getEdges2(this.rights[depth][depth2], 'x');
 						points.type = 'wall';
 						points.color = this.color || '#D9D9D9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender.push(points);
+						toRender[cptToRender] = points;
+						cptToRender +=1;
 					}
 				}
 			}
@@ -105,11 +110,12 @@ Room.prototype.getElementsToRender = function() {
 			face = this.arts[i];
 			face.projection();
 			if(face.visible) {
-				toRender.push({
+				toRender[cptToRender] = {
 					type: 'art',
 					distance: this.arts[i].distance,
 					art: this.arts[i]
-				});
+				};
+				cptToRender +=1;
 			}
 		}
 

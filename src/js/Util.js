@@ -6,6 +6,34 @@ window.requestAnimFrame = (function() {
 	};
 })();
 
+var insertSortTheta = function (arr) {
+	for (var i = 1; i < arr.length; i++) {
+		var tmp = arr[i],
+		j = i;
+		while (arr[j - 1] && arr[j - 1].theta > tmp.theta) {
+			arr[j] = arr[j - 1];
+			--j;
+		}
+		arr[j] = tmp;
+	}
+
+	return arr;
+};
+
+var insertSortDistance = function (arr) {
+	for (var i = 1; i < arr.length; i++) {
+		var tmp = arr[i],
+		j = i;
+		while (arr[j - 1] && arr[j - 1].distance < tmp.distance) {
+			arr[j] = arr[j - 1];
+			--j;
+		}
+		arr[j] = tmp;
+	}
+
+	return arr;
+};
+
 var canvasToImage = function(canvas) {
 	var image = new Image();
 	image.src = canvas.toDataURL("image/png");
@@ -119,8 +147,8 @@ var drawCanvas = function(data) {
 var barycenter = function(points) {
 	var point;
 	var x = 0,
-		y = 0,
-		z = 0;
+	y = 0,
+	z = 0;
 	if(!points.length) {
 		points = [points];
 	}
@@ -135,10 +163,61 @@ var barycenter = function(points) {
 
 };
 
+var getEdges = function(faces) {
 
-var getEdges = function(faces, dim) {
+	if(faces.length === 0) {
+		return {
+			distance: -99999,
+			points: []
+		};
+	}
+
+	var i, j;
+	var face;
+	var point;
+	var points;
+	var minXminY, minXmaxY, maxXmaxY, maxXminY;
+	minXminY = minXmaxY = maxXmaxY = maxXminY = faces[0].p0;
+	var maxDist = faces[0].distance;
+	for(i=0; i<faces.length; i++) {
+		face = faces[i];
+		face.projection();
+		if(face.visible) {
+
+			if(face.distance > maxDist) {
+				maxDist = face.distance;
+			}
+
+			for(j=0; j<face.points.length; j++) {
+				point = face.points[j];
+				if(!point.behind) {
+					if(point.x < minXminY.x && point.y < minXminY.y) {
+						minXminY = point;
+					}
+					if(point.x < minXmaxY.x && point.y > minXmaxY.y) {
+						minXmaxY = point;
+					}
+					if(point.x > maxXmaxY.x && point.y < maxXmaxY.y) {
+						maxXmaxY = point;
+					}
+					if(point.x > maxXminY.x && point.y > maxXminY.y) {
+						maxXminY = point;
+					}
+				}
+			}
+		}
+	}
+	return {
+		distance: maxDist,
+		points: [minXminY, minXmaxY, maxXmaxY, maxXminY]
+	};
+};
+
+
+var getEdges2 = function(faces, dim) {
 	var i, j, k;
 	var points = [];
+	var cptPoints = 0;
 	var face, point;
 	var cx, cy, cz, cpt;
 	var ux, uy, uz, vx, vy, vz, cosTheta, sinTheta, theta;
@@ -158,16 +237,20 @@ var getEdges = function(faces, dim) {
 			cpt++;
 
 			if(!face.p0.behind) {
-				points.push(face.p0);
+				points[cptPoints] = face.p0;
+				cptPoints +=1;
 			}
 			if(!face.p1.behind) {
-				points.push(face.p1);
+				points[cptPoints] = face.p1;
+				cptPoints +=1;
 			}
 			if(!face.p2.behind) {
-				points.push(face.p2);
+				points[cptPoints] = face.p2;
+				cptPoints +=1;
 			}
 			if(!face.p3.behind) {
-				points.push(face.p3);
+				points[cptPoints] = face.p3;
+				cptPoints +=1;
 			}
 		}
 	}
@@ -217,20 +300,18 @@ var getEdges = function(faces, dim) {
 
 			points[k].cosTheta = cosTheta;
 			points[k].sinTheta = sinTheta;
-			// points[k].cx = cx;
-			// points[k].cy = cy;
-			// points[k].cz = cz;
 		}
 
-		points.sort(function(p0, p1) {
-			return p0.theta - p1.theta;
-		});
+		points = insertSortTheta(points);
+		// points.sort(function(p0, p1) {
+		// 	return p0.theta - p1.theta;
+		// });
 
-	}
-	return {
-		distance: maxDist,
-		points: points
-	};
+}
+return {
+	distance: maxDist,
+	points: points
+};
 };
 
 var remMany = function(array, eqFn, many) {

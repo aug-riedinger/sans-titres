@@ -7,8 +7,6 @@ var Camera = function(_x, _z) {
 	this.rx = new ge1doot.tweens.Add(100, -Math.PI / 2, 0, true, -Math.PI / 36, Math.PI / 8);
 	this.ry = new ge1doot.tweens.Add(100, 0, 0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
-	this.inPosition = false;
-	this.position = 0;
 	this.trig = {
 		cosX: 1,
 		cosY: 1,
@@ -27,9 +25,9 @@ Camera.prototype.isInPosition = function() {
 	var dry = this.ry.target - this.ry.value;
 	var dzoom = this.zoom.target - this.zoom.value;
 
-	this.inPosition = (dx * dx + dy * dy + dz * dz < 10);
+	var inPosition = (dx * dx + dy * dy + dz * dz < 10);
 
-	if(this.inPosition) {
+	if(inPosition) {
 		$(scr.canvas).trigger('inPosition');
 	}
 };
@@ -51,7 +49,6 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 
 
 Camera.prototype.targetToFace = function(face) {
-
 
 	if(face.f.type === 'floor') {
 		if(face.f.art) {
@@ -115,22 +112,6 @@ Camera.prototype.right = function(strength) {
 	});
 };
 
-Camera.prototype.center = function() {
-	this.x.setTarget(room.center.x * params.unit || 0);
-	// this.y.setTarget(0);
-	this.z.setTarget((room.center.z * params.unit || 0) + this.focalLength);
-	this.zoom.setTarget(1);
-	// this.rx.setTarget(0);
-};
-
-Camera.prototype.goToPosition = function(id) {
-	this.position = id % room.positions.length;
-	this.x.setTarget(room.positions[this.position].x * params.unit || 0);
-	// this.y.setTarget(0);
-	this.z.setTarget((room.positions[this.position].z * params.unit || 0));
-	this.zoom.setTarget(1);
-	// this.rx.setTarget(0);
-};
 
 Camera.prototype.zoomIn = function() {
 	this.zoom.setTarget(this.zoom.target * 1.25);
@@ -163,7 +144,6 @@ Camera.prototype.move = function() {
 	if(cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
 		this.rx.setValue(this.rx.value - 0.02 * cursor.strengthY);
 	}
-	// if(cursor.strengthX !== 0) {
 	if(cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
 		this.ry.setValue(this.ry.value - 0.02 * cursor.strengthX);
 	}
@@ -173,24 +153,17 @@ Camera.prototype.move = function() {
 	this.trig.sinX = Math.sin(this.rx.value);
 	this.trig.cosY = Math.cos(this.ry.value);
 	this.trig.sinY = -Math.sin(this.ry.value);
+
 	this.isInPosition();
 
 };
 
-Camera.prototype.rotate = function(x, y, z) { // 2 Versions: 1 rotating around (0,0,0), 1 rotating around (0,0,-focalLength)
-	var noFocal = {
-		x: this.trig.cosY * x - this.trig.sinY * z,
-		y: this.trig.sinX * (this.trig.cosY * z + this.trig.sinY * x) + this.trig.cosX * y,
-		z: this.trig.cosX * (this.trig.cosY * z + this.trig.sinY * x) - this.trig.sinX * y
-	};
-
-	var withFocal = {
+Camera.prototype.rotate = function(x, y, z) {
+	return {
 		x: this.trig.cosY * x - this.trig.sinY * (z + this.focalLength),
 		y: this.trig.sinX * (this.trig.cosY * (z + this.focalLength) + this.trig.sinY * x) + this.trig.cosX * y,
 		z: this.trig.cosX * (this.trig.cosY * (z + this.focalLength) + this.trig.sinY * x) - this.trig.sinX * y - this.focalLength
 	};
-
-	return withFocal;
 };
 
 Camera.prototype.coordinates = function() {

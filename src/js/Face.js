@@ -24,11 +24,6 @@
 		this.p2 = new Point(this, [f.x, f.y, f.z], transform(w, h, 0, ax, ay));
 		this.p3 = new Point(this, [f.x, f.y, f.z], transform(-w, h, 0, ax, ay));
 
-		this.c0 = new Point(null, [f.x, f.y, f.z], transform(-w-10, -h-10, 0, ax, ay));
-		this.c1 = new Point(null, [f.x, f.y, f.z], transform(w+10, -h-10, 0, ax, ay));
-		this.c2 = new Point(null, [f.x, f.y, f.z], transform(w+10, h+10, 0, ax, ay));
-		this.c3 = new Point(null, [f.x, f.y, f.z], transform(-w-10, h+10, 0, ax, ay));
-
 		this.points = [this.p0, this.p1, this.p2, this.p3];
 
 		this.pv = this.makePv();
@@ -95,49 +90,54 @@
 		this.visible = true;
 		this.distance = -99999;
 		// ---- points projection ----
-		this.pc.projection(); // optional
+		// this.pc.projection(); // optional
 		this.p0.projection();
 		this.p1.projection();
 		this.p2.projection();
 		this.p3.projection();
 
-		// Remove invisible faces;
-
-		if((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - (this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) > 0) {
-			// this.visible = false;
-			// this.distance = -99999;
-			this.conditions += 1;
-			if((this.p3.Y - this.p2.Y) * (this.p1.X - this.p2.X) - (this.p3.X - this.p2.X) * (this.p1.Y - this.p2.Y) > 0){
-				this.visible = false;
-				this.distance = -99999;
-				this.conditions += 2;
-			}
+		if (this.forceVisible) {
+			return this.visible = true;
 		}
 
+		// Remove invisible faces;
 
 		if(this.p0.behind && this.p1.behind && this.p2.behind && this.p3.behind) {
 			this.visible = false;
 			this.distance = -99999;
 			this.conditions += 10;
+			return;
 		}
 
-		if(this.p0.behind || this.p1.behind || this.p2.behind || this.p3.behind) {
+		// if((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - (this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) > 0) {
 			// this.visible = false;
 			// this.distance = -99999;
-			this.conditions += 20;
-		}
+			// this.conditions += 1;
+			if((this.p3.Y - this.p2.Y) * (this.p1.X - this.p2.X) - (this.p3.X - this.p2.X) * (this.p1.Y - this.p2.Y) > 0){
+				this.visible = false;
+				this.distance = -99999;
+				this.conditions += 2;
+				return;
+			}
+		// }
 
-		if(!(
-			((this.p1.Y - this.p0.Y) / (this.p1.X - this.p0.X) -
-				(this.p2.Y - this.p0.Y) / (this.p2.X - this.p0.X) < 0) ^
-			(this.p0.X <= this.p1.X == this.p0.X > this.p2.X)
-			)) {
-			// this.visible = false;
-			// this.distance = -99999;
-			// this.conditions += 40;
-		}
 
-		this.visible = (this.forceVisible !== undefined ? this.forceVisible : this.visible);
+		// if(this.p0.behind || this.p1.behind || this.p2.behind || this.p3.behind) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;
+		// 	this.conditions += 20;
+		// }
+
+		// if(!(
+		// 	((this.p1.Y - this.p0.Y) / (this.p1.X - this.p0.X) -
+		// 		(this.p2.Y - this.p0.Y) / (this.p2.X - this.p0.X) < 0) ^
+		// 	(this.p0.X <= this.p1.X == this.p0.X > this.p2.X)
+		// 	)) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;
+		// 	this.conditions += 40;
+		// }
+
 
 	};
 

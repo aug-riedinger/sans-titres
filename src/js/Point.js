@@ -25,15 +25,12 @@ var Point = function(parentFace, point, rotate) {
 Point.prototype.projection = function() {
 	// ---- 3D rotation ----
 	var p = camera.rotate(
-	this.x - camera.x.value, this.y - camera.y.value, this.z - camera.z.value);
+		this.x - camera.x.value, this.y - camera.y.value, this.z - camera.z.value);
 
-	this.p = p;
-	if(this.face && this.face.f.type === 'floor') {
-		this.behind = this.p.z <= -2 * params.focalLength;
+	// this.p = p;
 
-	} else {
-		this.behind = this.p.z <= -1 * params.focalLength;
-	}
+	this.behind = p.z <= -1 * params.focalLength;
+
 	// ---- distance to the camera ----
 	var z = p.z + camera.focalLength;
 	this.distance = Math.sqrt(p.x * p.x + z * z);
@@ -44,12 +41,13 @@ Point.prototype.projection = function() {
 		}
 	}
 
-
 	// --- 2D projection ----
 	this.scale = Math.abs((camera.focalLength / (p.z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
-	this.X = parseInt(((scr.width * 0.5) + (p.x * this.scale)), 10);
-	this.Y = parseInt(((scr.height * 0.5) + (p.y * this.scale)), 10);
+	// this.X = parseInt(((scr.width * 0.5) + (p.x * this.scale)), 10);
+	// this.Y = parseInt(((scr.height * 0.5) + (p.y * this.scale)), 10);
 	// Hack to math.round;
+	this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) | 0;
+	this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) | 0;
 	// this.X = ((scr.width  * 0.5) + (p.x * this.scale) + 0.5) << 0;
 	// this.Y = ((scr.height * 0.5) + (p.y * this.scale) + 0.5) << 0;
 	return true;

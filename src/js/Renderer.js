@@ -57,16 +57,24 @@ var renderer = {
 	renderRooms: function() {
 		var i;
 		var toRender = [];
+		var toRenderElements;
+		var cpt = 0;
 		for(i = 0; i < rooms.length; i++) {
-			toRender = toRender.concat(rooms[i].getElementsToRender());
+			toRenderElements = rooms[i].getElementsToRender();
+			for (j=0; j < toRenderElements.length; j++) {
+				toRender[cpt] = toRenderElements[j];
+				cpt+=1;
+			}
 		}
 		renderer.renderElementsToRender(toRender);
 	},
 	renderElementsToRender: function(toRender) {
 
-		toRender.sort(function(points1, points2) {
-			return points2.distance - points1.distance;
-		});
+		toRender = insertSortDistance(toRender);
+
+		// toRender.sort(function(points1, points2) {
+		// 	return points2.distance - points1.distance;
+		// });
 
 		for(i = 0; i < toRender.length; i++) {
 			if(toRender[i].type === 'wall') {
@@ -151,6 +159,7 @@ CanvasEl.Image.prototype.loading = function() {
 	var t;
 	var lev;
 	var points;
+	var cptPoints = 0;
 	if(this.texture.complete && this.texture.width) {
 		this.isLoading = false;
 		points = [];
@@ -166,7 +175,8 @@ CanvasEl.Image.prototype.loading = function() {
 					ny: ty / this.texture.height,
 					next: false
 				};
-				points.push(p);
+				points[cptPoints] = p;
+				cptPoints +=1;
 				if(!this.firstPoint) this.firstPoint = p;
 				else this.prev.next = p;
 				this.prev = p;
