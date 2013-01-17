@@ -178,6 +178,8 @@ var getEdges = function(faces, dim) {
 	var points;
 	var minDim, maxDim;
 	var maxDist;
+	var moyDist = 0;
+	var nbVisible = 0;
 	for(i=0; i<faces.length; i++) {
 		face = faces[i];
 		face.projection();
@@ -188,9 +190,12 @@ var getEdges = function(faces, dim) {
 				maxDist = faces[i].distance;
 			}
 
-			if(face.distance > maxDist) {
-				maxDist = face.distance;
-			}
+			nbVisible +=1;
+			moyDist +=face.distance;
+
+			// if(face.distance > maxDist) {
+			// 	maxDist = face.distance;
+			// }
 			if (dim === 'left' || dim === 'right') {
 				if(face.f.z < minDim.f.z) {
 					minDim = face;
@@ -221,13 +226,13 @@ var getEdges = function(faces, dim) {
 
 	if(dim === 'top' || dim === 'left') {
 		return {
-			distance: maxDist,
+			distance: moyDist/nbVisible,
 			points: [minDim.p3, minDim.p0, maxDim.p1, maxDim.p2]
 		};
 	}
 	if(dim === 'bottom' || dim === 'right') {
 		return {
-			distance: maxDist,
+			distance: moyDist/nbVisible,
 			points: [minDim.p1, minDim.p2, maxDim.p3, maxDim.p0]
 		};
 	}
