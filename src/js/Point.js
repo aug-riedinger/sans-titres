@@ -36,6 +36,9 @@ Point.prototype.projection = function() {
 	this.distance = Math.sqrt(p.x * p.x + z * z);
 	// this.distance = Math.sqrt(p.x * p.x + p.y * p.y + z * z);
 	if(this.face) {
+		if(this.behind) {
+			this.face.nbBehind+=1;
+		}
 		if(this.distance > this.face.distance) {
 			this.face.distance = this.distance;
 		}

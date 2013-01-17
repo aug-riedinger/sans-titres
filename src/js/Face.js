@@ -85,6 +85,7 @@
 
 	// ======== face projection ========
 	Face.prototype.projection = function() {
+		this.nbBehind = 0;
 		this.distance = 0;
 		this.conditions = 0;
 		this.visible = true;
@@ -102,19 +103,26 @@
 
 		// Remove invisible faces;
 
-		if(this.p0.behind || this.p1.behind || this.p2.behind || this.p3.behind) {
+		if(this.nbBehind > 1) {
 			this.visible = false;
 			this.distance = -99999;
-			this.conditions += 20;
+			this.conditions += 40;
 			return;
 		}
 
-		if(this.p0.behind && this.p1.behind && this.p2.behind && this.p3.behind) {
-			this.visible = false;
-			this.distance = -99999;
-			this.conditions += 10;
-			return;
-		}
+		// if(this.p0.behind || this.p1.behind || this.p2.behind || this.p3.behind) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;
+		// 	this.conditions += 20;
+		// 	return;
+		// }
+
+		// if(this.p0.behind && this.p1.behind && this.p2.behind && this.p3.behind) {
+		// 	this.visible = false;
+		// 	this.distance = -99999;
+		// 	this.conditions += 10;
+		// 	return;
+		// }
 
 		// if((this.p1.Y - this.p0.Y) * (this.p3.X - this.p0.X) - (this.p1.X - this.p0.X) * (this.p3.Y - this.p0.Y) > 0) {
 			// this.visible = false;
