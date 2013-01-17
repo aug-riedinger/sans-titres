@@ -40,9 +40,10 @@
 
 		// ---- create 3D image ----
 		if(this.f.type === 'art') {
-			this.img = new renderer.Image(scr.canvas, this.f.thumb, f.tl || 2);
+			this.img = new CanvasEl.Image(scr.canvas, this.f.thumb, f.tl || 2);
 		}
 
+		this.buffer();
 		return this;
 	};
 
@@ -54,9 +55,11 @@
 			for (i=0; i<this.points.length; i++) {
 				found = false;
 				for (j=0; j<this.f.adj.length; j++){
-					for (k=0; k<this.f.adj[j].points.length; k++) {
-						if(equalsCoord(this.points[i], this.f.adj[j].points[k])) {
-							found = true;
+					if (this.f.adj[j]) {
+						for (k=0; k<this.f.adj[j].points.length; k++) {
+							if(equalsCoord(this.points[i], this.f.adj[j].points[k])) {
+								found = true;
+							}
 						}
 					}
 				}
@@ -138,23 +141,21 @@
 
 	};
 
-	Face.prototype.buffer = function(room) {
+	Face.prototype.buffer = function() {
 		if(this.f.type === 'art' && this.f.subtype === 'image') {
-			var img = new Image();
-			img.src = this.f.src;
-			img.id = this.f.id;
-			img.className = 'art';
-			room.images.push(img);
+			this.html = new Image();
+			this.html.src = this.f.src;
+			this.html.id = this.f.id;
+			this.html.className = 'art';
 		}
 
 		if(this.f.type === 'art' && this.f.subtype === 'html') {
-			var ifrm = document.createElement('iframe');
-			ifrm.setAttribute('src', this.f.src);
-			ifrm.className = 'html';
-			ifrm.id = this.f.id;
-			ifrm.height = this.f.iFrameHeight || 600;
-			ifrm.width = this.f.iFrameWidth || 800;
-			room.texts.push(ifrm);
+			this.html = document.createElement('iframe');
+			this.html.setAttribute('src', this.f.src);
+			this.html.className = 'html';
+			this.html.id = this.f.id;
+			this.html.height = this.f.iFrameHeight || 600;
+			this.html.width = this.f.iFrameWidth || 800;
 		}
 	};
 
@@ -166,35 +167,6 @@
 				this.img.render(this.p0, this.p1, this.p2, this.p3, 'white');
 			}
 		}
-		// if(this.f.type === 'position') {
-		// 	scr.ctx.beginPath();
-		// 	if(this.f.ryf === 0) {
-		// 		scr.ctx.lineTo(this.p2.X, this.p2.Y);
-		// 		scr.ctx.lineTo(this.p3.X, this.p3.Y);
-		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
-		// 	}
-		// 	if(this.f.ryf === 1) {
-		// 		scr.ctx.lineTo(this.p1.X, this.p1.Y);
-		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
-		// 		scr.ctx.lineTo(this.p2.X, this.p2.Y);
-		// 	}
-		// 	if(this.f.ryf === -1) {
-		// 		scr.ctx.lineTo(this.p0.X, this.p0.Y);
-		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
-		// 		scr.ctx.lineTo(this.p3.X, this.p3.Y);
-		// 	}
-		// 	if(this.f.ryf === -2) {
-		// 		scr.ctx.lineTo(this.p0.X, this.p0.Y);
-		// 		scr.ctx.lineTo(this.p1.X, this.p1.Y);
-		// 		scr.ctx.lineTo(this.pc.X, this.pc.Y);
-		// 	}
-		// 	// scr.ctx.lineTo(this.p2.X,this.p2.Y);
-		// 	// scr.ctx.lineTo(this.p3.X,this.p3.Y);
-		// 	scr.ctx.closePath();
-		// 	scr.ctx.lineWidth = 1;
-		// 	scr.ctx.fillStyle = '#70726d';
-		// 	scr.ctx.fill();
-		// }
 	};
 
 	var faceMaker = {
@@ -285,9 +257,11 @@
 				w: params.unit,
 				h: params.unit,
 				adj: adj,
-				art: art,
 				select: true
 			};
+			if(art !== undefined) {
+				f.art = art;
+			}
 			return new Face(f);
 		},
 		'door': function(_room, face, doorConstr) {

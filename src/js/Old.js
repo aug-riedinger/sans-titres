@@ -828,3 +828,85 @@ Sound.prototype.increaseVolume = function() {
 		}, this), 100 * i);
 	}
 };
+
+Room.prototype.makeFloor = function() {
+	var h, w, x, z, i;
+	var minx, maxx;
+	var oldminx, oldmaxx;
+	var floor;
+	var line;
+	var blocks = [];
+	var charType, next, artId;
+	var art;
+	var adj;
+	for(h = 0; h < this.map.length; h++) {
+		z = this.map.length - (h + 1);
+		minx = this.map[h].length;
+		maxx = -1;
+		line = [];
+		for(w = 0; w < this.map[h].length; w += 2) {
+			charType = this.map[h][w];
+			if(this.isInside(charType)) {
+				x = w / 2;
+				next = this.map[h][w + 1];
+				artId = next.replace(/^[^a-zA-Z]$/, '');
+				adj = [];
+
+				if(minx > x) {
+					minx = x;
+				}
+				if(maxx < x) {
+					maxx = x;
+				}
+				art = undefined;
+				if (artId !== '' && this.mainRoom) {
+					for(i=0; i<this.arts.length; i++) {
+						if(this.arts[i].f.artId === artId) {
+							art = this.arts[i];
+							break;
+						}
+					}
+				}
+
+				if(this.isTop(charType)) {
+					adj.push(faceMaker.top(this, x, z));
+				}
+				if(this.isBottom(charType)) {
+					adj.push(faceMaker.bottom(this, x, z));
+				}
+				if(this.isLeft(charType)) {
+					adj.push(faceMaker.left(this, x, z));
+				}
+				if(this.isRight(charType)) {
+					adj.push(faceMaker.right(this, x, z));
+				}
+
+				line.push(faceMaker.floor(this, x, z, adj, art));
+			}
+
+		}
+
+		if((minx !== oldminx || maxx !== oldmaxx)) {
+			blocks.push(line);
+		} else {
+			blocks[blocks.length - 1] = blocks[blocks.length - 1].concat(line);
+		}
+		oldminx = minx;
+		oldmaxx = maxx;
+	}
+	return blocks;
+};
+
+
+Room.prototype.inside = function(_x, _z, big) {
+	var x, z;
+	if(big) {
+		x = Math.round(_x / params.unit) - (this.position.x || 0);
+		z = Math.round((_z - params.focalLength) / params.unit) - (this.position.z || 0);
+	} else {
+		x = Math.round(_x) - this.position.x;
+		z = Math.round(_z) - this.position.z;
+	}
+
+	return(true && this.map[this.map.length - (z + 1)] && this.map[this.map.length - (z + 1)][2 * x] && this.map[this.map.length - (z + 1)][2 * x] != '.');
+};

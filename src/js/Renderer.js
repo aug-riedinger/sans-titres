@@ -1,87 +1,150 @@
-var renderer = {};
+var renderer = {
+	renderAll: function() {
+		this.renderFloor();
+		this.renderAiming();
+		this.renderRooms();
+	},
+	renderFloor: function() {
+		var y = camera.trig.sinX * (100 * params.unit + camera.focalLength);
+		var z = camera.trig.cosX * (100 * params.unit + camera.focalLength) - camera.focalLength;
 
-renderer.renderFloor = function() {
-	var y = camera.trig.sinX * (100*params.unit + camera.focalLength);
-	var z = camera.trig.cosX * (100*params.unit + camera.focalLength) - camera.focalLength;
+		var scale = Math.abs((camera.focalLength / (z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
+		var horizonLine = parseInt(((scr.height * 0.5) + (y * scale)), 10);
 
-	var scale = Math.abs((camera.focalLength / (z + camera.focalLength)) * camera.zoom.value) || 10000; // Me !!!
-	var horizonLine = parseInt(((scr.height * 0.5) + (y * scale)), 10);
-
-	if(horizonLine<scr.height) {
-		scr.ctx.beginPath();
-		scr.ctx.rect(0, horizonLine, scr.width, scr.height - horizonLine);
-		scr.ctx.fillStyle = '#80827d';
-		scr.ctx.fill();
-	}
-};
-
-renderer.facesMerged = function(pointList) {
-	var grd;
-	var point;
-	var points = pointList.points;
-	var color = pointList.color;
-	var color2 = pointList.color2;
-
-	if(points.length > 2) {
-		scr.ctx.beginPath();
-		for(var k = 0; k < points.length; k++) {
-			point = points[k];
-			scr.ctx.lineTo(point.X, point.Y);
+		if(horizonLine < scr.height) {
+			scr.ctx.beginPath();
+			scr.ctx.rect(0, horizonLine, scr.width, scr.height - horizonLine);
+			scr.ctx.fillStyle = '#80827d';
+			scr.ctx.fill();
 		}
-		scr.ctx.closePath();
-		if(SLOW || color2 === undefined) {
-			scr.ctx.fillStyle = color || 'white';
-		} else {
-			grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
-			// grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
-			grd.addColorStop(0, color);
-			grd.addColorStop(1, color2);
-			scr.ctx.fillStyle = grd;
+	},
+	renderAiming: function() {
+		if(cursor.aimedFace && cursor.aimedFace.f.type === 'floor') {
+			face = cursor.aimedFace;
+			face.projection();
+			scr.ctx.beginPath();
+			scr.ctx.lineTo(face.p0.X, face.p0.Y);
+			if(!cursor.aimedFace.f.art) {
+				scr.ctx.lineTo((face.p0.X * 5 + face.p1.X) / 6, (face.p0.Y * 5 + face.p1.Y) / 6);
+				scr.ctx.moveTo((face.p0.X + face.p1.X * 5) / 6, (face.p0.Y + face.p1.Y * 5) / 6);
+			}
+			scr.ctx.lineTo(face.p1.X, face.p1.Y);
+			if(!cursor.aimedFace.f.art) {
+				scr.ctx.lineTo((face.p1.X * 5 + face.p2.X) / 6, (face.p1.Y * 5 + face.p2.Y) / 6);
+				scr.ctx.moveTo((face.p1.X + face.p2.X * 5) / 6, (face.p1.Y + face.p2.Y * 5) / 6);
+			}
+			scr.ctx.lineTo(face.p2.X, face.p2.Y);
+			if(!cursor.aimedFace.f.art) {
+				scr.ctx.lineTo((face.p2.X * 5 + face.p3.X) / 6, (face.p2.Y * 5 + face.p3.Y) / 6);
+				scr.ctx.moveTo((face.p2.X + face.p3.X * 5) / 6, (face.p2.Y + face.p3.Y * 5) / 6);
+			}
+			scr.ctx.lineTo(face.p3.X, face.p3.Y);
+			if(!cursor.aimedFace.f.art) {
+				scr.ctx.lineTo((face.p3.X * 5 + face.p0.X) / 6, (face.p3.Y * 5 + face.p0.Y) / 6);
+				scr.ctx.moveTo((face.p3.X + face.p0.X * 5) / 6, (face.p3.Y + face.p0.Y * 5) / 6);
+			}
+			scr.ctx.lineTo(face.p0.X, face.p0.Y);
+			scr.ctx.closePath();
+			if(!cursor.aimedFace.f.art) {
+				scr.ctx.strokeStyle = '#70726D';
+				scr.ctx.stroke();
+			} else {
+				scr.ctx.fillStyle = '#70726D';
+				scr.ctx.fill();
+			}
 		}
-		scr.ctx.lineWidth = 1;
-		scr.ctx.strokeStyle = color || 'white';
-		scr.ctx.fill();
-		scr.ctx.stroke();
+	},
+	renderRooms: function() {
+		var i;
+		var toRender = [];
+		for(i = 0; i < rooms.length; i++) {
+			toRender = toRender.concat(rooms[i].getElementsToRender());
+		}
+		renderer.renderElementsToRender(toRender);
+	},
+	renderElementsToRender: function(toRender) {
+
+		toRender.sort(function(points1, points2) {
+			return points2.distance - points1.distance;
+		});
+
+		for(i = 0; i < toRender.length; i++) {
+			if(toRender[i].type === 'wall') {
+				renderer.facesMerged(toRender[i]);
+			}
+			if(toRender[i].type === 'art') {
+				face = toRender[i].art;
+				face.render();
+			}
+		}
+	},
+	facesMerged: function(pointList) {
+		var grd;
+		var point;
+		var points = pointList.points;
+		var color = pointList.color;
+		var color2 = pointList.color2;
+
+		if(points.length > 2) {
+			scr.ctx.beginPath();
+			for(var k = 0; k < points.length; k++) {
+				point = points[k];
+				scr.ctx.lineTo(point.X, point.Y);
+			}
+			scr.ctx.closePath();
+			if(SLOW || color2 === undefined) {
+				scr.ctx.fillStyle = color || 'white';
+			} else {
+				grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
+				// grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
+				grd.addColorStop(0, color);
+				grd.addColorStop(1, color2);
+				scr.ctx.fillStyle = grd;
+			}
+			scr.ctx.lineWidth = 1;
+			scr.ctx.strokeStyle = color || 'white';
+			scr.ctx.fill();
+			scr.ctx.stroke();
+		}
 	}
 };
 
-renderer.Triangle = function(parent, p0, p1, p2) {
-	// this.randColor = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
-	this.p0 = p0;
-	this.p1 = p1;
-	this.p2 = p2;
-	this.next = false;
-	// ---- pre calculation for transform----
-	this.d = p0.tx * (p2.ty - p1.ty) - p1.tx * p2.ty + p2.tx * p1.ty + (p1.tx - p2.tx) * p0.ty;
-	this.pmy = p1.ty - p2.ty;
-	this.pmx = p1.tx - p2.tx;
-	this.pxy = p2.tx * p1.ty - p1.tx * p2.ty;
-	// ---- link for iteration ----
-	if(!parent.firstTriangle) parent.firstTriangle = this;
-	else parent.prev.next = this;
-	parent.prev = this;
+var CanvasEl = {
+	Triangle: function(parent, p0, p1, p2) {
+		// this.randColor = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
+		this.p0 = p0;
+		this.p1 = p1;
+		this.p2 = p2;
+		this.next = false;
+		// ---- pre calculation for transform----
+		this.d = p0.tx * (p2.ty - p1.ty) - p1.tx * p2.ty + p2.tx * p1.ty + (p1.tx - p2.tx) * p0.ty;
+		this.pmy = p1.ty - p2.ty;
+		this.pmx = p1.tx - p2.tx;
+		this.pxy = p2.tx * p1.ty - p1.tx * p2.ty;
+		// ---- link for iteration ----
+		if(!parent.firstTriangle) parent.firstTriangle = this;
+		else parent.prev.next = this;
+		parent.prev = this;
+	},
+	Image: function(canvas, imgSrc, lev) {
+		this.canvas = canvas;
+		this.ctx = canvas.getContext("2d");
+		if(typeof(imgSrc) == 'string') {
+			this.texture = new Image();
+			this.texture.src = imgSrc;
+		}
+		if(typeof(imgSrc) == 'object') {
+			this.texture = imgSrc;
+		}
+		this.lev = lev;
+		this.isLoading = true;
+		this.firstPoint = false;
+		this.firstTriangle = false;
+		this.prev = false;
+	}
 };
 
-// ==== image constructor ====
-renderer.Image = function(canvas, imgSrc, lev) {
-	this.canvas = canvas;
-	this.ctx = canvas.getContext("2d");
-	if(typeof(imgSrc) == 'string') {
-		this.texture = new Image();
-		this.texture.src = imgSrc;
-	}
-	if(typeof(imgSrc) == 'object') {
-		this.texture = imgSrc;
-	}
-	this.lev = lev;
-	this.isLoading = true;
-	this.firstPoint = false;
-	this.firstTriangle = false;
-	this.prev = false;
-};
-
-
-renderer.Image.prototype.loading = function() {
+CanvasEl.Image.prototype.loading = function() {
 	var i, j;
 	var tx, ty;
 	var p;
@@ -113,16 +176,17 @@ renderer.Image.prototype.loading = function() {
 		for(i = 0; i < this.lev; i++) {
 			for(j = 0; j < this.lev; j++) {
 				// ---- up ----
-				t = new renderer.Triangle(this, points[j + i * lev], points[j + i * lev + 1], points[j + (i + 1) * lev]);
+				t = new CanvasEl.Triangle(this, points[j + i * lev], points[j + i * lev + 1], points[j + (i + 1) * lev]);
 				// ---- down ----
-				t = new renderer.Triangle(this, points[j + (i + 1) * lev + 1], points[j + (i + 1) * lev], points[j + i * lev + 1]);
+				t = new CanvasEl.Triangle(this, points[j + (i + 1) * lev + 1], points[j + (i + 1) * lev], points[j + i * lev + 1]);
 			}
 		}
 	}
 };
 
-// ==== draw3D prototype ====
-renderer.Image.prototype.render = function(p0, p1, p2, p3, color) {
+
+
+CanvasEl.Image.prototype.render = function(p0, p1, p2, p3, color) {
 	var array = [p0, p1, p2, p3];
 	// ---- loading ----
 	if(this.isLoading) {
@@ -199,7 +263,7 @@ renderer.Image.prototype.render = function(p0, p1, p2, p3, color) {
 		}
 		this.ctx.closePath();
 		this.ctx.lineWidth = 1;
-		this.ctx.strokeStyle = color||'white';
+		this.ctx.strokeStyle = color || 'white';
 		this.ctx.stroke();
 
 	}

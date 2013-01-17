@@ -1,11 +1,12 @@
 var scr;
-var room, newRoom;
+var rooms = [];
 var cursor;
 var keyboard;
 var cursor;
 var camera;
 
 var SLOW = false;
+var cpt = 100;
 
 var showing;
 
@@ -21,5 +22,3 @@ var params = {
 	cursorX: 4,
 	cursorY: 6
 };
-
-var cpt = 100;

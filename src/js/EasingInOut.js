@@ -65,7 +65,7 @@ ge1doot.tweens.Add.prototype.setTarget = function(target, strict) {
 			this.target = this.maxValue;
 		}
 	} else {
-		if(this.minValue && target < this.minValue || this.maxValue && target > this.maxValue) {
+		if((this.minValue && target < this.minValue) || (this.maxValue && target > this.maxValue)) {
 			this.locked = true;
 		}
 	}
@@ -102,7 +102,7 @@ ge1doot.tweens.Add.prototype.setValue = function(value) {
 	if(this.isAngle) {
 		this.normalizePI();
 	}
-	// this.running = false;
+	this.running = false;
 	if(!this.locked) {
 		if(this.minValue && value < this.minValue) {
 			return this.target = this.value = this.minValue;

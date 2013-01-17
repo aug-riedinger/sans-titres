@@ -36,7 +36,7 @@ Keyboard.prototype.initEvents = function() {
 			camera.zoomOut();
 		}
 		if(event.keyCode == 27) { // f
-			camera.toggleGodView();
+			camera.godView();
 		}
 	}, false);
 

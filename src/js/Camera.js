@@ -40,10 +40,8 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	var y = (obj.y !== undefined ? obj.y : params.height / 2 - params.humanHeight);
 	var z = (obj.z !== undefined ? obj.z : this.z.target);
 
-	if(room.inside(x, z, true) || !strict) {
-		this.x.setTarget(x, strict);
-		this.z.setTarget(z, strict);
-	}
+	this.x.setTarget(x, strict);
+	this.z.setTarget(z, strict);
 	this.y.setTarget(y, strict);
 	this.rx.setTarget((obj.rx !== undefined ? obj.rx : this.rx.target), strict);
 	this.ry.setTarget((obj.ry !== undefined ? obj.ry : this.ry.target), strict);
@@ -54,15 +52,6 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 
 Camera.prototype.targetToFace = function(face) {
 
-	if(face.f.type === 'door') {
-		return this.targetToPosition({
-			x: face.pv.x,
-			z: face.pv.z + this.focalLength,
-			rx: 0,
-			// ry: face.ay - Math.PI / 2,
-			zoom: 1
-		}, false);
-	}
 
 	if(face.f.type === 'floor') {
 		if(face.f.art) {
@@ -174,6 +163,7 @@ Camera.prototype.move = function() {
 	if(cursor.strengthY !== 0 && this.rx.target === this.rx.value) {
 		this.rx.setValue(this.rx.value - 0.02 * cursor.strengthY);
 	}
+	// if(cursor.strengthX !== 0) {
 	if(cursor.strengthX !== 0 && this.ry.target === this.ry.value) {
 		this.ry.setValue(this.ry.value - 0.02 * cursor.strengthX);
 	}

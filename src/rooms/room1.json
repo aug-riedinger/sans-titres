@@ -1,31 +1,19 @@
 {
     "id": "1", 
-    "name": "Room 1",
-    "path": "room1",
+    "name": "Room 1",    
     "position" : {
     	"x": 0,
     	"z": 0
     },
+    "adj": [2, 9],
     "map" : [
-    "#--a---0-0+.",
+    "#.-a-.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.!.",
-    "|.,.,.,.,.!1",
-    "%._._b____¤."
-    ],
-    "doors" : [
-        {
-            "id": "0",
-            "side": "-",
-            "to": 9     
-        },
-        {
-            "id": "1",
-            "side": "!",
-            "to": 2     
-        }
+    "|.,.,.,.,.,.",
+    "%._._b_._._."
     ],
     "arts" : [
         {
@@ -36,9 +24,9 @@
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_640x428.jpg",
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220092_1198x800.jpg",
             "info": {
-                "author" : "Inconnu",
+                "author" : "Charley Case",
                 "title": "Diplomondus",
-                "category": "Photo"
+                "description": "Photo, Décembre 2012"
             }
         },
         {
@@ -49,9 +37,9 @@
             "thumb" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131_428x640.jpg",
             "src" : "https://s3.amazonaws.com/sans-titres/diplomondus/P1220131_800x1198.jpg",
             "info": {
-                "author" : "Inconnu",
+                "author" : "Charley Case",
                 "title": "Diplomondus",
-                "category": "Photo"
+                "description": "Photo, Décembre 2012"
             }
         }
     ]

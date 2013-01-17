@@ -71,47 +71,18 @@ var setPosition = function(data, x, z) {
 	return true;
 };
 
-var showTxt = function(face) {
-	var txt;
-	for(var i = 0; i < room.texts.length; i++) {
-		txt = room.texts[i];
-		if(txt.src === face.f.src) {
-			break;
-		}
-	}
-
-	$('#artClearView').html(txt);
-
-	// autoResize(face.f.id)
+var showHtml = function(html) {
+	$('#artClearView').html(html);
 	$('#artClearView').fadeIn(1000);
 	$('#artClearView').one('click', function(eventName) {
-		remImg();
+		remHtml();
 	});
 };
 
-var showImg = function(face) {
-	var img;
-	for(var i = 0; i < room.images.length; i++) {
-		img = room.images[i];
-		if(img.src === face.f.src) {
-			break;
-		}
-	}
-
-	$('#artClearView').html(img);
-	$('#artClearView').fadeIn(1000);
-	$('#artClearView').one('click', function(eventName) {
-		remImg();
-	});
-};
-
-var remImg = function() {
+var remHtml = function() {
 	$('#artClearView').fadeOut(1000, function() {
 		$('#artClearView').empty();
 	});
-	// $('#artClearView').off('click',function(eventName) {
-	//   remImg();
-	// });
 };
 
 

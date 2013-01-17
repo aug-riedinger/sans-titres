@@ -13,6 +13,58 @@ var startCpt = function resetCpt() {
 	setTimeout(resetCpt, 5000);
 };
 
+var enteredRoom = function(roomId) {
+	var i, j;
+	var room;
+	var newRoom, oldRoom, switchRoom;
+
+	oldRoom = rooms[0];
+	oldRoom.removeSounds();
+	for(k = 0; k < rooms.length; k++) {
+		if(rooms[k].id === roomId) {
+			switchRoom = rooms[k];
+			rooms[k] = rooms[0];
+			rooms[0] = switchRoom;
+			newRoom = rooms[0];
+			for(i = 0; i < newRoom.adj.length; i++) {
+				room = null;
+				for(j = 0; j < rooms.length; j++) {
+					if(rooms[j].id === newRoom.adj[i].id) {
+						// Found in rooms
+						room = rooms[j];
+						break;
+					}
+				}
+				if(!room) {
+					// New Room to create
+					new Room(newRoom.adj[i]);
+				}
+
+			}
+			for(j = 0; j < rooms.length; j++) {
+				room = null;
+				if(newRoom.id === rooms[j].id) {
+					room = newRoom;
+				}
+				for(i = 0; i < newRoom.adj.length; i++) {
+					if(rooms[j].id === newRoom.adj[i].id) {
+						// Found in adj
+						room = rooms[j];
+						break;
+					}
+				}
+				if(!room) {
+					// Not adjacent Anymore, removal !
+					rooms.splice(j, 1);
+				}
+			}
+			newRoom.makeSounds();
+			return rooms;
+		}
+	}
+	return rooms;
+};
+
 var init = function() {
 	var parameters = getParameters();
 	// ---- init script ----
@@ -21,37 +73,29 @@ var init = function() {
 		canvas: "canvas"
 	});
 
-	room = new Room(parameters.room || 1, true);
-	room.load();
+	new Room(parameters.room || 1);
 
 	$(scr.container).one('loaded', function() {
-		// ---- engine start ----
-		camera = new Camera(room.floors[0][parseInt(room.floors[0].length / 2, 10)].pc.x, room.floors[0][parseInt(room.floors[0].length / 2, 10)].pc.z);
+
+		enteredRoom(parameters.room || 1);
+
+		camera = new Camera(rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.x, rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.z);
 		keyboard = new Keyboard();
 		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
 		if(parameters.art !== undefined) {
-			var i, j;
-			for(i = 0; i < room.floors.length; i++) {
-				for (j=0; j< room.floors[i].length; j++) {
-					console.log(room.floors[i][j]);
-						if(room.floors[i][j].f.art && room.floors[i][j].f.art.f.artId === parameters.art) {
-							camera.targetToFace(room.floors[i][j]);
-						}
-				}
+			var i;
+			for(i = 0; i < rooms[0].floors.length; i++) {
+					if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
+						camera.targetToFace(rooms[0].floors[i]);
+					}
 			}
 		}
 
 		requestAnimFrame(run);
 		$(scr.canvas).fadeIn(3000, function() {
-			setTimeout(remImg, 1000);
+			setTimeout(remHtml, 1000);
 		});
-	});
-
-	$(document).keypress(function(e) {
-		if(e.keyCode == 13) { // enter
-			window.fullScreenApi.requestFullScreen(document.getElementsByTagName('body')[0]);
-		}
 	});
 
 	startCpt();
@@ -65,23 +109,14 @@ var run = function() {
 
 	// ---- clear screen ----
 	scr.ctx.clearRect(0, 0, scr.width, scr.height);
+	
+	// ---- camera ----
+	camera.move();
 
-	if(newRoom && newRoom.ready) {
-		room = newRoom;
-		newRoom = null;
-		camera.targetToFace(getFloor(parseInt(camera.x.value / params.unit - room.position.x, 10), parseInt((camera.z.value - camera.focalLength) / params.unit - room.position.z, 10)));
-	}
+	// ---- 3D projection ----
+	renderer.renderAll();
 
-	if(room.ready) {
-		// ---- camera ----
-		camera.move();
-
-		// ---- 3D projection ----
-		room.render();
-
-		cpt++;
-
-	}
+	cpt++;
 };
 
 

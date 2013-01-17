@@ -14,7 +14,7 @@ Screen.prototype.setSize = function() {
 	this.height = this.container.offsetHeight;
 	// ---- offset ----
 	var o = this.container;
-	for (this.left = 0, this.top = 0; o != null; o = o.offsetParent) {
+	for (this.left = 0, this.top = 0; o !== null; o = o.offsetParent) {
 		this.left += o.offsetLeft;
 		this.top  += o.offsetTop;
 	}
@@ -23,7 +23,7 @@ Screen.prototype.setSize = function() {
 		this.canvas.width  = this.width;
 		this.canvas.height = this.height;
 	}
-}
+};
 
 Screen.prototype.initEvents = function() {
 	var that = this;
@@ -31,4 +31,10 @@ Screen.prototype.initEvents = function() {
 		that.setSize();
 	}, false);
 
-}
+	window.addEventListener('keydown', function(event) {
+	// $(document).keypress(function(e) {
+		if(event.keyCode == 13) { // enter
+			window.fullScreenApi.requestFullScreen(document.getElementsByTagName('body')[0]);
+		}
+	});
+};

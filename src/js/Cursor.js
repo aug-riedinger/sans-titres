@@ -9,7 +9,7 @@ var Cursor = function(canvas_ID, segmentX, segmentY) {
 	this.strengthY = 0;
 	this.aimedFace = null;
 	this.going = null;
-	this.moving = false;
+	// this.moving = false;
 	this.initEvents();
 
 	return this;
@@ -22,6 +22,12 @@ Cursor.prototype.initEvents = function() {
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
+
+		if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
+			that.muted = null;
+			console.log('unmuted');
+		}
+
 		that.calcStrength();
 
 		that.aimedFace = that.inFace();
@@ -29,65 +35,47 @@ Cursor.prototype.initEvents = function() {
 	};
 
 	this.container.onclick = function(e) {
-
-		if($('#artInfo').css('top') === '0px') {
-			$('#artInfo').animate({
-				top: -50
-			}, 1000);
-		}
+		var roomId, artId, title;
 
 		if(that.aimedFace) {
+			roomId = parseInt(that.aimedFace.f.id.split(':')[0], 10);
+			
 			if(that.aimedFace.f.type === 'art') {
-				if(that.aimedFace.f.subtype === 'image') {
-					showImg(that.aimedFace);
-				}
-				if(that.aimedFace.f.subtype === 'html') {
-					showTxt(that.aimedFace);
-				}
-				history.pushState({
-					viewArt: that.aimedFace.f.artId
-				}, 'Sans-titres, Salle ' + room.id + ' Oeuvre' + that.aimedFace.f.artId, '#!room=' + room.id + '&art=' + that.aimedFace.f.artId);
+				artId = that.aimedFace.f.artId || null;
+				showHtml(that.aimedFace.html);
+				$('#artInfo').fadeOut(1000);
 			}
 
-			if(that.aimedFace.f.type === 'door') {
-				camera.targetToFace(that.aimedFace);
-
-				that.going = that.aimedFace.f.to;
-				$(scr.canvas).one('inPosition', $.proxy(function(e) {
-					for(var i = 0; i < room.sounds.length; i++) {
-						room.sounds[i].remove();
-					}
-					history.pushState({
-						goToRoom: this.going
-					}, 'Sans-titres, Salle ' + this.going, '#!room=' + this.going);
-					newRoom = new Room(this.going, true);
-					newRoom.load();
-					this.going = null;
-				}, that));
-			}
-
-			// if(that.aimedFace.f.type === 'position') {
-			// }
 			if(that.aimedFace.f.type === 'floor') {
 				if(that.aimedFace.f.art) {
-				camera.targetToFace(that.aimedFace);
-				history.pushState({
-					goToArt: that.aimedFace.f.art.f.artId
-				}, 'Sans-titres, Salle ' + room.id + ' Oeuvre' + that.aimedFace.f.art.f.artId, '#!room=' + room.id + '&art=' + that.aimedFace.f.art.f.artId);
-				$('#artTitle').html(that.aimedFace.f.art.f.info.title || 'Inconnu');
-				$('#artAuthor').html(that.aimedFace.f.art.f.info.author || 'Inconnu');
-				$('#artCategory').html(that.aimedFace.f.art.f.info.category || 'Inconnu');
-				$(scr.canvas).one('inPosition', function() {
-					$('#artInfo').animate({
-						top: 0
-					}, 1000);
-				});
+					artId = that.aimedFace.f.art.f.artId || null;
+					camera.targetToFace(that.aimedFace);
+					$(scr.canvas).one('inPosition', $.proxy(function() {
+						cursor.mute();
+						$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
+						$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
+						$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
+						$('#artInfo').fadeIn(1000, function() {
+							setTimeout(function() {
+								$('#artInfo').fadeOut(1000);
+							}, 3000);
+						});
+					},that.aimedFace));
 				} else {
-				camera.targetToFace(that.aimedFace);
-					
+					camera.targetToFace(that.aimedFace);
+					if(roomId !== rooms[0].id) {
+						enteredRoom(roomId);
+					}
 				}
 			}
-
+			if (!history.state || history.state.roomId !== roomId || history.state.artId !== artId) {
+				title = 'Sans-titres, Salle ' + roomId + (artId?' Oeuvre ' + artId:'');
+				history.pushState({
+					roomId: roomId,
+					artId: artId
+				}, title, '#!room=' + roomId + (artId?'&art=' + artId:''));
+				document.title = title;
+			}
 		}
 
 		e.preventDefault();
@@ -108,33 +96,48 @@ Cursor.prototype.initEvents = function() {
 
 };
 
+Cursor.prototype.mute = function() {
+	this.muted = {
+		X: this.X,
+		Y: this.Y
+	};
+	this.calcStrength();
+	// this.aimedFace = this.inFace();
+	this.setCursor();
+};
+
 Cursor.prototype.calcStrength = function() {
+
+	if(this.muted) {
+		return this.strengthX = this.strengthY = 0;
+	}
+
 	if(this.X > scr.width / this.segmentX && this.X < scr.width - scr.width / this.segmentX) {
 		this.strengthX = 0;
-		this.moving = false;
+		// this.moving = false;
 	}
 
 	if(this.X < scr.width / this.segmentX) {
 		this.strengthX = (this.X - scr.width / this.segmentX) / (scr.width / this.segmentX);
-		this.moving = true;
+		// this.moving = true;
 	}
 	if(this.X > scr.width - scr.width / this.segmentX) {
 		this.strengthX = 1 - (scr.width - this.X) / (scr.width / this.segmentX);
-		this.moving = true;
+		// this.moving = true;
 	}
 
 	if(this.Y > scr.height / this.segmentY && this.Y < scr.height - scr.height / this.segmentY) {
 		this.strengthY = 0;
-		this.moving = false;
+		// this.moving = false;
 	}
 
 	if(this.Y < scr.height / this.segmentY) {
 		this.strengthY = (this.Y - scr.height / this.segmentY) / (scr.height / this.segmentY);
-		this.moving = true;
+		// this.moving = true;
 	}
 	if(this.Y > scr.height - scr.height / this.segmentY) {
 		this.strengthY = 1 - (scr.height - this.Y) / (scr.height / this.segmentY);
-		this.moving = true;
+		// this.moving = true;
 	}
 };
 
@@ -161,41 +164,27 @@ Cursor.prototype.inTriangle = function(p1, p2, p3) {
 };
 
 Cursor.prototype.inFace = function() {
-	var i, j;
+	var i, j, k;
 	var face;
+	var room;
 
-	for(i = 0; i < room.arts.length; i++) {
-		face = room.arts[i];
-		if(this.faceSelected(face)) {
-			return face;
-		}
-	}
+	for(k=0; k<rooms.length; k++) {
+		room = rooms[k];
 
-	for(i = 0; i < room.doors.length; i++) {
-		face = room.doors[i];
-		face.projection();
-		if(this.faceSelected(face)) {
-			return face;
-		}
-	}
-
-	// for(i = 0; i < room.positions.length; i++) {
-	// 	face = room.positions[i];
-	// 	face.projection();
-	// 	if(this.faceSelected(face)) {
-	// 		return face;
-	// 	}
-	// }
-
-	for(i = 0; i < room.floors.length; i++) {
-		for(j = 0; j < room.floors[i].length; j++) {
-			face = room.floors[i][j];
-			face.projection();
+		for(i = 0; i < room.arts.length; i++) {
+			face = room.arts[i];
 			if(this.faceSelected(face)) {
 				return face;
 			}
 		}
 
+		for(i = 0; i < room.floors.length; i++) {
+			face = room.floors[i];
+			face.projection();
+			if(this.faceSelected(face)) {
+				return face;
+			}
+		}
 	}
 
 	return null;
@@ -237,12 +226,6 @@ Cursor.prototype.setCursor = function() {
 		if(this.aimedFace.f.type === 'art') {
 			return this.container.className = 'see';
 		}
-		if(this.aimedFace.f.type === 'door') {
-			return this.container.className = 'goroom';
-		}
-		// if(this.aimedFace.f.type === 'position') {
-		// 	return this.container.className = 'gonsee';
-		// }
 		if(this.aimedFace.f.type === 'floor') {
 			return this.container.className = 'go';
 		}
