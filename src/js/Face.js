@@ -102,6 +102,13 @@
 
 		// Remove invisible faces;
 
+		if(this.p0.behind || this.p1.behind || this.p2.behind || this.p3.behind) {
+			this.visible = false;
+			this.distance = -99999;
+			this.conditions += 20;
+			return;
+		}
+
 		if(this.p0.behind && this.p1.behind && this.p2.behind && this.p3.behind) {
 			this.visible = false;
 			this.distance = -99999;

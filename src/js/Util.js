@@ -163,7 +163,7 @@ var barycenter = function(points) {
 
 };
 
-var getEdges = function(faces) {
+var getEdges = function(faces, dim) {
 
 	if(faces.length === 0) {
 		return {
@@ -176,41 +176,62 @@ var getEdges = function(faces) {
 	var face;
 	var point;
 	var points;
-	var minXminY, minXmaxY, maxXmaxY, maxXminY;
-	minXminY = minXmaxY = maxXmaxY = maxXminY = faces[0].p0;
-	var maxDist = faces[0].distance;
+	var minDim, maxDim;
+	var maxDist;
 	for(i=0; i<faces.length; i++) {
 		face = faces[i];
 		face.projection();
 		if(face.visible) {
 
+			if(!minDim && !maxDim && !maxDist) {
+				minDim = maxDim = faces[i];
+				maxDist = faces[i].distance;
+			}
+
 			if(face.distance > maxDist) {
 				maxDist = face.distance;
 			}
-
-			for(j=0; j<face.points.length; j++) {
-				point = face.points[j];
-				if(!point.behind) {
-					if(point.x < minXminY.x && point.y < minXminY.y) {
-						minXminY = point;
-					}
-					if(point.x < minXmaxY.x && point.y > minXmaxY.y) {
-						minXmaxY = point;
-					}
-					if(point.x > maxXmaxY.x && point.y < maxXmaxY.y) {
-						maxXmaxY = point;
-					}
-					if(point.x > maxXminY.x && point.y > maxXminY.y) {
-						maxXminY = point;
-					}
+			if (dim === 'left' || dim === 'right') {
+				if(face.f.z < minDim.f.z) {
+					minDim = face;
 				}
+				if(face.f.z > maxDim.f.z) {
+					maxDim = face;
+				}
+				
+			}
+			if (dim === 'top' || dim === 'bottom') {
+				if(face.f.x < minDim.f.x) {
+					minDim = face;
+				}
+				if(face.f.x > maxDim.f.x) {
+					maxDim = face;
+				}
+				
 			}
 		}
 	}
-	return {
-		distance: maxDist,
-		points: [minXminY, minXmaxY, maxXmaxY, maxXminY]
-	};
+
+	if(!minDim && !maxDim && !maxDist) {
+		return {
+			distance: -99999,
+			points: []
+		};
+	}
+
+	if(dim === 'top' || dim === 'left') {
+		return {
+			distance: maxDist,
+			points: [minDim.p3, minDim.p0, maxDim.p1, maxDim.p2]
+		};
+	}
+	if(dim === 'bottom' || dim === 'right') {
+		return {
+			distance: maxDist,
+			points: [minDim.p1, minDim.p2, maxDim.p3, maxDim.p0]
+		};
+	}
+
 };
 
 

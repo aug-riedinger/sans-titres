@@ -26,10 +26,10 @@ Room.prototype.load = function() {
 };
 
 Room.prototype.init = function(constr) {
-	this.name = constr.name;
+	this.name = constr.name||'Room '+this.id;
 	this.position = constr.position;
 	this.map = constr.map;
-	this.adj = constr.adj;
+	this.adj = constr.adj||[];
 	this.color = constr.color;
 	this.artsConstr = constr.arts || [];
 	this.soundsConstr = constr.sounds || [];
@@ -53,7 +53,7 @@ Room.prototype.getElementsToRender = function() {
 			if(this.tops.hasOwnProperty(depth)) {
 				for(depth2 in this.tops[depth]) {
 					if(this.tops[depth].hasOwnProperty(depth2)) {
-						points = getEdges2(this.tops[depth][depth2], 'z');
+						points = getEdges(this.tops[depth][depth2], 'top');
 						points.type = 'wall';
 						points.color = this.color || '#E9E9E9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
@@ -67,7 +67,7 @@ Room.prototype.getElementsToRender = function() {
 			if(this.bottoms.hasOwnProperty(depth)) {
 				for(depth2 in this.bottoms[depth]) {
 					if(this.bottoms[depth].hasOwnProperty(depth2)) {
-						points = getEdges2(this.bottoms[depth][depth2], 'z');
+						points = getEdges(this.bottoms[depth][depth2], 'bottom');
 						points.type = 'wall';
 						points.color = this.color || '#E9E9E9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
@@ -81,7 +81,7 @@ Room.prototype.getElementsToRender = function() {
 			if(this.lefts.hasOwnProperty(depth)) {
 				for(depth2 in this.lefts[depth]) {
 					if(this.lefts[depth].hasOwnProperty(depth2)) {
-						points = getEdges2(this.lefts[depth][depth2], 'x');
+						points = getEdges(this.lefts[depth][depth2], 'left');
 						points.type = 'wall';
 						points.color = this.color || '#D9D9D9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
@@ -95,7 +95,7 @@ Room.prototype.getElementsToRender = function() {
 			if(this.rights.hasOwnProperty(depth)) {
 				for(depth2 in this.rights[depth]) {
 					if(this.rights[depth].hasOwnProperty(depth2)) {
-						points = getEdges2(this.rights[depth][depth2], 'x');
+						points = getEdges(this.rights[depth][depth2], 'right');
 						points.type = 'wall';
 						points.color = this.color || '#D9D9D9';
 						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
