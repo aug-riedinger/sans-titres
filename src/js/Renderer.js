@@ -14,7 +14,7 @@ var renderer = {
 		if(horizonLine < scr.height) {
 			scr.ctx.beginPath();
 			scr.ctx.rect(0, horizonLine, scr.width, scr.height - horizonLine);
-			scr.ctx.fillStyle = '#80827d';
+			scr.ctx.fillStyle = colors['floor'];
 			scr.ctx.fill();
 		}
 	},
@@ -46,10 +46,10 @@ var renderer = {
 			scr.ctx.lineTo(face.p0.X, face.p0.Y);
 			scr.ctx.closePath();
 			if(!cursor.aimedFace.f.art) {
-				scr.ctx.strokeStyle = '#70726D';
+				scr.ctx.strokeStyle = colors['aimedFloor'];
 				scr.ctx.stroke();
 			} else {
-				scr.ctx.fillStyle = '#70726D';
+				scr.ctx.fillStyle = colors['aimedFloor'];
 				scr.ctx.fill();
 			}
 		}
@@ -69,15 +69,10 @@ var renderer = {
 		renderer.renderElementsToRender(toRender);
 	},
 	renderElementsToRender: function(toRender) {
-
 		toRender = insertSortDistance(toRender);
 
-		// toRender.sort(function(points1, points2) {
-		// 	return points2.distance - points1.distance;
-		// });
-
 		for(i = 0; i < toRender.length; i++) {
-			if(toRender[i].type === 'wall') {
+			if(toRender[i].type === 'top' || toRender[i].type === 'bottom' || toRender[i].type === 'left' || toRender[i].type === 'right') {
 				renderer.facesMerged(toRender[i]);
 			}
 			if(toRender[i].type === 'art') {
@@ -90,8 +85,7 @@ var renderer = {
 		var grd;
 		var point;
 		var points = pointList.points;
-		var color = pointList.color;
-		var color2 = pointList.color2;
+		var color = colors[pointList.type];
 
 		if(points.length > 2) {
 			scr.ctx.beginPath();
@@ -100,17 +94,16 @@ var renderer = {
 				scr.ctx.lineTo(point.X, point.Y);
 			}
 			scr.ctx.closePath();
-			if(SLOW || color2 === undefined) {
-				scr.ctx.fillStyle = color || 'white';
+			if(colors['gradient'] === undefined || SLOW) {
+				scr.ctx.fillStyle = color || '#F9F9F9';
 			} else {
 				grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
-				// grd = scr.ctx.createLinearGradient(points[0].X, points[0].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
 				grd.addColorStop(0, color);
-				grd.addColorStop(1, color2);
+				grd.addColorStop(1, colors['gradient']);
 				scr.ctx.fillStyle = grd;
 			}
 			scr.ctx.lineWidth = 1;
-			scr.ctx.strokeStyle = color || 'white';
+			scr.ctx.strokeStyle = '#E4E4E4';
 			scr.ctx.fill();
 			scr.ctx.stroke();
 		}

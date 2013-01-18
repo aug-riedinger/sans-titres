@@ -77,7 +77,7 @@ var init = function() {
 		enteredRoom(parameters.room || 1);
 
 		camera = new Camera(rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.x, rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.z);
-		keyboard = new Keyboard();
+		// keyboard = new Keyboard();
 		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
 		if(parameters.art !== undefined) {

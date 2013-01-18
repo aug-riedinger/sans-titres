@@ -927,3 +927,117 @@ Camera.prototype.goToPosition = function(id) {
 	this.zoom.setTarget(1);
 	// this.rx.setTarget(0);
 };
+
+var drawCanvas = function(data) {
+	var canv = document.createElement('canvas');
+	var ctx = canv.getContext('2d');
+	var img;
+
+	canv.width = 640;
+	canv.height = 428;
+
+	var titre = data.titre;
+	var content = data.content;
+
+	ctx.beginPath();
+	ctx.rect(0, 0, canv.width, canv.height);
+	ctx.fillStyle = params.wallColor || '#f9f9f9';
+	ctx.fill();
+	ctx.moveTo(170, 80);
+	ctx.font = "bold 24px Calibri";
+	ctx.textAlign = 'center';
+	ctx.fillText(titre, canv.width / 2, 200);
+	ctx.font = "normal 14px Calibri";
+	ctx.textAlign = 'left';
+	wrapText(ctx, content, canv.width / 2 - 150, 250, 300, 18);
+
+	img = new Image();
+	img.src = canv.toDataURL();
+	img.className = 'txt';
+
+	return img;
+};
+
+var barycenter = function(points) {
+	var point;
+	var x = 0,
+	y = 0,
+	z = 0;
+	if(!points.length) {
+		points = [points];
+	}
+	for(var i = 0; i < points.length; i++) {
+		point = points[i];
+		x += point.x;
+		y += point.y;
+		z += point.z;
+	}
+
+	return new Point(null, [parseInt(x / points.length, 10), parseInt(y / points.length, 10), parseInt(z / points.length, 10)]);
+
+};
+
+
+var canvasToImage = function(canvas) {
+	var image = new Image();
+	image.src = canvas.toDataURL("image/png");
+	return image;
+};
+
+var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
+	var words = text.split(' ');
+	var line = '';
+
+	for(var n = 0; n < words.length; n++) {
+		var testLine = line + words[n] + ' ';
+		var metrics = context.measureText(testLine);
+		var testWidth = metrics.width;
+		if(testWidth > maxWidth) {
+			context.fillText(line, x, y);
+			line = words[n] + ' ';
+			y += lineHeight;
+		} else {
+			line = testLine;
+		}
+	}
+	context.fillText(line, x, y);
+};
+
+var getCenter = function(faces) {
+	var i, j, k;
+	var face, point;
+	var cx, cy, cz, cpt;
+
+	cx = 0;
+	cy = 0;
+	cz = 0;
+	cpt = 0;
+
+	for(i = 0; i < faces.length; i++) {
+		face = faces[i];
+		face.projection();
+		if(face.visible) {
+
+			cx += face.f.x;
+			cy += face.f.y;
+			cz += face.f.z;
+			cpt++;
+		}
+	}
+
+	cx = cx / cpt || 0;
+	cy = cy / cpt || 0;
+	cz = cz / cpt || 0;
+
+	console.log(cx);
+	console.log(cy);
+	console.log(cz);
+
+	var x = parseInt(cx / params.unit - room.position.x, 10);
+	var z = parseInt(cz / params.unit - room.position.z, 10);
+	console.log(room.map[room.map.length - 1 - z][2 * x]);
+	console.log(x);
+	console.log(z);
+
+
+};

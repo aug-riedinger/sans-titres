@@ -2,7 +2,6 @@ var scr;
 var rooms = [];
 var cursor;
 var keyboard;
-var cursor;
 var camera;
 
 var SLOW = false;
@@ -15,10 +14,18 @@ var params = {
 	height: 4000,
 	focalLength: 1000,
 	humanHeight: 300,
-	wallColor: '#f9f9f9',
-	floorColor: '#80827d',
 	wallDist: 0,
 	artDist: 500,
 	cursorX: 4,
 	cursorY: 6
+};
+
+var colors = {
+	'floor': '#80827d',
+	'aimedFloor': '#70726D',
+	// 'gradient': '#F9F9F9',
+	'top': '#E9E9E9',
+	'bottom': '#E9E9E9',
+	'left': '#D9D9D9',
+	'right': '#D9D9D9'
 };

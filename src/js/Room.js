@@ -13,12 +13,11 @@ var Room = function(id, mainRoom) {
 	this.floors = [];
 	this.images = [];
 	this.texts = [];
-	this.ready = false;
 	return this.load();
 };
 
 Room.prototype.load = function() {
-	$.getJSON('/rooms/room' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('/numero0/room' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));
@@ -35,7 +34,6 @@ Room.prototype.init = function(constr) {
 	this.soundsConstr = constr.sounds || [];
 
 	this.readMap();
-	this.ready = true;
 	rooms[rooms.length] = this;
 	return this;
 };
@@ -45,83 +43,63 @@ Room.prototype.getElementsToRender = function() {
 	var face;
 	var toRender = [];
 	var cptToRender = 0;
-	var points;
 
-	if(this.ready) {
-
-		for(depth in this.tops) {
-			if(this.tops.hasOwnProperty(depth)) {
-				for(depth2 in this.tops[depth]) {
-					if(this.tops[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.tops[depth][depth2], 'top');
-						points.type = 'wall';
-						points.color = this.color || '#E9E9E9';
-						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender[cptToRender] = points;
-						cptToRender +=1;
-					}
+	for(depth in this.tops) {
+		if(this.tops.hasOwnProperty(depth)) {
+			for(depth2 in this.tops[depth]) {
+				if(this.tops[depth].hasOwnProperty(depth2)) {
+					toRender[cptToRender] = getEdges(this.tops[depth][depth2], 'top');
+					cptToRender +=1;
 				}
 			}
 		}
-		for(depth in this.bottoms) {
-			if(this.bottoms.hasOwnProperty(depth)) {
-				for(depth2 in this.bottoms[depth]) {
-					if(this.bottoms[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.bottoms[depth][depth2], 'bottom');
-						points.type = 'wall';
-						points.color = this.color || '#E9E9E9';
-						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender[cptToRender] = points;
-						cptToRender +=1;
-					}
+	}
+	for(depth in this.bottoms) {
+		if(this.bottoms.hasOwnProperty(depth)) {
+			for(depth2 in this.bottoms[depth]) {
+				if(this.bottoms[depth].hasOwnProperty(depth2)) {
+					toRender[cptToRender] = getEdges(this.bottoms[depth][depth2], 'bottom');
+					cptToRender +=1;
 				}
 			}
 		}
-		for(depth in this.lefts) {
-			if(this.lefts.hasOwnProperty(depth)) {
-				for(depth2 in this.lefts[depth]) {
-					if(this.lefts[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.lefts[depth][depth2], 'left');
-						points.type = 'wall';
-						points.color = this.color || '#D9D9D9';
-						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender[cptToRender] = points;
-						cptToRender +=1;
-					}
+	}
+	for(depth in this.lefts) {
+		if(this.lefts.hasOwnProperty(depth)) {
+			for(depth2 in this.lefts[depth]) {
+				if(this.lefts[depth].hasOwnProperty(depth2)) {
+					toRender[cptToRender] = getEdges(this.lefts[depth][depth2], 'left');
+					cptToRender +=1;
 				}
 			}
 		}
-		for(depth in this.rights) {
-			if(this.rights.hasOwnProperty(depth)) {
-				for(depth2 in this.rights[depth]) {
-					if(this.rights[depth].hasOwnProperty(depth2)) {
-						points = getEdges(this.rights[depth][depth2], 'right');
-						points.type = 'wall';
-						points.color = this.color || '#D9D9D9';
-						points.color2 = (this.mainRoom && !this.color ? '#F9F9F9' : undefined);
-						toRender[cptToRender] = points;
-						cptToRender +=1;
-					}
+	}
+	for(depth in this.rights) {
+		if(this.rights.hasOwnProperty(depth)) {
+			for(depth2 in this.rights[depth]) {
+				if(this.rights[depth].hasOwnProperty(depth2)) {
+					toRender[cptToRender] = getEdges(this.rights[depth][depth2], 'right');
+					cptToRender +=1;
 				}
 			}
 		}
-
-		for(i = 0; i < this.arts.length; i++) {
-			face = this.arts[i];
-			face.projection();
-			if(face.visible) {
-				toRender[cptToRender] = {
-					type: 'art',
-					distance: this.arts[i].distance,
-					art: this.arts[i]
-				};
-				cptToRender +=1;
-			}
-		}
-
-		return toRender;
 	}
 
+	for(i = 0; i < this.arts.length; i++) {
+		face = this.arts[i];
+		face.projection();
+		if(face.visible) {
+			toRender[cptToRender] = {
+				type: 'art',
+				distance: this.arts[i].distance,
+				art: this.arts[i]
+			};
+			cptToRender +=1;
+		}
+	}
+
+	return toRender;
+	
 };
 
 

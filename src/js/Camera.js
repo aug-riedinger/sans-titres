@@ -1,4 +1,3 @@
-// ---- camera ----
 var Camera = function(_x, _z) {
 	this.focalLength = params.focalLength;
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
