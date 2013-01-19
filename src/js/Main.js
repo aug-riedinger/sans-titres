@@ -90,6 +90,7 @@ var init = function() {
 			}
 		}
 
+
 		requestAnimFrame(run);
 		$(scr.canvas).fadeIn(3000, function() {
 			setTimeout(remHtml, 1000);
@@ -103,7 +104,9 @@ var init = function() {
 
 var run = function() {
 	// ---- loop ----
+	if(!MENU) {
 	requestAnimFrame(run);
+	}
 
 	// ---- clear screen ----
 	scr.ctx.clearRect(0, 0, scr.width, scr.height);

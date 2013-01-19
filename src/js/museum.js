@@ -2118,6 +2118,7 @@ var init = function() {
 			}
 		}
 
+
 		requestAnimFrame(run);
 		$(scr.canvas).fadeIn(3000, function() {
 			setTimeout(remHtml, 1000);
@@ -2131,7 +2132,9 @@ var init = function() {
 
 var run = function() {
 	// ---- loop ----
+	if(!MENU) {
 	requestAnimFrame(run);
+	}
 
 	// ---- clear screen ----
 	scr.ctx.clearRect(0, 0, scr.width, scr.height);
@@ -2182,6 +2185,14 @@ Sound.prototype.adjustVolume = function(x, z) {
 	this.audio.volume = volume;
 };
 
+var MENU = true;
+
+$('#visite').click(function(e) {
+	$('#menu').fadeOut(1000);
+	$('#screen').fadeIn(1000);
+	MENU = false;
+	run();
+});
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36223212-4']);
 _gaq.push(['_trackPageview']);

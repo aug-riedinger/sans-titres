@@ -27,6 +27,7 @@ new compressor.minify({
     'src/js/Util.js',
     'src/js/Main.js',
     'src/js/Sound.js',
+    'src/js/Menu.js',
     'src/js/Analytics.js'
     ],
     fileOut: 'src/js/museum.js',
@@ -54,6 +55,7 @@ new compressor.minify({
     'src/js/Renderer.js',
     'src/js/Util.js',
     'src/js/Main.js',
+    'src/js/Menu.js',
     'src/js/Sound.js'
     ],
     fileOut: 'src/js/museum.min.js',
