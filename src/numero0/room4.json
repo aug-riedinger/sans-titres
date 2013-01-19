@@ -9,13 +9,63 @@
     "map" : [
     "#.-.-.-.",
     "|.,.,.,.",
-    "|.,.,.,.",
+    "|b,.,.,.",
     "|.,.,.!.",
+    "|d,.,.!.",
     "|.,.,.!.",
-    "|.,.,.!.",
-    "|.,.,.!.",
+    "|c,.,.!e",
     "|.,.,.!."
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" : 400,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/room4/P1220131_2_401x600.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 900,
+        "thumb" : "https://s3.amazonaws.com/room4/P1910936_800x600.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 900,
+        "thumb" : "https://s3.amazonaws.com/room4/P1910943_800x600.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "d",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 900,
+        "thumb" : "https://s3.amazonaws.com/room4/P1920155_800x600.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 1800,
+        "height" : 900,
+        "y": -300,
+        "z": 400,
+        "thumb" : "https://s3.amazonaws.com/room4/P1920146_800x534.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 900,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/room4/P1920151_800x600.jpg",
+        "src" : ""    
+    }
     ]
 }

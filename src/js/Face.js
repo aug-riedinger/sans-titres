@@ -35,7 +35,7 @@
 
 		// ---- create 3D image ----
 		if(this.f.type === 'art') {
-			this.img = new CanvasEl.Image(scr.canvas, this.f.thumb, f.tl || 2);
+			this.img = new CanvasEl.Image(scr.canvas, this.f.thumb, this.f.level || 2);
 		}
 
 		this.buffer();
@@ -302,9 +302,9 @@
 				id: _room.id + ':' + Math.floor(face.f.x / params.unit) + ':' + Math.floor(face.f.z / params.unit) + ':art',
 				type: 'art',
 				subtype: artConstr.type,
-				x: face.f.x,
-				y: params.height / 2 - params.humanHeight * 1.8,
-				z: face.f.z,
+				x: face.f.x + (artConstr.x||0),
+				y: params.height / 2 - params.humanHeight * 1.8 + (artConstr.y||0),
+				z: face.f.z + (artConstr.z||0),
 				rx: face.f.rx,
 				ry: face.f.ry,
 				w: artConstr.width,
@@ -314,6 +314,7 @@
 				info: artConstr.info || {},
 				iFrameHeight: artConstr.iFrameHeight,
 				iFrameWidth: artConstr.iFrameWidth,
+				level: artConstr.level,
 				artId: artConstr.id,
 				select: true
 			};

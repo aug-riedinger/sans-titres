@@ -7,13 +7,42 @@
     },
     "adj" : [2, 4],
     "map" : [
-    "#.-.,.,.,.!.",
+    "#.-c,.,.,.!.",
+    "|.,.,.,.,.!a",
+    "|b,.,.,.,.!.",
     "|.,.,.,.,.!.",
-    "|.,.,.,.,.!.",
-    "|.,.,.,.,.!.",
-    "|.,.,.,.....",
-    "%._._._....."
+    "|.,.,.,.,.,.",
+    "%._._._.,.,."
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" :3000,
+        "height" : 1500,
+        "y": -600,
+        "level": 4,
+        "thumb" : "https://s3.amazonaws.com/room3/darren.multiple21+12_1280x645.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" :3000,
+        "height" : 1500,
+        "y": -500,
+        "level": 4,
+        "thumb" : "https://s3.amazonaws.com/room3/CharleyCase.Diplo1_800x378.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 1250,
+        "height" : 250,
+        "x": -500,
+        "thumb" : "https://s3.amazonaws.com/room3/La+derniere+heure+titre.png",
+        "src" : ""    
+    }
     ]
 }

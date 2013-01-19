@@ -4,15 +4,59 @@
 	<meta charset="ISO-8859-1">
 	<meta name="Author" content="Augustin Riedinger at http://www.sans-titres.com">
 	<meta name="description" content="Une revue trans-disciplinaire, bimestrielle, vivante et virtuelle. Un Autre média, une création collective, intellectuelle et sensible. Un espace ouvert à tous, à tous ceux et à toutes celles qui dans et sur la vie s'accordent le temps du regard.">
-	<title>Sans-titres</title>
+	<title>SANS-TITRES</title>
 
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /> 
-	<link rel="stylesheet" href="css/main.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 
 </head>
 <body oncontextmenu="return false;">
-	<div id="content">
+	<section id="menu">
+		<nav>
+			<div class="nav left"><a href="#">Appel à projet #1</a></div>
+			<div class="nav middle"><a href="manifeste-editorial.html">Manifeste Editorial</a></div>
+			<div class="nav right"><a href="#">Soutenir le projet</a></div>
+		</nav>
+
+
+		<section id="menu_content">
+			<h1>Sans-Titres #0</h1>
+			<div id="rotate"><p>Table des matières</p></div>
+
+
+			<div id="map">
+			</div>
+
+			<ul id="Arts">
+				<li class="images"><a href="#">IMAGES</a></li>
+				<li class="sons"><a href="#">SONS</a></li>
+				<li class="textes"><a href="#">TEXTES</a></li>
+				<li class="videos"><a href="#">VIDÉOS</a></li>
+				<li class="participant"><a href="#">/// PAR PARTICIPANT</a></li>
+			</ul>
+
+			<div id="list-div">
+				<ul id="list">
+				</ul>
+			</div>
+			<div id="visite"><a href="http://sans-titres.herokuapp.com/"> Accéder</br>directement</br> à la visite</a></div>
+			
+
+		</section>
+
+
+		<footer>
+			<ul id="footer">
+				<li><a href="#">Mentions légales</a></li>
+				<li><a href="#">Qui nous sommes</a></li>
+				<li><a href="#">Nous contacter</a></li>
+				<li><a href="#">Partenaires</a></li>
+			</footer>
+
+		</section>
+
+
 		<div id="screen">
 			<canvas id="canvas"></canvas>
 		</div>
@@ -34,9 +78,8 @@
 			<div id="artDescription">Bienvenue sur notre musée virtuel</div>
 		</div>
 
-	</div>
-	<script type="text/javascript" src="./libs/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="./js/museum.min.js"></script>
+		<script type="text/javascript" src="./libs/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="./js/museum.js"></script>
 
-</body>
-</html>
+	</body>
+	</html>

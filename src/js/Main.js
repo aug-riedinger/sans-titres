@@ -75,8 +75,9 @@ var init = function() {
 	$(scr.container).one('loaded', function() {
 
 		enteredRoom(rooms[0].id);
-
-		keyboard = new Keyboard();
+		if(typeof(Keyboard) === 'function') {
+			keyboard = new Keyboard();
+		}
 		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
 		camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
