@@ -72,7 +72,8 @@ var renderer = {
 		toRender = insertSortDistance(toRender);
 
 		for(i = 0; i < toRender.length; i++) {
-			if(toRender[i].type === 'top' || toRender[i].type === 'bottom' || toRender[i].type === 'left' || toRender[i].type === 'right') {
+			// if(toRender[i].type === 'top' || toRender[i].type === 'bottom' || toRender[i].type === 'left' || toRender[i].type === 'right') {
+			if(toRender[i].type !== 'art') {
 				renderer.facesMerged(toRender[i]);
 			}
 			if(toRender[i].type === 'art') {
@@ -189,7 +190,10 @@ CanvasEl.Image.prototype.loading = function() {
 
 
 
-CanvasEl.Image.prototype.render = function(p0, p1, p2, p3, color) {
+CanvasEl.Image.prototype.render = function(p0, p1, p2, p3, color, border) {
+	if(border === undefined) {
+		border = true;
+	}
 	var array = [p0, p1, p2, p3];
 	// ---- loading ----
 	if(this.isLoading) {
@@ -258,16 +262,17 @@ CanvasEl.Image.prototype.render = function(p0, p1, p2, p3, color) {
 			t = t.next;
 		} while (t);
 
+		if(border) {
+			this.ctx.beginPath();
+			for(var i = 0; i < array.length; i++) {
+				this.ctx.lineTo(array[i].X, array[i].Y);
 
-		this.ctx.beginPath();
-		for(var i = 0; i < array.length; i++) {
-			this.ctx.lineTo(array[i].X, array[i].Y);
-
+			}
+			this.ctx.closePath();
+			this.ctx.lineWidth = 1;
+			this.ctx.strokeStyle = color || 'white';
+			this.ctx.stroke();
 		}
-		this.ctx.closePath();
-		this.ctx.lineWidth = 1;
-		this.ctx.strokeStyle = color || 'white';
-		this.ctx.stroke();
 
 	}
 };

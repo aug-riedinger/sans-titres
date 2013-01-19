@@ -177,9 +177,9 @@
 	Face.prototype.render = function() {
 		if(this.f.type === 'art') {
 			if(cursor.aimedFace && this.f.id === cursor.aimedFace.f.id) {
-				this.img.render(this.p0, this.p1, this.p2, this.p3, 'black');
+				this.img.render(this.p0, this.p1, this.p2, this.p3, 'black', this.f.border);
 			} else {
-				this.img.render(this.p0, this.p1, this.p2, this.p3, 'white');
+				this.img.render(this.p0, this.p1, this.p2, this.p3, 'white', this.f.border);
 			}
 		}
 	};

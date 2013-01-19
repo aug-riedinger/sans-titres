@@ -34,6 +34,12 @@ Room.prototype.init = function(constr) {
 	this.soundsConstr = constr.sounds || [];
 
 	this.readMap();
+
+	if(!this.startFloor) {
+		this.startFloor = this.floors[parseInt(this.floors.length / 2, 10)];
+	}
+
+	this.makeSounds();
 	rooms[rooms.length] = this;
 	return this;
 };
@@ -43,6 +49,10 @@ Room.prototype.getElementsToRender = function() {
 	var face;
 	var toRender = [];
 	var cptToRender = 0;
+
+	for(i=0; i< this.sounds.length; i++) {
+		this.sounds[i].adjustVolume(camera.x.value, camera.z.value);
+	}
 
 	for(depth in this.tops) {
 		if(this.tops.hasOwnProperty(depth)) {
@@ -136,9 +146,9 @@ Room.prototype.getArtConstr = function(artId) {
 
 Room.prototype.readMap = function() {
 	var h, w, x, z;
-	var charType, artId;
+	var charType, artId, next;
 	var artConstr;
-	var top, bottom, left, right, art;
+	var top, bottom, left, right, floor, art;
 
 	for(h = 0; h < this.map.length; h++) {
 		z = this.map.length - (h + 1);
@@ -146,7 +156,9 @@ Room.prototype.readMap = function() {
 			// Get Vars
 			x = w / 2;
 			charType = this.map[h][w];
-			artId = this.map[h][w + 1];
+			next = this.map[h][w + 1];
+			artId = next.replace(/^[^a-zA-Z0-9]$/, '');
+
 
 			if(this.isInside(charType)) {
 
@@ -157,7 +169,8 @@ Room.prototype.readMap = function() {
 
 
 				art = undefined;
-				if(artId !== '.') {
+				artConstr = undefined;
+				if(artId !== '') {
 					artConstr = this.getArtConstr(artId);
 					if(this.isTop(artConstr.side || charType)) {
 						art = faceMaker.art(this, top, artConstr);
@@ -176,8 +189,20 @@ Room.prototype.readMap = function() {
 						this.arts.push(art);
 					}
 
+
 				}
-				this.floors.push(faceMaker.floor(this, x, z, [top, bottom, left, right], art));
+				floor = faceMaker.floor(this, x, z, [top, bottom, left, right], art);
+				if(next === '@') {
+					this.startFloor = floor;
+				}
+
+				if(artConstr && artConstr.type === 'monolythe') {
+					art = new Monolythe(floor, artConstr);
+					floor.f.select = false;
+					this.arts = this.arts.concat(art.faces);
+				}
+
+				this.floors.push(floor);
 			}
 
 		}
@@ -208,14 +233,52 @@ Room.prototype.makeSounds = function() {
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		sound = this.soundsConstr[i];
-		this.sounds.push(new Sound(sound));
+		this.sounds.push(new Sound(this, sound));
 	}
 };
 
-Room.prototype.removeSounds = function() {
+Room.prototype.enter = function() {
+	var sound;
+
+	if(this.sounds.length > 0) {
+		if($('#volume').css('display') === 'none') {
+			$('#volume').fadeIn(1000);
+		}
+
+		$('#volume').click($.proxy(function(e) {
+			var i;
+			for (i=0; i< this.sounds.length; i++) {
+				if(!this.sounds[i].muted) {
+					this.sounds[i].formerVolume = this.sounds[i].audio.volume;
+					this.sounds[i].audio.volume = 0;
+					this.sounds[i].muted = true;
+					$('#volume').addClass('muted');
+				} else {
+					this.sounds[i].audio.volume = this.sounds[i].formerVolume;
+					this.sounds[i].adjustVolume();
+					this.sounds[i].muted = false;
+					$('#volume').removeClass('muted');
+				}
+
+			}
+		}, this));
+		
+	}
+
+	for(i = 0; i < this.sounds.length; i++) {
+		if(this.sounds[i].autoPlay) {
+			this.sounds[i].adjustVolume(this.startFloor.f.x, this.startFloor.f.z);
+			this.sounds[i].audio.play();
+		}
+	}
+
+};
+
+Room.prototype.exit = function() {
 	var i;
+	$('#volume').fadeOut(1000);
 	for (i=0; i<this.sounds.length; i++) {
-		this.sounds[i].remove();
+		this.sounds[i].audio.pause();
 	}
 };
 

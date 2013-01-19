@@ -19,7 +19,7 @@ var enteredRoom = function(roomId) {
 	var newRoom, oldRoom, switchRoom;
 
 	oldRoom = rooms[0];
-	oldRoom.removeSounds();
+	oldRoom.exit();
 	for(k = 0; k < rooms.length; k++) {
 		if(rooms[k].id === roomId) {
 			switchRoom = rooms[k];
@@ -55,7 +55,7 @@ var enteredRoom = function(roomId) {
 					rooms.splice(j, 1);
 				}
 			}
-			newRoom.makeSounds();
+			newRoom.enter();
 			return rooms;
 		}
 	}
@@ -70,22 +70,22 @@ var init = function() {
 		canvas: "canvas"
 	});
 
-	new Room(parameters.room || 1);
+	new Room(parseInt(parameters.room, 10) || 1);
 
 	$(scr.container).one('loaded', function() {
 
-		enteredRoom(parameters.room || 1);
+		enteredRoom(rooms[0].id);
 
-		camera = new Camera(rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.x, rooms[0].floors[parseInt(rooms[0].floors.length / 2, 10)].pc.z);
-		// keyboard = new Keyboard();
+		keyboard = new Keyboard();
 		cursor = new Cursor('screen', params.cursorX, params.cursorY);
 
+		camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
 		if(parameters.art !== undefined) {
 			var i;
 			for(i = 0; i < rooms[0].floors.length; i++) {
-					if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
-						camera.targetToFace(rooms[0].floors[i]);
-					}
+				if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
+					camera.targetToFace(rooms[0].floors[i]);
+				}
 			}
 		}
 

@@ -2,7 +2,7 @@ var Camera = function(_x, _z) {
 	this.focalLength = params.focalLength;
 	this.x = new ge1doot.tweens.Add(100, _x, _x);
 	this.y = new ge1doot.tweens.Add(100, -8 * params.unit, params.height / 2 - params.humanHeight);
-	this.z = new ge1doot.tweens.Add(100, _z, _z);
+	this.z = new ge1doot.tweens.Add(100, _z + this.focalLength, _z + this.focalLength);
 	this.rx = new ge1doot.tweens.Add(100, -Math.PI / 2, 0, true, -Math.PI / 36, Math.PI / 8);
 	this.ry = new ge1doot.tweens.Add(100, 0, 0, true);
 	this.zoom = new ge1doot.tweens.Add(100, 1, 1);
@@ -69,64 +69,6 @@ Camera.prototype.targetToFace = function(face) {
 
 	}
 
-};
-
-Camera.prototype.up = function(strength) {
-	this.targetToPosition({
-		x: this.x.target + params.unit * this.trig.sinY * (strength || 1),
-		z: this.z.target + params.unit * this.trig.cosY * (strength || 1)
-	});
-};
-
-Camera.prototype.down = function(strength) {
-	this.targetToPosition({
-		x: this.x.target - params.unit * this.trig.sinY * (strength || 1),
-		z: this.z.target - params.unit * this.trig.cosY * (strength || 1)
-	});
-};
-
-Camera.prototype.lft = function(strength) {
-	this.targetToPosition({
-		x: this.x.target - params.unit * this.trig.cosY * (strength || 1),
-		z: this.z.target + params.unit * this.trig.sinY * (strength || 1)
-	});
-};
-
-Camera.prototype.rght = function(strength) {
-	this.targetToPosition({
-		x: this.x.target + params.unit * this.trig.cosY * (strength || 1),
-		z: this.z.target - params.unit * this.trig.sinY * (strength || 1)
-	});
-};
-
-Camera.prototype.left = function(strength) {
-	this.targetToPosition({
-		ry: this.ry.target + Math.PI / 4 * (strength || 1) + 2 * Math.PI
-	});
-};
-
-Camera.prototype.right = function(strength) {
-	this.targetToPosition({
-		ry: this.ry.target - Math.PI / 4 * (strength || 1) + 2 * Math.PI
-	});
-};
-
-
-Camera.prototype.zoomIn = function() {
-	this.zoom.setTarget(this.zoom.target * 1.25);
-};
-
-Camera.prototype.zoomOut = function() {
-	this.zoom.setTarget(this.zoom.target * 0.8);
-};
-
-Camera.prototype.stop = function() {
-	this.x.setTarget(this.x.value);
-	this.y.setTarget(this.y.value);
-	this.z.setTarget(this.z.value);
-	this.rx.setTarget(this.rx.value);
-	this.ry.setTarget(this.ry.value);
-	this.zoom.setTarget(this.zoom.value);
 };
 
 Camera.prototype.godView = function() {

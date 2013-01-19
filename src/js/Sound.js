@@ -1,42 +1,34 @@
-var Sound = function(constr) {
+var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.audio.src = constr.src;
-	if(constr.play === 'true') {
-		this.audio.volume = 0.8;
-		this.audio.play();
+	this.autoPlay = constr.play;
+	this.muted = false;
+	if(constr.position) {
+		this.position = {
+			x: (room.position.x + constr.position.x)*params.unit,
+			z: (room.position.z + constr.position.z)*params.unit
+		};
 	}
-
-	this.activateControls();
 };
 
-Sound.prototype.activateControls = function() {
-	if($('#audio').css('display') === 'none') {
-		$('#audio').fadeIn(1000);
+
+Sound.prototype.adjustVolume = function(x, z) {
+	var volume;
+	var distance;
+	if(this.position) {
+		distance = Math.sqrt((x - this.position.x)*(x - this.position.x) + (z - params.focalLength - this.position.z)*(z - params.focalLength - this.position.z));
+		volume = params.unit / distance;
+
+		if(volume>1) {
+			volume = 1;
+		}
+
+		if(volume<0) {
+			volume = 0;
+		}
+
+	} else {
+		volume = 0.8;
 	}
-
-	$('#s_mute').click($.proxy(function(e) {
-		this.formerVolume = this.audio.volume;
-		this.audio.volume = 0;
-	}, this));
-	$('#s_lower').click($.proxy(function(e) {
-		if(this.audio.volume === 0) {
-			this.audio.volume = this.formerVolume || 0;
-		} else {
-			this.audio.volume -= 0.1;
-		}
-	}, this));
-	$('#s_higher').click($.proxy(function(e) {
-		if(this.audio.volume === 0) {
-			this.audio.volume = this.formerVolume || 1;
-		} else {
-			this.audio.volume += 0.1;
-		}
-	}, this));
-
-};
-
-Sound.prototype.remove = function() {
-	this.audio.pause();
-	$('#audio').fadeOut(1000);
-	// this.removeChild(audio);
+	this.audio.volume = volume;
 };
