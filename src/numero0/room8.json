@@ -7,16 +7,85 @@
     },
     "adj" : [7, 9],
     "map" : [
-    "-.-.-.+.",
-    ",.,.,.!.",
+    "-.-a-.+.",
+    ",.,.,.!b",
     "|.,.,.!.",
+    "|d,.,.!c",
     "|.,.,.!.",
-    "|.,.,.!.",
-    "|.,.,.!.",
+    "|e,.,.!.",
     "|.,.,.,.",
-    "|.,.,.,.",
-    "%._._._."
+    "|f,.,.,.",
+    "%._g_._h"
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" : 2048,
+        "height" : 1368,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room8/af_03_1024x684.jpg",
+        "src" : ""
+    },
+    {
+        "id": "b",
+        "type" : "texte",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://s3.amazonaws.com/room8/robert+krammer+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 2000,
+        "y": -600,
+        "thumb" : "https://s3.amazonaws.com/room8/transversalisme_1194x1200.jpg",
+        "src" : ""
+    },
+    {
+        "id": "d",
+        "type" : "texte",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://s3.amazonaws.com/room7/horodateurs+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "e",
+        "type" : "texte",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://s3.amazonaws.com/room7/photo+chocopng.png",
+        "src" : ""
+    },
+    {
+        "id": "f",
+        "type" : "texte",
+        "width" : 1024,
+        "height" : 683,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room8/gmusset4_1024x683.jpg",
+        "src" : ""
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room7/5207153459_357b66bb02_b_1024x768.jpeg",
+        "src" : ""
+    },
+    {
+        "id": "h",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room8/5207149453_f9eb50022e_b_1024x768.jpeg",
+        "src" : ""
+    }
     ]
 }

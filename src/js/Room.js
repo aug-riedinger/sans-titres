@@ -98,7 +98,7 @@ Room.prototype.getElementsToRender = function() {
 		if(face.visible) {
 			toRender[cptToRender] = {
 				type: 'art',
-				distance: this.arts[i].distance * 0.5,
+				distance: this.arts[i].distance * 0.6,
 				// A corriger
 				art: this.arts[i]
 			};

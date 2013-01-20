@@ -3,23 +3,92 @@
     "name": "Room 10",
     "position" : {
         "x": 40,
-        "z": 26
+        "z": 29
     },
-    "adj" : [9],
+    "adj" : [9, 11],
     "map" : [
-    ",.,.,.,.#.-.-.+.",
-    ",.,.,.,.|.,.,.!.",
-    ",.,.,.,.|.,.,.!.",
-    "#.-.-.-.,.,.,.!.",
-    "|.,.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.,.!.",
-    "|.,.,.,.,._._.¤.",
-    ",.,.,.,.!.,.,.,.",
-    ",.,.,.,.!.,.,.,.",
-    "_._._._.¤.,.,.,."
+    "#.-f-.-.,.,.,.!.",
+    "|d,.,.,.,.,.,.!.",
+    "|c,.,.,.,.,.,.!i",
+    "|e,.,.,.,.,.,.!.",
+    "|b,.,.,.,.,.,.!h",
+    "|.,.,.,.,._._g¤."
     ],
     "arts" : [
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 1000,
+        "height" : 1500,
+        "y": -400,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/room10/Scan_Pic0001_698x1024.jpg",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 1000,
+        "height" : 1500,
+        "y": -400,
+        "z": 250,
+        "thumb" : "https://s3.amazonaws.com/room10/Scan_Pic0016_696x1024.jpg",
+        "src" : ""
+    },
+    {
+        "id": "d",
+        "type" : "image",
+        "width" : 1000,
+        "height" : 1500,
+        "y": -400,
+        "z": 500,
+        "thumb" : "https://s3.amazonaws.com/room10/doublephoto.jpg",
+        "src" : ""
+    },
+    {
+        "id": "e",
+        "type" : "text",
+        "width" : 1058,
+        "height" : 207,
+        "z": -100,
+        "thumb" : "https://s3.amazonaws.com/room10/quatre+image+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 2400,
+        "height" : 1604,
+        "y": -700,
+        "x": 500,
+        "thumb" : "https://s3.amazonaws.com/room10/af_01_1200x802.jpg",
+        "src" : ""
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 2400,
+        "height" : 1604,
+        "y": -700,
+        "thumb" : "https://s3.amazonaws.com/room10/af_02_1200x810.jpg",
+        "src" : ""
+    },
+    {
+        "id": "h",
+        "type" : "image",
+        "width" : 430,
+        "height" : 445,
+        "z": -250,
+        "thumb" : "https://s3.amazonaws.com/room10/img385.jpg",
+        "src" : ""
+    },
+    {
+        "id": "i",
+        "type" : "text",
+        "width" : 3450,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/room10/un+week+end+a+la+mer+titre.png",
+        "src" : ""
+    }
     ]
 }

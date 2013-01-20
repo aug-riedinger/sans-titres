@@ -7,10 +7,10 @@
     },
     "adj": [5, 8],
     "map" : [
-    "#.-.-.-.-.-.-.",
+    "#d-e-.-f-.-g-.",
     "|.,.,.,.,.,.,.",
-    "|.,.,.,.,.,.!a",
-    "%._.,.,._._.¤."
+    "|c,.,.,.,.,.!a",
+    "%._b,.,._i_h¤."
     ],
     "arts" : [
     {
@@ -20,6 +20,82 @@
         "height" : 800,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/room7/gmusset8_533x800.jpg",
+        "src" : ""
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 1514,
+        "height" : 440,
+        "x": -500,
+        "thumb" : "https://s3.amazonaws.com/room7/il+fait+noir+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 869,
+        "height" : 1200,
+        "z": -500,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room7/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
+        "src" : ""
+    },
+    {
+        "id": "d",
+        "side": "|",
+        "type" : "image",
+        "width" : 908,
+        "height" : 900,
+        "z": -500,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room7/Untitled-2_908x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 1158,
+        "height" : 207,
+        "x": -250,
+        "thumb" : "https://s3.amazonaws.com/room7/invite+moi+au+voyage+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 2000,
+        "y": -600,
+        "thumb" : "https://s3.amazonaws.com/room7/toile+mah%C3%A9_1201x1200.jpg",
+        "src" : ""
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://s3.amazonaws.com/room7/jattend+un+deluge+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "h",
+        "type" : "image",
+        "width" : 453,
+        "height" : 745,
+        "y": -100,
+        "x": 250,
+        "thumb" : "https://s3.amazonaws.com/room8/a+quoi+bon+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "i",
+        "type" : "image",
+        "width" : 649,
+        "height" : 900,
+        "y": -100,
+        "x": 250,
+        "thumb" : "https://s3.amazonaws.com/room7/illustration+a+quoi+bon_649x900.jpg",
         "src" : ""
     }
     ]

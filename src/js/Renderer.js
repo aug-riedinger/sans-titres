@@ -57,19 +57,27 @@ var renderer = {
 	renderRooms: function() {
 		var i;
 		var toRender = [];
+		var toRenderCurrentRoom = [];
 		var toRenderElements;
 		var cpt = 0;
-		for(i = 0; i < rooms.length; i++) {
+		for(i = 1; i < rooms.length; i++) {
 			toRenderElements = rooms[i].getElementsToRender();
 			for (j=0; j < toRenderElements.length; j++) {
 				toRender[cpt] = toRenderElements[j];
 				cpt+=1;
 			}
 		}
+		toRender = insertSortDistance(toRender);
+
+		toRenderCurrentRoom = rooms[0].getElementsToRender();
+
+		toRenderCurrentRoom = insertSortDistance(toRenderCurrentRoom);
+
+		toRender = toRender.concat(toRenderCurrentRoom);
+
 		renderer.renderElementsToRender(toRender);
 	},
 	renderElementsToRender: function(toRender) {
-		toRender = insertSortDistance(toRender);
 
 		for(i = 0; i < toRender.length; i++) {
 			// if(toRender[i].type === 'top' || toRender[i].type === 'bottom' || toRender[i].type === 'left' || toRender[i].type === 'right') {

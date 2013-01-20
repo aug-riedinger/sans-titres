@@ -99,7 +99,7 @@
     },
     {
         "id": "j",
-        "type" : "image",
+        "type" : "text",
         "width" : 1000,
         "height" : 200,
         "thumb" : "https://s3.amazonaws.com/room2/Engoncement+Titre.png",
@@ -115,7 +115,7 @@
     },
     {
         "id": "l",
-        "type" : "image",
+        "type" : "text",
         "width" : 1250,
         "height" : 250,
         "thumb" : "https://s3.amazonaws.com/room2/Le+train+sans+wagon+titre.png",

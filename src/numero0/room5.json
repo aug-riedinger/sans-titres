@@ -236,6 +236,14 @@
         "z": -250,
         "thumb" : "https://s3.amazonaws.com/room5/premiere+meditation+titre.png",
         "src" : ""    
+    },
+    {
+        "id": "x",
+        "type" : "texte",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://s3.amazonaws.com/room7/edito2+titre.png",
+        "src" : ""
     }
     ],
     "sounds" :[

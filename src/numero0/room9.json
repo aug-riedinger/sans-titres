@@ -7,10 +7,91 @@
     },
     "adj" : [8, 10],
     "map" : [
-    "-.-.-.-.-.-.-.-.-.-.-.",
-    ",.,.,.,.,.,.,.,.,.,.,.",
-    "_._._._._._._._._._._."
+    "-.-d-.-e-.-f-.-g-.-h-.,.,.,.,.!.",
+    ",.,.,.,.,.,.,.,.,.,.,.,.,.,.,.!i",
+    "_._c_._a_._b_._._._._._._._._.¤."
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/5207150871_a40ed03769_b_1024x768.jpeg",
+        "src" : ""
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/5207751720_903db7ab1f_b_1024x768.jpeg",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/5207754256_0cc0d546a5_b_1024x768.jpeg",
+        "src" : ""
+    },
+    {
+        "id": "d",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/Tracy+Lord+IV_1024x693.jpg",
+        "src" : ""
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/2083+01-02_1024x747.jpg",
+        "src" : ""
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/doublecover.jpg",
+        "src" : ""
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/2083+07-08_1024x746.jpg",
+        "src" : ""
+    },
+    {
+        "id": "h",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 874,
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/room9/2083+09-10_1024x746.jpg",
+        "src" : ""
+    },
+    {
+        "id": "i",
+        "type" : "image",
+        "width" : 2400,
+        "height" : 2800,
+        "y": -1200,
+        "thumb" : "https://s3.amazonaws.com/room10/pachamamadec1_1015x1200.jpg",
+        "src" : ""
+    }
     ]
 }

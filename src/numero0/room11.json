@@ -1,0 +1,25 @@
+{
+    "id": 11, 
+    "name": "Room 11",
+    "position" : {
+        "x": 44,
+        "z": 35
+    },
+    "adj" : [10],
+    "map" : [
+    ",#.-1-.+.",
+    ",|.,.,.!.",
+    ",|.,.,.!."
+    ],
+    "arts" : [
+    {
+        "id": "1",
+        "type" : "image",
+        "width" : 1077,
+        "height" : 236,
+        "x": 500,
+        "thumb" : "https://s3.amazonaws.com/room11/les+mots+de+l%27autre+titre.png",
+        "src" : ""
+    },
+    ]
+}

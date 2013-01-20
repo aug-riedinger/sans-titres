@@ -76,7 +76,7 @@
     },
     {
         "id": "g",
-        "type" : "image",
+        "type" : "text",
         "width" : 1200,
         "height" : 200,
         "x": -500,
