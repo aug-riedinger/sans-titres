@@ -245,21 +245,6 @@
 			};
 			return new Face(f);
 		},
-		'ceiling': function(_room, _x, _z) {
-			var f = {
-				id: _room.id + ':' + _x + ':' + _z + ':ceiling',
-				type: 'ceiling',
-				x: params.unit * (_x + _room.position.x),
-				y: -params.height / 2,
-				z: params.unit * (_z + _room.position.z),
-				rx: -1,
-				ry: 0,
-				w: params.unit,
-				h: params.unit,
-				select: false
-			};
-			return new Face(f);
-		},
 		'floor': function(_room, _x, _z, adj, art) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':floor',
@@ -279,24 +264,6 @@
 			}
 			return new Face(f);
 		},
-		'door': function(_room, face, doorConstr) {
-			var f = {
-				id: _room.id + ':' + Math.floor(face.f.x / params.unit) + ':' + Math.floor(face.f.z / params.unit) + ':door',
-				type: 'door',
-				x: face.f.x,
-				y: face.f.y,
-				z: face.f.z,
-				rx: face.f.rx,
-				ry: face.f.ry,
-				// w: 100,
-				// h: 200,
-				w: face.f.w,
-				h: face.f.h,
-				to: doorConstr.to,
-				select: true
-			};
-			return new Face(f);
-		},
 		'art': function(_room, face, artConstr) {
 			var f = {
 				id: _room.id + ':' + Math.floor(face.f.x / params.unit) + ':' + Math.floor(face.f.z / params.unit) + ':art',
@@ -310,7 +277,8 @@
 				w: artConstr.width,
 				h: artConstr.height,
 				thumb: artConstr.thumb,
-				src: artConstr.src,
+				src: artConstr.src||artConstr.thumb,
+				border: artConstr.border,
 				info: artConstr.info || {},
 				iFrameHeight: artConstr.iFrameHeight,
 				iFrameWidth: artConstr.iFrameWidth,

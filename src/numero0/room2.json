@@ -121,5 +121,14 @@
         "thumb" : "https://s3.amazonaws.com/room2/Le+train+sans+wagon+titre.png",
         "src" : ""    
     }
+    ],
+    "sounds" :[
+        {
+            "id": "A",
+            "type" : "sound",
+            "src": "https://s3.amazonaws.com/room3/toutestenplace.mp3",
+            "play": "true",
+            "rooms": [3]
+        }
     ]
 }

@@ -3,6 +3,7 @@ var rooms = [];
 var cursor;
 var keyboard;
 var camera;
+var sounds = [];
 
 var SLOW = false;
 var cpt = 100;

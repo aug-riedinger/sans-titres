@@ -7,11 +7,36 @@
     },
     "adj": [5],
     "map" : [
-    "#.-.-.-.+.",
+    "#.-.-a-.+.",
     ",.,.,.,.!.",
-    ",.,.,.,.!.",
-    "%._._._.¤."
+    ",.,.,.,.!b",
+    "%._._c_.¤."
     ],
     "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" : 896,
+        "height" : 304,
+        "thumb" : "https://s3.amazonaws.com/room6/alcools+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 2268,
+        "height" : 474,
+        "z": 500,
+        "thumb" : "https://s3.amazonaws.com/room6/ils+etaient+cinq+dans+un+vieux+bar+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 1014,
+        "height" : 378,
+        "thumb" : "https://s3.amazonaws.com/room6/la+marche+a+suivre+titre.png",
+        "src" : ""
+    }
     ]
 }

@@ -18,6 +18,24 @@ var Cursor = function(canvas_ID, segmentX, segmentY) {
 Cursor.prototype.initEvents = function() {
 	var that = this;
 
+	$('#volume').click(function(e) {
+		var i;
+		for(i = 0; i < sounds.length; i++) {
+			if(!sounds[i].muted) {
+				sounds[i].formerVolume = sounds[i].audio.volume;
+				sounds[i].audio.volume = 0;
+				sounds[i].muted = true;
+				$('#volume').addClass('muted');
+			} else {
+				sounds[i].audio.volume = sounds[i].formerVolume;
+				sounds[i].adjustVolume();
+				sounds[i].muted = false;
+				$('#volume').removeClass('muted');
+			}
+
+		}
+	});
+
 	this.container.onmspointermove = this.container.ontouchmove = this.container.onmousemove = function(e) {
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);

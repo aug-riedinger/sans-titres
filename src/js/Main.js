@@ -36,7 +36,6 @@ var enteredRoom = function(roomId) {
 					}
 				}
 				if(!room) {
-					// New Room to create
 					new Room(newRoom.adj[i]);
 				}
 

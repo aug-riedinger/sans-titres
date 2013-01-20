@@ -7,12 +7,22 @@
     },
     "adj": [2],
     "map" : [
-    "|.,.,.-.+.",
+    "|.,.,.-g+.",
     "|.,.,.,.!.",
     "|.,.,.,.!.",
     "|.,.,.,.!.",
     "%._._@_.¤."
     ],
     "arts" : [
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 200,
+        "x": 500,
+        "thumb" : "https://s3.amazonaws.com/room1/lart+et+la+fin+des+mondes+titre.png",
+        "src" : ""    
+    }
+
     ]
 }

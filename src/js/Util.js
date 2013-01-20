@@ -61,7 +61,7 @@ var remHtml = function() {
 };
 
 
-var getEdges = function(faces, dim) {
+var getEdges = function(faces, dim, colors) {
 
 	if(faces.length === 0) {
 		return {
@@ -122,6 +122,7 @@ var getEdges = function(faces, dim) {
 	if(dim === 'top' || dim === 'left') {
 		return {
 			type: dim,
+			color: colors[dim],
 			distance: moyDist/nbVisible,
 			points: [minDim.p3, minDim.p0, maxDim.p1, maxDim.p2]
 		};
@@ -129,6 +130,7 @@ var getEdges = function(faces, dim) {
 	if(dim === 'bottom' || dim === 'right') {
 		return {
 			type: dim,
+			color: colors[dim],
 			distance: moyDist/nbVisible,
 			points: [minDim.p1, minDim.p2, maxDim.p3, maxDim.p0]
 		};

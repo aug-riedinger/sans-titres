@@ -6,12 +6,15 @@
         "z": 16
     },
     "adj": [3, 5],
+    "colors": {
+        "top": "rgb(16, 11, 13)"
+    },
     "map" : [
-    "#.-.-.-.",
+    "#.-a-.-g",
     "|.,.,.,.",
-    "|b,.,.,.",
-    "|.,.,.!.",
     "|d,.,.!.",
+    "|.,.,.!f",
+    "|b,.,.!.",
     "|.,.,.!.",
     "|c,.,.!e",
     "|.,.,.!."
@@ -20,10 +23,13 @@
     {
         "id": "a",
         "type" : "image",
-        "width" : 400,
-        "height" : 600,
+        "width" : 802,
+        "height" : 1200,
+        "y": -150,
+        "x": -500,
         "thumb" : "https://s3.amazonaws.com/room4/P1220131_2_401x600.jpg",
-        "src" : ""    
+        "src" : "",
+        "border": false
     },
     {
         "id": "b",
@@ -52,9 +58,9 @@
     {
         "id": "e",
         "type" : "image",
-        "width" : 1800,
-        "height" : 900,
-        "y": -300,
+        "width" : 1600,
+        "height" : 1068,
+        "y": -100,
         "z": 400,
         "thumb" : "https://s3.amazonaws.com/room4/P1920146_800x534.jpg",
         "src" : ""    
@@ -62,10 +68,28 @@
     {
         "id": "f",
         "type" : "image",
-        "width" : 900,
-        "height" : 600,
+        "width" : 1600,
+        "height" : 1068,
+        "y": -100,
         "thumb" : "https://s3.amazonaws.com/room4/P1920151_800x600.jpg",
         "src" : ""    
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 200,
+        "x": -500,
+        "thumb" : "https://s3.amazonaws.com/room4/lillumine+titre.png",
+        "src" : ""    
     }
+    ],
+    "sounds" :[
+        {
+            "id": "B",
+            "type" : "sound",
+            "src": "https://s3.amazonaws.com/room4/diplomondus.mp3",
+            "play": "true"
+        }
     ]
 }

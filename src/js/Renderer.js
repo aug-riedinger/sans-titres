@@ -86,7 +86,7 @@ var renderer = {
 		var grd;
 		var point;
 		var points = pointList.points;
-		var color = colors[pointList.type];
+		var color = pointList.color || colors[pointList.type];
 
 		if(points.length > 2) {
 			scr.ctx.beginPath();

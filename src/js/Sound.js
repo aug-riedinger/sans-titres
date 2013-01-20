@@ -1,7 +1,9 @@
 var Sound = function(room, constr) {
 	this.audio = new Audio();
+	this.id = constr.id;
 	this.audio.src = constr.src;
 	this.autoPlay = constr.play;
+	this.rooms = [room.id].concat(constr.rooms);
 	this.muted = false;
 	if(constr.position) {
 		this.position = {
@@ -9,14 +11,15 @@ var Sound = function(room, constr) {
 			z: (room.position.z + constr.position.z)*params.unit
 		};
 	}
+
 };
 
 
-Sound.prototype.adjustVolume = function(x, z) {
+Sound.prototype.adjustVolume = function() {
 	var volume;
 	var distance;
-	if(this.position) {
-		distance = Math.sqrt((x - this.position.x)*(x - this.position.x) + (z - params.focalLength - this.position.z)*(z - params.focalLength - this.position.z));
+	if(this.position && camera) {
+		distance = Math.sqrt((camera.x.value - this.position.x)*(camera.x.value - this.position.x) + (camera.z.value - params.focalLength - this.position.z)*(camera.z.value - params.focalLength - this.position.z));
 		volume = params.unit / distance;
 
 		if(volume>1) {

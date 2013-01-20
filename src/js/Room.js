@@ -3,7 +3,7 @@ var Room = function(id, mainRoom) {
 	this.id = id;
 	this.mainRoom = mainRoom;
 	this.arts = [];
-	this.sounds = [];
+	// this.sounds = [];
 	this.adj = [];
 	this.positions = [];
 	this.tops = [];
@@ -25,11 +25,12 @@ Room.prototype.load = function() {
 };
 
 Room.prototype.init = function(constr) {
-	this.name = constr.name||'Room '+this.id;
+	this.name = constr.name || 'Room ' + this.id;
 	this.position = constr.position;
-	this.map = constr.map;
-	this.adj = constr.adj||[];
 	this.color = constr.color;
+	this.map = constr.map;
+	this.adj = constr.adj || [];
+	this.colors = constr.colors || {};
 	this.artsConstr = constr.arts || [];
 	this.soundsConstr = constr.sounds || [];
 
@@ -50,16 +51,12 @@ Room.prototype.getElementsToRender = function() {
 	var toRender = [];
 	var cptToRender = 0;
 
-	for(i=0; i< this.sounds.length; i++) {
-		this.sounds[i].adjustVolume(camera.x.value, camera.z.value);
-	}
-
 	for(depth in this.tops) {
 		if(this.tops.hasOwnProperty(depth)) {
 			for(depth2 in this.tops[depth]) {
 				if(this.tops[depth].hasOwnProperty(depth2)) {
-					toRender[cptToRender] = getEdges(this.tops[depth][depth2], 'top');
-					cptToRender +=1;
+					toRender[cptToRender] = getEdges(this.tops[depth][depth2], 'top', this.colors);
+					cptToRender += 1;
 				}
 			}
 		}
@@ -68,8 +65,8 @@ Room.prototype.getElementsToRender = function() {
 		if(this.bottoms.hasOwnProperty(depth)) {
 			for(depth2 in this.bottoms[depth]) {
 				if(this.bottoms[depth].hasOwnProperty(depth2)) {
-					toRender[cptToRender] = getEdges(this.bottoms[depth][depth2], 'bottom');
-					cptToRender +=1;
+					toRender[cptToRender] = getEdges(this.bottoms[depth][depth2], 'bottom', this.colors);
+					cptToRender += 1;
 				}
 			}
 		}
@@ -78,8 +75,8 @@ Room.prototype.getElementsToRender = function() {
 		if(this.lefts.hasOwnProperty(depth)) {
 			for(depth2 in this.lefts[depth]) {
 				if(this.lefts[depth].hasOwnProperty(depth2)) {
-					toRender[cptToRender] = getEdges(this.lefts[depth][depth2], 'left');
-					cptToRender +=1;
+					toRender[cptToRender] = getEdges(this.lefts[depth][depth2], 'left', this.colors);
+					cptToRender += 1;
 				}
 			}
 		}
@@ -88,8 +85,8 @@ Room.prototype.getElementsToRender = function() {
 		if(this.rights.hasOwnProperty(depth)) {
 			for(depth2 in this.rights[depth]) {
 				if(this.rights[depth].hasOwnProperty(depth2)) {
-					toRender[cptToRender] = getEdges(this.rights[depth][depth2], 'right');
-					cptToRender +=1;
+					toRender[cptToRender] = getEdges(this.rights[depth][depth2], 'right', this.colors);
+					cptToRender += 1;
 				}
 			}
 		}
@@ -101,15 +98,15 @@ Room.prototype.getElementsToRender = function() {
 		if(face.visible) {
 			toRender[cptToRender] = {
 				type: 'art',
-				distance: this.arts[i].distance*0.5, // A corriger
+				distance: this.arts[i].distance * 0.5,
+				// A corriger
 				art: this.arts[i]
 			};
-			cptToRender +=1;
+			cptToRender += 1;
 		}
 	}
 
 	return toRender;
-	
 };
 
 
@@ -229,56 +226,73 @@ Room.prototype.putFaceToWall = function(wall, test, dim, face) {
 };
 
 Room.prototype.makeSounds = function() {
-	var i;
+	var i, j;
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
-		sound = this.soundsConstr[i];
-		this.sounds.push(new Sound(this, sound));
+		for (j=0; j<sounds.length; j++) {
+			if(this.soundsConstr[i].src === sounds[j].audio.src) {
+				sound = sounds[j];
+			}
+		}
+		if(!sound) {
+			sounds.push(new Sound(this, this.soundsConstr[i]));
+		}
 	}
 };
 
 Room.prototype.enter = function() {
 	var sound;
-
-	if(this.sounds.length > 0) {
-		if($('#volume').css('display') === 'none') {
-			$('#volume').fadeIn(1000);
-		}
-
-		$('#volume').click($.proxy(function(e) {
-			var i;
-			for (i=0; i< this.sounds.length; i++) {
-				if(!this.sounds[i].muted) {
-					this.sounds[i].formerVolume = this.sounds[i].audio.volume;
-					this.sounds[i].audio.volume = 0;
-					this.sounds[i].muted = true;
-					$('#volume').addClass('muted');
-				} else {
-					this.sounds[i].audio.volume = this.sounds[i].formerVolume;
-					this.sounds[i].adjustVolume();
-					this.sounds[i].muted = false;
-					$('#volume').removeClass('muted');
-				}
-
-			}
-		}, this));
-		
-	}
-
-	for(i = 0; i < this.sounds.length; i++) {
-		if(this.sounds[i].autoPlay) {
-			this.sounds[i].adjustVolume(this.startFloor.f.x, this.startFloor.f.z);
-			this.sounds[i].audio.play();
-		}
-	}
-
-};
-
-Room.prototype.exit = function() {
 	var i;
-	$('#volume').fadeOut(1000);
-	for (i=0; i<this.sounds.length; i++) {
-		this.sounds[i].audio.pause();
+	var toPlay;
+	var showMuter = false;
+
+	for(j=0; j<sounds.length; j++) {
+		toPlay = false;
+		for(i=0; i<sounds[j].rooms.length; i++) {
+			if(sounds[j].rooms[i] === this.id) {
+				toPlay = true;
+				showMuter = true;
+			}
+		}
+		if(!toPlay && !sounds[j].audio.paused) {
+			sounds[j].audio.pause();
+		}
+
+		if(toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
+			sounds[j].adjustVolume();
+			sounds[j].audio.play();
+		}
 	}
+
+
+	if(showMuter && $('#volume').css('display') === 'none') {
+			$('#volume').fadeIn(1000);
+	}
+
+	if(!showMuter && $('#volume').css('display') !== 'none') {
+		$('#volume').fadeOut(1000);
+	}
+
+
 };
 
+Room.prototype.exit = function(newRoomId) {
+	// var i, j;
+	// var keepPlaying;
+	// for(i = 0; i < this.sounds.length; i++) {
+	// 	keepPlaying = false;
+	// 	for(j = 0; j < this.sounds[i].rooms.length; j++) {
+	// 		if(this.sounds[i].rooms[j] === newRoomId) {
+	// 			keepPlaying = true;
+	// 		}
+	// 	}
+	// 	if(!keepPlaying) {
+	// 		$('#volume').fadeOut(1000);
+	// 		this.sounds[i].audio.pause();
+	// 	} else {
+	// 		soundsToKeepPlaying.push(this.sounds[i]);
+	// 	}
+	// }
+	// console.log(soundsToKeepPlaying);
+	// return soundsToKeepPlaying;
+};

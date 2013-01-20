@@ -7,18 +7,18 @@
     },
     "adj": [4, 6, 7],
     "map" : [
-    "#.-.,.,.-.-.+.",
-    "|.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.!.",
-    "|.,.,.,a,.,.!.",
-    "|.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.!.",
-    "|.,.,.,.,.,.,.",
-    ",.,.,.,.,.,.,.",
+    "#h-j,.,.-k-l+.",
+    "|i,.,.,.,.,.!m",
+    "|g,.,.,.,.,.!n",
+    "|f,.,.,a,.,.!o",
+    "|e,.,.,.,.,.!q",
+    "|d,.,.,.,.,.!p",
+    "|c,.,.,.,.,.,.",
+    ",b,.,.,.,.,.,.",
     ",.,.,.,.,.,.!.",
-    ",.,.,.,.,.,.!.",
-    ",.,.,.,.,.,.!.",
-    "_._._._._._.¤."
+    "|w,.,.,.,.,.!r",
+    "|v,.,.,.,.,.!.",
+    "%._t_._u_._s¤."
     ],
     "arts" : [
     {
@@ -36,13 +36,213 @@
                 "right": "https://s3.amazonaws.com/monolythe/droite_89x598.png"
             },
         "src" : "http://heeeeeeeey.com"    
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 411,
+        "height" : 600,
+        "z": 1000,
+        "thumb" : "https://s3.amazonaws.com/room5/page+01+officiel_634x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 411,
+        "height" : 600,
+        "z": 500,
+        "thumb" : "https://s3.amazonaws.com/room5/page+02+officiel_634x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "d",
+        "type" : "image",
+        "width" : 411,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/room5/page+03+officiel_634x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 404,
+        "height" : 600,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/page+04+officiel_615x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 1141,
+        "height" : 189,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/de+hond+is+in+de+pot.png",
+        "src" : ""
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 721,
+        "thumb" : "https://s3.amazonaws.com/room5/nilstaches_1024x721.jpg",
+        "src" : ""
+    },
+    {
+        "id": "h",
+        "side": "|",
+        "type" : "image",
+        "width" : 517,
+        "height" : 768,
+        "z": -250,
+        "thumb" : "https://s3.amazonaws.com/room5/Nils.mati%C3%A8re_517x768.jpg",
+        "src" : ""
+    },
+    {
+        "id": "i",
+        "type" : "image",
+        "width" : 390,
+        "height" : 350,
+        "thumb" : "https://s3.amazonaws.com/room5/vigilances+meteores+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "j",
+        "type" : "image",
+        "width" : 800,
+        "height" : 541,
+        "x": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/cucine+venezia+sans+text+screenshot_800x541.jpg",
+        "src" : ""
+    },
+    {
+        "id": "k",
+        "type" : "image",
+        "width" : 800,
+        "height" : 450,
+        "x": 250,
+        "thumb" : "https://s3.amazonaws.com/room5/apocalypses_800x450.jpg",
+        "src" : ""
+    },
+    {
+        "id": "l",
+        "type" : "image",
+        "width" : 833,
+        "height" : 286,
+        "x": 500,
+        "thumb" : "https://s3.amazonaws.com/room5/faces+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "m",
+        "side": "!",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1350,
+        "z": 800,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie1_586x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "n",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1350,
+        "z": 600,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie2_590x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "o",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1350,
+        "z": 400,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie3_586x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "p",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1350,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie4_605x900.jpg",
+        "src" : ""
+    },
+    {
+        "id": "q",
+        "type" : "image",
+        "width" : 1159,
+        "height" : 245,
+        "z": 200,
+        "thumb" : "https://s3.amazonaws.com/room5/cetaithier+titre.png",
+        "src" : ""
+    },
+    {
+        "id": "r",
+        "type" : "image",
+        "width" : 2500,
+        "height" : 2000,
+        "y": -600,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/alexandre+navarro_1000x800.png",
+        "src" : ""    
+    },
+    {
+        "id": "s",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 1200,
+        "y": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/gmusset6_1024x682.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "t",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 1200,
+        "y": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/gmusset1_1024x678.jpg",
+        "src" : ""    
+    },
+    {
+        "id": "u",
+        "type" : "image",
+        "width" : 1132,
+        "height" : 293,
+        "thumb" : "https://s3.amazonaws.com/room5/antimanifeste+titre.png",
+        "src" : ""    
+    },
+    {
+        "id": "v",
+        "type" : "image",
+        "width" : 793,
+        "height" : 181,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/room5/preterition+titre.png",
+        "src" : ""    
+    },
+    {
+        "id": "w",
+        "type" : "image",
+        "width" : 793,
+        "height" : 181,
+        "z": -250,
+        "thumb" : "https://s3.amazonaws.com/room5/premiere+meditation+titre.png",
+        "src" : ""    
     }
     ],
     "sounds" :[
         {
-            "id": "g",
+            "id": "C",
             "type" : "sound",
-            "src": "https://s3.amazonaws.com/sans-titres/diplomondus/sound.mp3",
+            "src": "https://s3.amazonaws.com/room5/resistance.mp3",
             "play": "true",
             "position" : {
                 "x": 3,
