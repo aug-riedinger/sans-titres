@@ -43,7 +43,6 @@ Cursor.prototype.initEvents = function() {
 
 		if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
 			that.muted = null;
-			console.log('unmuted');
 		}
 
 		that.calcStrength();
@@ -56,7 +55,7 @@ Cursor.prototype.initEvents = function() {
 		var roomId, artId, title;
 
 		if(that.aimedFace) {
-			roomId = parseInt(that.aimedFace.f.id.split(':')[0], 10);
+			roomId = that.aimedFace.f.roomId;
 			
 			if(that.aimedFace.f.type === 'art') {
 				artId = that.aimedFace.f.artId || null;
@@ -67,7 +66,6 @@ Cursor.prototype.initEvents = function() {
 			if(that.aimedFace.f.type === 'floor') {
 				if(that.aimedFace.f.art) {
 					artId = that.aimedFace.f.art.f.artId || null;
-					camera.targetToFace(that.aimedFace);
 					$(scr.canvas).one('inPosition', $.proxy(function() {
 						cursor.mute();
 						$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
@@ -79,12 +77,17 @@ Cursor.prototype.initEvents = function() {
 							}, 3000);
 						});
 					},that.aimedFace));
-				} else {
-					camera.targetToFace(that.aimedFace);
-					if(roomId !== rooms[0].id) {
-						enteredRoom(roomId);
-					}
 				}
+				camera.targetToFace(that.aimedFace);
+
+				if(roomId !== rooms[0].id) {
+					$(scr.canvas).one('inPosition', $.proxy(function() {
+						enteredRoom(this.roomId);
+					}, {
+						roomId: roomId
+					}));
+				}
+
 			}
 			if (!history.state || history.state.roomId !== roomId || history.state.artId !== artId) {
 				title = 'Sans-titres, Salle ' + roomId + (artId?' Oeuvre ' + artId:'');

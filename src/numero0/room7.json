@@ -19,17 +19,17 @@
         "width" : 533,
         "height" : 800,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room7/gmusset8_533x800.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/gmusset8_533x800.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/page.html"
     },
     {
         "id": "b",
-        "type" : "image",
+        "type" : "text",
         "width" : 1514,
         "height" : 440,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/room7/il+fait+noir+titre.png",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/il+fait+noir/il+fait+noir+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/il+fait+noir/ilfaitnoir.html"
     },
     {
         "id": "c",
@@ -38,8 +38,8 @@
         "height" : 1200,
         "z": -500,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/room7/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg"
     },
     {
         "id": "d",
@@ -49,8 +49,8 @@
         "height" : 900,
         "z": -500,
         "y": -100,
-        "thumb" : "https://s3.amazonaws.com/room7/Untitled-2_908x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg"
     },
     {
         "id": "e",
@@ -58,7 +58,7 @@
         "width" : 1158,
         "height" : 207,
         "x": -250,
-        "thumb" : "https://s3.amazonaws.com/room7/invite+moi+au+voyage+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/invite+moi+au+voyage/invite+moi+au+voyage+titre.png",
         "src" : ""
     },
     {
@@ -67,26 +67,26 @@
         "width" : 2000,
         "height" : 2000,
         "y": -600,
-        "thumb" : "https://s3.amazonaws.com/room7/toile+mah%C3%A9_1201x1200.jpg",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/mahe/toile+mah%C3%A9_1201x1200.jpg",
         "src" : ""
     },
     {
         "id": "g",
-        "type" : "image",
+        "type" : "text",
         "width" : 1158,
         "height" : 207,
-        "thumb" : "https://s3.amazonaws.com/room7/jattend+un+deluge+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jattends+un+deluge/jattend+un+deluge+titre.png",
         "src" : ""
     },
     {
         "id": "h",
-        "type" : "image",
+        "type" : "text",
         "width" : 453,
         "height" : 745,
         "y": -100,
         "x": 250,
-        "thumb" : "https://s3.amazonaws.com/room8/a+quoi+bon+titre.png",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/a+quoi+bon+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon.html"
     },
     {
         "id": "i",
@@ -95,8 +95,8 @@
         "height" : 900,
         "y": -100,
         "x": 250,
-        "thumb" : "https://s3.amazonaws.com/room7/illustration+a+quoi+bon_649x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/illustration+a+quoi+bon_649x900.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon_653x1200.jpg"
     }
     ]
 }

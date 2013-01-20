@@ -131,20 +131,20 @@ Room.prototype.isNoWall = function(charType) {
 
 Room.prototype.getArtConstr = function(artId) {
 	var artConstr;
+	var artConstrs = [];
 	for(var i = 0; i < this.artsConstr.length; i++) {
 		artConstr = this.artsConstr[i];
-		if(artConstr.id === artId) {
-			return artConstr;
+		if(artConstr.id[0] === artId) {
+			artConstrs.push(artConstr);
 		}
 	}
-	console.log('artId not found');
-	return undefined;
+	return artConstrs;
 };
 
 Room.prototype.readMap = function() {
 	var h, w, x, z;
 	var charType, artId, next;
-	var artConstr;
+	var artConstr, artConstrs;
 	var top, bottom, left, right, floor, art;
 
 	for(h = 0; h < this.map.length; h++) {
@@ -164,42 +164,50 @@ Room.prototype.readMap = function() {
 				left = this.putFaceToWall(this.lefts, this.isLeft(charType), x, faceMaker.left(this, x, z));
 				right = this.putFaceToWall(this.rights, this.isRight(charType), x, faceMaker.right(this, x, z));
 
+				floor = faceMaker.floor(this, x, z, [top, bottom, left, right], undefined);
+				this.floors.push(floor);
 
-				art = undefined;
-				artConstr = undefined;
-				if(artId !== '') {
-					artConstr = this.getArtConstr(artId);
-					if(this.isTop(artConstr.side || charType)) {
-						art = faceMaker.art(this, top, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isBottom(artConstr.side || charType)) {
-						art = faceMaker.art(this, bottom, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isLeft(artConstr.side || charType)) {
-						art = faceMaker.art(this, left, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isRight(artConstr.side || charType)) {
-						art = faceMaker.art(this, right, artConstr);
-						this.arts.push(art);
-					}
-
-
-				}
-				floor = faceMaker.floor(this, x, z, [top, bottom, left, right], art);
 				if(next === '@') {
 					this.startFloor = floor;
 				}
+				art = undefined;
+				artConstr = undefined;
+				if(artId !== '') {
+					artConstrs = this.getArtConstr(artId, charType);
 
-				if(artConstr && artConstr.type === 'monolythe') {
-					art = new Monolythe(floor, artConstr);
-					floor.f.select = false;
-					this.arts = this.arts.concat(art.faces);
+					for(i=0; i<artConstrs.length; i++) {
+						artConstr = artConstrs[i];
+
+						if(this.isTop(artConstr.side || charType)) {
+							art = faceMaker.art(this, top, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isBottom(artConstr.side || charType)) {
+							art = faceMaker.art(this, bottom, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isLeft(artConstr.side || charType)) {
+							art = faceMaker.art(this, left, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isRight(artConstr.side || charType)) {
+							art = faceMaker.art(this, right, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isNoWall(artConstr.side || charType)) {
+							if(artConstr.type === 'monolythe') {
+								art = new Monolythe(floor, artConstr);
+								floor.f.select = false;
+								this.arts = this.arts.concat(art.faces);
+							}
+							
+						}
+
+					}
+
 				}
+				// floor = faceMaker.floor(this, x, z, [top, bottom, left, right], art);
 
-				this.floors.push(floor);
 			}
 
 		}
@@ -266,7 +274,7 @@ Room.prototype.enter = function() {
 
 
 	if(showMuter && $('#volume').css('display') === 'none') {
-			$('#volume').fadeIn(1000);
+		$('#volume').fadeIn(1000);
 	}
 
 	if(!showMuter && $('#volume').css('display') !== 'none') {

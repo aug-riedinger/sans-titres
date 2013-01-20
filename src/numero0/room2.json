@@ -8,11 +8,11 @@
     "adj": [1, 3],
     "map" : [
     "....-.-.-a-.+.",
-    "....,.,.,.,.!l",
-    "|i,.,.,.,.,.!.",
-    "|h,.,.,.,.,.!k",
-    "|g,.,.,.,.,.!.",
-    "|f,.,.,.,.,.!j",
+    "....,.,.,.,.!m",
+    "|j,.,.,.,.,.!.",
+    "|i,.,.,.,.,.!l",
+    "|h,.,.,.,.,.!.",
+    "|g,.,.,.,.,.!k",
     "%e_d_c_b,.,.!."
     ],
     "arts" : [
@@ -20,115 +20,119 @@
         "id": "a",
         "type" : "image",
         "width" : 3000,
-        "height" : 1500,
-        "y": -400,
-        "thumb" : "https://s3.amazonaws.com/room2/GuillaumeMusset.sanstitre1_800x533.jpg",
-        "src" : ""    
+        "height" : 2000,
+        "y": -600,
+        "level": 4,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1200x800.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg"    
     },
     {
         "id": "b",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image001_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image001_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image001_1055x900.jpg"    
     },
     {
         "id": "c",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image002_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image002_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image002_1055x900.jpg"    
     },
     {
         "id": "d",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image003_512x600.jpg",
-        "src" : ""    
+        "width" : 512,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image003_512x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image003_768x900.jpg"  
     },
     {
-        "id": "e",
+        "id": "e_",
+        "side": "_",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image004_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image004_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image004_1055x900.jpg"  
     },
     {
-        "id": "a",
+        "id": "e|",
+        "side": "|",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image005_703x600.jpg",
-        "src" : ""    
-    },
-    {
-        "id": "f",
-        "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image006_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image005_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image005_1055x900.jpg"  
     },
     {
         "id": "g",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image007_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image006_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image006_1055x900.jpg"   
     },
     {
         "id": "h",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image008_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image007_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image007_1055x900.jpg"   
     },
     {
         "id": "i",
         "type" : "image",
-        "width" : 600,
-        "height" : 400,
-        "thumb" : "https://s3.amazonaws.com/room2/image009B_703x600.jpg",
-        "src" : ""    
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image008_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image008_1055x900.jpg"  
     },
     {
         "id": "j",
-        "type" : "text",
-        "width" : 1000,
-        "height" : 200,
-        "thumb" : "https://s3.amazonaws.com/room2/Engoncement+Titre.png",
-        "src" : ""
+        "type" : "image",
+        "width" : 703,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image009B_703x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image009B_1055x900.jpg"  
     },
     {
         "id": "k",
-        "type" : "image",
-        "width" : 1000,
-        "height" : 666,
-        "thumb" : "https://s3.amazonaws.com/room2/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_796x600.jpg",
-        "src" : ""    
+        "type" : "text",
+        "width" : 919,
+        "height" : 314,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/Engoncement+Titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/engoncement.html"
     },
     {
         "id": "l",
+        "type" : "image",
+        "width" : 796,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_796x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg"    
+    },
+    {
+        "id": "m",
         "type" : "text",
-        "width" : 1250,
-        "height" : 250,
-        "thumb" : "https://s3.amazonaws.com/room2/Le+train+sans+wagon+titre.png",
-        "src" : ""    
+        "width" : 1170,
+        "height" : 290,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/Le+train+sans+wagon+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/letrainsanswagon.html"    
     }
     ],
     "sounds" :[
         {
             "id": "A",
             "type" : "sound",
-            "src": "https://s3.amazonaws.com/room3/toutestenplace.mp3",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
+            "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
-            "rooms": [3]
+            "rooms": [3, 4]
         }
     ]
 }

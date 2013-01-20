@@ -7,19 +7,19 @@
     },
     "adj" : [10],
     "map" : [
-    ",#.-1-.+.",
-    ",|.,.,.!.",
-    ",|.,.,.!."
+    "#.-1-.+.",
+    "|.,.,.!.",
+    "|.,.,.!."
     ],
     "arts" : [
     {
         "id": "1",
-        "type" : "image",
+        "type" : "text",
         "width" : 1077,
         "height" : 236,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/room11/les+mots+de+l%27autre+titre.png",
-        "src" : ""
-    },
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle11/les+mots+de+lautre/les+mots+de+l%27autre+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle11/les+mots+de+lautre/lesmotsdelautre.html"
+    }
     ]
 }

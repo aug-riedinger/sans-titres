@@ -1,7 +1,7 @@
 var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.id = constr.id;
-	this.audio.src = constr.src;
+	this.audio.src = constr.mp3;
 	this.autoPlay = constr.play;
 	this.rooms = [room.id].concat(constr.rooms);
 	this.muted = false;

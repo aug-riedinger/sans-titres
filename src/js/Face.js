@@ -164,7 +164,7 @@
 			this.html.className = 'art';
 		}
 
-		if(this.f.type === 'art' && this.f.subtype === 'html') {
+		if(this.f.type === 'art' && (this.f.subtype === 'text' || this.f.subtype === 'video')) {
 			this.html = document.createElement('iframe');
 			this.html.setAttribute('src', this.f.src);
 			this.html.className = 'html';
@@ -180,7 +180,7 @@
 				this.img.render(this.p0, this.p1, this.p2, this.p3, 'black', this.f.border);
 			} else {
 				if(this.f.subtype === 'text') {
-					this.img.render(this.p0, this.p1, this.p2, this.p3, 'white', false);
+					this.img.render(this.p0, this.p1, this.p2, this.p3, '', false);
 				} else {
 					this.img.render(this.p0, this.p1, this.p2, this.p3, 'white', this.f.border);
 
@@ -193,6 +193,7 @@
 		'top': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':top',
+				roomId: _room.id,
 				type: 'top',
 				x: params.unit * (_x + _room.position.x),
 				y: 0,
@@ -208,6 +209,7 @@
 		'bottom': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':bottom',
+				roomId: _room.id,
 				type: 'bottom',
 				x: params.unit * (_x + _room.position.x),
 				y: 0,
@@ -223,6 +225,7 @@
 		'left': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':left',
+				roomId: _room.id,
 				type: 'left',
 				x: params.unit * (_x - 1 / 2 + _room.position.x),
 				y: 0,
@@ -238,6 +241,7 @@
 		'right': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':right',
+				roomId: _room.id,
 				type: 'right',
 				x: params.unit * (_x + 1 / 2 + _room.position.x),
 				y: 0,
@@ -253,6 +257,7 @@
 		'floor': function(_room, _x, _z, adj, art) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':floor',
+				roomId: _room.id,
 				type: 'floor',
 				x: params.unit * (_x + _room.position.x),
 				y: params.height / 2,
@@ -272,6 +277,7 @@
 		'art': function(_room, face, artConstr) {
 			var f = {
 				id: _room.id + ':' + Math.floor(face.f.x / params.unit) + ':' + Math.floor(face.f.z / params.unit) + ':art',
+				roomId: _room.id,
 				type: 'art',
 				subtype: artConstr.type,
 				x: face.f.x + (artConstr.x||0),
@@ -296,6 +302,7 @@
 		'position': function(_room, art) {
 			var f = {
 				id: _room.id + ':' + Math.floor(art.f.x / params.unit) + ':' + Math.floor(art.f.z / params.unit) + ':position',
+				roomId: _room.id,
 				type: 'position',
 				x: parseInt(art.f.x + params.unit * Math.sin(art.f.ry * Math.PI / 2), 10),
 				y: params.height / 2,

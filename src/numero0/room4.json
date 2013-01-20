@@ -27,8 +27,8 @@
         "height" : 1200,
         "y": -150,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/room4/P1220131_2_401x600.jpg",
-        "src" : "",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_534x800.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_802x1200.jpg",
         "border": false
     },
     {
@@ -36,24 +36,24 @@
         "type" : "image",
         "width" : 1200,
         "height" : 900,
-        "thumb" : "https://s3.amazonaws.com/room4/P1910936_800x600.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_800x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg"    
     },
     {
         "id": "c",
         "type" : "image",
         "width" : 1200,
         "height" : 900,
-        "thumb" : "https://s3.amazonaws.com/room4/P1910943_800x600.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_800x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg"    
     },
     {
         "id": "d",
         "type" : "image",
         "width" : 1200,
         "height" : 900,
-        "thumb" : "https://s3.amazonaws.com/room4/P1920155_800x600.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_800x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg"    
     },
     {
         "id": "e",
@@ -62,17 +62,17 @@
         "height" : 1068,
         "y": -100,
         "z": 400,
-        "thumb" : "https://s3.amazonaws.com/room4/P1920146_800x534.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_800x534.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg"    
     },
     {
         "id": "f",
         "type" : "image",
         "width" : 1600,
-        "height" : 1068,
+        "height" : 1200,
         "y": -100,
-        "thumb" : "https://s3.amazonaws.com/room4/P1920151_800x600.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_800x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg"    
     },
     {
         "id": "g",
@@ -80,16 +80,18 @@
         "width" : 1200,
         "height" : 200,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/room4/lillumine+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Lillumine/lillumine+titre.png",
         "src" : ""    
     }
     ],
     "sounds" :[
         {
-            "id": "B",
+            "id": "A",
             "type" : "sound",
-            "src": "https://s3.amazonaws.com/room4/diplomondus.mp3",
-            "play": "true"
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
+            "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
+            "play": "true",
+            "rooms": [2, 3]
         }
     ]
 }

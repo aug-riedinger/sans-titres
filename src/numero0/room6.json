@@ -15,28 +15,41 @@
     "arts" : [
     {
         "id": "a",
-        "type" : "image",
+        "type" : "text",
         "width" : 896,
         "height" : 304,
-        "thumb" : "https://s3.amazonaws.com/room6/alcools+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/alcools/alcools+titre.png",
         "src" : ""
     },
     {
         "id": "b",
-        "type" : "image",
+        "type" : "text",
         "width" : 2268,
         "height" : 474,
         "z": 500,
-        "thumb" : "https://s3.amazonaws.com/room6/ils+etaient+cinq+dans+un+vieux+bar+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/ils+etaient+cinq+dans+un+vieux+bar+titre.png",
         "src" : ""
     },
     {
         "id": "c",
-        "type" : "image",
+        "type" : "text",
         "width" : 1014,
         "height" : 378,
-        "thumb" : "https://s3.amazonaws.com/room6/la+marche+a+suivre+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/la+marche+a+suivre/la+marche+a+suivre+titre.png",
         "src" : ""
     }
+    ],
+    "sounds" :[
+        {
+            "id": "D",
+            "type" : "sound",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+            "play": "true",
+            "position" : {
+                "x": 3,
+                "z": 8
+            }
+        }
     ]
 }

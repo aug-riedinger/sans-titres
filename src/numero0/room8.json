@@ -29,7 +29,7 @@
     },
     {
         "id": "b",
-        "type" : "texte",
+        "type" : "text",
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room8/robert+krammer+titre.png",
@@ -46,7 +46,7 @@
     },
     {
         "id": "d",
-        "type" : "texte",
+        "type" : "text",
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room7/horodateurs+titre.png",
@@ -54,7 +54,7 @@
     },
     {
         "id": "e",
-        "type" : "texte",
+        "type" : "image",
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room7/photo+chocopng.png",
@@ -62,7 +62,7 @@
     },
     {
         "id": "f",
-        "type" : "texte",
+        "type" : "image",
         "width" : 1024,
         "height" : 683,
         "y": -100,

@@ -18,32 +18,32 @@
     {
         "id": "b",
         "type" : "image",
-        "width" : 1000,
+        "width" : 1022,
         "height" : 1500,
         "y": -400,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room10/Scan_Pic0001_698x1024.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg"
     },
     {
         "id": "c",
         "type" : "image",
-        "width" : 1000,
+        "width" : 1020,
         "height" : 1500,
         "y": -400,
         "z": 250,
-        "thumb" : "https://s3.amazonaws.com/room10/Scan_Pic0016_696x1024.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg"
     },
     {
         "id": "d",
         "type" : "image",
-        "width" : 1000,
+        "width" : 1084,
         "height" : 1500,
         "y": -400,
         "z": 500,
-        "thumb" : "https://s3.amazonaws.com/room10/doublephoto.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg"
     },
     {
         "id": "e",
@@ -51,7 +51,7 @@
         "width" : 1058,
         "height" : 207,
         "z": -100,
-        "thumb" : "https://s3.amazonaws.com/room10/quatre+image+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/quatre+image+titre.png",
         "src" : ""
     },
     {
@@ -61,8 +61,8 @@
         "height" : 1604,
         "y": -700,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/room10/af_01_1200x802.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg"
     },
     {
         "id": "g",
@@ -70,8 +70,8 @@
         "width" : 2400,
         "height" : 1604,
         "y": -700,
-        "thumb" : "https://s3.amazonaws.com/room10/af_02_1200x810.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg"
     },
     {
         "id": "h",
@@ -79,15 +79,15 @@
         "width" : 430,
         "height" : 445,
         "z": -250,
-        "thumb" : "https://s3.amazonaws.com/room10/img385.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg"
     },
     {
         "id": "i",
         "type" : "text",
         "width" : 3450,
         "height" : 600,
-        "thumb" : "https://s3.amazonaws.com/room10/un+week+end+a+la+mer+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/un+week+end+a+la+mer+titre.png",
         "src" : ""
     }
     ]

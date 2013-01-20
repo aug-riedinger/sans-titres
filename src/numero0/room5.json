@@ -40,54 +40,54 @@
     {
         "id": "b",
         "type" : "image",
-        "width" : 411,
+        "width" : 423,
         "height" : 600,
         "z": 1000,
-        "thumb" : "https://s3.amazonaws.com/room5/page+01+officiel_634x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+01+officiel_423x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+01+officiel_846x1200.jpg"
     },
     {
         "id": "c",
         "type" : "image",
-        "width" : 411,
+        "width" : 423,
         "height" : 600,
         "z": 500,
-        "thumb" : "https://s3.amazonaws.com/room5/page+02+officiel_634x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_423x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_846x1200.jpg"
     },
     {
         "id": "d",
         "type" : "image",
-        "width" : 411,
+        "width" : 423,
         "height" : 600,
-        "thumb" : "https://s3.amazonaws.com/room5/page+03+officiel_634x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_423x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_846x1200.jpg"
     },
     {
         "id": "e",
         "type" : "image",
-        "width" : 404,
+        "width" : 410,
         "height" : 600,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/page+04+officiel_615x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_410x600.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_820x1200.jpg"
     },
     {
         "id": "f",
-        "type" : "image",
+        "type" : "text",
         "width" : 1141,
         "height" : 189,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/de+hond+is+in+de+pot.png",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/de+hond+is+in+de+pot/de+hond+is+in+de+pot+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/de+hond+is+in+de+pot/dehondisindepot.html"
     },
     {
         "id": "g",
         "type" : "image",
         "width" : 1024,
         "height" : 721,
-        "thumb" : "https://s3.amazonaws.com/room5/nilstaches_1024x721.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1024x721.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg"
     },
     {
         "id": "h",
@@ -96,15 +96,15 @@
         "width" : 517,
         "height" : 768,
         "z": -250,
-        "thumb" : "https://s3.amazonaws.com/room5/Nils.mati%C3%A8re_517x768.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_517x768.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg"
     },
     {
         "id": "i",
-        "type" : "image",
+        "type" : "text",
         "width" : 390,
         "height" : 350,
-        "thumb" : "https://s3.amazonaws.com/room5/vigilances+meteores+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/les+vigilances+meteores/vigilances+meteores+titre.png",
         "src" : ""
     },
     {
@@ -113,7 +113,7 @@
         "width" : 800,
         "height" : 541,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/cucine+venezia+sans+text+screenshot_800x541.jpg",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cucine+venezia/cucine+venezia+sans+text+screenshot_800x541.jpg",
         "src" : ""
     },
     {
@@ -127,11 +127,11 @@
     },
     {
         "id": "l",
-        "type" : "image",
+        "type" : "text",
         "width" : 833,
         "height" : 286,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/room5/faces+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/faces/faces+titre.png",
         "src" : ""
     },
     {
@@ -139,40 +139,40 @@
         "side": "!",
         "type" : "image",
         "width" : 900,
-        "height" : 1350,
+        "height" : 1383,
         "z": 800,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie1_586x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg"
     },
     {
         "id": "n",
         "type" : "image",
         "width" : 900,
-        "height" : 1350,
+        "height" : 1374,
         "z": 600,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie2_590x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg"
     },
     {
         "id": "o",
         "type" : "image",
         "width" : 900,
-        "height" : 1350,
+        "height" : 1383,
         "z": 400,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie3_586x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg"
     },
     {
         "id": "p",
         "type" : "image",
         "width" : 900,
-        "height" : 1350,
+        "height" : 1340,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/room5/Nilsserie4_605x900.jpg",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg"
     },
     {
         "id": "q",
@@ -180,8 +180,8 @@
         "width" : 1159,
         "height" : 245,
         "z": 200,
-        "thumb" : "https://s3.amazonaws.com/room5/cetaithier+titre.png",
-        "src" : ""
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cetait+hier+que+nous+devions+mourrir/cetaithier+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cetait+hier+que+nous+devions+mourrir/cetaithier.html"
     },
     {
         "id": "r",
@@ -190,59 +190,59 @@
         "height" : 2000,
         "y": -600,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/alexandre+navarro_1000x800.png",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/alexandre+navarro/alexandre+navarro_1000x800.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/alexandre+navarro/alexandre+navarro_1000x800.png"    
     },
     {
         "id": "s",
         "type" : "image",
         "width" : 2000,
-        "height" : 1200,
+        "height" : 1272,
         "y": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/gmusset6_1024x682.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg"    
     },
     {
         "id": "t",
         "type" : "image",
         "width" : 2000,
-        "height" : 1200,
+        "height" : 1264,
         "y": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/gmusset1_1024x678.jpg",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg"    
     },
     {
         "id": "u",
-        "type" : "image",
+        "type" : "text",
         "width" : 1132,
         "height" : 293,
-        "thumb" : "https://s3.amazonaws.com/room5/antimanifeste+titre.png",
-        "src" : ""    
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/antimanifeste/antimanifeste+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/antimanifeste/antimanifeste.html"    
     },
     {
         "id": "v",
-        "type" : "image",
+        "type" : "text",
         "width" : 793,
         "height" : 181,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/room5/preterition+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/preterition/preterition+titre.png",
         "src" : ""    
     },
     {
         "id": "w",
-        "type" : "image",
+        "type" : "text",
         "width" : 793,
         "height" : 181,
         "z": -250,
-        "thumb" : "https://s3.amazonaws.com/room5/premiere+meditation+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/premiere+meditation/premiere+meditation+titre.png",
         "src" : ""    
     },
     {
         "id": "x",
-        "type" : "texte",
+        "type" : "text",
         "width" : 1158,
         "height" : 207,
-        "thumb" : "https://s3.amazonaws.com/room7/edito2+titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/edito+2/edito2+titre.png",
         "src" : ""
     }
     ],
@@ -250,7 +250,8 @@
         {
             "id": "C",
             "type" : "sound",
-            "src": "https://s3.amazonaws.com/room5/resistance.mp3",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.mp3",
+            "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.ogg",
             "play": "true",
             "position" : {
                 "x": 3,

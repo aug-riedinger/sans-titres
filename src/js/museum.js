@@ -409,7 +409,6 @@ Cursor.prototype.initEvents = function() {
 
 		if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
 			that.muted = null;
-			console.log('unmuted');
 		}
 
 		that.calcStrength();
@@ -422,7 +421,7 @@ Cursor.prototype.initEvents = function() {
 		var roomId, artId, title;
 
 		if(that.aimedFace) {
-			roomId = parseInt(that.aimedFace.f.id.split(':')[0], 10);
+			roomId = that.aimedFace.f.roomId;
 			
 			if(that.aimedFace.f.type === 'art') {
 				artId = that.aimedFace.f.artId || null;
@@ -433,7 +432,6 @@ Cursor.prototype.initEvents = function() {
 			if(that.aimedFace.f.type === 'floor') {
 				if(that.aimedFace.f.art) {
 					artId = that.aimedFace.f.art.f.artId || null;
-					camera.targetToFace(that.aimedFace);
 					$(scr.canvas).one('inPosition', $.proxy(function() {
 						cursor.mute();
 						$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
@@ -445,12 +443,17 @@ Cursor.prototype.initEvents = function() {
 							}, 3000);
 						});
 					},that.aimedFace));
-				} else {
-					camera.targetToFace(that.aimedFace);
-					if(roomId !== rooms[0].id) {
-						enteredRoom(roomId);
-					}
 				}
+				camera.targetToFace(that.aimedFace);
+
+				if(roomId !== rooms[0].id) {
+					$(scr.canvas).one('inPosition', $.proxy(function() {
+						enteredRoom(this.roomId);
+					}, {
+						roomId: roomId
+					}));
+				}
+
 			}
 			if (!history.state || history.state.roomId !== roomId || history.state.artId !== artId) {
 				title = 'Sans-titres, Salle ' + roomId + (artId?' Oeuvre ' + artId:'');
@@ -948,7 +951,7 @@ Point.prototype.projection = function() {
 			this.html.className = 'art';
 		}
 
-		if(this.f.type === 'art' && this.f.subtype === 'html') {
+		if(this.f.type === 'art' && (this.f.subtype === 'text' || this.f.subtype === 'video')) {
 			this.html = document.createElement('iframe');
 			this.html.setAttribute('src', this.f.src);
 			this.html.className = 'html';
@@ -964,7 +967,7 @@ Point.prototype.projection = function() {
 				this.img.render(this.p0, this.p1, this.p2, this.p3, 'black', this.f.border);
 			} else {
 				if(this.f.subtype === 'text') {
-					this.img.render(this.p0, this.p1, this.p2, this.p3, 'white', false);
+					this.img.render(this.p0, this.p1, this.p2, this.p3, '', false);
 				} else {
 					this.img.render(this.p0, this.p1, this.p2, this.p3, 'white', this.f.border);
 
@@ -977,6 +980,7 @@ Point.prototype.projection = function() {
 		'top': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':top',
+				roomId: _room.id,
 				type: 'top',
 				x: params.unit * (_x + _room.position.x),
 				y: 0,
@@ -992,6 +996,7 @@ Point.prototype.projection = function() {
 		'bottom': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':bottom',
+				roomId: _room.id,
 				type: 'bottom',
 				x: params.unit * (_x + _room.position.x),
 				y: 0,
@@ -1007,6 +1012,7 @@ Point.prototype.projection = function() {
 		'left': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':left',
+				roomId: _room.id,
 				type: 'left',
 				x: params.unit * (_x - 1 / 2 + _room.position.x),
 				y: 0,
@@ -1022,6 +1028,7 @@ Point.prototype.projection = function() {
 		'right': function(_room, _x, _z) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':right',
+				roomId: _room.id,
 				type: 'right',
 				x: params.unit * (_x + 1 / 2 + _room.position.x),
 				y: 0,
@@ -1037,6 +1044,7 @@ Point.prototype.projection = function() {
 		'floor': function(_room, _x, _z, adj, art) {
 			var f = {
 				id: _room.id + ':' + _x + ':' + _z + ':floor',
+				roomId: _room.id,
 				type: 'floor',
 				x: params.unit * (_x + _room.position.x),
 				y: params.height / 2,
@@ -1056,6 +1064,7 @@ Point.prototype.projection = function() {
 		'art': function(_room, face, artConstr) {
 			var f = {
 				id: _room.id + ':' + Math.floor(face.f.x / params.unit) + ':' + Math.floor(face.f.z / params.unit) + ':art',
+				roomId: _room.id,
 				type: 'art',
 				subtype: artConstr.type,
 				x: face.f.x + (artConstr.x||0),
@@ -1080,6 +1089,7 @@ Point.prototype.projection = function() {
 		'position': function(_room, art) {
 			var f = {
 				id: _room.id + ':' + Math.floor(art.f.x / params.unit) + ':' + Math.floor(art.f.z / params.unit) + ':position',
+				roomId: _room.id,
 				type: 'position',
 				x: parseInt(art.f.x + params.unit * Math.sin(art.f.ry * Math.PI / 2), 10),
 				y: params.height / 2,
@@ -1315,20 +1325,20 @@ Room.prototype.isNoWall = function(charType) {
 
 Room.prototype.getArtConstr = function(artId) {
 	var artConstr;
+	var artConstrs = [];
 	for(var i = 0; i < this.artsConstr.length; i++) {
 		artConstr = this.artsConstr[i];
-		if(artConstr.id === artId) {
-			return artConstr;
+		if(artConstr.id[0] === artId) {
+			artConstrs.push(artConstr);
 		}
 	}
-	console.log('artId not found');
-	return undefined;
+	return artConstrs;
 };
 
 Room.prototype.readMap = function() {
 	var h, w, x, z;
 	var charType, artId, next;
-	var artConstr;
+	var artConstr, artConstrs;
 	var top, bottom, left, right, floor, art;
 
 	for(h = 0; h < this.map.length; h++) {
@@ -1348,42 +1358,50 @@ Room.prototype.readMap = function() {
 				left = this.putFaceToWall(this.lefts, this.isLeft(charType), x, faceMaker.left(this, x, z));
 				right = this.putFaceToWall(this.rights, this.isRight(charType), x, faceMaker.right(this, x, z));
 
+				floor = faceMaker.floor(this, x, z, [top, bottom, left, right], undefined);
+				this.floors.push(floor);
 
-				art = undefined;
-				artConstr = undefined;
-				if(artId !== '') {
-					artConstr = this.getArtConstr(artId);
-					if(this.isTop(artConstr.side || charType)) {
-						art = faceMaker.art(this, top, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isBottom(artConstr.side || charType)) {
-						art = faceMaker.art(this, bottom, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isLeft(artConstr.side || charType)) {
-						art = faceMaker.art(this, left, artConstr);
-						this.arts.push(art);
-					}
-					if(this.isRight(artConstr.side || charType)) {
-						art = faceMaker.art(this, right, artConstr);
-						this.arts.push(art);
-					}
-
-
-				}
-				floor = faceMaker.floor(this, x, z, [top, bottom, left, right], art);
 				if(next === '@') {
 					this.startFloor = floor;
 				}
+				art = undefined;
+				artConstr = undefined;
+				if(artId !== '') {
+					artConstrs = this.getArtConstr(artId, charType);
 
-				if(artConstr && artConstr.type === 'monolythe') {
-					art = new Monolythe(floor, artConstr);
-					floor.f.select = false;
-					this.arts = this.arts.concat(art.faces);
+					for(i=0; i<artConstrs.length; i++) {
+						artConstr = artConstrs[i];
+
+						if(this.isTop(artConstr.side || charType)) {
+							art = faceMaker.art(this, top, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isBottom(artConstr.side || charType)) {
+							art = faceMaker.art(this, bottom, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isLeft(artConstr.side || charType)) {
+							art = faceMaker.art(this, left, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isRight(artConstr.side || charType)) {
+							art = faceMaker.art(this, right, artConstr);
+							this.arts.push(art);
+						}
+						if(this.isNoWall(artConstr.side || charType)) {
+							if(artConstr.type === 'monolythe') {
+								art = new Monolythe(floor, artConstr);
+								floor.f.select = false;
+								this.arts = this.arts.concat(art.faces);
+							}
+							
+						}
+
+					}
+
 				}
+				// floor = faceMaker.floor(this, x, z, [top, bottom, left, right], art);
 
-				this.floors.push(floor);
 			}
 
 		}
@@ -1450,7 +1468,7 @@ Room.prototype.enter = function() {
 
 
 	if(showMuter && $('#volume').css('display') === 'none') {
-			$('#volume').fadeIn(1000);
+		$('#volume').fadeIn(1000);
 	}
 
 	if(!showMuter && $('#volume').css('display') !== 'none') {
@@ -2167,7 +2185,7 @@ init();
 var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.id = constr.id;
-	this.audio.src = constr.src;
+	this.audio.src = constr.mp3;
 	this.autoPlay = constr.play;
 	this.rooms = [room.id].concat(constr.rooms);
 	this.muted = false;
