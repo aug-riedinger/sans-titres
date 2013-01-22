@@ -29,7 +29,12 @@
         "x": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_534x800.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_802x1200.jpg",
-        "border": false
+        "border": false,  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "b",
@@ -37,7 +42,12 @@
         "width" : 1200,
         "height" : 900,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_800x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "c",
@@ -45,7 +55,12 @@
         "width" : 1200,
         "height" : 900,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_800x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "d",
@@ -53,7 +68,12 @@
         "width" : 1200,
         "height" : 900,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_800x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "e",
@@ -63,7 +83,12 @@
         "y": -100,
         "z": 400,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_800x534.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "f",
@@ -72,7 +97,12 @@
         "height" : 1200,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_800x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "g",
@@ -81,7 +111,12 @@
         "height" : 200,
         "x": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Lillumine/lillumine+titre.png",
-        "src" : ""    
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     }
     ],
     "sounds" :[
@@ -91,7 +126,12 @@
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
             "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
-            "rooms": [2, 3]
+            "rooms": [2, 3],  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
         }
     ]
 }

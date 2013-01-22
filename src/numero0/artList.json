@@ -1,0 +1,597 @@
+[
+    {
+        "room": 1,
+        "artId": "g",
+        "type": "text",
+        "x": 24.5,
+        "z": 6
+    },
+    {
+        "room": 2,
+        "artId": "a",
+        "type": "image",
+        "x": 21.5,
+        "z": 13
+    },
+    {
+        "room": 2,
+        "artId": "m",
+        "type": "text",
+        "x": 24,
+        "z": 11.5
+    },
+    {
+        "room": 2,
+        "artId": "j",
+        "type": "image",
+        "x": 17,
+        "z": 10.5
+    },
+    {
+        "room": 2,
+        "artId": "i",
+        "type": "image",
+        "x": 17,
+        "z": 9.5
+    },
+    {
+        "room": 2,
+        "artId": "l",
+        "type": "image",
+        "x": 24,
+        "z": 9.5
+    },
+    {
+        "room": 2,
+        "artId": "h",
+        "type": "image",
+        "x": 17,
+        "z": 8.5
+    },
+    {
+        "room": 2,
+        "artId": "g",
+        "type": "image",
+        "x": 17,
+        "z": 7.5
+    },
+    {
+        "room": 2,
+        "artId": "k",
+        "type": "text",
+        "x": 24,
+        "z": 7.5
+    },
+    {
+        "room": 2,
+        "artId": "e_",
+        "type": "image",
+        "x": 17.5,
+        "z": 6
+    },
+    {
+        "room": 2,
+        "artId": "e|",
+        "type": "image",
+        "x": 17,
+        "z": 6.5
+    },
+    {
+        "room": 2,
+        "artId": "d",
+        "type": "image",
+        "x": 18.5,
+        "z": 6
+    },
+    {
+        "room": 2,
+        "artId": "c",
+        "type": "image",
+        "x": 19.5,
+        "z": 6
+    },
+    {
+        "room": 2,
+        "artId": "b",
+        "type": "image",
+        "x": 20.5,
+        "z": 6
+    },
+    {
+        "room": 3,
+        "artId": "c",
+        "type": "text",
+        "x": 14.5,
+        "z": 17
+    },
+    {
+        "room": 3,
+        "artId": "a",
+        "type": "image",
+        "x": 19,
+        "z": 15.5
+    },
+    {
+        "room": 3,
+        "artId": "b",
+        "type": "image",
+        "x": 13,
+        "z": 14.5
+    },
+    {
+        "room": 4,
+        "artId": "a",
+        "type": "image",
+        "x": 16.5,
+        "z": 25
+    },
+    {
+        "room": 4,
+        "artId": "g",
+        "type": "text",
+        "x": 18.5,
+        "z": 25
+    },
+    {
+        "room": 4,
+        "artId": "d",
+        "type": "image",
+        "x": 15,
+        "z": 22.5
+    },
+    {
+        "room": 4,
+        "artId": "f",
+        "type": "image",
+        "x": 19,
+        "z": 21.5
+    },
+    {
+        "room": 4,
+        "artId": "b",
+        "type": "image",
+        "x": 15,
+        "z": 20.5
+    },
+    {
+        "room": 4,
+        "artId": "c",
+        "type": "image",
+        "x": 15,
+        "z": 18.5
+    },
+    {
+        "room": 4,
+        "artId": "e",
+        "type": "image",
+        "x": 19,
+        "z": 18.5
+    },
+    {
+        "room": 5,
+        "artId": "h",
+        "type": "image",
+        "x": 19,
+        "z": 31.5
+    },
+    {
+        "room": 5,
+        "artId": "j",
+        "type": "image",
+        "x": 20.5,
+        "z": 32
+    },
+    {
+        "room": 5,
+        "artId": "k",
+        "type": "image",
+        "x": 23.5,
+        "z": 32
+    },
+    {
+        "room": 5,
+        "artId": "l",
+        "type": "text",
+        "x": 24.5,
+        "z": 32
+    },
+    {
+        "room": 5,
+        "artId": "i",
+        "type": "text",
+        "x": 19,
+        "z": 30.5
+    },
+    {
+        "room": 5,
+        "artId": "m",
+        "type": "image",
+        "x": 26,
+        "z": 30.5
+    },
+    {
+        "room": 5,
+        "artId": "g",
+        "type": "image",
+        "x": 19,
+        "z": 29.5
+    },
+    {
+        "room": 5,
+        "artId": "n",
+        "type": "image",
+        "x": 26,
+        "z": 29.5
+    },
+    {
+        "room": 5,
+        "artId": "f",
+        "type": "text",
+        "x": 19,
+        "z": 28.5
+    },
+    {
+        "room": 5,
+        "artId": "a",
+        "type": "monolythe",
+        "x": 22.5,
+        "z": 28.5
+    },
+    {
+        "room": 5,
+        "artId": "o",
+        "type": "image",
+        "x": 26,
+        "z": 28.5
+    },
+    {
+        "room": 5,
+        "artId": "e",
+        "type": "image",
+        "x": 19,
+        "z": 27.5
+    },
+    {
+        "room": 5,
+        "artId": "q",
+        "type": "image",
+        "x": 26,
+        "z": 27.5
+    },
+    {
+        "room": 5,
+        "artId": "d",
+        "type": "image",
+        "x": 19,
+        "z": 26.5
+    },
+    {
+        "room": 5,
+        "artId": "p",
+        "type": "image",
+        "x": 26,
+        "z": 26.5
+    },
+    {
+        "room": 5,
+        "artId": "c",
+        "type": "image",
+        "x": 19,
+        "z": 25.5
+    },
+    {
+        "room": 5,
+        "artId": "b",
+        "type": "image",
+        "x": 19.5,
+        "z": 24.5
+    },
+    {
+        "room": 5,
+        "artId": "w",
+        "type": "text",
+        "x": 19,
+        "z": 22.5
+    },
+    {
+        "room": 5,
+        "artId": "r",
+        "type": "image",
+        "x": 26,
+        "z": 22.5
+    },
+    {
+        "room": 5,
+        "artId": "v",
+        "type": "text",
+        "x": 19,
+        "z": 21.5
+    },
+    {
+        "room": 5,
+        "artId": "t",
+        "type": "image",
+        "x": 20.5,
+        "z": 20
+    },
+    {
+        "room": 5,
+        "artId": "u",
+        "type": "text",
+        "x": 22.5,
+        "z": 20
+    },
+    {
+        "room": 5,
+        "artId": "s",
+        "type": "image",
+        "x": 24.5,
+        "z": 20
+    },
+    {
+        "room": 6,
+        "artId": "a",
+        "type": "text",
+        "x": 28.5,
+        "z": 27
+    },
+    {
+        "room": 6,
+        "artId": "b",
+        "type": "text",
+        "x": 31,
+        "z": 24.5
+    },
+    {
+        "room": 6,
+        "artId": "c",
+        "type": "text",
+        "x": 28.5,
+        "z": 23
+    },
+    {
+        "room": 7,
+        "artId": "d",
+        "type": "image",
+        "x": 19,
+        "z": 35.5
+    },
+    {
+        "room": 7,
+        "artId": "e",
+        "type": "image",
+        "x": 20.5,
+        "z": 36
+    },
+    {
+        "room": 7,
+        "artId": "f",
+        "type": "image",
+        "x": 22.5,
+        "z": 36
+    },
+    {
+        "room": 7,
+        "artId": "g",
+        "type": "text",
+        "x": 24.5,
+        "z": 36
+    },
+    {
+        "room": 7,
+        "artId": "c",
+        "type": "image",
+        "x": 19,
+        "z": 33.5
+    },
+    {
+        "room": 7,
+        "artId": "a",
+        "type": "image",
+        "x": 26,
+        "z": 33.5
+    },
+    {
+        "room": 7,
+        "artId": "b",
+        "type": "text",
+        "x": 20.5,
+        "z": 32
+    },
+    {
+        "room": 7,
+        "artId": "i",
+        "type": "image",
+        "x": 23.5,
+        "z": 32
+    },
+    {
+        "room": 7,
+        "artId": "h",
+        "type": "text",
+        "x": 24.5,
+        "z": 32
+    },
+    {
+        "room": 8,
+        "artId": "a",
+        "type": "image",
+        "x": 27.5,
+        "z": 36
+    },
+    {
+        "room": 8,
+        "artId": "b",
+        "type": "text",
+        "x": 30,
+        "z": 34.5
+    },
+    {
+        "room": 8,
+        "artId": "d",
+        "type": "text",
+        "x": 26,
+        "z": 32.5
+    },
+    {
+        "room": 8,
+        "artId": "c",
+        "type": "image",
+        "x": 30,
+        "z": 32.5
+    },
+    {
+        "room": 8,
+        "artId": "e",
+        "type": "image",
+        "x": 26,
+        "z": 30.5
+    },
+    {
+        "room": 8,
+        "artId": "f",
+        "type": "image",
+        "x": 26,
+        "z": 28.5
+    },
+    {
+        "room": 8,
+        "artId": "g",
+        "type": "image",
+        "x": 27.5,
+        "z": 27
+    },
+    {
+        "room": 8,
+        "artId": "h",
+        "type": "image",
+        "x": 29.5,
+        "z": 27
+    },
+    {
+        "room": 9,
+        "artId": "d",
+        "type": "image",
+        "x": 31.5,
+        "z": 30
+    },
+    {
+        "room": 9,
+        "artId": "e",
+        "type": "image",
+        "x": 33.5,
+        "z": 30
+    },
+    {
+        "room": 9,
+        "artId": "f",
+        "type": "image",
+        "x": 35.5,
+        "z": 30
+    },
+    {
+        "room": 9,
+        "artId": "g",
+        "type": "image",
+        "x": 37.5,
+        "z": 30
+    },
+    {
+        "room": 9,
+        "artId": "h",
+        "type": "image",
+        "x": 39.5,
+        "z": 30
+    },
+    {
+        "room": 9,
+        "artId": "i",
+        "type": "image",
+        "x": 46,
+        "z": 28.5
+    },
+    {
+        "room": 9,
+        "artId": "c",
+        "type": "image",
+        "x": 31.5,
+        "z": 27
+    },
+    {
+        "room": 9,
+        "artId": "a",
+        "type": "image",
+        "x": 33.5,
+        "z": 27
+    },
+    {
+        "room": 9,
+        "artId": "b",
+        "type": "image",
+        "x": 35.5,
+        "z": 27
+    },
+    {
+        "room": 10,
+        "artId": "f",
+        "type": "image",
+        "x": 42.5,
+        "z": 36
+    },
+    {
+        "room": 10,
+        "artId": "d",
+        "type": "image",
+        "x": 41,
+        "z": 34.5
+    },
+    {
+        "room": 10,
+        "artId": "c",
+        "type": "image",
+        "x": 41,
+        "z": 33.5
+    },
+    {
+        "room": 10,
+        "artId": "i",
+        "type": "text",
+        "x": 49,
+        "z": 33.5
+    },
+    {
+        "room": 10,
+        "artId": "e",
+        "type": "text",
+        "x": 41,
+        "z": 32.5
+    },
+    {
+        "room": 10,
+        "artId": "b",
+        "type": "image",
+        "x": 41,
+        "z": 31.5
+    },
+    {
+        "room": 10,
+        "artId": "h",
+        "type": "image",
+        "x": 49,
+        "z": 31.5
+    },
+    {
+        "room": 10,
+        "artId": "g",
+        "type": "image",
+        "x": 47.5,
+        "z": 30
+    },
+    {
+        "room": 11,
+        "artId": "1",
+        "type": "text",
+        "x": 46.5,
+        "z": 39
+    }
+]

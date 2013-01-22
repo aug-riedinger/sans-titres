@@ -35,7 +35,12 @@
                 "left": "https://s3.amazonaws.com/monolythe/gauche_89x583.png",
                 "right": "https://s3.amazonaws.com/monolythe/droite_89x598.png"
             },
-        "src" : "http://heeeeeeeey.com"    
+        "src" : "http://heeeeeeeey.com",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "b",
@@ -44,7 +49,12 @@
         "height" : 600,
         "z": 1000,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+01+officiel_423x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+01+officiel_846x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+01+officiel_846x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "c",
@@ -53,7 +63,12 @@
         "height" : 600,
         "z": 500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_423x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_846x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_846x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "d",
@@ -61,7 +76,12 @@
         "width" : 423,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_423x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_846x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_846x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e",
@@ -70,7 +90,12 @@
         "height" : 600,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_410x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_820x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_820x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "f",
@@ -79,7 +104,12 @@
         "height" : 189,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/de+hond+is+in+de+pot/de+hond+is+in+de+pot+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/de+hond+is+in+de+pot/dehondisindepot.html"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/de+hond+is+in+de+pot/dehondisindepot.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "g",
@@ -87,7 +117,12 @@
         "width" : 1024,
         "height" : 721,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1024x721.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "h",
@@ -97,7 +132,12 @@
         "height" : 768,
         "z": -250,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_517x768.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "i",
@@ -105,7 +145,12 @@
         "width" : 390,
         "height" : 350,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/les+vigilances+meteores/vigilances+meteores+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "j",
@@ -114,7 +159,12 @@
         "height" : 541,
         "x": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cucine+venezia/cucine+venezia+sans+text+screenshot_800x541.jpg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "k",
@@ -123,7 +173,12 @@
         "height" : 450,
         "x": 250,
         "thumb" : "https://s3.amazonaws.com/room5/apocalypses_800x450.jpg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "l",
@@ -132,7 +187,12 @@
         "height" : 286,
         "x": 500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/faces/faces+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "m",
@@ -143,7 +203,12 @@
         "z": 800,
         "y": -300,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "n",
@@ -153,7 +218,12 @@
         "z": 600,
         "y": -300,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "o",
@@ -163,7 +233,12 @@
         "z": 400,
         "y": -300,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "p",
@@ -172,7 +247,12 @@
         "height" : 1340,
         "y": -300,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "q",
@@ -181,7 +261,12 @@
         "height" : 245,
         "z": 200,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cetait+hier+que+nous+devions+mourrir/cetaithier+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cetait+hier+que+nous+devions+mourrir/cetaithier.html"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cetait+hier+que+nous+devions+mourrir/cetaithier.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "r",
@@ -191,7 +276,12 @@
         "y": -600,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/alexandre+navarro/alexandre+navarro_1000x800.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/alexandre+navarro/alexandre+navarro_1000x800.png"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/alexandre+navarro/alexandre+navarro_1000x800.png",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "s",
@@ -200,7 +290,12 @@
         "height" : 1272,
         "y": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "t",
@@ -209,7 +304,12 @@
         "height" : 1264,
         "y": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }   
     },
     {
         "id": "u",
@@ -217,7 +317,12 @@
         "width" : 1132,
         "height" : 293,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/antimanifeste/antimanifeste+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/antimanifeste/antimanifeste.html"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/antimanifeste/antimanifeste.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "v",
@@ -226,7 +331,12 @@
         "height" : 181,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/preterition/preterition+titre.png",
-        "src" : ""    
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "w",
@@ -235,7 +345,12 @@
         "height" : 181,
         "z": -250,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/premiere+meditation/premiere+meditation+titre.png",
-        "src" : ""    
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "x",
@@ -243,7 +358,12 @@
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/edito+2/edito2+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
     ],
     "sounds" :[
@@ -256,7 +376,12 @@
             "position" : {
                 "x": 3,
                 "z": 8
-            }
+            },  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
         }
     ]
 }

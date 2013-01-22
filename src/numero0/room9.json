@@ -19,7 +19,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "b",
@@ -28,7 +33,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "c",
@@ -37,7 +47,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "d",
@@ -46,7 +61,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e",
@@ -55,7 +75,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "f",
@@ -64,7 +89,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "g",
@@ -73,7 +103,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "h",
@@ -82,7 +117,12 @@
         "height" : 874,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "i",
@@ -91,7 +131,12 @@
         "height" : 2800,
         "y": -1200,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
     ]
 }

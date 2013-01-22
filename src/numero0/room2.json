@@ -24,7 +24,12 @@
         "y": -600,
         "level": 4,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1200x800.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }   
     },
     {
         "id": "b",
@@ -32,7 +37,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image001_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image001_1055x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image001_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }   
     },
     {
         "id": "c",
@@ -40,7 +50,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image002_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image002_1055x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image002_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }  
     },
     {
         "id": "d",
@@ -48,7 +63,12 @@
         "width" : 512,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image003_512x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image003_768x900.jpg"  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image003_768x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e_",
@@ -57,7 +77,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image004_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image004_1055x900.jpg"  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image004_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e|",
@@ -66,7 +91,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image005_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image005_1055x900.jpg"  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image005_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }  
     },
     {
         "id": "g",
@@ -74,7 +104,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image006_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image006_1055x900.jpg"   
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image006_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }   
     },
     {
         "id": "h",
@@ -82,7 +117,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image007_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image007_1055x900.jpg"   
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image007_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }   
     },
     {
         "id": "i",
@@ -90,7 +130,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image008_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image008_1055x900.jpg"  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image008_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }  
     },
     {
         "id": "j",
@@ -98,7 +143,12 @@
         "width" : 703,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image009B_703x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image009B_1055x900.jpg"  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Carnet+BD/image009B_1055x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }  
     },
     {
         "id": "k",
@@ -106,7 +156,12 @@
         "width" : 919,
         "height" : 314,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/Engoncement+Titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/engoncement.html"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/engoncement.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "l",
@@ -114,7 +169,12 @@
         "width" : 796,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_796x600.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "m",
@@ -122,7 +182,12 @@
         "width" : 1170,
         "height" : 290,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/Le+train+sans+wagon+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/letrainsanswagon.html"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/letrainsanswagon.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     }
     ],
     "sounds" :[
@@ -132,7 +197,12 @@
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
             "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
-            "rooms": [3, 4]
+            "rooms": [3, 4],  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
         }
     ]
 }

@@ -23,7 +23,12 @@
         "y": -400,
         "z": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "c",
@@ -33,7 +38,12 @@
         "y": -400,
         "z": 250,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "d",
@@ -43,7 +53,12 @@
         "y": -400,
         "z": 500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e",
@@ -52,7 +67,12 @@
         "height" : 207,
         "z": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/quatre+image+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "f",
@@ -62,7 +82,12 @@
         "y": -700,
         "x": 500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "g",
@@ -71,7 +96,12 @@
         "height" : 1604,
         "y": -700,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "h",
@@ -80,7 +110,12 @@
         "height" : 445,
         "z": -250,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg"
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "i",
@@ -88,7 +123,12 @@
         "width" : 3450,
         "height" : 600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/un+week+end+a+la+mer+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
     ]
 }

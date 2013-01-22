@@ -24,7 +24,12 @@
         "y": -600,
         "level": 4,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "b",
@@ -34,7 +39,12 @@
         "y": -500,
         "level": 3,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_800x378.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }    
     },
     {
         "id": "c",
@@ -43,7 +53,12 @@
         "height" : 252,
         "x": -500,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/La+derniere+heure+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html"    
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
     ],
     "sounds" :[
@@ -53,7 +68,12 @@
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
             "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
-            "rooms": [2, 4]
+            "rooms": [2, 4],  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
         }
     ]
 }

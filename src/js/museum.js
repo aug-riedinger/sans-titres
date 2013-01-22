@@ -2220,13 +2220,51 @@ Sound.prototype.adjustVolume = function() {
 	this.audio.volume = volume;
 };
 var MENU = true;
+var artsMenu;
 
-// $('#visite').click(function(e) {
+$('#visite').click(function(e) {
 	$('#menu').fadeOut(1000);
 	$('#screen').fadeIn(1000);
 	MENU = false;
 	run();
-// });
+});
+
+map = new Raphael(document.getElementById('map'), 479, 479);
+
+var showList = function(arts) {
+	var art;
+	var ratio = 479/56;
+	var i;
+
+	artsMenu = arts;
+
+	for(i = 0; i < artsMenu.length; i++) {
+		art = artsMenu[i];
+		art.circle = map.circle(art.x*ratio, 479 - art.z*ratio, 3);
+
+		if(art.type === 'text') {
+			art.circle.attr("fill", "#f00");
+		}
+		if(art.type === 'image') {
+			art.circle.attr("fill", "#0F0");
+		}
+		if(art.type === 'video') {
+			art.circle.attr("fill", "#00F");
+		}
+
+		art.circle.attr("stroke", "#fff");
+
+		art.circle.hover(function() {
+			this.animate({r:7}, 1000, 'elastic');
+		}, function() {
+			this.animate({r:3}, 1000, 'elastic');
+		});
+
+	}
+
+};
+
+$.getJSON('/numero0/artList.json', showList);
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36223212-4']);
 _gaq.push(['_trackPageview']);

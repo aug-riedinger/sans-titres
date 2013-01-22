@@ -25,7 +25,12 @@
         "height" : 1368,
         "y": -300,
         "thumb" : "https://s3.amazonaws.com/room8/af_03_1024x684.jpg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "b",
@@ -33,7 +38,12 @@
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room8/robert+krammer+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "c",
@@ -42,7 +52,12 @@
         "height" : 2000,
         "y": -600,
         "thumb" : "https://s3.amazonaws.com/room8/transversalisme_1194x1200.jpg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "d",
@@ -50,7 +65,12 @@
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room7/horodateurs+titre.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "e",
@@ -58,7 +78,12 @@
         "width" : 1158,
         "height" : 207,
         "thumb" : "https://s3.amazonaws.com/room7/photo+chocopng.png",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "f",
@@ -67,7 +92,12 @@
         "height" : 683,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/room8/gmusset4_1024x683.jpg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "g",
@@ -76,7 +106,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/room7/5207153459_357b66bb02_b_1024x768.jpeg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     },
     {
         "id": "h",
@@ -85,7 +120,12 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/room8/5207149453_f9eb50022e_b_1024x768.jpeg",
-        "src" : ""
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
     ]
 }
