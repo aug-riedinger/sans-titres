@@ -154,7 +154,7 @@
     },
     {
         "id": "j",
-        "type" : "image",
+        "type" : "video",
         "width" : 800,
         "height" : 541,
         "x": -500,
@@ -168,7 +168,7 @@
     },
     {
         "id": "k",
-        "type" : "image",
+        "type" : "video",
         "width" : 800,
         "height" : 450,
         "x": 250,

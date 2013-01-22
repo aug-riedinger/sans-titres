@@ -71,7 +71,7 @@
         }
     },
     {
-        "id": "e_",
+        "id": "e-bottom",
         "side": "_",
         "type" : "image",
         "width" : 703,
@@ -85,7 +85,7 @@
         }
     },
     {
-        "id": "e|",
+        "id": "e-left",
         "side": "|",
         "type" : "image",
         "width" : 703,

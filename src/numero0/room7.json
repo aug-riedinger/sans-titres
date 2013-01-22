@@ -15,7 +15,7 @@
     "arts" : [
     {
         "id": "a",
-        "type" : "image",
+        "type" : "video",
         "width" : 533,
         "height" : 800,
         "z": -500,

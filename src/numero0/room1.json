@@ -21,7 +21,12 @@
         "height" : 200,
         "x": 500,
         "thumb" : "https://s3.amazonaws.com/room1/lart+et+la+fin+des+mondes+titre.png",
-        "src" : ""    
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
     }
 
     ]

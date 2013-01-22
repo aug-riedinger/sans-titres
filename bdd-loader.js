@@ -26,17 +26,33 @@ var handleRoom = function(room) {
             for (i=0; i< artsConstr.length; i++) {
                 sideShifted = sideShift(artsConstr[i].side || charType);
                 res.push({
-                    room: room.id,
                     artId: artsConstr[i].id,
+                    room: room.id,
+                    src: artsConstr[i].src||artsConstr[i].thumb,
                     type: artsConstr[i].type,
                     info: artsConstr[i].info,
-                    x: 1.5 + room.position.x + x + (artsConstr.x||0)/1000 + sideShifted.x,
-                    z: 1.5 + room.position.z + z + (artsConstr.z||0)/1000 + sideShifted.z
+                    x: 0.5 + room.position.x + x + (artsConstr.x||0)/1000 + sideShifted.x,
+                    z: 0.5 + room.position.z + z + (artsConstr.z||0)/1000 + sideShifted.z
                 });
             }
 
         }
     }
+
+    if(room.sounds) {
+        for (i = 0; i < room.sounds.length; i++) {
+            res.push({
+                artId: room.sounds[i].id,
+                room: room.id,
+                src: room.sounds[i].mp3,
+                type: 'sound',
+                info: room.sounds[i].info,
+                x: 0.5 + room.position.x + room.map[0].length/4,
+                z: 0.5 + room.position.z + room.map.length/2
+            });
+        }   
+    }
+
     return res;
 };
 
@@ -89,10 +105,9 @@ for (i = 1; i < 12; i++) {
 }
 
 for(i = 0; i<rooms.length; i++) {
-arts = arts.concat(handleRoom(rooms[i]));
+    arts = arts.concat(handleRoom(rooms[i]));
 }
 
-console.log(JSON.stringify(arts, null, 4));
 
 fs.writeFile("./src/numero0/artList.json", JSON.stringify(arts, null, 4), function(err) {
     if(err) {
