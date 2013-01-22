@@ -2231,9 +2231,17 @@ $('#visite').click(function(e) {
 
 map = new Raphael(document.getElementById('map'), 479, 479);
 
+var circleHover = function() {
+	this.animate({r:7}, 1000, 'elastic');
+};
+
+var circleOutHover = function() {
+	this.animate({r:3}, 1000, 'elastic');
+};
+
 var showList = function(arts) {
 	var art;
-	var ratio = 479/56;
+	var ratio = 479/54;
 	var i;
 
 	artsMenu = arts;
@@ -2254,11 +2262,7 @@ var showList = function(arts) {
 
 		art.circle.attr("stroke", "#fff");
 
-		art.circle.hover(function() {
-			this.animate({r:7}, 1000, 'elastic');
-		}, function() {
-			this.animate({r:3}, 1000, 'elastic');
-		});
+		art.circle.hover(circleHover, circleOutHover);
 
 	}
 
