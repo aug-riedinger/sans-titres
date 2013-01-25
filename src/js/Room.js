@@ -17,7 +17,7 @@ var Room = function(id, mainRoom) {
 };
 
 Room.prototype.load = function() {
-	$.getJSON('/numero0/room' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('https://sans-titres.s3.amazonaws.com/numero0/salle' + this.id + '/salle' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));
@@ -238,7 +238,7 @@ Room.prototype.makeSounds = function() {
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		for (j=0; j<sounds.length; j++) {
-			if(this.soundsConstr[i].src === sounds[j].audio.src) {
+			if(this.soundsConstr[i].mp3 === sounds[j].audio.mp3 || this.soundsConstr[i].ogg === sounds[j].audio.ogg) {
 				sound = sounds[j];
 			}
 		}
