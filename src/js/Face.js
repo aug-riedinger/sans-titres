@@ -157,21 +157,33 @@
 	};
 
 	Face.prototype.buffer = function() {
-		if(this.f.type === 'art' && this.f.subtype === 'image') {
-			this.html = new Image();
-			this.html.src = this.f.src;
-			this.html.id = this.f.id;
-			this.html.className = 'art';
+		if(this.f.src) {
+			var splited = this.f.src.split('.');
+			var ext = splited[splited.length-1];
+			if(ext === 'html' || ext === 'htm') {
+				this.html = document.createElement('iframe');
+				this.html.setAttribute('src', this.f.src);
+				this.html.className = 'html';
+				this.html.id = this.f.id;
+				this.html.height = this.f.iFrameHeight || 600;
+				this.html.width = this.f.iFrameWidth || 800;
+
+				return;
+			}
+
+			if(ext === 'jpg' || ext === 'png') {
+				this.html = new Image();
+				this.html.src = this.f.src;
+				this.html.id = this.f.id;
+				this.html.className = 'art';
+
+				return;
+			}
+
+			console.log('Warning ! Extension not buffered : '+ext);
+			
 		}
 
-		if(this.f.type === 'art' && (this.f.subtype === 'text' || this.f.subtype === 'video')) {
-			this.html = document.createElement('iframe');
-			this.html.setAttribute('src', this.f.src);
-			this.html.className = 'html';
-			this.html.id = this.f.id;
-			this.html.height = this.f.iFrameHeight || 600;
-			this.html.width = this.f.iFrameWidth || 800;
-		}
 	};
 
 	Face.prototype.render = function() {

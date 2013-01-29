@@ -14,9 +14,9 @@
 <body oncontextmenu="return false;">
 	<section id="menu">
 		<nav>
-			<div class="nav left"><a href="#">Appel à projet #1</a></div>
-			<div class="nav middle"><a href="manifeste-editorial.html">Manifeste Editorial</a></div>
-			<div class="nav right"><a href="#">Soutenir le projet</a></div>
+			<div class="nav left"><span class="innerLink">Appel à projet #1</span></div>
+			<div class="nav middle"><span class="innerLink">Manifeste Editorial</span></div>
+			<div class="nav right"><span class="innerLink">Soutenir le projet</span></div>
 		</nav>
 
 
@@ -35,20 +35,16 @@
 
 				<div id="arts_list">
 					<ul id="menu_list">
-						<li id="menu_images">Images</li>
-						<li id="menu_sounds">Sons</li>
-						<li id="menu_texts">Textes</li>
-						<li id="menu_videos">Vidéos</li>
+						<li class="left"><span id="menu_participants" class="menu_sort innerLink">/// Participants</span></li>
+						<li class="right"><span id="menu_salles" class="menu_sort innerLink">/// Salles</span></li>
 						<br />
-						<li class="right"><a href="#">/// Participants</a></li>
+						<li><span id="menu_images" class="menu_type innerLink">Images</span></li>
+						<li><span id="menu_sounds" class="menu_type innerLink">Sons</span></li>
+						<li><span id="menu_texts" class="menu_type innerLink">Textes</span></li>
+						<li><span id="menu_videos" class="menu_type innerLink">Vidéos</span></li>
 					</ul>
-					<div id="content_list">
-						<ul id="content_list_left">
-						</ul>
-						<ul id="content_list_right">
-							<!--<li><a class='titre'>Displomondus</a>, <span class="small">Photo 2012</span></li>-->
-						</ul>
-					</div>
+					<ul id="content_list">
+					</ul>
 				</div>
 
 			</div>
@@ -75,8 +71,27 @@
 
 		<div id="artClearView">
 			<div id="full-screen">
-				<h3>Appuyez sur Entrer pour passer en plein écran</h3>
-				<p>(Echap pour quitter)</p>
+				<h3>Contrôles</h3>
+				<ul>
+					<li>
+						<b>Pour passer en mode plein écran, appuyer sur "Entrer" (Echap pour quitter).</b>
+					</li>
+					<li> 
+						Pour se déplacer, il faut cliquer sur la position au sol que l'on souhaite atteindre.
+					</li>
+					<li>
+						Pour consulter une oeuvre, il faut cliquer dessus. Pour en sortir, il faut cliquer à nouveau.
+					</li>
+					<li>
+						Un double clic permet d'avoir une vue d'ensemble de la pièce. Il suffit de cliquer pour la faire disparaître.
+					</li>
+					<li>
+						Lorsqu'un son se déclenche automatiquement, il peut être mis en pause en cliquant sur l'icône en haut à droite.
+					</li>
+					<li>
+						Il est possible de revenir au menu à tout moment en cliquant en bas à droite sur le plan.
+					</li>
+				</ul>
 			</div>
 		</div>
 
@@ -88,9 +103,6 @@
 			<div id="artAuthor">de la team Sans-titres</div>
 			<div id="artDescription">Bienvenue sur notre musée virtuel</div>
 		</div>
-
-		<script type="text/javascript" src="./libs/raphael-min.js"></script>
-		<script type="text/javascript" src="./libs/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="./js/museum.js"></script>
 
 	</body>

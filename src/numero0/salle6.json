@@ -1,0 +1,71 @@
+{
+    "id": 6, 
+    "name": "Room 6",
+    "position" : {
+    	"x": 25,
+    	"z": 22
+    },
+    "adj": [5],
+    "map" : [
+    "#.-.-a-.+.",
+    ",.,.,.,.!.",
+    ",.,.,.,.!b",
+    "%._._c_.¤."
+    ],
+    "arts" : [
+    {
+        "id": "a",
+        "type" : "text",
+        "width" : 896,
+        "height" : 304,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/alcools/alcools+titre.png",
+        "src" : "",  
+        "info" : {
+            "artiste" : "Thyl Sadow",
+            "titre" : "Alcool(s)",
+            "description": "nouvelle"
+        }
+    },
+    {
+        "id": "b",
+        "type" : "text",
+        "width" : 2064,
+        "height" : 267,
+        "z": 500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",  
+        "info" : {
+            "artiste" : "Yves André",
+            "titre" : "Ils étaient cinq dans un vieux bar",
+            "description": "poésie"
+        }
+    },
+    {
+        "id": "c",
+        "type" : "text",
+        "width" : 907,
+        "height" : 189,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/la%20marche%20a%20suivre%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",  
+        "info" : {
+            "artiste" : "Claire Clouet",
+            "titre" : "La marie à suivre",
+            "description": "Théâtre"
+        }
+    }
+    ],
+    "sounds" :[
+        {
+            "id": "D",
+            "type" : "sound",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
+            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+            "play": "true",
+            "info" : {
+                "artiste" : "Yves André",
+                "titre" : "Ils étaient cinq dans un vieux bar",
+                "description": "poésie"
+            }
+        }
+    ]
+}

@@ -31,6 +31,7 @@ var handleRoom = function(room) {
                     src: artsConstr[i].src||artsConstr[i].thumb,
                     type: artsConstr[i].type,
                     info: artsConstr[i].info,
+                    artistId: artistIdify(artsConstr[i].info.artiste||'inconnu'),
                     x: 0.5 + room.position.x + x + (artsConstr.x||0)/1000 + sideShifted.x,
                     z: 0.5 + room.position.z + z + (artsConstr.z||0)/1000 + sideShifted.z
                 });
@@ -47,13 +48,18 @@ var handleRoom = function(room) {
                 src: room.sounds[i].mp3,
                 type: 'sound',
                 info: room.sounds[i].info,
+                artistId: artistIdify(room.sounds[i].info.artiste||'inconnu'),
                 x: 0.5 + room.position.x + room.map[0].length/4,
                 z: 0.5 + room.position.z + room.map.length/2
             });
-        }   
+        }
     }
 
     return res;
+};
+
+var artistIdify = function(artiste) {
+    return artiste.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, '').replace(/ /g ,'-');
 };
 
 var sideShift = function(charType) {
@@ -100,7 +106,7 @@ var getArtConstr = function(artsConstr, artId) {
 };
 
 for (i = 1; i < 12; i++) {
-    room = require('./src/numero0/room'+i+'.json');
+    room = require('./src/numero0/salle'+i+'.json');
     rooms.push(room);
 }
 
@@ -115,4 +121,4 @@ fs.writeFile("./src/numero0/artList.json", JSON.stringify(arts, null, 4), functi
     } else {
         console.log("The file was saved!");
     }
-}); 
+});

@@ -21,9 +21,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jeep Novak",
+            "titre" : "sans titre",
+            "ensemble" : "série in limbo",
+            "description": "photographie"
         }
     },
     {
@@ -35,9 +36,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jeep Novak",
+            "titre" : "sans titre",
+            "ensemble" : "série in limbo",
+            "description": "photographie"
         }
     },
     {
@@ -49,9 +51,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+         "artiste" : "Jeep Novak",
+         "titre" : "sans titre",
+         "ensemble" : "série in limbo",
+         "description": "photographie"
         }
     },
     {
@@ -63,10 +66,11 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
-        }
+            "artiste" : "Jean)Baptiste Chadelle",
+            "titre" : "sans titre",
+            "ensemble" : "série playrobot",
+            "description": "photomontage"
+            }
     },
     {
         "id": "e",
@@ -77,9 +81,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jean)Baptiste Chadelle",
+            "titre" : "sans titre",
+            "ensemble" : "série playrobot",
+            "description": "photomontage"
         }
     },
     {
@@ -91,9 +96,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jean)Baptiste Chadelle",
+            "titre" : "sans titre",
+            "ensemble" : "série playrobot",
+            "description": "photomontage"
         }
     },
     {
@@ -105,9 +111,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jean)Baptiste Chadelle",
+            "titre" : "sans titre",
+    	    "ensemble" : "série playrobot",
+            "description": "photomontage"
         }
     },
     {
@@ -119,9 +126,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Jean)Baptiste Chadelle",
+            "titre" : "sans titre",
+    	    "ensemble" : "série playrobot",
+            "description": "photomontage"
         }
     },
     {
@@ -133,9 +141,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "ADEC",
+            "titre" : "Pachamama",
+            "description": "acrylique sur papier"
         }
     }
     ]

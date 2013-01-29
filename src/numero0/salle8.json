@@ -1,0 +1,164 @@
+{
+    "id": 8, 
+    "name": "Room 8",
+    "position" : {
+        "x": 25,
+        "z": 26
+    },
+    "adj" : [7, 9],
+    "map" : [
+    "-.-a-.+.",
+    ",.,.,.!b",
+    "|.,.,.!.",
+    "|d,.,.!c",
+    "|.,.,.!.",
+    "|e,.,.!i",
+    "|.,.,.,.",
+    "|f,.,.,.",
+    "%._g_._h"
+    ],
+    "arts" : [
+    {
+        "id": "a",
+        "type" : "image",
+        "width" : 2048,
+        "height" : 1368,
+        "y": -300,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dark/af_03_1024x684.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dark/af_03_1024x684.jpg",  
+        "info" : {
+            "artiste" : "Amandine Freyd",
+            "titre" : "sans titre",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "b",
+        "type" : "text",
+        "width" : 1200,
+        "height" : 290,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots%20titre_1200x290.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots.html",  
+        "info" : {
+            "artiste" : "Robert Kramer",
+            "titre" : "Snapshots",
+            "description": "essai (extrait)"
+        }
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 2000,
+        "y": -600,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",  
+        "info" : {
+            "artiste" : "Laurent d'Ursel",
+            "titre" : "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! Ou, contre la religions religions",
+            "description": "photomontage 100x100cm"
+        }
+    },
+    {
+        "id": "d",
+        "type" : "text",
+        "width" : 1158,
+        "height" : 207,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/horodateurs%20titre.png",
+        "src" : "",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "",
+            "description": ""
+        }
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 1200,
+        "height" : 811,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",  
+        "info" : {
+            "artiste" : "Pierre Choqueux",
+            "titre" : "illustration texte",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 683,
+        "y": -100,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
+        "info" : {
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "série + - ∞",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",  
+        "info" : {
+            "artiste" : "Jeep Novak",
+            "titre" : "sans titre",
+            "ensemble" : "série in limbo",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "h",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 768,
+        "y": -100,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",  
+        "info" : {
+            "artiste" : "Jeep Novak",
+            "titre" : "sans titre",
+            "ensemble" : "série in limbo",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "i",
+        "type" : "soundText",
+        "width" : 721,
+        "height" : 107,
+        "y": -100,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/dialoguedesourds.png",
+        "src" : "",  
+        "info" : {
+            "artiste" : "Edwin Lavallée",
+            "titre" : "Dialogue de sourds qui s'entendent",
+            "description": "entretien"
+        },
+        "select": false
+    }
+    ],
+    "sounds" :[
+    {
+        "id": "C",
+        "type" : "sound",
+        "mp3": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
+        "ogg": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.ogg",
+        "play": "false", 
+        "rooms": [9, 10],  
+        "info" : {
+            "artiste" : "Edwin Lavallée",
+            "titre" : "Dialogue de sourds qui s'entendent",
+            "description": "entretien"
+        }
+    }
+    ]
+}

@@ -22,9 +22,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/gmusset8_533x800.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/page.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "+ - ∞",
+            "description": "photographie"
         }
     },
     {
@@ -33,12 +34,12 @@
         "width" : 1514,
         "height" : 440,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/il+fait+noir/il+fait+noir+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/il+fait+noir/ilfaitnoir.html",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/il%20fait%20noir/il%20fait%20noir%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/il%20fait%20noir/ilfaitnoir.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Guillaume Willeme",
+            "titre" : "Il fait noir",
+            "description": "poésie"
         }
     },
     {
@@ -51,9 +52,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Pierre Choqueux",
+            "titre" : "monument sans mémoire",
+            "description": "photomontage"
         }
     },
     {
@@ -67,23 +68,23 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Baudelot",
+            "titre" : "portrait",
+            "description": "fusain sur papier A3"
         }
     },
     {
         "id": "e",
-        "type" : "image",
+        "type" : "text",
         "width" : 1158,
         "height" : 207,
         "x": -250,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/invite+moi+au+voyage/invite+moi+au+voyage+titre.png",
-        "src" : "",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/invite%20moi%20au%20voyage/invite%20moi%20au%20voyage%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/invite%20moi%20au%20voyage/invitemoiauvoyage.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Yves André",
+            "titre" : "Invite moi au voyage",
+            "description": "poésie"
         }
     },
     {
@@ -93,11 +94,11 @@
         "height" : 2000,
         "y": -600,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/mahe/toile+mah%C3%A9_1201x1200.jpg",
-        "src" : "",  
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/mahe/toile+mah%C3%A9_1201x1200.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Mahé Ripoll",
+            "titre" : "sans titre",
+            "description": "Peinture sur toile, techniques mixtes, 150 x 150 cm"
         }
     },
     {
@@ -105,12 +106,13 @@
         "type" : "text",
         "width" : 1158,
         "height" : 207,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jattends+un+deluge/jattend+un+deluge+titre.png",
-        "src" : "",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattend%20un%20deluge%20titre_1200x219.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattendsundeluge.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Guillaume Musset",
+            "titre" : "j'attends un déluge",
+            "ensemble" : "extrait du recueil : les couteaux qui coupent",
+            "description": "poésie"
         }
     },
     {
@@ -120,12 +122,12 @@
         "height" : 745,
         "y": -100,
         "x": 250,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/a+quoi+bon+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon.html",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/a%20quoi%20bon%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/aquoibon.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Solenn Denis",
+            "titre" : "A quoi bon?",
+            "description": "poésie"
         }
     },
     {
@@ -138,9 +140,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/illustration+a+quoi+bon_649x900.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon_653x1200.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Fred le Chevalier",
+            "titre" : "illustration",
+            "description": "feutre noir sur papier"
         }
     }
     ]

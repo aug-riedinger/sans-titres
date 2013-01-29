@@ -12,6 +12,9 @@ var compressor = require('node-minify');
 new compressor.minify({
     type: 'no-compress',
     fileIn: [
+    'src/libs/jquery-1.8.3.js',
+    'src/libs/raphael-min.js',
+    // 'src/libs/jquery.tinyscrollbar.js',
     'src/libs/jquery.fullscreen.js',
     'src/js/EasingInOut.js',
     'src/js/Global.js',
@@ -42,6 +45,9 @@ new compressor.minify({
 new compressor.minify({
     type: 'gcc',
     fileIn: [
+    'src/libs/jquery-1.8.3.min.js',
+    'src/libs/raphael-min.js',
+    // 'src/libs/jquery.tinyscrollbar.min.js',
     'src/libs/jquery.fullscreen.js',
     'src/js/EasingInOut.js',
     'src/js/Global.js',

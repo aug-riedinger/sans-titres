@@ -15,8 +15,6 @@ body {
 #menu {
 	/*font-variant: small-caps;*/
 	position: absolute;
-	top: 0;
-	bottom: 0;
 	left: 0;
 	right: 0;
 	text-transform:uppercase;
@@ -34,10 +32,18 @@ body {
 a {
 	color: #FFFFFF;
 	text-decoration: none;
-	padding-bottom: 10px;
 }
 
 a:hover {
+	text-decoration: underline;
+}
+
+.innerLink {
+	padding-bottom: 5px;
+}
+
+.innerLink:hover {
+	cursor: pointer;
 	border-bottom: 1px solid white;
 }
 
@@ -68,7 +74,7 @@ nav .middle {
 	text-align: center;
 /*	border-left: thin dashed #8E8EA7;
 	border-right: thin dashed #8E8EA7;
-*/	margin-left: 33%;
+	*/	margin-left: 33%;
 	margin-right: 33%;
 }
 
@@ -80,7 +86,7 @@ nav .right {
 }
 
 #menu_content {
-	width: 1000px;
+	width: 1025px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -141,58 +147,72 @@ h1 {
 	display: inline-block;
 	vertical-align: top;
 	/*font-family: arial;*/
-	width: 518px;
+	width: 535px;
+	margin-left: 8px;
 }
 
 #menu_list {
-	margin: 2px;
+	margin: 0;
 	font-size: 1.1em;
 	padding: 0 16px;
+	width: 400px;
+	text-align: center;
 }
 
 #menu_list li {
 	display: inline-block;
-	margin: 4px 20px;
-	}
+	margin: 0 22px;
+	margin-bottom: 10px;
+}
+
+#menu_list li .active {
+	text-shadow: 0px 0px 30px #ffffff; 
+}
+
+#menu_list li.left {
+	text-align: left;
+	width: 46%;
+	font-size: 1.5em;
+}
 
 #menu_list li.right {
 	text-align: right;
-	width: 100%;
-	margin-top: 20px;
+	width: 30%;
+	font-size: 1.5em;
 }
 
 #content_list {
 	overflow: auto;
-	margin: 5px;
+	margin: 2px;
 	text-transform: none;
 	font-weight: 300;
 	font-size: 1.1em;
 	height: 385px;
+	list-style: none;
+	padding-left: 10px;
+	margin-top: 5px;
 }
 
- #content_list li {
- 	padding: 3px;
- }
-
-#content_list_left {
-	width: 150px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 0;
+#content_list li.left {
+	padding: 3px 5px;
+	position: relative;
+	width: 167px;
+	border-top: thin dashed transparent;
+	border-bottom: thin dashed transparent;
 }
 
+#content_list li.left:hover {
+	border-top: thin dashed white;
+	border-bottom: thin dashed white;
+}
 
- #content_list_right {
-	vertical-align: top;
- 	display: inline-block;
- 	width: 300px;
-	margin: 0;
-	padding-left: 5px;
- }
-
- #content_list_right .small {
- 	font-size: 0.7em;
- }
+#content_list li .full_info {
+	display: none;
+	position: absolute;
+	left: 150px;
+	top: 0px;
+	width: 300px
+}
 
 footer {
 	height: 35px;
@@ -312,7 +332,8 @@ footer li {
 	right: 0;
 	background: white;
 	border: none;
-	width: 95%;
+	width: 1150px;
+	height: 100%;
 }
 
 #volume {
@@ -373,4 +394,9 @@ footer li {
 	text-align: justify;
 	margin: 5px;
 	font-weight: 300;
+}
+
+.small {
+	font-size: 0.8em;
+	margin-left: 5px;
 }

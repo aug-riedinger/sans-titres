@@ -1,0 +1,48 @@
+{
+    "id": 11, 
+    "name": "Room 11",
+    "position" : {
+        "x": 44,
+        "z": 35
+    },
+    "adj" : [10],
+    "map" : [
+    "#.-1-.+.",
+    "|.,.,.!.",
+    "|.,.,.!."
+    ],
+    "arts" : [
+    {
+        "id": "1",
+        "type" : "text",
+        "width" : 1264,
+        "height" : 218,
+        "x": 500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/lesmotsdelautre-mur.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/lesmotsdelautre.html",  
+        "info" : {
+            "artiste" : "Yves André",
+            "titre" : "Les mots de l'autre",
+            "description": "poésie"
+        }
+    }
+    ],
+    "sounds" :[
+    {
+        "id": "C",
+        "type" : "sound",
+        "mp3": "",
+        "ogg": "",
+        "play": "true",
+        "position" : {
+            "x": 3,
+            "z": 8
+            },  
+        "info" : {
+            "artiste" : "Yves André",
+            "titre" : "Les mots de l'autre",
+            "description": "poésie"
+        }
+    }
+    ]
+}

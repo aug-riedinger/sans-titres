@@ -12,7 +12,7 @@
     "|b,.,.,.,.!.",
     "|.,.,.,.,.!.",
     "|.,.,.,.,.,.",
-    "%._._._.,.,."
+    "%._._d_.,.,."
     ],
     "arts" : [
     {
@@ -26,9 +26,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Darren Roshier",
+            "titre" : "Multiple 21/12/12",
+            "description": "Linogravure sur papier 80g format A4, série de 27,"
         }    
     },
     {
@@ -41,9 +41,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_800x378.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
         }    
     },
     {
@@ -55,10 +56,25 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/La+derniere+heure+titre.png",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Marion K.",
+            "titre" : "LA dernière heure",
+            "description": "nouvelle"
         }
+    },
+    {
+        "id": "d",
+        "type" : "soundText",
+        "width" : 1240,
+        "height" : 206,
+        "x": -500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle3/Tout%20est%20en%20place/toutestenplace.png",
+        "src" : "",  
+        "info" : {
+            "artiste" : "Marion K.",
+            "titre" : "LA dernière heure",
+            "description": "nouvelle"
+        },
+        "select": false
     }
     ],
     "sounds" :[
@@ -70,9 +86,9 @@
             "play": "true",
             "rooms": [2, 4],  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Quentin Bambuck",
+            "titre" : "Tout est en place",
+            "description": "Texte et musique de Quentin Bambuck"
         }
         }
     ]

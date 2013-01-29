@@ -1,0 +1,377 @@
+{
+    "id": 5, 
+    "name": "Room 5",
+    "position" : {
+        "x": 18,
+        "z": 19
+    },
+    "adj": [4, 6, 7],
+    "map" : [
+    "#h-j,.,.-k-l+.",
+    "|i,.,.,.,.,.!m",
+    "|g,.,.,.,.,.!n",
+    "|f,.,.,a,.,.!o",
+    "|e,.,.,.,.,.!q",
+    "|d,.,.,.,.,.!p",
+    "|c,.,.,.,.,.,.",
+    ",b,.,.,.,.,.,.",
+    ",.,.,.,.,.,.!.",
+    "|w,.,.,.,.,.!r",
+    "|v,.,.,.,.,.!.",
+    "%._t_._u_._s¤."
+    ],
+    "arts" : [
+    {
+        "id": "a",
+        "type" : "monolythe",
+        "dim":  {
+                "width": 366,
+                "height": 600,
+                "depth": 60
+            },
+        "thumb" : {
+                "top": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/avant_395x602.png",
+                "bottom": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/arri%C3%A8re_404x606.png",
+                "left": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/gauche_89x583.png",
+                "right": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/droite_89x598.png"
+            },
+        "src" : "http://heeeeeeeey.com",  
+        "info" : {
+            "artiste" : "Yves André",
+            "titre" : "Résistance",
+            "description": "Sculpture sonore, techniques mixtes"
+        }    
+    },
+    {
+        "id": "b",
+        "side": "|",
+        "type" : "image",
+        "width" : 423,
+        "height" : 600,
+        "z": 1000,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page%2001%20officiel_423x600.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "info" : {
+            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
+            "titre" : "(en attente)",
+            "description": "pastel gras sur cellophane transparent, A3"
+        }
+    },
+    {
+        "id": "c",
+        "type" : "image",
+        "width" : 423,
+        "height" : 600,
+        "z": 500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_423x600.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "info" : {
+            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
+            "titre" : "(en attente)",
+            "description": "pastel gras sur cellophane transparent, A3"
+        }
+    },
+    {
+        "id": "d",
+        "type" : "image",
+        "width" : 423,
+        "height" : 600,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_423x600.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "info" : {
+            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
+            "titre" : "(en attente)",
+           "description": "pastel gras sur cellophane transparent, A3"
+        }
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 410,
+        "height" : 600,
+        "z": -500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_410x600.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "info" : {
+            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
+            "titre" : "(en attente)",
+            "description": "pastel gras sur cellophane transparent, A3"
+        }
+    },
+    {
+        "id": "f",
+        "type" : "text",
+        "width" : 1141,
+        "height" : 189,
+        "z": -500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/de%20hond%20is%20in%20de%20pot%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",  
+        "info" : {
+            "artiste" : "Aliénor Debrocq",
+            "titre" : "De hond isin de pot",
+            "description": "nouvelle"
+        }
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 721,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1024x721.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "Ciel",
+            "description": "Calque imprimé scotché sur papier A4, projection de peinture à l'huile"
+        }
+    },
+    {
+        "id": "h",
+        "side": "|",
+        "type" : "image",
+        "width" : 517,
+        "height" : 768,
+        "z": -250,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_517x768.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "Continent",
+            "description": "Terre et huile sur calque milimétré"
+        }
+    },
+    {
+        "id": "i",
+        "type" : "text",
+        "width" : 390,
+        "height" : 346,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/les%20vigilances%20meteores/vigilances%20meteores%20titre_390x346.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/les%20vigilances%20meteores/vigilancesmeteores.html",  
+        "info" : {
+            "artiste" : "Elie Kosma",
+            "titre" : "Vigilances météores",
+            "description": "poésie"
+        }
+    },
+    {
+        "id": "j",
+        "type" : "video",
+        "width" : 800,
+        "height" : 541,
+        "x": -500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/cucine+venezia/cucine+venezia+sans+text+screenshot_800x541.jpg",
+        "src" : "",  
+        "info" : {
+            "artiste" : "Serra Bernhardt",
+            "titre" : "Cucine",
+            "description": "vidéo performance"
+        }
+    },
+    {
+        "id": "k",
+        "type" : "video",
+        "width" : 800,
+        "height" : 450,
+        "x": 250,
+        "thumb" : "https://s3.amazonaws.com/room5/apocalypses_800x450.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/page.html",  
+        "info" : {
+            "artiste" : "Lucile Rimbert & Arthur Baude",
+            "titre" : "Les apocalypses ont déjà eu lieu mais personne n'a voulu s'en rendre compte",
+            "description": "court-métrage dansant"
+        }
+    },
+    {
+        "id": "l",
+        "type" : "text",
+        "width" : 833,
+        "height" : 286,
+        "x": 500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/faces/faces+titre.png",
+        "src" : "",  
+        "info" : {
+            "artiste" : "Clémence Gachot",
+            "titre" : "Faces",
+            "description": "essai critique"
+        }
+    },
+    {
+        "id": "m",
+        "side": "!",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1383,
+        "z": 800,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "sans titre",
+            "description": "Sérigraphie sur marbrage réalisé à la poudre de graphite "
+        }
+    },
+    {
+        "id": "n",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1374,
+        "z": 600,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "sans titre",
+            "description": "Sérigraphie sur marbrage réalisé à la poudre de graphite "
+        }
+    },
+    {
+        "id": "o",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1383,
+        "z": 400,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "sans titre",
+            "description": "Sérigraphie sur marbrage réalisé à la poudre de graphite "
+        }
+    },
+    {
+        "id": "p",
+        "type" : "image",
+        "width" : 900,
+        "height" : 1340,
+        "y": -300,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",  
+        "info" : {
+            "artiste" : "Nils Alix Tabeling",
+            "titre" : "sans titre",
+            "description": "Sérigraphie sur marbrage réalisé à la poudre de graphite "
+        }
+    },
+    {
+        "id": "q",
+        "type" : "text",
+        "width" : 1159,
+        "height" : 245,
+        "z": 200,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",  
+        "info" : {
+            "artiste" : "Elie Kosma",
+            "titre" : "C'étaient hier que nous devons mourir",
+            "description": "poésie"
+        }
+    },
+    {
+        "id": "r",
+        "type" : "image",
+        "width" : 2139,
+        "height" : 1215,
+        "y": -600,
+        "z": -500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/onapasbesoindailleurs%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/alexandre%20navarro_1000x800.png",  
+        "info" : {
+            "artiste" : "Alexandre Navarro",
+            "titre" : "On n'a pas besoin d'ailleurs",
+            "description": "carnet de voyage"
+        }    
+    },
+    {
+        "id": "s",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 1272,
+        "y": -500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",  
+        "info" : {
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "+ - ∞",
+            "description" : "photographie"
+        }    
+    },
+    {
+        "id": "t",
+        "type" : "image",
+        "width" : 2000,
+        "height" : 1264,
+        "y": -500,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",  
+        "info" : {
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "+ - ∞",
+            "description" : "photographie"
+        }   
+    },
+    {
+        "id": "u",
+        "type" : "text",
+        "width" : 1132,
+        "height" : 293,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/antimanifeste/antimanifeste%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/antimanifeste/antimanifeste.html",  
+        "info" : {
+            "artiste" : "Thyl Sadow & Yves André",
+            "titre" : "Anti-manifeste",
+            "description": "poésie"
+        }    
+    },
+    {
+        "id": "v",
+        "type" : "text",
+        "width" : 758,
+        "height" : 192,
+        "z": -500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/preterition/preterition%20titre_758x192.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/preterition/preterition.html",  
+        "info" : {
+            "artiste" : "Milady Renoir",
+            "titre" : "Prétérition",
+            "description": "poésie"
+        }    
+    },
+    {
+        "id": "w",
+        "type" : "text",
+        "width" : 717,
+        "height" : 203,
+        "z": -250,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premiere%20meditation%20titre.png",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premieremeditationadeux.html",  
+        "info" : {
+            "artiste" : "Gemma",
+            "titre" : "première méditation à deux",
+            "description": "essai"
+        }
+    }
+    ],
+    "sounds" :[
+    {
+        "id": "C",
+        "type" : "sound",
+        "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.mp3",
+        "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.ogg",
+        "play": "true",
+        "position" : {
+            "x": 3,
+            "z": 8
+            },  
+        "info" : {
+            "artiste" : "Yves André",
+            "titre" : "Résistance",
+            "description": "Sculpture sonore, techniques mixtes"
+        }
+    }
+    ]
+}

@@ -31,10 +31,11 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_802x1200.jpg",
         "border": false,  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
-        }
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
+        }    
     },
     {
         "id": "b",
@@ -44,9 +45,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_800x600.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
         }    
     },
     {
@@ -57,9 +59,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_800x600.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
         }    
     },
     {
@@ -70,9 +73,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_800x600.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus",
+            "description": "(en attente)"
         }    
     },
     {
@@ -85,9 +89,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_800x534.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
         }    
     },
     {
@@ -99,9 +104,10 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_800x600.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Charley Case",
+            "titre" : "sans titre",
+            "ensemble" : "projet Diplomondus", 
+            "description": "(en attente)"
         }    
     },
     {
@@ -113,9 +119,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Lillumine/lillumine+titre.png",
         "src" : "",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Thyl Sadow",
+            "titre" : "L'illuminé",
+            "description": "Essai critique"
         }    
     }
     ],
@@ -128,9 +134,9 @@
             "play": "true",
             "rooms": [2, 3],  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Quentin Bambuck",
+            "titre" : "Tout est en place",
+            "description": "Texte et musique de Quentin Bambuck"
         }
         }
     ]

@@ -17,7 +17,7 @@ var Room = function(id, mainRoom) {
 };
 
 Room.prototype.load = function() {
-	$.getJSON('https://sans-titres.s3.amazonaws.com/numero0/salle' + this.id + '/salle' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('/numero0/salle' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));
@@ -179,19 +179,19 @@ Room.prototype.readMap = function() {
 						artConstr = artConstrs[i];
 
 						if(this.isTop(artConstr.side || charType)) {
-							art = faceMaker.art(this, top, artConstr);
+							art = faceMaker.art(this, top || faceMaker.top(this, x, z), artConstr);
 							this.arts.push(art);
 						}
 						if(this.isBottom(artConstr.side || charType)) {
-							art = faceMaker.art(this, bottom, artConstr);
+							art = faceMaker.art(this, bottom || faceMaker.bottom(this, x, z), artConstr);
 							this.arts.push(art);
 						}
 						if(this.isLeft(artConstr.side || charType)) {
-							art = faceMaker.art(this, left, artConstr);
+							art = faceMaker.art(this, left || faceMaker.left(this, x, z), artConstr);
 							this.arts.push(art);
 						}
 						if(this.isRight(artConstr.side || charType)) {
-							art = faceMaker.art(this, right, artConstr);
+							art = faceMaker.art(this, right || faceMaker.right(this, x, z), artConstr);
 							this.arts.push(art);
 						}
 						if(this.isNoWall(artConstr.side || charType)) {
@@ -238,7 +238,7 @@ Room.prototype.makeSounds = function() {
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		for (j=0; j<sounds.length; j++) {
-			if(this.soundsConstr[i].mp3 === sounds[j].audio.mp3 || this.soundsConstr[i].ogg === sounds[j].audio.ogg) {
+			if(this.soundsConstr[i].mp3 === sounds[j].audio.src) {
 				sound = sounds[j];
 			}
 		}

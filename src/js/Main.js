@@ -61,7 +61,7 @@ var enteredRoom = function(roomId) {
 	return rooms;
 };
 
-var init = function() {
+var init = function(roomId) {
 	var parameters = getParameters();
 	// ---- init script ----
 	scr = new Screen({
@@ -69,7 +69,7 @@ var init = function() {
 		canvas: "canvas"
 	});
 
-	new Room(parseInt(parameters.room, 10) || 1);
+	new Room(parseInt(parameters.room, 10) || roomId);
 
 	$(scr.container).one('loaded', function() {
 
@@ -91,12 +91,9 @@ var init = function() {
 
 
 		requestAnimFrame(run);
-		$(scr.canvas).fadeIn(3000, function() {
-			setTimeout(remHtml, 1000);
-		});
 	});
 
-	startCpt();
+	// startCpt();
 
 };
 
@@ -116,8 +113,8 @@ var run = function() {
 	// ---- 3D projection ----
 	renderer.renderAll();
 
-	cpt++;
+	// cpt++;
 };
 
 
-init();
+init(1);

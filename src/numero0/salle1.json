@@ -20,7 +20,7 @@
         "width" : 1200,
         "height" : 200,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/room1/lart+et+la+fin+des+mondes+titre.png",
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle1/lart%20et%20la%20fin%20des%20mondes/lart%20et%20la%20fin%20des%20mondes%20titre.png",
         "src" : "",  
         "info" : {
             "artiste" : "",
