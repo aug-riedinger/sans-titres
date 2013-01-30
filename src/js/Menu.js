@@ -200,6 +200,10 @@ var showCircles = function(arts) {
 
 };
 
+var setPosition = function() {
+	map.path('')
+};
+
 var enterMuseum = function() {
 	var parameters = getParameters();
 	$('#menu').fadeOut(1000);
@@ -212,6 +216,26 @@ var enterMuseum = function() {
 		init(parseInt(parameters.room, 10) || 1);
 	}
 
+	$('#full-screen').one('click', function(e) {
+
+		$(this).fadeOut(1000, function() {
+			$(this).remove();
+		});
+
+		e.preventDefault();
+		return false;
+	});
+
+	$('canvas').one('click', function(e) {
+
+		$('#full-screen').fadeOut(1000, function() {
+			$(this).remove();
+		});
+
+		e.preventDefault();
+		return false;
+	});
+
 };
 
 $('a').click(enterMuseum);
@@ -219,3 +243,12 @@ $('a').click(enterMuseum);
 $('#visite').click(enterMuseum);
 
 
+var enterMenu = function() {
+	$('#visite').html('Retourner directement à la visite');
+	$('#menu').fadeIn(1000);
+	$('#screen').fadeOut(1000);
+	MENU = true;
+
+};
+
+$('#minimap').click(enterMenu);

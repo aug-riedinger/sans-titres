@@ -89,7 +89,6 @@ var init = function(roomId) {
 			}
 		}
 
-
 		requestAnimFrame(run);
 	});
 

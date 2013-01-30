@@ -306,8 +306,8 @@ footer li {
 	left: 0;
 	background: white;
 	/*background: rgba(0,0,0,0.8); */
-	display: none;
 	cursor: none;
+	display: none;
 }
 
 .art {
@@ -363,13 +363,26 @@ footer li {
 	left: 0;
 	right: 0;
 	background: white;
-	text-align: center;
-	width: 330px;
-	height: 120px;
+	text-align: justify;
+	width: 400px;
+	height: 470px;
+	font-size: 0.9em;
+	font-weight: 300;
 }
 
-#artInfo {
-	display: none;
+#full-screen h3 {
+	text-align: center;
+}
+
+#full-screen ul {
+	padding: 5px 30px;
+}
+
+#full-screen li {
+	padding: 8px 0px;
+}
+
+.info-displayer {
 	position: absolute;
 	margin: 30px;
 	padding: 5px;
@@ -379,6 +392,14 @@ footer li {
 	background: white;
 	background: rgba(255,255,255,0.8);
 	color: black;
+}
+
+#minimap {
+	cursor: pointer;
+}
+
+#artInfo {
+	display: none;
 }
 
 #artTitle {

@@ -258,7 +258,7 @@
         "artId": "d",
         "room": 3,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle3/Tout%20est%20en%20place/toutestenplace.png",
-        "type": "text",
+        "type": "soundText",
         "info": {
             "artiste": "Marion K.",
             "titre": "LA dernière heure",
@@ -300,7 +300,7 @@
     {
         "artId": "g",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Lillumine/lillumine+titre.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle4/Lillumine/lillumine.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -417,7 +417,7 @@
     {
         "artId": "j",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/cucine+venezia/cucine+venezia+sans+text+screenshot_800x541.jpg",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_800x541.png",
         "type": "video",
         "info": {
             "artiste": "Serra Bernhardt",
@@ -445,7 +445,7 @@
     {
         "artId": "l",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/faces/faces+titre.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/faces/faces.html",
         "type": "text",
         "info": {
             "artiste": "Clémence Gachot",
@@ -655,8 +655,8 @@
     {
         "artId": "r",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/alexandre%20navarro_1000x800.png",
-        "type": "image",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/onapasbesoindailleurs.html",
+        "type": "text",
         "info": {
             "artiste": "Alexandre Navarro",
             "titre": "On n'a pas besoin d'ailleurs",
@@ -996,7 +996,7 @@
         "artId": "i",
         "room": 8,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/dialoguedesourds.png",
-        "type": "image",
+        "type": "soundText",
         "info": {
             "artiste": "Edwin Lavallée",
             "titre": "Dialogue de sourds qui s'entendent",
