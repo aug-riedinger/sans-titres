@@ -92,6 +92,17 @@ var init = function(roomId) {
 		requestAnimFrame(run);
 	});
 
+	$('.close').one('click', function(e) {
+
+		$('#full-screen').fadeOut(1000, function() {
+			$(this).remove();
+		});
+			$('#screen').focus();
+
+		e.preventDefault();
+		return false;
+	});
+
 	// startCpt();
 
 };

@@ -266,7 +266,7 @@ Room.prototype.enter = function() {
 			sounds[j].audio.pause();
 		}
 
-		if(toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
+		if(!MENU && toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
 			sounds[j].adjustVolume();
 			sounds[j].audio.play();
 		}

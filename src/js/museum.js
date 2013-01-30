@@ -9679,6 +9679,8 @@ var cursor;
 var keyboard;
 var camera;
 var sounds = [];
+var MENU;
+var map;
 
 var SLOW = false;
 var cpt = 100;
@@ -9764,18 +9766,30 @@ var Camera = function(_x, _z) {
 };
 
 Camera.prototype.isInPosition = function() {
-	var dx = this.x.target - this.x.value;
-	var dy = this.y.target - this.y.value;
-	var dz = this.z.target - this.z.value;
-	var drx = this.rx.target - this.rx.value;
-	var dry = this.ry.target - this.ry.value;
-	var dzoom = this.zoom.target - this.zoom.value;
+	var dx, dy, dz;
+	var inPosition, inMidPosition;
 
-	var inPosition = (dx * dx + dy * dy + dz * dz < 10);
+	dx = this.x.target - this.x.value;
+	dy = this.y.target - this.y.value;
+	dz = this.z.target - this.z.value;
+
+	inPosition = (dx * dx + dy * dy + dz * dz < 10);
 
 	if(inPosition) {
 		$(scr.canvas).trigger('inPosition');
 	}
+
+	if(this.midTarget) {
+		dx = this.midTarget.x - this.x.value;
+		dy = this.midTarget.y - this.y.value;
+		dz = this.midTarget.z - this.z.value;
+
+		inMidPosition = (dx * dx + dy * dy + dz * dz < 10);
+		if(inMidPosition) {
+			$(scr.canvas).trigger('inMidPosition');
+		}
+	}
+
 };
 
 Camera.prototype.targetToPosition = function(obj, strict) {
@@ -9783,6 +9797,12 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	var x = (obj.x !== undefined ? obj.x : this.x.target);
 	var y = (obj.y !== undefined ? obj.y : params.height / 2 - params.humanHeight);
 	var z = (obj.z !== undefined ? obj.z : this.z.target);
+
+	this.midTarget = {
+		x: this.x.value + (x - this.x.value)/2,
+		y: this.y.value + (y - this.y.value)/2,
+		z: this.z.value + (z - this.z.value)/2
+	};
 
 	this.x.setTarget(x, strict);
 	this.z.setTarget(z, strict);
@@ -9901,9 +9921,9 @@ Cursor.prototype.initEvents = function() {
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
 
-		if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
-			that.muted = null;
-		}
+		// if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
+		// 	that.muted = null;
+		// }
 
 		that.calcStrength();
 
@@ -9920,35 +9940,35 @@ Cursor.prototype.initEvents = function() {
 			if(that.aimedFace.f.type === 'art') {
 				artId = that.aimedFace.f.artId || null;
 				showHtml(that.aimedFace.html);
-				$('#artInfo').fadeOut(1000);
+				showArtInfo(that.aimedFace);
 			}
 
 			if(that.aimedFace.f.type === 'floor') {
-				if(that.aimedFace.f.art) {
-					artId = that.aimedFace.f.art.f.artId || null;
-					$(scr.canvas).one('inPosition', $.proxy(function() {
-						cursor.mute();
-						$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
-						$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
-						$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
-						$('#artInfo').fadeIn(1000, function() {
-							setTimeout(function() {
-								$('#artInfo').fadeOut(1000);
-							}, 3000);
-						});
-					},that.aimedFace));
-				}
+				// if(that.aimedFace.f.art) {
+				// 	artId = that.aimedFace.f.art.f.artId || null;
+				// 	$(scr.canvas).one('inPosition', $.proxy(function() {
+				// 		cursor.mute();
+				// 		$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
+				// 		$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
+				// 		$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
+				// 		$('#artInfo').fadeIn(1000, function() {
+				// 			setTimeout(function() {
+				// 				$('#artInfo').fadeOut(1000);
+				// 			}, 3000);
+				// 		});
+				// 	},that.aimedFace));
+				// }
 				camera.targetToFace(that.aimedFace);
 
 				if(roomId !== rooms[0].id) {
-					$(scr.canvas).one('inPosition', $.proxy(function() {
+					$(scr.canvas).one('inMidPosition', $.proxy(function() {
 						enteredRoom(this.roomId);
 					}, {
 						roomId: roomId
 					}));
 				}
-
 			}
+
 			if (!history.state || history.state.roomId !== roomId || history.state.artId !== artId) {
 				title = 'Sans-titres, Salle ' + roomId + (artId?' Oeuvre ' + artId:'');
 				history.pushState({
@@ -9977,21 +9997,21 @@ Cursor.prototype.initEvents = function() {
 
 };
 
-Cursor.prototype.mute = function() {
-	this.muted = {
-		X: this.X,
-		Y: this.Y
-	};
-	this.calcStrength();
-	// this.aimedFace = this.inFace();
-	this.setCursor();
-};
+// Cursor.prototype.mute = function() {
+// 	this.muted = {
+// 		X: this.X,
+// 		Y: this.Y
+// 	};
+// 	this.calcStrength();
+// 	// this.aimedFace = this.inFace();
+// 	this.setCursor();
+// };
 
 Cursor.prototype.calcStrength = function() {
 
-	if(this.muted) {
-		return this.strengthX = this.strengthY = 0;
-	}
+	// if(this.muted) {
+	// 	return this.strengthX = this.strengthY = 0;
+	// }
 
 	if(this.X > scr.width / this.segmentX && this.X < scr.width - scr.width / this.segmentX) {
 		this.strengthX = 0;
@@ -10118,7 +10138,7 @@ Cursor.prototype.changeClass = function(class_name) {
 	if(this.container.className !== class_name) {
 		return this.container.className = class_name;
 	}
-}
+};
 Camera.prototype.up = function(strength) {
 	this.targetToPosition({
 		x: this.x.target + params.unit * this.trig.sinY * (strength || 1),
@@ -10452,7 +10472,7 @@ Point.prototype.projection = function() {
 				return;
 			}
 
-			if(ext === 'jpg' || ext === 'png') {
+			if(ext === 'jpg' || ext === 'png' || ext === 'jpeg') {
 				this.html = new Image();
 				this.html.src = this.f.src;
 				this.html.id = this.f.id;
@@ -10966,7 +10986,7 @@ Room.prototype.enter = function() {
 			sounds[j].audio.pause();
 		}
 
-		if(toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
+		if(!MENU && toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
 			sounds[j].adjustVolume();
 			sounds[j].audio.play();
 		}
@@ -11337,9 +11357,20 @@ var getParameters = function() {
 	return obj;
 };
 
+var showArtInfo = function(artFace) {
+	$('#artTitle').html(artFace.f.info.titre || 'Inconnu');
+	$('#artAuthor').html(artFace.f.info.artiste || 'Inconnu');
+	$('#artDescription').html(artFace.f.info.description || 'Inconnu');
+	$('#artInfo').fadeIn(1000, function() {
+		setTimeout(function() {
+			$('#artInfo').fadeOut(1000);
+		}, 4000);
+	});
+};
 
 var showHtml = function(html) {
-	$('#artClearView').html(html);
+	$('#artClearView').append(html);
+	$('#artClearView').append('<div id="back">RETOUR</div>');
 	$('#artClearView').fadeIn(1000);
 	$('#artClearView').one('click', function(eventName) {
 		remHtml();
@@ -11347,6 +11378,7 @@ var showHtml = function(html) {
 };
 
 var remHtml = function() {
+	$('#back').fadeOut(1000);
 	$('#artClearView').fadeOut(1000, function() {
 		$('#artClearView').empty();
 	});
@@ -11659,6 +11691,17 @@ var init = function(roomId) {
 		requestAnimFrame(run);
 	});
 
+	$('.close').one('click', function(e) {
+
+		$('#full-screen').fadeOut(1000, function() {
+			$(this).remove();
+		});
+			$('#screen').focus();
+
+		e.preventDefault();
+		return false;
+	});
+
 	// startCpt();
 
 };
@@ -11721,7 +11764,7 @@ Sound.prototype.adjustVolume = function() {
 	}
 	this.audio.volume = volume;
 };
-var MENU = true;
+// var MENU = true;
 // var artsMenu = [];
 
 map = new Raphael(document.getElementById('map'), 479, 479);
@@ -11768,7 +11811,7 @@ var makeGroups = function(artsMenu, criteria) {
 
 	for(i = 1; i < arts.length; i++) {
 		art = arts[i];
-		if(formerCriteria !== art[criteria.sort]) {
+		if(formerCriteria !== art[criteria.sort] || i === arts.length -1 ) {
 			el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
 			ul = $('<ul class="full_info" id="'+criteria.sort+'-'+art[criteria.sort]+'"></ul>');
 
@@ -11789,6 +11832,7 @@ var makeGroups = function(artsMenu, criteria) {
 		formerCriteria = art[criteria.sort];
 		artGroup.push(art);
 	}
+
 	return artGroups;
 
 };
@@ -11805,7 +11849,6 @@ var showList = function(artsMenu, criteria) {
 			$('ul.full_info').stop().fadeOut(500);
 			$(this.el).find('ul.full_info').stop().fadeIn(500);
 
-			map.clear();
 			showCircles(this.arts);
 
 		}, artGroup));
@@ -11894,12 +11937,14 @@ $.getJSON('/numero0/artList.json', function(data) {
 
 var showCircles = function(arts) {
 	var ratio = 479 / 54;
+	map.clear();
+	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
 
 	$.each(arts, function(index, art) {
 		art.circle = map.circle(art.x * ratio, 479 - art.z * ratio, 5);
 
 		if(art.type === 'text') {
-			art.circle.attr("fill", "red");
+			art.circle.attr("fill", "purple");
 		}
 		if(art.type === 'image') {
 			art.circle.attr("fill", "green");
@@ -11923,8 +11968,14 @@ var showCircles = function(arts) {
 
 };
 
-var setPosition = function() {
-	map.path('')
+var setPosition = function(x, z) {
+	if(x && z) {
+		var cross_size = 5;
+		var path = 'M'+(x-cross_size)+','+(z-cross_size)+'L'+(x+cross_size)+','+(z+cross_size)+'M'+(x+cross_size)+','+(z-cross_size)+'L'+(x-cross_size)+','+(z+cross_size);
+		var cross = map.path(path);
+		cross.attr('stroke', 'red');
+		cross.attr('stroke-width', 3);
+	}
 };
 
 var enterMuseum = function() {
@@ -11939,25 +11990,9 @@ var enterMuseum = function() {
 		init(parseInt(parameters.room, 10) || 1);
 	}
 
-	$('#full-screen').one('click', function(e) {
-
-		$(this).fadeOut(1000, function() {
-			$(this).remove();
-		});
-
-		e.preventDefault();
-		return false;
-	});
-
-	$('canvas').one('click', function(e) {
-
-		$('#full-screen').fadeOut(1000, function() {
-			$(this).remove();
-		});
-
-		e.preventDefault();
-		return false;
-	});
+	for (i=0; i< sounds.length; i++) {
+		sounds[i].audio.play();
+	}
 
 };
 
@@ -11967,14 +12002,22 @@ $('#visite').click(enterMuseum);
 
 
 var enterMenu = function() {
-	$('#visite').html('Retourner directement à la visite');
+	var ratio = 479 / 54;
+	var i;
+
+	// $('#visite').html('Retourner directement à la visite');
 	$('#menu').fadeIn(1000);
 	$('#screen').fadeOut(1000);
 	MENU = true;
 
+	map.clear();
+	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+
 };
 
 $('#minimap').click(enterMenu);
+
+enterMenu();
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36223212-4']);
 _gaq.push(['_trackPageview']);

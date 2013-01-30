@@ -171,7 +171,7 @@
 				return;
 			}
 
-			if(ext === 'jpg' || ext === 'png') {
+			if(ext === 'jpg' || ext === 'png' || ext === 'jpeg') {
 				this.html = new Image();
 				this.html.src = this.f.src;
 				this.html.id = this.f.id;

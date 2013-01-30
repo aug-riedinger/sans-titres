@@ -17,18 +17,30 @@ var Camera = function(_x, _z) {
 };
 
 Camera.prototype.isInPosition = function() {
-	var dx = this.x.target - this.x.value;
-	var dy = this.y.target - this.y.value;
-	var dz = this.z.target - this.z.value;
-	var drx = this.rx.target - this.rx.value;
-	var dry = this.ry.target - this.ry.value;
-	var dzoom = this.zoom.target - this.zoom.value;
+	var dx, dy, dz;
+	var inPosition, inMidPosition;
 
-	var inPosition = (dx * dx + dy * dy + dz * dz < 10);
+	dx = this.x.target - this.x.value;
+	dy = this.y.target - this.y.value;
+	dz = this.z.target - this.z.value;
+
+	inPosition = (dx * dx + dy * dy + dz * dz < 10);
 
 	if(inPosition) {
 		$(scr.canvas).trigger('inPosition');
 	}
+
+	if(this.midTarget) {
+		dx = this.midTarget.x - this.x.value;
+		dy = this.midTarget.y - this.y.value;
+		dz = this.midTarget.z - this.z.value;
+
+		inMidPosition = (dx * dx + dy * dy + dz * dz < 10);
+		if(inMidPosition) {
+			$(scr.canvas).trigger('inMidPosition');
+		}
+	}
+
 };
 
 Camera.prototype.targetToPosition = function(obj, strict) {
@@ -36,6 +48,12 @@ Camera.prototype.targetToPosition = function(obj, strict) {
 	var x = (obj.x !== undefined ? obj.x : this.x.target);
 	var y = (obj.y !== undefined ? obj.y : params.height / 2 - params.humanHeight);
 	var z = (obj.z !== undefined ? obj.z : this.z.target);
+
+	this.midTarget = {
+		x: this.x.value + (x - this.x.value)/2,
+		y: this.y.value + (y - this.y.value)/2,
+		z: this.z.value + (z - this.z.value)/2
+	};
 
 	this.x.setTarget(x, strict);
 	this.z.setTarget(z, strict);

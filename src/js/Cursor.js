@@ -41,9 +41,9 @@ Cursor.prototype.initEvents = function() {
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
 		that.Y = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY);
 
-		if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
-			that.muted = null;
-		}
+		// if(that.muted && (Math.abs(that.muted.X - that.X) > 20 || Math.abs(that.muted.Y - that.Y) > 20)) {
+		// 	that.muted = null;
+		// }
 
 		that.calcStrength();
 
@@ -60,35 +60,35 @@ Cursor.prototype.initEvents = function() {
 			if(that.aimedFace.f.type === 'art') {
 				artId = that.aimedFace.f.artId || null;
 				showHtml(that.aimedFace.html);
-				$('#artInfo').fadeOut(1000);
+				showArtInfo(that.aimedFace);
 			}
 
 			if(that.aimedFace.f.type === 'floor') {
-				if(that.aimedFace.f.art) {
-					artId = that.aimedFace.f.art.f.artId || null;
-					$(scr.canvas).one('inPosition', $.proxy(function() {
-						cursor.mute();
-						$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
-						$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
-						$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
-						$('#artInfo').fadeIn(1000, function() {
-							setTimeout(function() {
-								$('#artInfo').fadeOut(1000);
-							}, 3000);
-						});
-					},that.aimedFace));
-				}
+				// if(that.aimedFace.f.art) {
+				// 	artId = that.aimedFace.f.art.f.artId || null;
+				// 	$(scr.canvas).one('inPosition', $.proxy(function() {
+				// 		cursor.mute();
+				// 		$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
+				// 		$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
+				// 		$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
+				// 		$('#artInfo').fadeIn(1000, function() {
+				// 			setTimeout(function() {
+				// 				$('#artInfo').fadeOut(1000);
+				// 			}, 3000);
+				// 		});
+				// 	},that.aimedFace));
+				// }
 				camera.targetToFace(that.aimedFace);
 
 				if(roomId !== rooms[0].id) {
-					$(scr.canvas).one('inPosition', $.proxy(function() {
+					$(scr.canvas).one('inMidPosition', $.proxy(function() {
 						enteredRoom(this.roomId);
 					}, {
 						roomId: roomId
 					}));
 				}
-
 			}
+
 			if (!history.state || history.state.roomId !== roomId || history.state.artId !== artId) {
 				title = 'Sans-titres, Salle ' + roomId + (artId?' Oeuvre ' + artId:'');
 				history.pushState({
@@ -117,21 +117,21 @@ Cursor.prototype.initEvents = function() {
 
 };
 
-Cursor.prototype.mute = function() {
-	this.muted = {
-		X: this.X,
-		Y: this.Y
-	};
-	this.calcStrength();
-	// this.aimedFace = this.inFace();
-	this.setCursor();
-};
+// Cursor.prototype.mute = function() {
+// 	this.muted = {
+// 		X: this.X,
+// 		Y: this.Y
+// 	};
+// 	this.calcStrength();
+// 	// this.aimedFace = this.inFace();
+// 	this.setCursor();
+// };
 
 Cursor.prototype.calcStrength = function() {
 
-	if(this.muted) {
-		return this.strengthX = this.strengthY = 0;
-	}
+	// if(this.muted) {
+	// 	return this.strengthX = this.strengthY = 0;
+	// }
 
 	if(this.X > scr.width / this.segmentX && this.X < scr.width - scr.width / this.segmentX) {
 		this.strengthX = 0;
@@ -258,4 +258,4 @@ Cursor.prototype.changeClass = function(class_name) {
 	if(this.container.className !== class_name) {
 		return this.container.className = class_name;
 	}
-}
+};

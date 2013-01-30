@@ -9,7 +9,7 @@
     "map" : [
     "#.-.-a-.+.",
     ",.,.,.,.!.",
-    ",.,.,.,.!b",
+    ",d,.,.,.!b",
     "%._._c_.¤."
     ],
     "arts" : [
@@ -52,6 +52,19 @@
             "titre" : "La marie à suivre",
             "description": "Théâtre"
         }
+    },
+    {
+        "id": "d",
+        "side": "|",
+        "type" : "wall",
+        "width" : 2000,
+        "height" : 2400,
+        "y": -2300,
+        "z": 500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/bar/bar-back_200x240.jpg",
+        "src" : "",
+        "info": {},
+        "border": false
     }
     ],
     "sounds" :[

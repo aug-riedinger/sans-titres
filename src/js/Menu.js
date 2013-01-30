@@ -1,4 +1,4 @@
-var MENU = true;
+// var MENU = true;
 // var artsMenu = [];
 
 map = new Raphael(document.getElementById('map'), 479, 479);
@@ -45,7 +45,7 @@ var makeGroups = function(artsMenu, criteria) {
 
 	for(i = 1; i < arts.length; i++) {
 		art = arts[i];
-		if(formerCriteria !== art[criteria.sort]) {
+		if(formerCriteria !== art[criteria.sort] || i === arts.length -1 ) {
 			el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
 			ul = $('<ul class="full_info" id="'+criteria.sort+'-'+art[criteria.sort]+'"></ul>');
 
@@ -66,6 +66,7 @@ var makeGroups = function(artsMenu, criteria) {
 		formerCriteria = art[criteria.sort];
 		artGroup.push(art);
 	}
+
 	return artGroups;
 
 };
@@ -82,7 +83,6 @@ var showList = function(artsMenu, criteria) {
 			$('ul.full_info').stop().fadeOut(500);
 			$(this.el).find('ul.full_info').stop().fadeIn(500);
 
-			map.clear();
 			showCircles(this.arts);
 
 		}, artGroup));
@@ -171,12 +171,14 @@ $.getJSON('/numero0/artList.json', function(data) {
 
 var showCircles = function(arts) {
 	var ratio = 479 / 54;
+	map.clear();
+	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
 
 	$.each(arts, function(index, art) {
 		art.circle = map.circle(art.x * ratio, 479 - art.z * ratio, 5);
 
 		if(art.type === 'text') {
-			art.circle.attr("fill", "red");
+			art.circle.attr("fill", "purple");
 		}
 		if(art.type === 'image') {
 			art.circle.attr("fill", "green");
@@ -200,8 +202,14 @@ var showCircles = function(arts) {
 
 };
 
-var setPosition = function() {
-	map.path('')
+var setPosition = function(x, z) {
+	if(x && z) {
+		var cross_size = 5;
+		var path = 'M'+(x-cross_size)+','+(z-cross_size)+'L'+(x+cross_size)+','+(z+cross_size)+'M'+(x+cross_size)+','+(z-cross_size)+'L'+(x-cross_size)+','+(z+cross_size);
+		var cross = map.path(path);
+		cross.attr('stroke', 'red');
+		cross.attr('stroke-width', 3);
+	}
 };
 
 var enterMuseum = function() {
@@ -216,25 +224,9 @@ var enterMuseum = function() {
 		init(parseInt(parameters.room, 10) || 1);
 	}
 
-	$('#full-screen').one('click', function(e) {
-
-		$(this).fadeOut(1000, function() {
-			$(this).remove();
-		});
-
-		e.preventDefault();
-		return false;
-	});
-
-	$('canvas').one('click', function(e) {
-
-		$('#full-screen').fadeOut(1000, function() {
-			$(this).remove();
-		});
-
-		e.preventDefault();
-		return false;
-	});
+	for (i=0; i< sounds.length; i++) {
+		sounds[i].audio.play();
+	}
 
 };
 
@@ -244,11 +236,19 @@ $('#visite').click(enterMuseum);
 
 
 var enterMenu = function() {
-	$('#visite').html('Retourner directement à la visite');
+	var ratio = 479 / 54;
+	var i;
+
+	// $('#visite').html('Retourner directement à la visite');
 	$('#menu').fadeIn(1000);
 	$('#screen').fadeOut(1000);
 	MENU = true;
 
+	map.clear();
+	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+
 };
 
 $('#minimap').click(enterMenu);
+
+enterMenu();

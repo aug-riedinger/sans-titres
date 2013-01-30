@@ -208,8 +208,8 @@
             "description": "Texte et musique de Quentin Bambuck"
         },
         "artistId": "quentin-bambuck",
-        "x": 20,
-        "z": 9
+        "x": 19.5,
+        "z": 6
     },
     {
         "artId": "c",
@@ -279,8 +279,8 @@
             "description": "Texte et musique de Quentin Bambuck"
         },
         "artistId": "quentin-bambuck",
-        "x": 15.5,
-        "z": 13.5
+        "x": 15,
+        "z": 10.5
     },
     {
         "artId": "a",
@@ -397,8 +397,8 @@
             "description": "Texte et musique de Quentin Bambuck"
         },
         "artistId": "quentin-bambuck",
-        "x": 16.5,
-        "z": 20.5
+        "x": 16,
+        "z": 17.5
     },
     {
         "artId": "h",
@@ -639,6 +639,16 @@
         "z": 23.5
     },
     {
+        "artId": "x",
+        "room": 5,
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/bar/bar_500x600.jpg",
+        "type": "wall",
+        "info": {},
+        "artistId": "inconnu",
+        "x": 25,
+        "z": 23.5
+    },
+    {
         "artId": "w",
         "room": 5,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premieremeditationadeux.html",
@@ -735,8 +745,8 @@
             "description": "Sculpture sonore, techniques mixtes"
         },
         "artistId": "yves-andr",
-        "x": 22,
-        "z": 25.5
+        "x": 21.5,
+        "z": 27.5
     },
     {
         "artId": "a",
@@ -791,8 +801,8 @@
             "description": "poésie"
         },
         "artistId": "yves-andr",
-        "x": 28,
-        "z": 24.5
+        "x": 30,
+        "z": 24
     },
     {
         "artId": "d",
@@ -1062,8 +1072,8 @@
             "description": "entretien"
         },
         "artistId": "edwin-lavalle",
-        "x": 27.5,
-        "z": 31
+        "x": 27,
+        "z": 28
     },
     {
         "artId": "d",
@@ -1355,7 +1365,7 @@
             "description": "poésie"
         },
         "artistId": "yves-andr",
-        "x": 46.5,
-        "z": 37
+        "x": 47.5,
+        "z": 43.5
     }
 ]

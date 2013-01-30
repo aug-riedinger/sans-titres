@@ -17,6 +17,8 @@ body {
 	position: absolute;
 	left: 0;
 	right: 0;
+	top: 0;
+	bottom: 0;
 	text-transform:uppercase;
 	color:#FFFFFF;
 	width: 100%;
@@ -143,6 +145,12 @@ h1 {
 	font-size: 1.2em;
 }
 
+#youarehere {
+	position: absolute;
+	top: -26px;
+	right: 0;
+}
+
 #arts_list {
 	display: inline-block;
 	vertical-align: top;
@@ -212,6 +220,11 @@ h1 {
 	left: 150px;
 	top: 0px;
 	width: 300px
+}
+
+.small {
+	font-size: 0.8em;
+	margin-left: 5px;
 }
 
 footer {
@@ -306,7 +319,6 @@ footer li {
 	left: 0;
 	background: white;
 	/*background: rgba(0,0,0,0.8); */
-	cursor: none;
 	display: none;
 }
 
@@ -374,12 +386,29 @@ footer li {
 	text-align: center;
 }
 
+#full-screen .close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
 #full-screen ul {
-	padding: 5px 30px;
+	padding: 5px 10px;
 }
 
 #full-screen li {
-	padding: 8px 0px;
+	padding: 15px 0px;
+}
+
+#full-screen img.fleft {
+	margin: 0 10px;
+	float: left;
+}
+
+#full-screen img.fright {
+	margin: 0 10px;
+	float: right;
 }
 
 .info-displayer {
@@ -390,12 +419,27 @@ footer li {
 	right: 0;
 	max-width: 200px;
 	background: white;
-	background: rgba(255,255,255,0.8);
 	color: black;
 }
 
 #minimap {
 	cursor: pointer;
+}
+
+#back {
+	cursor: pointer;
+	-ms-transform:rotate(90deg); 
+	-moz-transform:rotate(90deg); 
+	-webkit-transform:rotate(90deg); 
+	-o-transform:rotate(90deg); 
+	transform:rotate(90deg); 
+	position: absolute;
+	right: -20px;
+	width: 85px;
+	text-align: center;
+	height: 30px;
+	top: 50%;
+	font-size: 1.5em;
 }
 
 #artInfo {
@@ -417,7 +461,3 @@ footer li {
 	font-weight: 300;
 }
 
-.small {
-	font-size: 0.8em;
-	margin-left: 5px;
-}

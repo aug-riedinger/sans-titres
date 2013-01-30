@@ -14,7 +14,7 @@
     "|e,.,.,.,.,.!q",
     "|d,.,.,.,.,.!p",
     "|c,.,.,.,.,.,.",
-    ",b,.,.,.,.,.,.",
+    ",b,.,.,.,.,.,x",
     ",.,.,.,.,.,.!.",
     "|w,.,.,.,.,.!r",
     "|v,.,.,.,.,.!.",
@@ -305,7 +305,7 @@
         "type" : "image",
         "width" : 2000,
         "height" : 1264,
-        "y": -500,
+        "y": -632,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",  
         "info" : {
@@ -355,6 +355,19 @@
             "titre" : "première méditation à deux",
             "description": "essai"
         }
+    },
+    {
+        "id": "x",
+        "side": "!",
+        "type" : "wall",
+        "width" : 2000,
+        "height" : 2400,
+        "y": -2300,
+        "z": 500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/bar/bar_500x600.jpg",
+        "src" : "",
+        "info": {},
+        "border": false
     }
     ],
     "sounds" :[

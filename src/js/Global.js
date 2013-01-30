@@ -4,6 +4,8 @@ var cursor;
 var keyboard;
 var camera;
 var sounds = [];
+var MENU;
+var map;
 
 var SLOW = false;
 var cpt = 100;

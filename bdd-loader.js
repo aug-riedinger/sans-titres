@@ -12,6 +12,7 @@ var handleRoom = function(room) {
     var artsConstr;
     var res = [];
     var sideShifted;
+    var positionSound;
 
     for(h = 0; h < room.map.length; h++) {
         z = room.map.length - (h + 1);
@@ -24,17 +25,19 @@ var handleRoom = function(room) {
             artsConstr = getArtConstr(room.arts, artId);
 
             for (i=0; i< artsConstr.length; i++) {
-                sideShifted = sideShift(artsConstr[i].side || charType);
-                res.push({
-                    artId: artsConstr[i].id,
-                    room: room.id,
-                    src: artsConstr[i].src||artsConstr[i].thumb,
-                    type: artsConstr[i].type,
-                    info: artsConstr[i].info,
-                    artistId: artistIdify(artsConstr[i].info.artiste||'inconnu'),
-                    x: 0.5 + room.position.x + x + (artsConstr.x||0)/1000 + sideShifted.x,
-                    z: 0.5 + room.position.z + z + (artsConstr.z||0)/1000 + sideShifted.z
-                });
+                if(artsConstr.type !== 'wall') {
+                    sideShifted = sideShift(artsConstr[i].side || charType);
+                    res.push({
+                        artId: artsConstr[i].id,
+                        room: room.id,
+                        src: artsConstr[i].src||artsConstr[i].thumb,
+                        type: artsConstr[i].type,
+                        info: artsConstr[i].info,
+                        artistId: artistIdify(artsConstr[i].info.artiste||'inconnu'),
+                        x: 0.5 + room.position.x + x + (artsConstr.x||0)/1000 + sideShifted.x,
+                        z: 0.5 + room.position.z + z + (artsConstr.z||0)/1000 + sideShifted.z
+                    });
+                }
             }
 
         }
@@ -42,6 +45,21 @@ var handleRoom = function(room) {
 
     if(room.sounds) {
         for (i = 0; i < room.sounds.length; i++) {
+            if(room.sounds[i].position) {
+                positionSound = room.sounds[i].position;
+            } else {
+                if(room.map[0].length/2 > room.map.length) {
+                    positionSound = {
+                        x: room.map[0].length/4 + 2,
+                        z: room.map.length/2 - 0.5
+                    };
+                } else {
+                    positionSound = {
+                        x: room.map[0].length/4 - 0.5,
+                        z: room.map.length/2 - 3
+                    };
+                }
+            }
             res.push({
                 artId: room.sounds[i].id,
                 room: room.id,
@@ -49,8 +67,8 @@ var handleRoom = function(room) {
                 type: 'sound',
                 info: room.sounds[i].info,
                 artistId: artistIdify(room.sounds[i].info.artiste||'inconnu'),
-                x: 0.5 + room.position.x + room.map[0].length/4,
-                z: 0.5 + room.position.z + room.map.length/2
+                x: 0.5 + room.position.x + positionSound.x,
+                z: 0.5 + room.position.z + positionSound.z
             });
         }
     }
