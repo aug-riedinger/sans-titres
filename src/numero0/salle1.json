@@ -7,27 +7,58 @@
     },
     "adj": [2],
     "map" : [
-    "|.,.,.-g+.",
+    "|.,.,.-a+.",
     "|.,.,.,.!.",
-    "|.,.,.,.!.",
+    "|b,.,.,.!c",
     "|.,.,.,.!.",
     "%._._@_.¤."
     ],
     "arts" : [
     {
-        "id": "g",
+        "id": "a",
         "type" : "text",
-        "width" : 1200,
-        "height" : 200,
+        "width" : 1000,
+        "height" : 1000,
+        "y": -200,
         "x": 500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle1/lart%20et%20la%20fin%20des%20mondes/lart%20et%20la%20fin%20des%20mondes%20titre.png",
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/carte04.png",
         "src" : "",  
         "info" : {
             "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "titre" : "Plan du Numéro #0",
+            "description": "plan"
+        },
+        "noMenu": true
+    },
+    {
+        "id": "b",
+        "type" : "image",
+        "width" : 3072,
+        "height" : 2049,
+        "y": -600,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
+        "info" : {
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "série + - ∞",
+            "description": "photographie"
+        }
+    },
+    {
+        "id": "c",
+        "type" : "text",
+        "width" : 3600,
+        "height" : 900,
+        "y": -400,
+        "level": 4,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/manifeste-editorial.html",  
+        "info" : {
+            "artiste" : "",
+            "titre" : "Manifeste Editorial",
+            "description": "texte"
         }
     }
-
     ]
 }

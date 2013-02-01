@@ -77,13 +77,16 @@ new compressor.minify({
 // Using Sqwish for CSS
 new compressor.minify({
     type: 'sqwish',
-    fileIn: 'src/css/main.css',
+    fileIn: [
+    'src/css/oswald.css',
+    'src/css/main.css'
+    ],
     fileOut: 'src/css/main.min.css',
     callback: function(err){
         if(err) {
             console.log(err);
         } else {
             console.log('CSS Minified');
-        }    
+        }
     }
 });

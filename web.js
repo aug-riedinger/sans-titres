@@ -19,6 +19,10 @@ app.get('/', function(request, response) {
 	response.sendfile(__dirname + "/src/index.html");
 });
 
+app.get('/manifeste-editorial.html', function(request, response) {
+	response.sendfile(__dirname + "/src/manifeste-editorial.html");
+});
+
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
 	console.log("Listening on " + port);

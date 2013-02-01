@@ -160,6 +160,9 @@ Cursor.prototype.calcStrength = function() {
 		this.strengthY = 1 - (scr.height - this.Y) / (scr.height / this.segmentY);
 		// this.moving = true;
 	}
+
+	this.strengthX = this.strengthX*0.5;
+	this.strengthY = this.strengthY*0.5;
 };
 
 Cursor.prototype.inTriangle = function(p1, p2, p3) {

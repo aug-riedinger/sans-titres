@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<meta name="Author" content="Augustin Riedinger at http://www.sans-titres.com">
 	<meta name="description" content="Une revue trans-disciplinaire, bimestrielle, vivante et virtuelle. Un Autre média, une création collective, intellectuelle et sensible. Un espace ouvert à tous, à tous ceux et à toutes celles qui dans et sur la vie s'accordent le temps du regard.">
 	<title>Sans-titres</title>
 
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /> 
-	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/main.min.css" type="text/css" media="screen" />
 
 </head>
 <body oncontextmenu="return false;">
-	<section id="menu">
+	<section id="intro" class="menu">
+		<div id="intro_inside">
+			<img src="images/intro.png" />
+			<h2 id="start">Entrer</h2>
+		</div>
+	</section>
+
+	<section id="menu" class="menu">
 		<nav>
 			<div class="nav left"><span class="innerLink">Appel à projet #1</span></div>
-			<div class="nav middle"><span class="innerLink">Manifeste Editorial</span></div>
+			<div class="nav middle"><span id="manifeste" class="innerLink">Manifeste Editorial</span></div>
 			<div class="nav right"><span class="innerLink">Soutenir le projet</span></div>
 		</nav>
 
-
-		<section id="menu_content">
-			
+		<section id="menu_content" class="menu">
 			<h1>Sans-Titres #0</h1>
-
-			<div id="visite">
-				Accéder directement à la visite
+			<div id="visite" class="enter">
+				<a class="drop">
+					<div class="drop_content">
+						Accéder directement à la visite
+					</div>
+					<div  class="drop_contour">
+					</div>
+				</a>
 			</div>
-
 			<div id="content_middle">
 				<div id="map">
 					<div id="rotate">Table des matières</div>
 					<div id="youarehere"><img src="images/ici.png"/> Vous êtes ici</div>
 				</div>
-
 				<div id="arts_list">
 					<ul id="menu_list">
 						<li class="left"><span id="menu_participants" class="menu_sort innerLink">/// Participants</span></li>
@@ -49,8 +56,6 @@
 				</div>
 
 			</div>
-
-
 		</section>
 
 
@@ -60,14 +65,17 @@
 				<li><a href="#">Qui nous sommes</a></li>
 				<li><a href="#">Nous contacter</a></li>
 				<li><a href="#">Partenaires</a></li>
-			</footer>
+			</ul>
+		</footer>
 
-		</section>
-
-
-		<div id="screen">
-			<canvas id="canvas"></canvas>
+		<div id="menuIframeView" class="iframeTop">
 		</div>
+
+	</section>
+
+
+	<div id="screen">
+		<canvas id="canvas"></canvas>
 
 		<div id="full-screen">
 			<h3>Contrôles</h3>
@@ -81,12 +89,12 @@
 				<li>
 					<img src="images/mouse48.png" class="fleft" />
 					<img src="images/icons_foot_01.png" class="fright" />
-					Pour se déplacer, il faut cliquer sur la position au sol que l'on souhaite atteindre.
+					Pour se déplacer, cliquer sur le sol.
 				</li>
 				<li>
 					<img src="images/mouse48.png" class="fleft" />
 					<img src="images/k-view.png" class="fright" />
-					Pour consulter une oeuvre, il faut cliquer dessus. Pour en sortir, il faut cliquer à nouveau.
+					Cliquer sur une oeuvre pour l'afficher en plein écran.
 				</li>
 				<li>
 					<img src="images/mouse48.png" class="fleft" />
@@ -95,18 +103,14 @@
 				</li>
 				<li>
 					<img src="images/mouse48.png" class="fleft" />
-					<img src="images/map.png" class="fright" />
+					<div class="plan fright">PLAN</div>
 					Il est possible de revenir au menu à tout moment en cliquant en bas à droite sur le plan.
 				</li>
 			</ul>
 		</div>
 
-		<div id="artClearView">
-		</div>
-
 		<div id="volume">
 		</div>
-
 
 		<div class="info-displayer">
 			<div id="minimap">PLAN</div>
@@ -114,10 +118,17 @@
 
 		<div id="artInfo" class="info-displayer">
 			<div id="artTitle">Sans-titres</div>
+			<div id="artSerie"></div>
 			<div id="artAuthor">de la team Sans-titres</div>
 			<div id="artDescription">Bienvenue sur notre musée virtuel</div>
 		</div>
-		<script type="text/javascript" src="./js/museum.js"></script>
+	</div>
 
-	</body>
-	</html>
+	<div id="artClearView" class="iframeTop">
+	</div>
+
+
+	<script type="text/javascript" src="./js/museum.js"></script>
+
+</body>
+</html>

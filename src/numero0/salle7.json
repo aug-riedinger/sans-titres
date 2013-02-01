@@ -5,27 +5,31 @@
     	"x": 18,
     	"z": 31
     },
+    "colors": {
+        "right": "rgb(9, 8, 9);"
+    },
     "adj": [5, 8],
     "map" : [
     "#d-e-.-f-.-g-.",
-    "|.,.,.,.,.,.,.",
+    "|j,.,.,.,.,.,.",
     "|c,.,.,.,.,.!a",
-    "%._b,.,._i_h¤."
+    "%._b,.,._._h¤."
     ],
     "arts" : [
     {
         "id": "a",
         "type" : "video",
-        "width" : 533,
+        "width" : 1400,
         "height" : 800,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/gmusset8_533x800.jpg",
+        "y": -100,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/screenshot_1800x800.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/page.html",  
         "info" : {
-            "artiste" : "Guillaume Musset",
-            "titre" : "sans titre",
-            "ensemble" : "+ - ∞",
-            "description": "photographie"
+            "artiste" : "Yves André & Guillaume Musset",
+            "titre" : "Dialogue dans un monde en hiver",
+            "ensemble" : "photographie extraite de la série + - ∞",
+            "description": "installation vidéo"
         }
     },
     {
@@ -47,8 +51,8 @@
         "type" : "image",
         "width" : 869,
         "height" : 1200,
-        "z": -500,
-        "y": -300,
+        "z": -750,
+        "y": -250,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",  
         "info" : {
@@ -61,14 +65,14 @@
         "id": "d",
         "side": "|",
         "type" : "image",
-        "width" : 908,
+        "width" : 900,
         "height" : 900,
-        "z": -500,
+        "z": -250,
         "y": -100,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/choco/portrait%20choco_900x900.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/choco/portrait%20choco_900x900.jpg",  
         "info" : {
-            "artiste" : "Baudelot",
+            "artiste" : "Francis Baudelot",
             "titre" : "portrait",
             "description": "fusain sur papier A3"
         }
@@ -104,45 +108,45 @@
     {
         "id": "g",
         "type" : "text",
-        "width" : 1158,
-        "height" : 207,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattend%20un%20deluge%20titre_1200x219.png",
+        "width" : 1059,
+        "height" : 275,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattend%20un%20deluge%20titre.png",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattendsundeluge.html",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "j'attends un déluge",
-            "ensemble" : "extrait du recueil : les couteaux qui coupent",
+            "ensemble" : "extrait du recueil <i>les couteaux qui coupent</i>",
             "description": "poésie"
         }
     },
     {
         "id": "h",
         "type" : "text",
-        "width" : 453,
-        "height" : 745,
-        "y": -100,
-        "x": 250,
+        "width" : 1288,
+        "height" : 1117,
+        "y": -200,
+        "x": -250,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/a%20quoi%20bon%20titre.png",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/aquoibon.html",  
         "info" : {
-            "artiste" : "Solenn Denis",
+            "artiste" : "Solenn Denis & Fred le Chevalier",
             "titre" : "A quoi bon?",
-            "description": "poésie"
+            "description": "poésie illustrée"
         }
     },
     {
-        "id": "i",
-        "type" : "image",
-        "width" : 649,
-        "height" : 900,
-        "y": -100,
-        "x": 250,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/illustration+a+quoi+bon_649x900.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon_653x1200.jpg",  
+        "id": "j",
+        "type" : "video",
+        "width" : 800,
+        "height" : 462,
+        "z": -500,
+        "y": -200,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/la%20fin%20de%20ladolescence/screenshot_800x462.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle7/la%20fin%20de%20ladolescence/page.html",  
         "info" : {
-            "artiste" : "Fred le Chevalier",
-            "titre" : "illustration",
-            "description": "feutre noir sur papier"
+            "artiste" : "Pierre Choqueux",
+            "titre" : "La fin de l'adolescence",
+            "description": "documentaire"
         }
     }
     ]

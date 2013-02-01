@@ -7,37 +7,49 @@
     },
     "adj" : [10],
     "map" : [
-    "#.-1-.+.",
-    "|.,.,.!.",
+    "#.-b-.+.",
+    "|a,.,.!.",
     "|.,.,.!."
     ],
     "arts" : [
     {
-        "id": "1",
-        "type" : "text",
-        "width" : 1264,
-        "height" : 218,
-        "x": 500,
+        "id": "a",
+        "type" : "soundText",
+        "width" : 2278,
+        "height" : 393,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/lesmotsdelautre-mur.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/lesmotsdelautre.html",  
+        "src" : "",  
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Les mots de l'autre",
             "description": "poésie"
+        },
+        "border": false
+    },
+    {
+        "id": "b",
+        "type" : "text",
+        "width" : 686,
+        "height" : 221,
+        "x": 500,
+        "y": -400,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle11/linculte/linculte.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle11/linculte/linculte.html",  
+        "info" : {
+            "artiste" : "Edwin Lavallée",
+            "titre" : "L'inculte",
+            "description": "sans titre"
         }
     }
     ],
     "sounds" :[
     {
-        "id": "C",
+        "id": "D",
         "type" : "sound",
-        "mp3": "",
-        "ogg": "",
+        "mp3": "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.mp3",
+        "ogg": "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.ogg",
         "play": "true",
-        "position" : {
-            "x": 3,
-            "z": 8
-            },  
+        "soundText": "a",
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Les mots de l'autre",

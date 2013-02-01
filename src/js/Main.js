@@ -1,18 +1,3 @@
-var startCpt = function resetCpt() {
-	if(!SLOW && cpt < 50) {
-		console.log(cpt);
-		console.log('Slow Mode');
-		SLOW = true;
-	}
-	if(SLOW && cpt > 100) {
-		console.log(cpt);
-		console.log('Fast Mode');
-		SLOW = false;
-	}
-	cpt = 0;
-	setTimeout(resetCpt, 5000);
-};
-
 var enteredRoom = function(roomId) {
 	var i, j;
 	var room;
@@ -62,48 +47,14 @@ var enteredRoom = function(roomId) {
 };
 
 var init = function(roomId) {
-	var parameters = getParameters();
 	// ---- init script ----
 	scr = new Screen({
 		container: "screen",
 		canvas: "canvas"
 	});
 
-	new Room(parseInt(parameters.room, 10) || roomId);
-
-	$(scr.container).one('loaded', function() {
-
-		enteredRoom(rooms[0].id);
-		if(typeof(Keyboard) === 'function') {
-			keyboard = new Keyboard();
-		}
-		cursor = new Cursor('screen', params.cursorX, params.cursorY);
-
-		camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
-		if(parameters.art !== undefined) {
-			var i;
-			for(i = 0; i < rooms[0].floors.length; i++) {
-				if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
-					camera.targetToFace(rooms[0].floors[i]);
-				}
-			}
-		}
-
-		requestAnimFrame(run);
-	});
-
-	$('.close').one('click', function(e) {
-
-		$('#full-screen').fadeOut(1000, function() {
-			$(this).remove();
-		});
-			$('#screen').focus();
-
-		e.preventDefault();
-		return false;
-	});
-
-	// startCpt();
+	new Room(roomId);
+	$(scr.container).one('loaded', onRoomLoaded);
 
 };
 
@@ -111,7 +62,7 @@ var init = function(roomId) {
 var run = function() {
 	// ---- loop ----
 	if(!MENU) {
-	requestAnimFrame(run);
+		requestAnimFrame(run);
 	}
 
 	// ---- clear screen ----
@@ -123,8 +74,28 @@ var run = function() {
 	// ---- 3D projection ----
 	renderer.renderAll();
 
-	// cpt++;
 };
 
 
-init(1);
+
+var onRoomLoaded = function() {
+	var parameters = getParameters(window.location.href);
+
+	enteredRoom(rooms[0].id);
+	if(typeof(Keyboard) === 'function') {
+		keyboard = new Keyboard();
+	}
+	cursor = new Cursor('screen', params.cursorX, params.cursorY);
+
+	camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
+	if(parameters.art !== undefined) {
+		var i;
+		for(i = 0; i < rooms[0].floors.length; i++) {
+			if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
+				camera.targetToFace(rooms[0].floors[i]);
+			}
+		}
+	}
+
+	requestAnimFrame(run);
+};

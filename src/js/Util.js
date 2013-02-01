@@ -35,8 +35,8 @@ var insertSortDistance = function (arr) {
 };
 
 
-var getParameters = function() {
-	var tab = window.location.href.replace(/.*#!/, '').split('&');
+var getParameters = function(href) {
+	var tab = href.replace(/.*#!/, '').split('&');
 	var obj = {};
 	for(var i = 0; i < tab.length; i++) {
 		var subtab = tab[i].split('=');
@@ -46,9 +46,10 @@ var getParameters = function() {
 };
 
 var showArtInfo = function(artFace) {
-	$('#artTitle').html(artFace.f.info.titre || 'Inconnu');
-	$('#artAuthor').html(artFace.f.info.artiste || 'Inconnu');
-	$('#artDescription').html(artFace.f.info.description || 'Inconnu');
+	$('#artTitle').html('« '+artFace.f.info.titre+' »'  || '');
+	$('#artSerie').html(artFace.f.info.ensemble||'');
+	$('#artAuthor').html(artFace.f.info.artiste || '');
+	$('#artDescription').html(artFace.f.info.description  || '');
 	$('#artInfo').fadeIn(1000, function() {
 		setTimeout(function() {
 			$('#artInfo').fadeOut(1000);

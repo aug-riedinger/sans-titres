@@ -17,7 +17,7 @@ var Room = function(id, mainRoom) {
 };
 
 Room.prototype.load = function() {
-	$.getJSON('/numero0/salle' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('numero0/salle' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));

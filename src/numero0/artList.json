@@ -1,17 +1,32 @@
 [
     {
-        "artId": "g",
+        "artId": "b",
         "room": 1,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle1/lart%20et%20la%20fin%20des%20mondes/lart%20et%20la%20fin%20des%20mondes%20titre.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
+        "type": "image",
+        "info": {
+            "artiste": "Guillaume Musset",
+            "titre": "sans titre",
+            "ensemble": "série + - ∞",
+            "description": "photographie"
+        },
+        "artistId": "guillaume-musset",
+        "x": 20,
+        "z": 2.5
+    },
+    {
+        "artId": "c",
+        "room": 1,
+        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle1/manifeste-editorial.html",
         "type": "text",
         "info": {
             "artiste": "",
-            "titre": "",
-            "description": ""
+            "titre": "Manifeste Editorial",
+            "description": "texte"
         },
         "artistId": "inconnu",
-        "x": 23.5,
-        "z": 5
+        "x": 25,
+        "z": 2.5
     },
     {
         "artId": "a",
@@ -43,34 +58,6 @@
         "z": 10.5
     },
     {
-        "artId": "j",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16,
-        "z": 9.5
-    },
-    {
-        "artId": "i",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16,
-        "z": 8.5
-    },
-    {
         "artId": "l",
         "room": 2,
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg",
@@ -86,34 +73,6 @@
         "z": 8.5
     },
     {
-        "artId": "h",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16,
-        "z": 7.5
-    },
-    {
-        "artId": "g",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16,
-        "z": 6.5
-    },
-    {
         "artId": "k",
         "room": 2,
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/engoncement.html",
@@ -126,62 +85,6 @@
         "artistId": "clmence-gachot",
         "x": 23,
         "z": 6.5
-    },
-    {
-        "artId": "e:bottom",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16.5,
-        "z": 5
-    },
-    {
-        "artId": "e:left",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 16,
-        "z": 5.5
-    },
-    {
-        "artId": "d",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 17.5,
-        "z": 5
-    },
-    {
-        "artId": "c",
-        "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Nicolas Marchant",
-            "titre": "La vie sous les mouches",
-            "description": "(en attente)"
-        },
-        "artistId": "nicolas-marchant",
-        "x": 18.5,
-        "z": 5
     },
     {
         "artId": "b",
@@ -218,7 +121,7 @@
         "type": "text",
         "info": {
             "artiste": "Marion K.",
-            "titre": "LA dernière heure",
+            "titre": "La dernière heure",
             "description": "nouvelle"
         },
         "artistId": "marion-k",
@@ -233,7 +136,7 @@
         "info": {
             "artiste": "Darren Roshier",
             "titre": "Multiple 21/12/12",
-            "description": "Linogravure sur papier 80g format A4, série de 27,"
+            "description": "Linogravure sur papier 80g <br />format A4, <br />série de 27,"
         },
         "artistId": "darren-roshier",
         "x": 18,
@@ -246,27 +149,12 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 12,
         "z": 13.5
-    },
-    {
-        "artId": "d",
-        "room": 3,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle3/Tout%20est%20en%20place/toutestenplace.png",
-        "type": "soundText",
-        "info": {
-            "artiste": "Marion K.",
-            "titre": "LA dernière heure",
-            "description": "nouvelle"
-        },
-        "artistId": "marion-k",
-        "x": 14.5,
-        "z": 10
     },
     {
         "artId": "A",
@@ -279,8 +167,8 @@
             "description": "Texte et musique de Quentin Bambuck"
         },
         "artistId": "quentin-bambuck",
-        "x": 15,
-        "z": 10.5
+        "x": 14.5,
+        "z": 10
     },
     {
         "artId": "a",
@@ -289,9 +177,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 15.5,
@@ -318,9 +205,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 14,
@@ -333,9 +219,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 18,
@@ -348,9 +233,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 14,
@@ -363,9 +247,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 14,
@@ -378,9 +261,8 @@
         "type": "image",
         "info": {
             "artiste": "Charley Case",
-            "titre": "sans titre",
-            "ensemble": "projet Diplomondus",
-            "description": "(en attente)"
+            "titre": "Diplomondus",
+            "description": ""
         },
         "artistId": "charley-case",
         "x": 18,
@@ -417,7 +299,7 @@
     {
         "artId": "j",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_800x541.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/page.html",
         "type": "video",
         "info": {
             "artiste": "Serra Bernhardt",
@@ -519,25 +401,11 @@
         "type": "text",
         "info": {
             "artiste": "Aliénor Debrocq",
-            "titre": "De hond isin de pot",
+            "titre": "De hond is in de pot",
             "description": "nouvelle"
         },
         "artistId": "alinor-debrocq",
         "x": 18,
-        "z": 27.5
-    },
-    {
-        "artId": "a",
-        "room": 5,
-        "src": "http://heeeeeeeey.com",
-        "type": "monolythe",
-        "info": {
-            "artiste": "Yves André",
-            "titre": "Résistance",
-            "description": "Sculpture sonore, techniques mixtes"
-        },
-        "artistId": "yves-andr",
-        "x": 21.5,
         "z": 27.5
     },
     {
@@ -555,46 +423,18 @@
         "z": 27.5
     },
     {
-        "artId": "e",
-        "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre": "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
-        },
-        "artistId": "rve-de-tamaris-furstenheim-illustr-par-martin-viot-",
-        "x": 18,
-        "z": 26.5
-    },
-    {
         "artId": "q",
         "room": 5,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",
         "type": "text",
         "info": {
             "artiste": "Elie Kosma",
-            "titre": "C'étaient hier que nous devons mourir",
+            "titre": "C'était hier que nous devions mourir",
             "description": "poésie"
         },
         "artistId": "elie-kosma",
         "x": 25,
         "z": 26.5
-    },
-    {
-        "artId": "d",
-        "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre": "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
-        },
-        "artistId": "rve-de-tamaris-furstenheim-illustr-par-martin-viot-",
-        "x": 18,
-        "z": 25.5
     },
     {
         "artId": "p",
@@ -616,37 +456,13 @@
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",
         "type": "image",
         "info": {
-            "artiste": "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre": "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
+            "artiste": "Tamaris Furstenheim & Martin Viot ",
+            "titre": "Rêve illustré",
+            "description": "pastel gras sur cellophane transparent, <br />A3"
         },
-        "artistId": "rve-de-tamaris-furstenheim-illustr-par-martin-viot-",
+        "artistId": "tamaris-furstenheim--martin-viot-",
         "x": 18,
         "z": 24.5
-    },
-    {
-        "artId": "b",
-        "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",
-        "type": "image",
-        "info": {
-            "artiste": "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre": "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
-        },
-        "artistId": "rve-de-tamaris-furstenheim-illustr-par-martin-viot-",
-        "x": 18,
-        "z": 23.5
-    },
-    {
-        "artId": "x",
-        "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/bar/bar_500x600.jpg",
-        "type": "wall",
-        "info": {},
-        "artistId": "inconnu",
-        "x": 25,
-        "z": 23.5
     },
     {
         "artId": "w",
@@ -698,7 +514,7 @@
         "info": {
             "artiste": "Guillaume Musset",
             "titre": "sans titre",
-            "ensemble": "+ - ∞",
+            "ensemble": "série + - ∞",
             "description": "photographie"
         },
         "artistId": "guillaume-musset",
@@ -727,7 +543,7 @@
         "info": {
             "artiste": "Guillaume Musset",
             "titre": "sans titre",
-            "ensemble": "+ - ∞",
+            "ensemble": "série + - ∞",
             "description": "photographie"
         },
         "artistId": "guillaume-musset",
@@ -749,9 +565,23 @@
         "z": 27.5
     },
     {
+        "artId": "g",
+        "room": 6,
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
+        "type": "image",
+        "info": {
+            "artiste": "Adec",
+            "titre": "Marin",
+            "description": "Encre"
+        },
+        "artistId": "adec",
+        "x": 26.5,
+        "z": 26
+    },
+    {
         "artId": "a",
         "room": 6,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle6/alcools/alcools+titre.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/alcools/alcools.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -759,8 +589,22 @@
             "description": "nouvelle"
         },
         "artistId": "thyl-sadow",
-        "x": 27.5,
+        "x": 28.5,
         "z": 26
+    },
+    {
+        "artId": "e",
+        "room": 6,
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
+        "type": "image",
+        "info": {
+            "artiste": "Adec",
+            "titre": "Apéro",
+            "description": "Encre"
+        },
+        "artistId": "adec",
+        "x": 30,
+        "z": 23.5
     },
     {
         "artId": "b",
@@ -773,8 +617,22 @@
             "description": "poésie"
         },
         "artistId": "yves-andr",
-        "x": 30,
-        "z": 23.5
+        "x": 26.5,
+        "z": 22
+    },
+    {
+        "artId": "f",
+        "room": 6,
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
+        "type": "image",
+        "info": {
+            "artiste": "Adec",
+            "titre": "Mexicain",
+            "description": "Encre"
+        },
+        "artistId": "adec",
+        "x": 28.5,
+        "z": 22
     },
     {
         "artId": "c",
@@ -783,12 +641,12 @@
         "type": "text",
         "info": {
             "artiste": "Claire Clouet",
-            "titre": "La marie à suivre",
+            "titre": "La marche à suivre",
             "description": "Théâtre"
         },
         "artistId": "claire-clouet",
-        "x": 27.5,
-        "z": 22
+        "x": 30,
+        "z": 22.5
     },
     {
         "artId": "D",
@@ -801,20 +659,20 @@
             "description": "poésie"
         },
         "artistId": "yves-andr",
-        "x": 30,
-        "z": 24
+        "x": 26.5,
+        "z": 22
     },
     {
         "artId": "d",
         "room": 7,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/Untitled-2_838x830.jpg",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/choco/portrait%20choco_900x900.jpg",
         "type": "image",
         "info": {
-            "artiste": "Baudelot",
+            "artiste": "Francis Baudelot",
             "titre": "portrait",
             "description": "fusain sur papier A3"
         },
-        "artistId": "baudelot",
+        "artistId": "francis-baudelot",
         "x": 18,
         "z": 34.5
     },
@@ -854,12 +712,26 @@
         "info": {
             "artiste": "Guillaume Musset",
             "titre": "j'attends un déluge",
-            "ensemble": "extrait du recueil : les couteaux qui coupent",
+            "ensemble": "extrait du recueil <i>les couteaux qui coupent</i>",
             "description": "poésie"
         },
         "artistId": "guillaume-musset",
         "x": 23.5,
         "z": 35
+    },
+    {
+        "artId": "j",
+        "room": 7,
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/la%20fin%20de%20ladolescence/page.html",
+        "type": "video",
+        "info": {
+            "artiste": "Pierre Choqueux",
+            "titre": "La fin de l'adolescence",
+            "description": "documentaire"
+        },
+        "artistId": "pierre-choqueux",
+        "x": 18,
+        "z": 33.5
     },
     {
         "artId": "c",
@@ -881,12 +753,12 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/page.html",
         "type": "video",
         "info": {
-            "artiste": "Guillaume Musset",
-            "titre": "sans titre",
-            "ensemble": "+ - ∞",
-            "description": "photographie"
+            "artiste": "Yves André & Guillaume Musset",
+            "titre": "Dialogue dans un monde en hiver",
+            "ensemble": "photographie extraite de la série + - ∞",
+            "description": "installation vidéo"
         },
-        "artistId": "guillaume-musset",
+        "artistId": "yves-andr--guillaume-musset",
         "x": 25,
         "z": 32.5
     },
@@ -905,30 +777,16 @@
         "z": 31
     },
     {
-        "artId": "i",
-        "room": 7,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/a+quoi+bon/aquoibon_653x1200.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Fred le Chevalier",
-            "titre": "illustration",
-            "description": "feutre noir sur papier"
-        },
-        "artistId": "fred-le-chevalier",
-        "x": 22.5,
-        "z": 31
-    },
-    {
         "artId": "h",
         "room": 7,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/aquoibon.html",
         "type": "text",
         "info": {
-            "artiste": "Solenn Denis",
+            "artiste": "Solenn Denis & Fred le Chevalier",
             "titre": "A quoi bon?",
-            "description": "poésie"
+            "description": "poésie illustrée"
         },
-        "artistId": "solenn-denis",
+        "artistId": "solenn-denis--fred-le-chevalier",
         "x": 23.5,
         "z": 31
     },
@@ -963,14 +821,14 @@
     {
         "artId": "d",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/horodateurs%20titre.png",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/linstabilitedeshorodateurs.html",
         "type": "text",
         "info": {
-            "artiste": "",
-            "titre": "",
-            "description": ""
+            "artiste": "Pierre Choqueux",
+            "titre": "L'instabilité des horodateurs",
+            "description": "nouvelle"
         },
-        "artistId": "inconnu",
+        "artistId": "pierre-choqueux",
         "x": 25,
         "z": 31.5
     },
@@ -995,41 +853,12 @@
         "type": "image",
         "info": {
             "artiste": "Pierre Choqueux",
-            "titre": "illustration texte",
+            "titre": "Ombres et horodateur géant",
             "description": "photographie"
         },
         "artistId": "pierre-choqueux",
         "x": 25,
-        "z": 29.5
-    },
-    {
-        "artId": "i",
-        "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/dialoguedesourds.png",
-        "type": "soundText",
-        "info": {
-            "artiste": "Edwin Lavallée",
-            "titre": "Dialogue de sourds qui s'entendent",
-            "description": "entretien"
-        },
-        "artistId": "edwin-lavalle",
-        "x": 29,
-        "z": 29.5
-    },
-    {
-        "artId": "f",
-        "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Guillaume Musset",
-            "titre": "sans titre",
-            "ensemble": "série + - ∞",
-            "description": "photographie"
-        },
-        "artistId": "guillaume-musset",
-        "x": 25,
-        "z": 27.5
+        "z": 30.5
     },
     {
         "artId": "g",
@@ -1039,7 +868,7 @@
         "info": {
             "artiste": "Jeep Novak",
             "titre": "sans titre",
-            "ensemble": "série in limbo",
+            "ensemble": "série <i>in limbo</i>",
             "description": "photographie"
         },
         "artistId": "jeep-novak",
@@ -1054,7 +883,7 @@
         "info": {
             "artiste": "Jeep Novak",
             "titre": "sans titre",
-            "ensemble": "série in limbo",
+            "ensemble": "série <i>in limbo</i>",
             "description": "photographie"
         },
         "artistId": "jeep-novak",
@@ -1062,18 +891,18 @@
         "z": 26
     },
     {
-        "artId": "C",
+        "artId": "E",
         "room": 8,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
         "type": "sound",
         "info": {
-            "artiste": "Edwin Lavallée",
+            "artiste": "Edwin Lavallée & Laurent d'Ursel",
             "titre": "Dialogue de sourds qui s'entendent",
-            "description": "entretien"
+            "description": "entretien radiophonique"
         },
-        "artistId": "edwin-lavalle",
-        "x": 27,
-        "z": 28
+        "artistId": "edwin-lavalle--laurent-dursel",
+        "x": 29,
+        "z": 31.5
     },
     {
         "artId": "d",
@@ -1081,8 +910,8 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",
         "type": "image",
         "info": {
-            "artiste": "Jean)Baptiste Chadelle",
-            "titre": "sans titre",
+            "artiste": "Jean-Baptiste Chadelle",
+            "titre": "2083",
             "ensemble": "série playrobot",
             "description": "photomontage"
         },
@@ -1096,8 +925,8 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",
         "type": "image",
         "info": {
-            "artiste": "Jean)Baptiste Chadelle",
-            "titre": "sans titre",
+            "artiste": "Jean-Baptiste Chadelle",
+            "titre": "2083",
             "ensemble": "série playrobot",
             "description": "photomontage"
         },
@@ -1111,8 +940,8 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",
         "type": "image",
         "info": {
-            "artiste": "Jean)Baptiste Chadelle",
-            "titre": "sans titre",
+            "artiste": "Jean-Baptiste Chadelle",
+            "titre": "2083",
             "ensemble": "série playrobot",
             "description": "photomontage"
         },
@@ -1126,8 +955,8 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",
         "type": "image",
         "info": {
-            "artiste": "Jean)Baptiste Chadelle",
-            "titre": "sans titre",
+            "artiste": "Jean-Baptiste Chadelle",
+            "titre": "2083",
             "ensemble": "série playrobot",
             "description": "photomontage"
         },
@@ -1141,8 +970,8 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",
         "type": "image",
         "info": {
-            "artiste": "Jean)Baptiste Chadelle",
-            "titre": "sans titre",
+            "artiste": "Jean-Baptiste Chadelle",
+            "titre": "2083",
             "ensemble": "série playrobot",
             "description": "photomontage"
         },
@@ -1156,7 +985,7 @@
         "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",
         "type": "image",
         "info": {
-            "artiste": "ADEC",
+            "artiste": "Adec",
             "titre": "Pachamama",
             "description": "acrylique sur papier"
         },
@@ -1172,7 +1001,7 @@
         "info": {
             "artiste": "Jeep Novak",
             "titre": "sans titre",
-            "ensemble": "série in limbo",
+            "ensemble": "série <i>in limbo</i>",
             "description": "photographie"
         },
         "artistId": "jeep-novak",
@@ -1187,7 +1016,7 @@
         "info": {
             "artiste": "Jeep Novak",
             "titre": "sans titre",
-            "ensemble": "série in limbo",
+            "ensemble": "série <i>in limbo</i>",
             "description": "photographie"
         },
         "artistId": "jeep-novak",
@@ -1202,7 +1031,7 @@
         "info": {
             "artiste": "Jeep Novak",
             "titre": "sans titre",
-            "ensemble": "série in limbo",
+            "ensemble": "série <i>in limbo</i>",
             "description": "photographie"
         },
         "artistId": "jeep-novak",
@@ -1224,39 +1053,9 @@
         "z": 35
     },
     {
-        "artId": "d",
-        "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/doublephoto.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Solange Fournier",
-            "titre": "4 images, 2 textes, autant de mondes finis",
-            "ensemble": "le projet de tous les projets",
-            "description": "photographies textualisées"
-        },
-        "artistId": "solange-fournier",
-        "x": 40,
-        "z": 33.5
-    },
-    {
-        "artId": "c",
-        "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0016_696x1024.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Solange Fournier",
-            "titre": "4 images, 2 textes, autant de mondes finis",
-            "ensemble": "le projet de tous les projets",
-            "description": "photographies textualisées"
-        },
-        "artistId": "solange-fournier",
-        "x": 40,
-        "z": 32.5
-    },
-    {
         "artId": "i",
         "room": 10,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle10/Un%20week%20end%20%C3%A0%20la%20mer/un%20week%20end%20a%20la%20mer%20titre.png",
+        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/unwealamer.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -1270,21 +1069,6 @@
     {
         "artId": "e",
         "room": 10,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/4images2textes.html",
-        "type": "text",
-        "info": {
-            "artiste": "Solange Fournier",
-            "titre": "4 images, 2 textes, autant de mondes finis",
-            "ensemble": "le projet de tous les projets",
-            "description": "photographies textualisées"
-        },
-        "artistId": "solange-fournier",
-        "x": 40,
-        "z": 31.5
-    },
-    {
-        "artId": "j",
-        "room": 10,
         "src": "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/suitesolangefournier.html",
         "type": "text",
         "info": {
@@ -1295,36 +1079,7 @@
         },
         "artistId": "solange-fournier",
         "x": 40,
-        "z": 30.5
-    },
-    {
-        "artId": "h",
-        "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Thyl Sadow",
-            "titre": "Un week-end à la mer",
-            "description": "nouvelle illustrée"
-        },
-        "artistId": "thyl-sadow",
-        "x": 48,
-        "z": 30.5
-    },
-    {
-        "artId": "b",
-        "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/quatre+images/Scan_Pic0001_698x1024.jpg",
-        "type": "image",
-        "info": {
-            "artiste": "Solange Fournier",
-            "titre": "4 images, 2 textes, autant de mondes finis",
-            "ensemble": "le projet de tous les projets",
-            "description": "photographies textualisées"
-        },
-        "artistId": "solange-fournier",
-        "x": 40,
-        "z": 29.5
+        "z": 31.5
     },
     {
         "artId": "g",
@@ -1341,23 +1096,23 @@
         "z": 29
     },
     {
-        "artId": "1",
+        "artId": "b",
         "room": 11,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/lesmotsdelautre.html",
+        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle11/linculte/linculte.html",
         "type": "text",
         "info": {
-            "artiste": "Yves André",
-            "titre": "Les mots de l'autre",
-            "description": "poésie"
+            "artiste": "Edwin Lavallée",
+            "titre": "L'inculte",
+            "description": "sans titre"
         },
-        "artistId": "yves-andr",
+        "artistId": "edwin-lavalle",
         "x": 45.5,
         "z": 38
     },
     {
-        "artId": "C",
+        "artId": "D",
         "room": 11,
-        "src": "",
+        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.mp3",
         "type": "sound",
         "info": {
             "artiste": "Yves André",
@@ -1365,7 +1120,7 @@
             "description": "poésie"
         },
         "artistId": "yves-andr",
-        "x": 47.5,
-        "z": 43.5
+        "x": 44,
+        "z": 36.5
     }
 ]

@@ -7,19 +7,19 @@
     },
     "adj": [5],
     "map" : [
-    "#.-.-a-.+.",
-    ",.,.,.,.!.",
-    ",d,.,.,.!b",
-    "%._._c_.¤."
+    "#.-g-.-a+.",
+    ",.,.,.,.!d",
+    ",d,.,.,.!e",
+    "%._b_._f¤c"
     ],
     "arts" : [
     {
         "id": "a",
         "type" : "text",
-        "width" : 896,
-        "height" : 304,
+        "width" : 1163,
+        "height" : 261,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/alcools/alcools+titre.png",
-        "src" : "",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/alcools/alcools.html",  
         "info" : {
             "artiste" : "Thyl Sadow",
             "titre" : "Alcool(s)",
@@ -29,42 +29,87 @@
     {
         "id": "b",
         "type" : "text",
-        "width" : 2064,
-        "height" : 267,
-        "z": 500,
+        "width" : 1651,
+        "height" : 214,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.png",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",  
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Ils étaient cinq dans un vieux bar",
             "description": "poésie"
-        }
+        },
+        "noMap": true
     },
     {
         "id": "c",
+        "side": "!",
         "type" : "text",
-        "width" : 907,
-        "height" : 189,
+        "width" : 1360,
+        "height" : 283,
+        "z": 500,
+        "y": -700,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/la%20marche%20a%20suivre%20titre.png",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",  
         "info" : {
             "artiste" : "Claire Clouet",
-            "titre" : "La marie à suivre",
+            "titre" : "La marche à suivre",
             "description": "Théâtre"
         }
     },
     {
         "id": "d",
-        "side": "|",
         "type" : "wall",
-        "width" : 2000,
-        "height" : 2400,
-        "y": -2300,
-        "z": 500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/bar/bar-back_200x240.jpg",
+        "width" : 1104,
+        "height" : 628,
+        "y": -2500,
+        "z": -500,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/bar/bar.png",
         "src" : "",
         "info": {},
         "border": false
+    },
+    {
+        "id": "e",
+        "type" : "image",
+        "width" : 2048,
+        "height" : 820,
+        "z": 1000,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
+        "info": {
+            "artiste" : "Adec",
+            "titre" : "Apéro",
+            "description": "Encre"            
+        }
+    },
+    {
+        "id": "f",
+        "type" : "image",
+        "width" : 1004,
+        "height" : 1843,
+        "y": -520,
+        "x": 200,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
+        "info": {
+            "artiste" : "Adec",
+            "titre" : "Mexicain",
+            "description": "Encre"            
+        }
+    },
+    {
+        "id": "g",
+        "type" : "image",
+        "width" : 1491,
+        "height" : 1152,
+        "y": -200,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
+        "info": {
+            "artiste" : "Adec",
+            "titre" : "Marin",
+            "description": "Encre"            
+        }
     }
     ],
     "sounds" :[
@@ -74,6 +119,7 @@
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
             "play": "true",
+            "soundText": "b",
             "info" : {
                 "artiste" : "Yves André",
                 "titre" : "Ils étaient cinq dans un vieux bar",

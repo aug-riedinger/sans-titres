@@ -29,7 +29,8 @@
             "titre" : "4 images, 2 textes, autant de mondes finis",
             "ensemble" :"le projet de tous les projets", 
             "description": "photographies textualisées"
-        }
+        },
+        "noMenu": true
     },
     {
         "id": "c",
@@ -45,7 +46,8 @@
             "titre" : "4 images, 2 textes, autant de mondes finis",
             "ensemble" :"le projet de tous les projets", 
             "description": "photographies textualisées"
-        }
+        },
+        "noMenu": true
     },
     {
         "id": "d",
@@ -61,7 +63,8 @@
             "titre" : "4 images, 2 textes, autant de mondes finis",
             "ensemble" :"le projet de tous les projets", 
             "description": "photographies textualisées"
-        }
+        },
+        "noMenu": true
     },
     {
         "id": "e",
@@ -70,7 +73,7 @@
         "height" : 541,
         "z": -100,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/quatre%20image%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/4images2textes.html",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/suitesolangefournier.html",  
         "info" : {
             "artiste" : "Solange Fournier",
             "titre" : "4 images, 2 textes, autant de mondes finis",
@@ -113,21 +116,23 @@
         "width" : 430,
         "height" : 445,
         "z": -250,
+        "level": 4,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/img385.jpg",  
         "info" : {
             "artiste" : "Thyl Sadow",
             "titre" : "Un week-end à la mer",
             "description": "nouvelle illustrée"
-        }
+        },
+        "noMenu": true
     },
     {
         "id": "i",
         "type" : "text",
         "width" : 3294,
         "height" : 705,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/Un%20week%20end%20%C3%A0%20la%20mer/un%20week%20end%20a%20la%20mer%20titre.png",
-        "src" : "",  
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/un+week+end+a+la+mer+titre.png",
+        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/unwealamer.html",  
         "info" : {
             "artiste" : "Thyl Sadow",
             "titre" : "Un week-end à la mer",
@@ -142,12 +147,28 @@
         "z": 875,
         "y": -700,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/quatre%20image%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/suitesolangefournier.html",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/4images2textes.html",  
         "info" : {
             "artiste" : "Solange Fournier",
             "titre" : "4 images, 2 textes, autant de mondes finis",
             "ensemble" :"le projet de tous les projets", 
             "description": "photographies textualisées"
+        },
+        "noMenu": true
+    },
+    {
+        "id": "k",
+        "type" : "image",
+        "width" : 1024,
+        "height" : 683,
+        "y": -100,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
+        "info" : {
+            "artiste" : "Guillaume Musset",
+            "titre" : "sans titre",
+            "ensemble" : "série + - ∞",
+            "description": "photographie"
         }
     }
     ]

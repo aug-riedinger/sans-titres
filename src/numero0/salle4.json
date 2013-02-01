@@ -34,9 +34,8 @@
         "borderHoverColor": "rgb(16, 11, 13)",
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -48,9 +47,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -62,9 +60,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -76,9 +73,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus",
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -92,9 +88,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -107,9 +102,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus", 
+            "description": ""
         }    
     },
     {

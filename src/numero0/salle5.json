@@ -14,7 +14,7 @@
     "|e,.,.,.,.,.!q",
     "|d,.,.,.,.,.!p",
     "|c,.,.,.,.,.,.",
-    ",b,.,.,.,.,.,x",
+    ",b,.,.,.,.,.,.",
     ",.,.,.,.,.,.!.",
     "|w,.,.,.,.,.!r",
     "|v,.,.,.,.,.!.",
@@ -40,7 +40,8 @@
             "artiste" : "Yves André",
             "titre" : "Résistance",
             "description": "Sculpture sonore, techniques mixtes"
-        }    
+        }, 
+        "noMenu" : true
     },
     {
         "id": "b",
@@ -52,10 +53,11 @@
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page%2001%20officiel_423x600.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
         "info" : {
-            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre" : "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
-        }
+            "artiste" : "Tamaris Furstenheim & Martin Viot ",
+            "titre" : "Rêve illustré",
+            "description": "pastel gras sur cellophane transparent, <br />A3"
+        },
+        "noMenu": true
     },
     {
         "id": "c",
@@ -66,9 +68,9 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_423x600.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
         "info" : {
-            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre" : "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
+            "artiste" : "Tamaris Furstenheim & Martin Viot ",
+            "titre" : "Rêve illustré",
+            "description": "pastel gras sur cellophane transparent, <br />A3"
         }
     },
     {
@@ -79,10 +81,11 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_423x600.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
         "info" : {
-            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre" : "(en attente)",
-           "description": "pastel gras sur cellophane transparent, A3"
-        }
+            "artiste" : "Tamaris Furstenheim & Martin Viot ",
+            "titre" : "Rêve illustré",
+            "description": "pastel gras sur cellophane transparent, <br />A3"
+        },
+        "noMenu": true
     },
     {
         "id": "e",
@@ -93,10 +96,11 @@
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_410x600.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
         "info" : {
-            "artiste" : "Rêve de Tamaris Furstenheim illustré par Martin Viot ",
-            "titre" : "(en attente)",
-            "description": "pastel gras sur cellophane transparent, A3"
-        }
+            "artiste" : "Tamaris Furstenheim & Martin Viot ",
+            "titre" : "Rêve illustré",
+            "description": "pastel gras sur cellophane transparent, <br />A3"
+        },
+        "noMenu": true
     },
     {
         "id": "f",
@@ -108,7 +112,7 @@
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",  
         "info" : {
             "artiste" : "Aliénor Debrocq",
-            "titre" : "De hond isin de pot",
+            "titre" : "De hond is in de pot",
             "description": "nouvelle"
         }
     },
@@ -156,11 +160,11 @@
     {
         "id": "j",
         "type" : "video",
-        "width" : 800,
-        "height" : 700,
+        "width" : 962,
+        "height" : 650,
         "x": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_800x541.png",
-        "src" : "",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_962x650.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/page.html",  
         "info" : {
             "artiste" : "Serra Bernhardt",
             "titre" : "Cucine",
@@ -170,10 +174,10 @@
     {
         "id": "k",
         "type" : "video",
-        "width" : 800,
-        "height" : 700,
+        "width" : 962,
+        "height" : 541,
         "x": 250,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/apocalypses_962x541.png",
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/apocalypses_962x541.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/page.html",  
         "info" : {
             "artiste" : "Lucile Rimbert & Arthur Baude",
@@ -266,7 +270,7 @@
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",  
         "info" : {
             "artiste" : "Elie Kosma",
-            "titre" : "C'étaient hier que nous devons mourir",
+            "titre" : "C'était hier que nous devions mourir",
             "description": "poésie"
         }
     },
@@ -290,13 +294,13 @@
         "type" : "image",
         "width" : 2000,
         "height" : 1272,
-        "y": -631,
+        "y": -336,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "sans titre",
-            "ensemble" : "+ - ∞",
+            "ensemble" : "série + - ∞",
             "description" : "photographie"
         }    
     },
@@ -305,13 +309,13 @@
         "type" : "image",
         "width" : 2000,
         "height" : 1264,
-        "y": -632,
+        "y": -332,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "sans titre",
-            "ensemble" : "+ - ∞",
+            "ensemble" : "série + - ∞",
             "description" : "photographie"
         }   
     },
@@ -355,19 +359,6 @@
             "titre" : "première méditation à deux",
             "description": "essai"
         }
-    },
-    {
-        "id": "x",
-        "side": "!",
-        "type" : "wall",
-        "width" : 2000,
-        "height" : 2400,
-        "y": -2300,
-        "z": 500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/bar/bar_500x600.jpg",
-        "src" : "",
-        "info": {},
-        "border": false
     }
     ],
     "sounds" :[

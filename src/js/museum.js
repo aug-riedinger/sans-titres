@@ -10040,6 +10040,9 @@ Cursor.prototype.calcStrength = function() {
 		this.strengthY = 1 - (scr.height - this.Y) / (scr.height / this.segmentY);
 		// this.moving = true;
 	}
+
+	this.strengthX = this.strengthX*0.5;
+	this.strengthY = this.strengthY*0.5;
 };
 
 Cursor.prototype.inTriangle = function(p1, p2, p3) {
@@ -10737,7 +10740,7 @@ var Room = function(id, mainRoom) {
 };
 
 Room.prototype.load = function() {
-	$.getJSON('/numero0/salle' + this.id + '.json', $.proxy(function(data) {
+	$.getJSON('numero0/salle' + this.id + '.json', $.proxy(function(data) {
 		this.init(data);
 		$(scr.container).trigger('loaded');
 	}, this));
@@ -11347,8 +11350,8 @@ var insertSortDistance = function (arr) {
 };
 
 
-var getParameters = function() {
-	var tab = window.location.href.replace(/.*#!/, '').split('&');
+var getParameters = function(href) {
+	var tab = href.replace(/.*#!/, '').split('&');
 	var obj = {};
 	for(var i = 0; i < tab.length; i++) {
 		var subtab = tab[i].split('=');
@@ -11358,9 +11361,10 @@ var getParameters = function() {
 };
 
 var showArtInfo = function(artFace) {
-	$('#artTitle').html(artFace.f.info.titre || 'Inconnu');
-	$('#artAuthor').html(artFace.f.info.artiste || 'Inconnu');
-	$('#artDescription').html(artFace.f.info.description || 'Inconnu');
+	$('#artTitle').html('« '+artFace.f.info.titre+' »'  || '');
+	$('#artSerie').html(artFace.f.info.ensemble||'');
+	$('#artAuthor').html(artFace.f.info.artiste || '');
+	$('#artDescription').html(artFace.f.info.description  || '');
 	$('#artInfo').fadeIn(1000, function() {
 		setTimeout(function() {
 			$('#artInfo').fadeOut(1000);
@@ -11597,21 +11601,6 @@ var remMany = function(array, eqFn, many) {
 var equalsCoord = function(point1, point2) {
 	return point1.x === point2.x && point1.y === point2.y && point1.z === point2.z;
 };
-var startCpt = function resetCpt() {
-	if(!SLOW && cpt < 50) {
-		console.log(cpt);
-		console.log('Slow Mode');
-		SLOW = true;
-	}
-	if(SLOW && cpt > 100) {
-		console.log(cpt);
-		console.log('Fast Mode');
-		SLOW = false;
-	}
-	cpt = 0;
-	setTimeout(resetCpt, 5000);
-};
-
 var enteredRoom = function(roomId) {
 	var i, j;
 	var room;
@@ -11661,48 +11650,14 @@ var enteredRoom = function(roomId) {
 };
 
 var init = function(roomId) {
-	var parameters = getParameters();
 	// ---- init script ----
 	scr = new Screen({
 		container: "screen",
 		canvas: "canvas"
 	});
 
-	new Room(parseInt(parameters.room, 10) || roomId);
-
-	$(scr.container).one('loaded', function() {
-
-		enteredRoom(rooms[0].id);
-		if(typeof(Keyboard) === 'function') {
-			keyboard = new Keyboard();
-		}
-		cursor = new Cursor('screen', params.cursorX, params.cursorY);
-
-		camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
-		if(parameters.art !== undefined) {
-			var i;
-			for(i = 0; i < rooms[0].floors.length; i++) {
-				if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
-					camera.targetToFace(rooms[0].floors[i]);
-				}
-			}
-		}
-
-		requestAnimFrame(run);
-	});
-
-	$('.close').one('click', function(e) {
-
-		$('#full-screen').fadeOut(1000, function() {
-			$(this).remove();
-		});
-			$('#screen').focus();
-
-		e.preventDefault();
-		return false;
-	});
-
-	// startCpt();
+	new Room(roomId);
+	$(scr.container).one('loaded', onRoomLoaded);
 
 };
 
@@ -11710,7 +11665,7 @@ var init = function(roomId) {
 var run = function() {
 	// ---- loop ----
 	if(!MENU) {
-	requestAnimFrame(run);
+		requestAnimFrame(run);
 	}
 
 	// ---- clear screen ----
@@ -11722,11 +11677,31 @@ var run = function() {
 	// ---- 3D projection ----
 	renderer.renderAll();
 
-	// cpt++;
 };
 
 
-init(1);
+
+var onRoomLoaded = function() {
+	var parameters = getParameters(window.location.href);
+
+	enteredRoom(rooms[0].id);
+	if(typeof(Keyboard) === 'function') {
+		keyboard = new Keyboard();
+	}
+	cursor = new Cursor('screen', params.cursorX, params.cursorY);
+
+	camera = new Camera(rooms[0].startFloor.pv.x, rooms[0].startFloor.pv.z);
+	if(parameters.art !== undefined) {
+		var i;
+		for(i = 0; i < rooms[0].floors.length; i++) {
+			if(rooms[0].floors[i].f.art && rooms[0].floors[i].f.art.f.artId === parameters.art) {
+				camera.targetToFace(rooms[0].floors[i]);
+			}
+		}
+	}
+
+	requestAnimFrame(run);
+};
 var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.id = constr.id;
@@ -11764,9 +11739,6 @@ Sound.prototype.adjustVolume = function() {
 	}
 	this.audio.volume = volume;
 };
-// var MENU = true;
-// var artsMenu = [];
-
 map = new Raphael(document.getElementById('map'), 479, 479);
 
 var circleHover = function() {
@@ -11811,12 +11783,12 @@ var makeGroups = function(artsMenu, criteria) {
 
 	for(i = 1; i < arts.length; i++) {
 		art = arts[i];
-		if(formerCriteria !== art[criteria.sort] || i === arts.length -1 ) {
+		if(formerCriteria !== art[criteria.sort]) {
 			el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
-			ul = $('<ul class="full_info" id="'+criteria.sort+'-'+art[criteria.sort]+'"></ul>');
+			ul = $('<ul class="full_info" id="'+criteria.sort+'-'+arts[i-1][criteria.sort]+'"></ul>');
 
 			for(j=0; j<artGroup.length; j++) {
-				ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'Inconnu') + '</a> <span class="small">' + (artGroup[j].info.description || 'Inconnu') + '</span></li');
+				ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble||'') + ' ' + (artGroup[j].info.description||'') + '</span></li');
 			}
 
 			$(el).append(ul);
@@ -11828,10 +11800,26 @@ var makeGroups = function(artsMenu, criteria) {
 			});
 			artGroup = [];
 		}
-
+		
 		formerCriteria = art[criteria.sort];
 		artGroup.push(art);
+
 	}
+
+	el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
+	ul = $('<ul class="full_info" id="'+criteria.sort+'-'+arts[i-1][criteria.sort]+'"></ul>');
+
+	for(j=0; j<artGroup.length; j++) {
+		ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble||'') + ' ' + (artGroup[j].info.description||'') + '</span></li');
+	}
+
+	$(el).append(ul);
+
+	artGroups.push({
+		criteria: formerCriteria,
+		el: el,
+		arts: artGroup
+	});
 
 	return artGroups;
 
@@ -11862,7 +11850,7 @@ var showList = function(artsMenu, criteria) {
 };
 
 
-$.getJSON('/numero0/artList.json', function(data) {
+$.getJSON('numero0/artList.json', function(data) {
 	var i;
 	this.artsMenu = data;
 
@@ -11874,7 +11862,7 @@ $.getJSON('/numero0/artList.json', function(data) {
 				return art.info.artiste;
 			}
 			if(this.sort === 'room') {
-				return 'Salle '+art.room;
+				return '<a href="#!room='+art.room+'" class="enter">Salle '+art.room+'</a>';
 			}
 		}
 	};
@@ -11938,7 +11926,9 @@ $.getJSON('/numero0/artList.json', function(data) {
 var showCircles = function(arts) {
 	var ratio = 479 / 54;
 	map.clear();
-	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	if(camera) {
+		setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	}
 
 	$.each(arts, function(index, art) {
 		art.circle = map.circle(art.x * ratio, 479 - art.z * ratio, 5);
@@ -11978,46 +11968,95 @@ var setPosition = function(x, z) {
 	}
 };
 
-var enterMuseum = function() {
-	var parameters = getParameters();
+var enterMuseum = function(roomId) {
 	$('#menu').fadeOut(1000);
 	$('#screen').fadeIn(1000);
 	MENU = false;
 
-	if(rooms[0].id === parseInt(parameters.room, 10)||1) {
+	if(rooms.length && rooms[0].id === roomId) {
+		rooms[0].enter();
 		run();
 	} else {
-		init(parseInt(parameters.room, 10) || 1);
-	}
-
-	for (i=0; i< sounds.length; i++) {
-		sounds[i].audio.play();
+		rooms= [];
+		init(roomId);
 	}
 
 };
-
-$('a').click(enterMuseum);
-
-$('#visite').click(enterMuseum);
 
 
 var enterMenu = function() {
 	var ratio = 479 / 54;
 	var i;
-
 	// $('#visite').html('Retourner directement à la visite');
 	$('#menu').fadeIn(1000);
 	$('#screen').fadeOut(1000);
 	MENU = true;
 
 	map.clear();
-	setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	if(camera) {
+		setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	}
+
+	if(sounds.length) {
+		for(i=0; i<sounds.length; i++) {
+			sounds[i].audio.pause();
+		}
+	}
 
 };
 
 $('#minimap').click(enterMenu);
 
-enterMenu();
+$('#start').click(function() {
+	$('#intro').fadeOut(1000, function(){
+		$(this).remove();
+	});
+	enterMenu();
+});
+
+$('#manifeste').click(function(){
+	$('#menuIframeView').append('<iframe src="manifeste-editorial.html" class="manifest"></iframe><div id="mani_controls"></div>');
+	$('#mani_controls').append('<a id="back_mani" class="drop"><div class="drop_content">Retour<br/>au<br/>sommaire</div><div  class="drop_contour"></div></a>');
+	$('#mani_controls').append('<a id="visite_mani" class="drop enter"><div class="drop_content">Accéder directement à la visite</div><div  class="drop_contour"></div></a>');
+	$('#menuIframeView').fadeIn(1000);
+	$('#back_mani').click(function(){
+		$('#menuIframeView').fadeOut(1000, function(){
+			$('#menuIframeView').empty();
+		});
+	});
+	$('#visite_mani').click(function(){
+		$('#menuIframeView').fadeOut(1000, function(){
+			$('#menuIframeView').empty();
+		});
+	});
+});
+
+
+$('.enter').live('click',function(e){
+	var room;
+
+	room = parseInt(getParameters($(this).attr('href')||window.location.href).room, 10);
+	if(room) {
+		return enterMuseum(room);
+	}
+
+	if(rooms[0]) {
+		return enterMuseum(rooms[0].id);
+	}
+	return enterMuseum(1);
+});
+
+
+$('.close').one('click', function(e) {
+
+	$('#full-screen').fadeOut(1000, function() {
+		$(this).remove();
+	});
+	$('#screen').focus();
+
+	e.preventDefault();
+	return false;
+});
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36223212-4']);
 _gaq.push(['_trackPageview']);

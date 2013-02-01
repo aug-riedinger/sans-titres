@@ -28,7 +28,7 @@
         "info" : {
             "artiste" : "Darren Roshier",
             "titre" : "Multiple 21/12/12",
-            "description": "Linogravure sur papier 80g format A4, série de 27,"
+            "description": "Linogravure sur papier 80g <br />format A4, <br />série de 27,"
         }    
     },
     {
@@ -42,9 +42,8 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",  
         "info" : {
             "artiste" : "Charley Case",
-            "titre" : "sans titre",
-            "ensemble" : "projet Diplomondus", 
-            "description": "(en attente)"
+            "titre" : "Diplomondus",
+            "description": ""
         }    
     },
     {
@@ -57,7 +56,7 @@
         "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html",  
         "info" : {
             "artiste" : "Marion K.",
-            "titre" : "LA dernière heure",
+            "titre" : "La dernière heure",
             "description": "nouvelle"
         }
     },
@@ -70,9 +69,9 @@
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle3/Tout%20est%20en%20place/toutestenplace.png",
         "src" : "",  
         "info" : {
-            "artiste" : "Marion K.",
-            "titre" : "LA dernière heure",
-            "description": "nouvelle"
+            "artiste" : "Quentin Bambuck",
+            "titre" : "Tout est en place",
+            "description": "Texte et musique de Quentin Bambuck"
         },
         "border": false
     }
@@ -84,12 +83,13 @@
             "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
             "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
+            "soundText": "d",
             "rooms": [2, 4],  
-        "info" : {
-            "artiste" : "Quentin Bambuck",
-            "titre" : "Tout est en place",
-            "description": "Texte et musique de Quentin Bambuck"
-        }
+            "info" : {
+                "artiste" : "Quentin Bambuck",
+                "titre" : "Tout est en place",
+                "description": "Texte et musique de Quentin Bambuck"
+            }
         }
     ]
 }

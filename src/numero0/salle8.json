@@ -11,10 +11,10 @@
     ",.,.,.!b",
     "|.,.,.!.",
     "|d,.,.!c",
-    "|.,.,.!.",
-    "|e,.,.!i",
+    "|e,.,.!.",
+    "|.,.,.!i",
     "|.,.,.,.",
-    "|f,.,.,.",
+    "|.,.,.,.",
     "%._g_._h"
     ],
     "arts" : [
@@ -35,9 +35,10 @@
     {
         "id": "b",
         "type" : "text",
-        "width" : 1200,
-        "height" : 290,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots%20titre_1200x290.png",
+        "width" : 1371,
+        "height" : 352,
+        "z": 250,
+        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle8/snapshots/snapshots+titre_914x235.png",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots.html",  
         "info" : {
             "artiste" : "Robert Kramer",
@@ -51,7 +52,8 @@
         "width" : 2000,
         "height" : 2000,
         "y": -600,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",
+        "level": 6,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/warning_1000x1000.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",  
         "info" : {
             "artiste" : "Laurent d'Ursel",
@@ -62,14 +64,15 @@
     {
         "id": "d",
         "type" : "text",
-        "width" : 1158,
-        "height" : 207,
+        "width" : 1145,
+        "height" : 321,
+        "z": 250,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/horodateurs%20titre.png",
-        "src" : "",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/linstabilitedeshorodateurs.html",  
         "info" : {
-            "artiste" : "",
-            "titre" : "",
-            "description": ""
+            "artiste" : "Pierre Choqueux",
+            "titre" : "L'instabilité des horodateurs",
+            "description": "nouvelle"
         }
     },
     {
@@ -77,26 +80,12 @@
         "type" : "image",
         "width" : 1200,
         "height" : 811,
+        "z": -250,
         "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",
         "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",  
         "info" : {
             "artiste" : "Pierre Choqueux",
-            "titre" : "illustration texte",
-            "description": "photographie"
-        }
-    },
-    {
-        "id": "f",
-        "type" : "image",
-        "width" : 1024,
-        "height" : 683,
-        "y": -100,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
-        "info" : {
-            "artiste" : "Guillaume Musset",
-            "titre" : "sans titre",
-            "ensemble" : "série + - ∞",
+            "titre" : "Ombres et horodateur géant",
             "description": "photographie"
         }
     },
@@ -111,7 +100,7 @@
         "info" : {
             "artiste" : "Jeep Novak",
             "titre" : "sans titre",
-            "ensemble" : "série in limbo",
+            "ensemble" : "série <i>in limbo</i>",
             "description": "photographie"
         }
     },
@@ -126,38 +115,24 @@
         "info" : {
             "artiste" : "Jeep Novak",
             "titre" : "sans titre",
-            "ensemble" : "série in limbo",
+            "ensemble" : "série <i>in limbo</i>",
             "description": "photographie"
         }
-    },
-    {
-        "id": "i",
-        "type" : "soundText",
-        "width" : 721,
-        "height" : 107,
-        "y": -100,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/dialoguedesourds.png",
-        "src" : "",  
-        "info" : {
-            "artiste" : "Edwin Lavallée",
-            "titre" : "Dialogue de sourds qui s'entendent",
-            "description": "entretien"
-        },
-        "select": false
     }
     ],
     "sounds" :[
     {
-        "id": "C",
+        "id": "E",
         "type" : "sound",
         "mp3": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
         "ogg": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.ogg",
         "play": "false", 
-        "rooms": [9, 10],  
+        "soundText": "c",
+        "rooms": [9],  
         "info" : {
-            "artiste" : "Edwin Lavallée",
+            "artiste" : "Edwin Lavallée & Laurent d'Ursel",
             "titre" : "Dialogue de sourds qui s'entendent",
-            "description": "entretien"
+            "description": "entretien radiophonique"
         }
     }
     ]

@@ -10,9 +10,32 @@ body {
 	height: 100%;
 	font-family: 'Oswald', sans-serif;
 	overflow: auto;
+	background: #1D1D4F;
 }
 
-#menu {
+#intro {
+	text-align: center;
+	background: #1D1D4F;
+}
+
+#intro_inside {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 600px;
+	margin: auto;
+	position: absolute;
+}
+
+#intro h2 {
+	text-align: center;
+	cursor: pointer;
+	top: -115px;
+	position: relative;
+}
+
+.menu {
 	/*font-variant: small-caps;*/
 	position: absolute;
 	left: 0;
@@ -22,13 +45,15 @@ body {
 	text-transform:uppercase;
 	color:#FFFFFF;
 	width: 100%;
-	background: #1D1D4F;
+	z-index: 10;
+}
+
+#menu {
+	display: none;
 	background-image: url('../images/fond.png');
 	background-position: top;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
-	/*display: none;*/
-	z-index: 10;
 }
 
 a {
@@ -41,12 +66,13 @@ a:hover {
 }
 
 .innerLink {
-	padding-bottom: 5px;
+	padding-bottom: 4px;
 }
 
 .innerLink:hover {
 	cursor: pointer;
 	border-bottom: 1px solid white;
+	text-decoration: none;
 }
 
 ul {
@@ -101,23 +127,58 @@ h1 {
 }
 #visite{
 	top: 5px;
-	position: absolute;
 	right: 0;
-	margin-top: 20px;/*
-	float: right;*/
+	margin-top: 20px;
+	position: absolute;
+}
+
+a.drop{
+	position: relative;
+	display: block;
+	color:white;
 	text-align: center;
-	border-width:2px;
-	padding: 20px 15px;
-	width: 80px;
+	text-decoration:none;
+	font-family:'Oswald', sans-serif;
+	width: 130px;
+	height: 130px;
+}
+
+.drop_contour {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width:70px;
+	height: 70px;
+	border-width:3px;
+	padding:20px;
 	-moz-border-radius: 60px;
 	-webkit-border-radius:60px;
 	-khtml-border-radius:60px;
 	border-radius:60px;
-	border:2px dashed white;
-	cursor: pointer;
+	border:3px dashed white;
 }
-#visite:hover{
+
+.drop_contour:hover{
 	border-style: solid;
+}
+
+.drop_content {
+	position: absolute;
+	width:90px;
+	height: 80px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+#mani_controls {
+	float: right;
+	margin: 8px 50px;
 }
 
 #map {
@@ -157,6 +218,10 @@ h1 {
 	/*font-family: arial;*/
 	width: 535px;
 	margin-left: 8px;
+}
+
+#content_middle {
+	background: #1D1D4F;
 }
 
 #menu_list {
@@ -244,7 +309,7 @@ footer li {
 }
 
 #screen {
-	/*display: none;*/
+	display: none;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -254,8 +319,8 @@ footer li {
 	height: 100%;
 	background: #F9F9F9;
 	overflow: hidden;
-	font-family: Segoe UI, Verdana, Arial, Sans-Serif;
-	color: #fff;
+/*	font-family: Segoe UI, Verdana, Arial, Sans-Serif;*/
+	/*color: #fff;*/
 
 }
 #screen canvas {
@@ -311,15 +376,37 @@ footer li {
 	/*cursor: url('../images/hash-bottom-left.png'), pointer;*/
 }
 
+#menuIframeView {
+	background: #1D1D4F;
+	z-index: 15;
+}
+
 #artClearView {
+	background: white;
+	/*background: rgba(0,0,0,0.8); */
+	display: none;
+}
+
+.iframeTop {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: white;
-	/*background: rgba(0,0,0,0.8); */
 	display: none;
+}
+
+.manifest {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	border: none;
+	width: 858px;
+	height: 100%;
 }
 
 .art {
@@ -380,6 +467,7 @@ footer li {
 	height: 470px;
 	font-size: 0.9em;
 	font-weight: 300;
+	color: black;
 }
 
 #full-screen h3 {
@@ -399,16 +487,27 @@ footer li {
 
 #full-screen li {
 	padding: 15px 0px;
+	min-height: 48px;
 }
 
-#full-screen img.fleft {
+#full-screen .fleft {
 	margin: 0 10px;
 	float: left;
 }
 
-#full-screen img.fright {
+#full-screen .fright {
 	margin: 0 10px;
 	float: right;
+}
+
+#full-screen .plan {
+	width: 48px;
+	text-align: center;
+	font-size: 1.1em;
+	font-weight: 400;
+	border: thin solid black;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 .info-displayer {
@@ -444,20 +543,28 @@ footer li {
 
 #artInfo {
 	display: none;
+	z-index: 30;
 }
 
 #artTitle {
-	font-size: 1.3em;
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+#artSerie {
+	font-size: 0.8em;
+	font-weight: 300;
+	margin-bottom: 11px;
 }
 
 #artAuthor {
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 #artDescription {
-	font-size: 0.9em;
+	font-size: 0.7em;
 	text-align: justify;
-	margin: 5px;
 	font-weight: 300;
+	margin-left: 0px;
 }
 
