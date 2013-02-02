@@ -99,8 +99,8 @@ Cursor.prototype.initEvents = function() {
 			}
 		}
 
-		e.preventDefault();
-		return false;
+		// e.preventDefault();
+		// return false;
 	};
 
 	this.container.ondblclick = function(e) {

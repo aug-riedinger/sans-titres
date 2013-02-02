@@ -464,7 +464,7 @@ footer li {
 	background: white;
 	text-align: justify;
 	width: 400px;
-	height: 470px;
+	height: 550px;
 	font-size: 0.9em;
 	font-weight: 300;
 	color: black;
@@ -472,6 +472,15 @@ footer li {
 
 #full-screen h3 {
 	text-align: center;
+}
+
+#full-screen a {
+	color: black;
+	text-decoration: underline;
+}
+
+#full-screen a:hover {
+	text-decoration: none;
 }
 
 #full-screen .close {
@@ -508,6 +517,7 @@ footer li {
 	border: thin solid black;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	margin: 10px;
 }
 
 .info-displayer {
