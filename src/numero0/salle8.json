@@ -12,9 +12,9 @@
     "|.,.,.!.",
     "|d,.,.!c",
     "|e,.,.!.",
-    "|.,.,.!i",
+    "|.,.,.!.",
     "|.,.,.,.",
-    "|.,.,.,.",
+    "|i,.,.,.",
     "%._g_._h"
     ],
     "arts" : [
@@ -118,6 +118,20 @@
             "ensemble" : "série <i>in limbo</i>",
             "description": "photographie"
         }
+    },
+    {
+        "id": "i",
+        "type" : "image",
+        "width" : 614,
+        "height" : 461,
+        "y": 50,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",  
+        "info" : {
+            "artiste" : "Jean-Baptiste Chadelle",
+            "titre" : "Tracy Lord IV",
+            "description": "photomontage"
+            }
     }
     ],
     "sounds" :[

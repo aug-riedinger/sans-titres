@@ -7,7 +7,7 @@
     },
     "adj" : [8, 10, 11],
     "map" : [
-    "-.-d-.-e-.-f-.-g-.-h-.,.,.,.,.!.",
+    "-.-e-.-d-f-.-F-g-.-h-.,.,.,.,.!.",
     ",.,.,.,.,.,.,.,.,.,.,.,.,.,.,.!i",
     "_._c_._a_._b_._._._._._._._._.¤."
     ],
@@ -63,8 +63,8 @@
         "width" : 1024,
         "height" : 768,
         "y": -100,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/Tracy+Lord+IV_1024x693.jpg",  
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/2083%2003-04_1024x747.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "2083",
@@ -79,7 +79,7 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+01-02_1024x747.jpg",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "2083",
@@ -90,11 +90,28 @@
     {
         "id": "f",
         "type" : "image",
-        "width" : 1024,
+        "width" : 533,
         "height" : 768,
         "y": -100,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/doublecover.jpg",  
+        "x": 750,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/2083%2005_533x768.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
+        "info" : {
+            "artiste" : "Jean-Baptiste Chadelle",
+            "titre" : "2083",
+            "ensemble" : "série playrobot",
+            "description": "photomontage"
+        }
+    },
+    {
+        "id": "F",
+        "type" : "image",
+        "width" : 533,
+        "height" : 768,
+        "y": -100,
+        "x": -750,
+        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/2083%2006_528x768.jpg",
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "2083",
@@ -109,7 +126,7 @@
         "height" : 768,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+07-08_1024x746.jpg",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "2083",
@@ -124,7 +141,7 @@
         "height" : 874,
         "y": -100,
         "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/warning_1024x746.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle9/playrobot/2083+09-10_1024x746.jpg",  
+        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "2083",

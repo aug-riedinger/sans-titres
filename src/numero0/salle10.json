@@ -155,21 +155,6 @@
             "description": "photographies textualisées"
         },
         "noMenu": true
-    },
-    {
-        "id": "k",
-        "type" : "image",
-        "width" : 1024,
-        "height" : 683,
-        "y": -100,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
-        "info" : {
-            "artiste" : "Guillaume Musset",
-            "titre" : "sans titre",
-            "ensemble" : "série + - ∞",
-            "description": "photographie"
-        }
     }
     ]
 }
