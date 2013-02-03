@@ -9698,6 +9698,8 @@ var params = {
 	cursorY: 6
 };
 
+var OeuvresURL = 'https://numero0.s3-external-3.amazonaws.com/';
+
 var colors = {
 	'floor': '#80827d',
 	'aimedFloor': '#70726D',
@@ -9766,6 +9768,7 @@ var Camera = function(_x, _z) {
 };
 
 Camera.prototype.isInPosition = function() {
+	var i;
 	var dx, dy, dz;
 	var inPosition, inMidPosition;
 
@@ -9777,6 +9780,13 @@ Camera.prototype.isInPosition = function() {
 
 	if(inPosition) {
 		$(scr.canvas).trigger('inPosition');
+
+		for(i=0; i<sounds.length;i++) {
+			if(!sounds[i].audio.paused) {
+				sounds[i].adjustVolume();
+			}
+		}
+
 	}
 
 	if(this.midTarget) {
@@ -9898,18 +9908,17 @@ var Cursor = function(canvas_ID, segmentX, segmentY) {
 Cursor.prototype.initEvents = function() {
 	var that = this;
 
-	$('#volume').click(function(e) {
+	$('#volume').live('click',function(e) {
 		var i;
 		for(i = 0; i < sounds.length; i++) {
-			if(!sounds[i].muted) {
-				sounds[i].formerVolume = sounds[i].audio.volume;
-				sounds[i].audio.volume = 0;
-				sounds[i].muted = true;
+			if(!$('#volume').hasClass('muted')) {
+				sounds[i].audio.pause();
 				$('#volume').addClass('muted');
 			} else {
-				sounds[i].audio.volume = sounds[i].formerVolume;
-				sounds[i].adjustVolume();
-				sounds[i].muted = false;
+				if(sounds[i].playNow) {
+					sounds[i].adjustVolume();
+					sounds[i].audio.play();
+				}
 				$('#volume').removeClass('muted');
 			}
 
@@ -10603,8 +10612,8 @@ Point.prototype.projection = function() {
 				ry: face.f.ry,
 				w: artConstr.width,
 				h: artConstr.height,
-				thumb: artConstr.thumb,
-				src: artConstr.src||artConstr.thumb,
+				thumb: OeuvresURL + artConstr.thumb,
+				src: OeuvresURL + (artConstr.src||artConstr.thumb),
 				border: artConstr.border,
 				info: artConstr.info || {},
 				iFrameHeight: artConstr.iFrameHeight,
@@ -10650,8 +10659,8 @@ var Monolythe = function(face, artConstr) {
 		ry: 1,
 		w: this.dim.width,
 		h: this.dim.height,
-		thumb: artConstr.thumb.top,
-		src: '',
+		thumb: OeuvresURL + artConstr.thumb.top,
+		src: OeuvresURL + (artConstr.src.top || artConstr.thumb.top),
 		info: artConstr.info || {},
 		artId: artConstr.id,
 		border: false,
@@ -10668,8 +10677,8 @@ var Monolythe = function(face, artConstr) {
 		ry: -1,
 		w: this.dim.width,
 		h: this.dim.height,
-		thumb: artConstr.thumb.bottom,
-		src: '',
+		thumb: OeuvresURL + artConstr.thumb.bottom,
+		src: OeuvresURL + (artConstr.src.bottom || artConstr.thumb.bottom),
 		info: artConstr.info || {},
 		artId: artConstr.id,
 		border: false,
@@ -10686,8 +10695,8 @@ var Monolythe = function(face, artConstr) {
 		ry: 0,
 		w: this.dim.depth,
 		h: this.dim.height - 24,
-		thumb: artConstr.thumb.left,
-		src: '',
+		thumb: OeuvresURL + artConstr.thumb.left,
+		src: OeuvresURL + (artConstr.src.left || artConstr.thumb.left),
 		info: artConstr.info || {},
 		artId: artConstr.id,
 		border: false,
@@ -10704,8 +10713,8 @@ var Monolythe = function(face, artConstr) {
 		ry: 2,
 		w: this.dim.depth,
 		h: this.dim.height,
-		thumb: artConstr.thumb.right,
-		src: '',
+		thumb: OeuvresURL + artConstr.thumb.right,
+		src: OeuvresURL + (artConstr.src.right || artConstr.thumb.right),
 		info: artConstr.info || {},
 		artId: artConstr.id,
 		border: false,
@@ -10961,7 +10970,7 @@ Room.prototype.makeSounds = function() {
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		for (j=0; j<sounds.length; j++) {
-			if(this.soundsConstr[i].mp3 === sounds[j].audio.src) {
+			if(this.soundsConstr[i].id === sounds[j].id) {
 				sound = sounds[j];
 			}
 		}
@@ -10978,18 +10987,18 @@ Room.prototype.enter = function() {
 	var showMuter = false;
 
 	for(j=0; j<sounds.length; j++) {
-		toPlay = false;
+		sounds[j].playNow = false;
 		for(i=0; i<sounds[j].rooms.length; i++) {
 			if(sounds[j].rooms[i] === this.id) {
-				toPlay = true;
+				sounds[j].playNow = true;
 				showMuter = true;
 			}
 		}
-		if(!toPlay && !sounds[j].audio.paused) {
+		if(!sounds[j].playNow && !sounds[j].audio.paused) {
 			sounds[j].audio.pause();
 		}
 
-		if(!MENU && toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
+		if(sounds[j].playNow && sounds[j].audio.paused && !$('#volume').hasClass('muted')) {
 			sounds[j].adjustVolume();
 			sounds[j].audio.play();
 		}
@@ -11705,9 +11714,19 @@ var onRoomLoaded = function() {
 var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.id = constr.id;
-	this.audio.src = constr.mp3;
+
+	if (this.audio.canPlayType('audio/mpeg;')) {
+		this.audio.type= 'audio/mpeg';
+		this.audio.src= OeuvresURL + constr.mp3;
+	} else {
+		this.audio.type= 'audio/ogg';
+		this.audio.src= OeuvresURL + constr.ogg;
+	}
 	this.autoPlay = (constr.play === 'true');
-	this.rooms = [room.id].concat(constr.rooms);
+	this.rooms = [room.id];
+	if(constr.rooms) {
+		this.rooms = this.rooms.concat(constr.rooms);
+	}
 	this.muted = false;
 	if(constr.position) {
 		this.position = {

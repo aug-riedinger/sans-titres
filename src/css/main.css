@@ -216,7 +216,7 @@ a.drop{
 	display: inline-block;
 	vertical-align: top;
 	/*font-family: arial;*/
-	width: 535px;
+	width: 530px;
 	margin-left: 8px;
 }
 
@@ -244,7 +244,7 @@ a.drop{
 
 #menu_list li.left {
 	text-align: left;
-	width: 46%;
+	width: 47%;
 	font-size: 1.5em;
 }
 

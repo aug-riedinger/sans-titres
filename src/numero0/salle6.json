@@ -18,8 +18,8 @@
         "type" : "text",
         "width" : 1163,
         "height" : 261,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle6/alcools/alcools+titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/alcools/alcools.html",  
+        "thumb" : "salle6/alcools/alcools+titre.png",
+        "src" : "salle6/alcools/alcools.html",  
         "info" : {
             "artiste" : "Thyl Sadow",
             "titre" : "Alcool(s)",
@@ -31,8 +31,8 @@
         "type" : "text",
         "width" : 1651,
         "height" : 214,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",  
+        "thumb" : "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.png",
+        "src" : "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",  
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Ils étaient cinq dans un vieux bar",
@@ -48,8 +48,8 @@
         "height" : 283,
         "z": 500,
         "y": -700,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/la%20marche%20a%20suivre%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",  
+        "thumb" : "salle6/la%20marche%20a%20suivre/la%20marche%20a%20suivre%20titre.png",
+        "src" : "salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",  
         "info" : {
             "artiste" : "Claire Clouet",
             "titre" : "La marche à suivre",
@@ -63,7 +63,7 @@
         "height" : 628,
         "y": -2500,
         "z": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/bar/bar.png",
+        "thumb" : "salle6/bar/bar.png",
         "src" : "",
         "info": {},
         "border": false
@@ -74,8 +74,8 @@
         "width" : 2048,
         "height" : 820,
         "z": 1000,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
+        "thumb" : "salle6/images/apero_1024x410.jpg",
+        "src" : "salle6/images/apero_1024x410.jpg",
         "info": {
             "artiste" : "Adec",
             "titre" : "Apéro",
@@ -89,8 +89,8 @@
         "height" : 1843,
         "y": -520,
         "x": 200,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
+        "thumb" : "salle6/images/mexicain_558x1024.jpg",
+        "src" : "salle6/images/mexicain_558x1024.jpg",
         "info": {
             "artiste" : "Adec",
             "titre" : "Mexicain",
@@ -103,8 +103,8 @@
         "width" : 1491,
         "height" : 1152,
         "y": -200,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
+        "thumb" : "salle6/images/marin_994x768.jpg",
+        "src" : "salle6/images/marin_994x768.jpg",
         "info": {
             "artiste" : "Adec",
             "titre" : "Marin",
@@ -114,10 +114,10 @@
     ],
     "sounds" :[
         {
-            "id": "D",
+            "id": "C",
             "type" : "sound",
-            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
-            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+            "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
+            "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
             "play": "true",
             "soundText": "b",
             "info" : {

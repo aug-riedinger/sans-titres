@@ -1,9 +1,19 @@
 var Sound = function(room, constr) {
 	this.audio = new Audio();
 	this.id = constr.id;
-	this.audio.src = constr.mp3;
+
+	if (this.audio.canPlayType('audio/mpeg;')) {
+		this.audio.type= 'audio/mpeg';
+		this.audio.src= OeuvresURL + constr.mp3;
+	} else {
+		this.audio.type= 'audio/ogg';
+		this.audio.src= OeuvresURL + constr.ogg;
+	}
 	this.autoPlay = (constr.play === 'true');
-	this.rooms = [room.id].concat(constr.rooms);
+	this.rooms = [room.id];
+	if(constr.rooms) {
+		this.rooms = this.rooms.concat(constr.rooms);
+	}
 	this.muted = false;
 	if(constr.position) {
 		this.position = {

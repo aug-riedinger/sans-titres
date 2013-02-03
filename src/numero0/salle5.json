@@ -30,10 +30,10 @@
                 "depth": 60
             },
         "thumb" : {
-                "top": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/avant_395x602.png",
-                "bottom": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/arri%C3%A8re_404x606.png",
-                "left": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/gauche_89x583.png",
-                "right": "https://sans-titres.s3.amazonaws.com/numero0/salle5/monolythe/droite_89x598.png"
+                "top": "salle5/monolythe/avant_395x602.png",
+                "bottom": "salle5/monolythe/arri%C3%A8re_404x606.png",
+                "left": "salle5/monolythe/gauche_89x583.png",
+                "right": "salle5/monolythe/droite_89x598.png"
             },
         "src" : "http://heeeeeeeey.com",  
         "info" : {
@@ -50,8 +50,8 @@
         "width" : 423,
         "height" : 600,
         "z": 1000,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page%2001%20officiel_423x600.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "thumb" : "salle5/BD/page%2001%20officiel_423x600.jpg",
+        "src" : "salle5/BD/page.html",  
         "info" : {
             "artiste" : "Tamaris Furstenheim & Martin Viot ",
             "titre" : "Rêve illustré",
@@ -65,8 +65,8 @@
         "width" : 423,
         "height" : 600,
         "z": 500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+02+officiel_423x600.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "thumb" : "salle5/BD/page+02+officiel_423x600.jpg",
+        "src" : "salle5/BD/page.html",  
         "info" : {
             "artiste" : "Tamaris Furstenheim & Martin Viot ",
             "titre" : "Rêve illustré",
@@ -78,8 +78,8 @@
         "type" : "image",
         "width" : 423,
         "height" : 600,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+03+officiel_423x600.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "thumb" : "salle5/BD/page+03+officiel_423x600.jpg",
+        "src" : "salle5/BD/page.html",  
         "info" : {
             "artiste" : "Tamaris Furstenheim & Martin Viot ",
             "titre" : "Rêve illustré",
@@ -93,8 +93,8 @@
         "width" : 410,
         "height" : 600,
         "z": -500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/BD/page+04+officiel_410x600.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",  
+        "thumb" : "salle5/BD/page+04+officiel_410x600.jpg",
+        "src" : "salle5/BD/page.html",  
         "info" : {
             "artiste" : "Tamaris Furstenheim & Martin Viot ",
             "titre" : "Rêve illustré",
@@ -108,8 +108,8 @@
         "width" : 1141,
         "height" : 189,
         "z": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/de%20hond%20is%20in%20de%20pot%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",  
+        "thumb" : "salle5/de%20hond%20is%20in%20de%20pot/de%20hond%20is%20in%20de%20pot%20titre.png",
+        "src" : "salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",  
         "info" : {
             "artiste" : "Aliénor Debrocq",
             "titre" : "De hond is in de pot",
@@ -121,8 +121,8 @@
         "type" : "image",
         "width" : 1024,
         "height" : 721,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1024x721.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg",  
+        "thumb" : "salle5/niels/nilstaches_1024x721.jpg",
+        "src" : "salle5/niels/nilstaches_1200x845.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "Ciel",
@@ -136,8 +136,8 @@
         "width" : 517,
         "height" : 768,
         "z": -250,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_517x768.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",  
+        "thumb" : "salle5/niels/Nils.mati%C3%A8re_517x768.jpg",
+        "src" : "salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "Continent",
@@ -149,8 +149,8 @@
         "type" : "text",
         "width" : 390,
         "height" : 346,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/les%20vigilances%20meteores/vigilances%20meteores%20titre_390x346.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/les%20vigilances%20meteores/vigilancesmeteores.html",  
+        "thumb" : "salle5/les%20vigilances%20meteores/vigilances%20meteores%20titre_390x346.png",
+        "src" : "salle5/les%20vigilances%20meteores/vigilancesmeteores.html",  
         "info" : {
             "artiste" : "Elie Kosma",
             "titre" : "Vigilances météores",
@@ -163,8 +163,8 @@
         "width" : 962,
         "height" : 650,
         "x": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_962x650.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/page.html",  
+        "thumb" : "salle5/cucine%20venezia/cucine%20venezia%20sans%20text%20screenshot_962x650.jpg",
+        "src" : "salle5/cucine%20venezia/page.html",  
         "info" : {
             "artiste" : "Serra Bernhardt",
             "titre" : "Cucine",
@@ -177,8 +177,8 @@
         "width" : 962,
         "height" : 541,
         "x": 250,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/apocalypses_962x541.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/page.html",  
+        "thumb" : "salle5/apocalypses/apocalypses_962x541.jpg",
+        "src" : "salle5/apocalypses/page.html",  
         "info" : {
             "artiste" : "Lucile Rimbert & Arthur Baude",
             "titre" : "Les apocalypses ont déjà eu lieu mais personne n'a voulu s'en rendre compte",
@@ -191,8 +191,8 @@
         "width" : 802,
         "height" : 295,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/faces/faces+titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/faces/faces.html",  
+        "thumb" : "salle5/faces/faces+titre.png",
+        "src" : "salle5/faces/faces.html",  
         "info" : {
             "artiste" : "Clémence Gachot",
             "titre" : "Faces",
@@ -207,8 +207,8 @@
         "height" : 1383,
         "z": 800,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",  
+        "thumb" : "salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
+        "src" : "salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "sans titre",
@@ -222,8 +222,8 @@
         "height" : 1383,
         "z": 600,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",  
+        "thumb" : "salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
+        "src" : "salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "sans titre",
@@ -237,8 +237,8 @@
         "height" : 1383,
         "z": 400,
         "y": -300,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",  
+        "thumb" : "salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
+        "src" : "salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "sans titre",
@@ -252,8 +252,8 @@
         "height" : 1383,
         "y": -300,
         "z": 50,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",  
+        "thumb" : "salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
+        "src" : "salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",  
         "info" : {
             "artiste" : "Nils Alix Tabeling",
             "titre" : "sans titre",
@@ -266,8 +266,8 @@
         "width" : 1159,
         "height" : 245,
         "z": 200,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",  
+        "thumb" : "salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier%20titre.png",
+        "src" : "salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",  
         "info" : {
             "artiste" : "Elie Kosma",
             "titre" : "C'était hier que nous devions mourir",
@@ -281,8 +281,8 @@
         "height" : 810,
         "y": -300,
         "z": -405,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/onapasbesoindailleurs%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/onapasbesoindailleurs.html",  
+        "thumb" : "salle5/alexandre%20navarro/onapasbesoindailleurs%20titre.png",
+        "src" : "salle5/alexandre%20navarro/onapasbesoindailleurs.html",  
         "info" : {
             "artiste" : "Alexandre Navarro",
             "titre" : "On n'a pas besoin d'ailleurs",
@@ -295,8 +295,8 @@
         "width" : 2000,
         "height" : 1272,
         "y": -336,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",  
+        "thumb" : "salle5/gmusset/gmusset6_1200x799.jpg",
+        "src" : "salle5/gmusset/gmusset6_1200x799.jpg",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "sans titre",
@@ -310,8 +310,8 @@
         "width" : 2000,
         "height" : 1264,
         "y": -332,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",  
+        "thumb" : "salle5/gmusset/gmusset1_1200x794.jpg",
+        "src" : "salle5/gmusset/gmusset1_1200x794.jpg",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "sans titre",
@@ -324,8 +324,8 @@
         "type" : "text",
         "width" : 1132,
         "height" : 293,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/antimanifeste/antimanifeste%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/antimanifeste/antimanifeste.html",  
+        "thumb" : "salle5/antimanifeste/antimanifeste%20titre.png",
+        "src" : "salle5/antimanifeste/antimanifeste.html",  
         "info" : {
             "artiste" : "Thyl Sadow & Yves André",
             "titre" : "Anti-manifeste",
@@ -338,8 +338,8 @@
         "width" : 758,
         "height" : 269,
         "z": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/preterition/preterition%20titre_758x269.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/preterition/preterition.html",  
+        "thumb" : "salle5/preterition/preterition%20titre_758x269.png",
+        "src" : "salle5/preterition/preterition.html",  
         "info" : {
             "artiste" : "Milady Renoir",
             "titre" : "Prétérition",
@@ -352,8 +352,8 @@
         "width" : 1075,
         "height" : 304,
         "z": -250,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premieremeditationadeux%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premieremeditationadeux.html",  
+        "thumb" : "salle5/premiere%20meditation/premieremeditationadeux%20titre.png",
+        "src" : "salle5/premiere%20meditation/premieremeditationadeux.html",  
         "info" : {
             "artiste" : "Gemma",
             "titre" : "première méditation à deux",
@@ -363,10 +363,10 @@
     ],
     "sounds" :[
     {
-        "id": "C",
+        "id": "B",
         "type" : "sound",
-        "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.mp3",
-        "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.ogg",
+        "mp3": "salle5/resistance/resistance.mp3",
+        "ogg": "salle5/resistance/resistance.ogg",
         "play": "true",
         "position" : {
             "x": 3,

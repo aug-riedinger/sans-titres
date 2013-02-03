@@ -21,7 +21,7 @@
         "height" : 1000,
         "y": -200,
         "x": 500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/carteblanche.png",
+        "thumb" : "salle1/carteblanche.png",
         "src" : "",  
         "info" : {
             "artiste" : "",
@@ -36,8 +36,8 @@
         "width" : 3072,
         "height" : 2049,
         "y": -600,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",  
+        "thumb" : "salle8/gmusset/gmusset4_1024x683.jpg",
+        "src" : "salle8/gmusset/gmusset4_1024x683.jpg",  
         "info" : {
             "artiste" : "Guillaume Musset",
             "titre" : "sans titre",
@@ -52,8 +52,8 @@
         "height" : 900,
         "y": -400,
         "level": 4,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle1/manifeste-editorial.html",  
+        "thumb" : "salle1/titre.png",
+        "src" : "salle1/manifeste-editorial.html",  
         "info" : {
             "artiste" : "",
             "titre" : "Manifeste Editorial",

@@ -17,6 +17,7 @@ var Camera = function(_x, _z) {
 };
 
 Camera.prototype.isInPosition = function() {
+	var i;
 	var dx, dy, dz;
 	var inPosition, inMidPosition;
 
@@ -28,6 +29,13 @@ Camera.prototype.isInPosition = function() {
 
 	if(inPosition) {
 		$(scr.canvas).trigger('inPosition');
+
+		for(i=0; i<sounds.length;i++) {
+			if(!sounds[i].audio.paused) {
+				sounds[i].adjustVolume();
+			}
+		}
+
 	}
 
 	if(this.midTarget) {

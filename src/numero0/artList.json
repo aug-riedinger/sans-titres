@@ -2,7 +2,7 @@
     {
         "artId": "b",
         "room": 1,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/gmusset/gmusset4_1024x683.jpg",
+        "src": "salle8/gmusset/gmusset4_1024x683.jpg",
         "type": "image",
         "info": {
             "artiste": "Guillaume Musset",
@@ -17,7 +17,7 @@
     {
         "artId": "c",
         "room": 1,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle1/manifeste-editorial.html",
+        "src": "salle1/manifeste-editorial.html",
         "type": "text",
         "info": {
             "artiste": "",
@@ -31,7 +31,7 @@
     {
         "artId": "a",
         "room": 2,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg",
+        "src": "salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg",
         "type": "image",
         "info": {
             "artiste": "Guillaume Musset",
@@ -46,7 +46,7 @@
     {
         "artId": "m",
         "room": 2,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Le+train+sans+wagon/letrainsanswagon.html",
+        "src": "salle2/Le+train+sans+wagon/letrainsanswagon.html",
         "type": "text",
         "info": {
             "artiste": "Claire Clouet",
@@ -60,7 +60,7 @@
     {
         "artId": "l",
         "room": 2,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg",
+        "src": "salle2/Lune+Etoiles+et+Taches+de+gras/Lune%2C+%C3%A9toiles+et+t%C3%A2ches+de+gras_1193x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Guillaume Musset",
@@ -75,7 +75,7 @@
     {
         "artId": "k",
         "room": 2,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle2/Engoncement/engoncement.html",
+        "src": "salle2/Engoncement/engoncement.html",
         "type": "text",
         "info": {
             "artiste": "Clémence Gachot",
@@ -89,7 +89,7 @@
     {
         "artId": "b",
         "room": 2,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle2/Carnet%20BD/page.html",
+        "src": "salle2/Carnet%20BD/page.html",
         "type": "image",
         "info": {
             "artiste": "Nicolas Marchant",
@@ -103,7 +103,7 @@
     {
         "artId": "A",
         "room": 2,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
+        "src": "salle3/Tout+est+en+place/toutestenplace-01.mp3",
         "type": "sound",
         "info": {
             "artiste": "Quentin Bambuck",
@@ -117,7 +117,7 @@
     {
         "artId": "c",
         "room": 3,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html",
+        "src": "salle3/La+derniere+heure/laderniereheure.html",
         "type": "text",
         "info": {
             "artiste": "Marion K.",
@@ -131,7 +131,7 @@
     {
         "artId": "a",
         "room": 3,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",
+        "src": "salle3/Darren/darren.multiple21+12_1280x645.jpg",
         "type": "image",
         "info": {
             "artiste": "Darren Roshier",
@@ -145,7 +145,7 @@
     {
         "artId": "b",
         "room": 3,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",
+        "src": "salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -159,7 +159,7 @@
     {
         "artId": "A",
         "room": 3,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
+        "src": "salle3/Tout+est+en+place/toutestenplace-01.mp3",
         "type": "sound",
         "info": {
             "artiste": "Quentin Bambuck",
@@ -173,7 +173,7 @@
     {
         "artId": "a",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1220131_2_802x1200.jpg",
+        "src": "salle4/Charley+Case/P1220131_2_802x1200.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -187,7 +187,7 @@
     {
         "artId": "g",
         "room": 4,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle4/Lillumine/lillumine.html",
+        "src": "salle4/Lillumine/lillumine.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -201,7 +201,7 @@
     {
         "artId": "d",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920155_1200x900.jpg",
+        "src": "salle4/Charley+Case/P1920155_1200x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -215,7 +215,7 @@
     {
         "artId": "f",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920151_1200x900.jpg",
+        "src": "salle4/Charley+Case/P1920151_1200x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -229,7 +229,7 @@
     {
         "artId": "b",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910936_1200x900.jpg",
+        "src": "salle4/Charley+Case/P1910936_1200x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -243,7 +243,7 @@
     {
         "artId": "c",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1910943_1200x900.jpg",
+        "src": "salle4/Charley+Case/P1910943_1200x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -257,7 +257,7 @@
     {
         "artId": "e",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle4/Charley+Case/P1920146_1200x802.jpg",
+        "src": "salle4/Charley+Case/P1920146_1200x802.jpg",
         "type": "image",
         "info": {
             "artiste": "Charley Case",
@@ -271,7 +271,7 @@
     {
         "artId": "A",
         "room": 4,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
+        "src": "salle3/Tout+est+en+place/toutestenplace-01.mp3",
         "type": "sound",
         "info": {
             "artiste": "Quentin Bambuck",
@@ -285,7 +285,7 @@
     {
         "artId": "h",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",
+        "src": "salle5/niels/Nils.mati%C3%A8re_808x1200.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -299,7 +299,7 @@
     {
         "artId": "j",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cucine%20venezia/page.html",
+        "src": "salle5/cucine%20venezia/page.html",
         "type": "video",
         "info": {
             "artiste": "Serra Bernhardt",
@@ -313,7 +313,7 @@
     {
         "artId": "k",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/apocalypses/page.html",
+        "src": "salle5/apocalypses/page.html",
         "type": "video",
         "info": {
             "artiste": "Lucile Rimbert & Arthur Baude",
@@ -327,7 +327,7 @@
     {
         "artId": "l",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/faces/faces.html",
+        "src": "salle5/faces/faces.html",
         "type": "text",
         "info": {
             "artiste": "Clémence Gachot",
@@ -341,7 +341,7 @@
     {
         "artId": "i",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/les%20vigilances%20meteores/vigilancesmeteores.html",
+        "src": "salle5/les%20vigilances%20meteores/vigilancesmeteores.html",
         "type": "text",
         "info": {
             "artiste": "Elie Kosma",
@@ -355,7 +355,7 @@
     {
         "artId": "m",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
+        "src": "salle5/niels+seriegraphie/Nilsserie1_900x1383.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -369,7 +369,7 @@
     {
         "artId": "g",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels/nilstaches_1200x845.jpg",
+        "src": "salle5/niels/nilstaches_1200x845.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -383,7 +383,7 @@
     {
         "artId": "n",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
+        "src": "salle5/niels+seriegraphie/Nilsserie2_900x1374.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -397,7 +397,7 @@
     {
         "artId": "f",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",
+        "src": "salle5/de%20hond%20is%20in%20de%20pot/dehondisindepot.html",
         "type": "text",
         "info": {
             "artiste": "Aliénor Debrocq",
@@ -411,7 +411,7 @@
     {
         "artId": "o",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
+        "src": "salle5/niels+seriegraphie/Nilsserie3_900x1383.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -425,7 +425,7 @@
     {
         "artId": "q",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",
+        "src": "salle5/cetait%20hier%20que%20nous%20devions%20mourrir/cetaithier.html",
         "type": "text",
         "info": {
             "artiste": "Elie Kosma",
@@ -439,7 +439,7 @@
     {
         "artId": "p",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
+        "src": "salle5/niels+seriegraphie/Nilsserie4_900x1340.jpg",
         "type": "image",
         "info": {
             "artiste": "Nils Alix Tabeling",
@@ -453,7 +453,7 @@
     {
         "artId": "c",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/BD/page.html",
+        "src": "salle5/BD/page.html",
         "type": "image",
         "info": {
             "artiste": "Tamaris Furstenheim & Martin Viot ",
@@ -467,7 +467,7 @@
     {
         "artId": "w",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/premiere%20meditation/premieremeditationadeux.html",
+        "src": "salle5/premiere%20meditation/premieremeditationadeux.html",
         "type": "text",
         "info": {
             "artiste": "Gemma",
@@ -481,7 +481,7 @@
     {
         "artId": "r",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/alexandre%20navarro/onapasbesoindailleurs.html",
+        "src": "salle5/alexandre%20navarro/onapasbesoindailleurs.html",
         "type": "text",
         "info": {
             "artiste": "Alexandre Navarro",
@@ -495,7 +495,7 @@
     {
         "artId": "v",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/preterition/preterition.html",
+        "src": "salle5/preterition/preterition.html",
         "type": "text",
         "info": {
             "artiste": "Milady Renoir",
@@ -509,7 +509,7 @@
     {
         "artId": "t",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset1_1200x794.jpg",
+        "src": "salle5/gmusset/gmusset1_1200x794.jpg",
         "type": "image",
         "info": {
             "artiste": "Guillaume Musset",
@@ -524,7 +524,7 @@
     {
         "artId": "u",
         "room": 5,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle5/antimanifeste/antimanifeste.html",
+        "src": "salle5/antimanifeste/antimanifeste.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow & Yves André",
@@ -538,7 +538,7 @@
     {
         "artId": "s",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/gmusset/gmusset6_1200x799.jpg",
+        "src": "salle5/gmusset/gmusset6_1200x799.jpg",
         "type": "image",
         "info": {
             "artiste": "Guillaume Musset",
@@ -551,9 +551,9 @@
         "z": 19
     },
     {
-        "artId": "C",
+        "artId": "B",
         "room": 5,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle5/resistance/resistance.mp3",
+        "src": "salle5/resistance/resistance.mp3",
         "type": "sound",
         "info": {
             "artiste": "Yves André",
@@ -567,7 +567,7 @@
     {
         "artId": "g",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/marin_994x768.jpg",
+        "src": "salle6/images/marin_994x768.jpg",
         "type": "image",
         "info": {
             "artiste": "Adec",
@@ -581,7 +581,7 @@
     {
         "artId": "a",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/alcools/alcools.html",
+        "src": "salle6/alcools/alcools.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -595,7 +595,7 @@
     {
         "artId": "e",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/apero_1024x410.jpg",
+        "src": "salle6/images/apero_1024x410.jpg",
         "type": "image",
         "info": {
             "artiste": "Adec",
@@ -609,7 +609,7 @@
     {
         "artId": "b",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",
+        "src": "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",
         "type": "text",
         "info": {
             "artiste": "Yves André",
@@ -623,7 +623,7 @@
     {
         "artId": "f",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/images/mexicain_558x1024.jpg",
+        "src": "salle6/images/mexicain_558x1024.jpg",
         "type": "image",
         "info": {
             "artiste": "Adec",
@@ -637,7 +637,7 @@
     {
         "artId": "c",
         "room": 6,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",
+        "src": "salle6/la%20marche%20a%20suivre/lamarcheasuivre.html",
         "type": "text",
         "info": {
             "artiste": "Claire Clouet",
@@ -649,9 +649,9 @@
         "z": 22.5
     },
     {
-        "artId": "D",
+        "artId": "C",
         "room": 6,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+        "src": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
         "type": "sound",
         "info": {
             "artiste": "Yves André",
@@ -665,7 +665,7 @@
     {
         "artId": "d",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/choco/portrait%20choco_900x900.jpg",
+        "src": "salle7/choco/portrait%20choco_900x900.jpg",
         "type": "image",
         "info": {
             "artiste": "Francis Baudelot",
@@ -679,7 +679,7 @@
     {
         "artId": "e",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/invite%20moi%20au%20voyage/invitemoiauvoyage.html",
+        "src": "salle7/invite%20moi%20au%20voyage/invitemoiauvoyage.html",
         "type": "text",
         "info": {
             "artiste": "Yves André",
@@ -693,7 +693,7 @@
     {
         "artId": "f",
         "room": 7,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/mahe/toile+mah%C3%A9_1201x1200.jpg",
+        "src": "salle7/mahe/toile+mah%C3%A9_1201x1200.jpg",
         "type": "image",
         "info": {
             "artiste": "Mahé Ripoll",
@@ -707,7 +707,7 @@
     {
         "artId": "g",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/jattends%20un%20deluge/jattendsundeluge.html",
+        "src": "salle7/jattends%20un%20deluge/jattendsundeluge.html",
         "type": "text",
         "info": {
             "artiste": "Guillaume Musset",
@@ -722,7 +722,7 @@
     {
         "artId": "j",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/la%20fin%20de%20ladolescence/page.html",
+        "src": "salle7/la%20fin%20de%20ladolescence/page.html",
         "type": "video",
         "info": {
             "artiste": "Pierre Choqueux",
@@ -736,7 +736,7 @@
     {
         "artId": "c",
         "room": 7,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
+        "src": "salle7/choco/monument+sans+m%C3%A9moire1+_869x1200.jpeg",
         "type": "image",
         "info": {
             "artiste": "Pierre Choqueux",
@@ -750,7 +750,7 @@
     {
         "artId": "a",
         "room": 7,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle7/jai+fait+un+reve/page.html",
+        "src": "salle7/jai+fait+un+reve/page.html",
         "type": "video",
         "info": {
             "artiste": "Yves André & Guillaume Musset",
@@ -765,7 +765,7 @@
     {
         "artId": "b",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/il%20fait%20noir/ilfaitnoir.html",
+        "src": "salle7/il%20fait%20noir/ilfaitnoir.html",
         "type": "text",
         "info": {
             "artiste": "Guillaume Willeme",
@@ -779,7 +779,7 @@
     {
         "artId": "h",
         "room": 7,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle7/a%20quoi%20bon/aquoibon.html",
+        "src": "salle7/a%20quoi%20bon/aquoibon.html",
         "type": "text",
         "info": {
             "artiste": "Solenn Denis & Fred le Chevalier",
@@ -793,7 +793,7 @@
     {
         "artId": "a",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dark/af_03_1024x684.jpg",
+        "src": "salle8/dark/af_03_1024x684.jpg",
         "type": "image",
         "info": {
             "artiste": "Amandine Freyd",
@@ -807,7 +807,7 @@
     {
         "artId": "b",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots.html",
+        "src": "salle8/snapshots/snapshots.html",
         "type": "text",
         "info": {
             "artiste": "Robert Kramer",
@@ -821,7 +821,7 @@
     {
         "artId": "d",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/linstabilitedeshorodateurs.html",
+        "src": "salle8/horodateurs/linstabilitedeshorodateurs.html",
         "type": "text",
         "info": {
             "artiste": "Pierre Choqueux",
@@ -835,7 +835,7 @@
     {
         "artId": "c",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",
+        "src": "salle8/transversalisme/transversalisme_1194x1200.jpg",
         "type": "image",
         "info": {
             "artiste": "Laurent d'Ursel",
@@ -849,7 +849,7 @@
     {
         "artId": "e",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",
+        "src": "salle8/photo%20choco/photo%20choco_1200x811.jpg",
         "type": "image",
         "info": {
             "artiste": "Pierre Choqueux",
@@ -863,7 +863,7 @@
     {
         "artId": "i",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",
+        "src": "salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -877,7 +877,7 @@
     {
         "artId": "g",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",
+        "src": "salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",
         "type": "image",
         "info": {
             "artiste": "Jeep Novak",
@@ -892,7 +892,7 @@
     {
         "artId": "h",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",
+        "src": "salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",
         "type": "image",
         "info": {
             "artiste": "Jeep Novak",
@@ -905,9 +905,9 @@
         "z": 26
     },
     {
-        "artId": "E",
+        "artId": "D",
         "room": 8,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
+        "src": "salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
         "type": "sound",
         "info": {
             "artiste": "Edwin Lavallée & Laurent d'Ursel",
@@ -921,7 +921,7 @@
     {
         "artId": "e",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -936,7 +936,7 @@
     {
         "artId": "d",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -951,7 +951,7 @@
     {
         "artId": "f",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -966,7 +966,7 @@
     {
         "artId": "F",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -981,7 +981,7 @@
     {
         "artId": "g",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -996,7 +996,7 @@
     {
         "artId": "h",
         "room": 9,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle9/playrobot/page.html",
+        "src": "salle9/playrobot/page.html",
         "type": "image",
         "info": {
             "artiste": "Jean-Baptiste Chadelle",
@@ -1011,7 +1011,7 @@
     {
         "artId": "i",
         "room": 9,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/pachamama/pachamamadec1_1015x1200.jpg",
+        "src": "salle9/pachamama/pachamamadec1_1015x1200.jpg",
         "type": "image",
         "info": {
             "artiste": "Adec",
@@ -1025,7 +1025,7 @@
     {
         "artId": "c",
         "room": 9,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",
+        "src": "salle9/scary+baby/5207754256_0cc0d546a5_b_1024x768.jpeg",
         "type": "image",
         "info": {
             "artiste": "Jeep Novak",
@@ -1040,7 +1040,7 @@
     {
         "artId": "a",
         "room": 9,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",
+        "src": "salle9/scary+baby/5207150871_a40ed03769_b_1024x768.jpeg",
         "type": "image",
         "info": {
             "artiste": "Jeep Novak",
@@ -1055,7 +1055,7 @@
     {
         "artId": "b",
         "room": 9,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",
+        "src": "salle9/scary+baby/5207751720_903db7ab1f_b_1024x768.jpeg",
         "type": "image",
         "info": {
             "artiste": "Jeep Novak",
@@ -1070,7 +1070,7 @@
     {
         "artId": "f",
         "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_01_1200x802.jpg",
+        "src": "salle10/water/af_01_1200x802.jpg",
         "type": "image",
         "info": {
             "artiste": "Amandine Freyd",
@@ -1084,7 +1084,7 @@
     {
         "artId": "i",
         "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/Un+week+end+%C3%A0+la+mer/unwealamer.html",
+        "src": "salle10/Un+week+end+%C3%A0+la+mer/unwealamer.html",
         "type": "text",
         "info": {
             "artiste": "Thyl Sadow",
@@ -1098,7 +1098,7 @@
     {
         "artId": "e",
         "room": 10,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle10/quatre%20images/suitesolangefournier.html",
+        "src": "salle10/quatre%20images/suitesolangefournier.html",
         "type": "text",
         "info": {
             "artiste": "Solange Fournier",
@@ -1113,7 +1113,7 @@
     {
         "artId": "g",
         "room": 10,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle10/water/af_02_1200x810.jpg",
+        "src": "salle10/water/af_02_1200x810.jpg",
         "type": "image",
         "info": {
             "artiste": "Amandine Freyd",
@@ -1127,7 +1127,7 @@
     {
         "artId": "b",
         "room": 11,
-        "src": "https://s3.amazonaws.com/sans-titres/numero0/salle11/linculte/linculte.html",
+        "src": "salle11/linculte/linculte.html",
         "type": "text",
         "info": {
             "artiste": "Edwin Lavallée",
@@ -1139,9 +1139,9 @@
         "z": 38
     },
     {
-        "artId": "D",
+        "artId": "E",
         "room": 11,
-        "src": "https://sans-titres.s3.amazonaws.com/numero0/salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.mp3",
+        "src": "salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.mp3",
         "type": "sound",
         "info": {
             "artiste": "Yves André",

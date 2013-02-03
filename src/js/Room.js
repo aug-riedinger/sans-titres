@@ -238,7 +238,7 @@ Room.prototype.makeSounds = function() {
 	var sound;
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		for (j=0; j<sounds.length; j++) {
-			if(this.soundsConstr[i].mp3 === sounds[j].audio.src) {
+			if(this.soundsConstr[i].id === sounds[j].id) {
 				sound = sounds[j];
 			}
 		}
@@ -255,18 +255,18 @@ Room.prototype.enter = function() {
 	var showMuter = false;
 
 	for(j=0; j<sounds.length; j++) {
-		toPlay = false;
+		sounds[j].playNow = false;
 		for(i=0; i<sounds[j].rooms.length; i++) {
 			if(sounds[j].rooms[i] === this.id) {
-				toPlay = true;
+				sounds[j].playNow = true;
 				showMuter = true;
 			}
 		}
-		if(!toPlay && !sounds[j].audio.paused) {
+		if(!sounds[j].playNow && !sounds[j].audio.paused) {
 			sounds[j].audio.pause();
 		}
 
-		if(!MENU && toPlay && sounds[j].audio.paused && sounds[j].autoPlay) {
+		if(sounds[j].playNow && sounds[j].audio.paused && !$('#volume').hasClass('muted')) {
 			sounds[j].adjustVolume();
 			sounds[j].audio.play();
 		}

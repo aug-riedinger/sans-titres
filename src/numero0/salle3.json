@@ -23,8 +23,8 @@
         "z": -500,
         "y": -600,
         "level": 4,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Darren/darren.multiple21+12_1280x645.jpg",  
+        "thumb" : "salle3/Darren/darren.multiple21+12_1280x645.jpg",
+        "src" : "salle3/Darren/darren.multiple21+12_1280x645.jpg",  
         "info" : {
             "artiste" : "Darren Roshier",
             "titre" : "Multiple 21/12/12",
@@ -38,8 +38,8 @@
         "height" : 1500,
         "y": -500,
         "level": 3,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_800x378.jpg",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",  
+        "thumb" : "salle3/Charley+Case/CharleyCase.Diplo1_800x378.jpg",
+        "src" : "salle3/Charley+Case/CharleyCase.Diplo1_1200x567.jpg",  
         "info" : {
             "artiste" : "Charley Case",
             "titre" : "Diplomondus",
@@ -52,8 +52,8 @@
         "width" : 1332,
         "height" : 302,
         "x": -500,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/La+derniere+heure+titre.png",
-        "src" : "https://s3.amazonaws.com/sans-titres/numero0/salle3/La+derniere+heure/laderniereheure.html",  
+        "thumb" : "salle3/La+derniere+heure/La+derniere+heure+titre.png",
+        "src" : "salle3/La+derniere+heure/laderniereheure.html",  
         "info" : {
             "artiste" : "Marion K.",
             "titre" : "La dernière heure",
@@ -66,7 +66,7 @@
         "width" : 2480,
         "height" : 416,
         "x": -500,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle3/Tout%20est%20en%20place/toutestenplace.png",
+        "thumb" : "salle3/Tout%20est%20en%20place/toutestenplace.png",
         "src" : "",  
         "info" : {
             "artiste" : "Quentin Bambuck",
@@ -80,8 +80,8 @@
         {
             "id": "A",
             "type" : "sound",
-            "mp3": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.mp3",
-            "ogg": "https://s3.amazonaws.com/sans-titres/numero0/salle3/Tout+est+en+place/toutestenplace-01.ogg",
+            "mp3": "salle3/Tout+est+en+place/toutestenplace-01.mp3",
+            "ogg": "salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": "true",
             "soundText": "d",
             "rooms": [2, 4],  

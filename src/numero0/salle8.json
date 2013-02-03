@@ -24,8 +24,8 @@
         "width" : 2048,
         "height" : 1368,
         "y": -300,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dark/af_03_1024x684.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/dark/af_03_1024x684.jpg",  
+        "thumb" : "salle8/dark/af_03_1024x684.jpg",
+        "src" : "salle8/dark/af_03_1024x684.jpg",  
         "info" : {
             "artiste" : "Amandine Freyd",
             "titre" : "sans titre",
@@ -38,8 +38,8 @@
         "width" : 1371,
         "height" : 352,
         "z": 250,
-        "thumb" : "https://s3.amazonaws.com/sans-titres/numero0/salle8/snapshots/snapshots+titre_914x235.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/snapshots/snapshots.html",  
+        "thumb" : "salle8/snapshots/snapshots+titre_914x235.png",
+        "src" : "salle8/snapshots/snapshots.html",  
         "info" : {
             "artiste" : "Robert Kramer",
             "titre" : "Snapshots",
@@ -53,8 +53,8 @@
         "height" : 2000,
         "y": -600,
         "level": 6,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/warning_1000x1000.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/transversalisme/transversalisme_1194x1200.jpg",  
+        "thumb" : "salle8/transversalisme/warning_1000x1000.jpg",
+        "src" : "salle8/transversalisme/transversalisme_1194x1200.jpg",  
         "info" : {
             "artiste" : "Laurent d'Ursel",
             "titre" : "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! Ou, contre la religions religions",
@@ -67,8 +67,8 @@
         "width" : 1145,
         "height" : 321,
         "z": 250,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/horodateurs%20titre.png",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/horodateurs/linstabilitedeshorodateurs.html",  
+        "thumb" : "salle8/horodateurs/horodateurs%20titre.png",
+        "src" : "salle8/horodateurs/linstabilitedeshorodateurs.html",  
         "info" : {
             "artiste" : "Pierre Choqueux",
             "titre" : "L'instabilité des horodateurs",
@@ -81,8 +81,8 @@
         "width" : 1200,
         "height" : 811,
         "z": -250,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/photo%20choco/photo%20choco_1200x811.jpg",  
+        "thumb" : "salle8/photo%20choco/photo%20choco_1200x811.jpg",
+        "src" : "salle8/photo%20choco/photo%20choco_1200x811.jpg",  
         "info" : {
             "artiste" : "Pierre Choqueux",
             "titre" : "Ombres et horodateur géant",
@@ -95,8 +95,8 @@
         "width" : 1024,
         "height" : 768,
         "y": -100,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",  
+        "thumb" : "salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",
+        "src" : "salle8/scary%20baby/5207153459_357b66bb02_b_1024x768.jpeg",  
         "info" : {
             "artiste" : "Jeep Novak",
             "titre" : "sans titre",
@@ -110,8 +110,8 @@
         "width" : 1024,
         "height" : 768,
         "y": -100,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",  
+        "thumb" : "salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",
+        "src" : "salle8/scary%20baby/5207149453_f9eb50022e_b_1024x768.jpeg",  
         "info" : {
             "artiste" : "Jeep Novak",
             "titre" : "sans titre",
@@ -125,8 +125,8 @@
         "width" : 614,
         "height" : 461,
         "y": 50,
-        "thumb" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",
-        "src" : "https://sans-titres.s3.amazonaws.com/numero0/salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",  
+        "thumb" : "salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",
+        "src" : "salle8/playrobot/Tracy%20Lord%20IV_1024x693.jpg",  
         "info" : {
             "artiste" : "Jean-Baptiste Chadelle",
             "titre" : "Tracy Lord IV",
@@ -136,11 +136,11 @@
     ],
     "sounds" :[
     {
-        "id": "E",
+        "id": "D",
         "type" : "sound",
-        "mp3": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
-        "ogg": "https://sans-titres.s3.amazonaws.com/numero0/salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.ogg",
-        "play": "false", 
+        "mp3": "salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
+        "ogg": "salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.ogg",
+        "play": "true", 
         "soundText": "c",
         "rooms": [9],  
         "info" : {
