@@ -10,6 +10,7 @@ var Sound = function(room, constr) {
 		this.audio.src= OeuvresURL + constr.ogg;
 	}
 	this.autoPlay = (constr.play === 'true');
+	this.startRoom = [room.id];
 	this.rooms = [room.id];
 	if(constr.rooms) {
 		this.rooms = this.rooms.concat(constr.rooms);

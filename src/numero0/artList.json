@@ -668,11 +668,11 @@
         "src": "salle7/choco/portrait%20choco_900x900.jpg",
         "type": "image",
         "info": {
-            "artiste": "Francis Baudelot",
+            "artiste": "Pierre Choqueux",
             "titre": "portrait",
-            "description": "fusain sur papier A3"
+            "description": "fusain"
         },
-        "artistId": "francis-baudelot",
+        "artistId": "pierre-choqueux",
         "x": 18,
         "z": 34.5
     },
@@ -852,11 +852,11 @@
         "src": "salle8/photo%20choco/photo%20choco_1200x811.jpg",
         "type": "image",
         "info": {
-            "artiste": "Pierre Choqueux",
+            "artiste": "Anonyme",
             "titre": "Ombres et horodateur géant",
             "description": "photographie"
         },
-        "artistId": "pierre-choqueux",
+        "artistId": "anonyme",
         "x": 25,
         "z": 30.5
     },

@@ -37,4 +37,23 @@ Screen.prototype.initEvents = function() {
 			window.fullScreenApi.requestFullScreen(document.getElementsByTagName('body')[0]);
 		}
 	});
+
+	$('#volume').live('click',function(e) {
+		var i;
+		if(!$('#volume').hasClass('muted')) {
+			$('#volume').addClass('muted');
+			for(i = 0; i < sounds.length; i++) {
+				sounds[i].audio.pause();
+			}
+		} else {
+			$('#volume').removeClass('muted');
+			for(i = 0; i < sounds.length; i++) {
+				if(sounds[i].playNow) {
+					sounds[i].adjustVolume();
+					sounds[i].audio.play();
+				}
+			}
+		}
+	});
+	
 };

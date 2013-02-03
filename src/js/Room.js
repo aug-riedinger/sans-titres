@@ -25,6 +25,8 @@ Room.prototype.load = function() {
 };
 
 Room.prototype.init = function(constr) {
+	var i;
+	var alreadyFound = false;
 	this.name = constr.name || 'Room ' + this.id;
 	this.position = constr.position;
 	this.color = constr.color;
@@ -41,7 +43,17 @@ Room.prototype.init = function(constr) {
 	}
 
 	this.makeSounds();
-	rooms[rooms.length] = this;
+
+	for(i=0; i<rooms.length; i++){
+		if(rooms[i].id === this.id) {
+			alreadyFound = true;
+			break;
+		}
+	}
+	if(!alreadyFound) {
+		rooms[rooms.length] = this;
+	}
+
 	return this;
 };
 
@@ -239,6 +251,7 @@ Room.prototype.makeSounds = function() {
 	for(i = 0; i < this.soundsConstr.length; i++) {
 		for (j=0; j<sounds.length; j++) {
 			if(this.soundsConstr[i].id === sounds[j].id) {
+				sounds[j].startRoom.push(this.id);
 				sound = sounds[j];
 			}
 		}
@@ -250,18 +263,35 @@ Room.prototype.makeSounds = function() {
 
 Room.prototype.enter = function() {
 	var sound;
-	var i;
+	var i, j;
 	var toPlay;
 	var showMuter = false;
+	var inStartRoom = false;
 
+	// The sound comes from this room ==> play it
 	for(j=0; j<sounds.length; j++) {
-		sounds[j].playNow = false;
-		for(i=0; i<sounds[j].rooms.length; i++) {
-			if(sounds[j].rooms[i] === this.id) {
+		for(i=0; i<sounds[j].startRoom.length; i++) {
+			if(sounds[j].startRoom[i] === this.id) {
 				sounds[j].playNow = true;
 				showMuter = true;
+				inStartRoom = true;
 			}
 		}
+		if(!inStartRoom) {
+			// The sound is already playing
+			if(sounds[j].playNow) {
+				sounds[j].playNow = false;
+				for(i=0; i<sounds[j].rooms.length; i++) {
+					// And we enter in a continuing room ...
+					if(sounds[j].rooms[i] === this.id) {
+						sounds[j].playNow = true;
+						showMuter = true;
+					}
+				}
+			}
+
+		}
+
 		if(!sounds[j].playNow && !sounds[j].audio.paused) {
 			sounds[j].audio.pause();
 		}
@@ -285,22 +315,4 @@ Room.prototype.enter = function() {
 };
 
 Room.prototype.exit = function(newRoomId) {
-	// var i, j;
-	// var keepPlaying;
-	// for(i = 0; i < this.sounds.length; i++) {
-	// 	keepPlaying = false;
-	// 	for(j = 0; j < this.sounds[i].rooms.length; j++) {
-	// 		if(this.sounds[i].rooms[j] === newRoomId) {
-	// 			keepPlaying = true;
-	// 		}
-	// 	}
-	// 	if(!keepPlaying) {
-	// 		$('#volume').fadeOut(1000);
-	// 		this.sounds[i].audio.pause();
-	// 	} else {
-	// 		soundsToKeepPlaying.push(this.sounds[i]);
-	// 	}
-	// }
-	// console.log(soundsToKeepPlaying);
-	// return soundsToKeepPlaying;
 };
