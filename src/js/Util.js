@@ -51,9 +51,9 @@ var showArtInfo = function(artFace) {
 	$('#artAuthor').html(artFace.f.info.artiste || '');
 	$('#artDescription').html(artFace.f.info.description  || '');
 	$('#artInfo').fadeIn(1000, function() {
-		setTimeout(function() {
-			$('#artInfo').fadeOut(1000);
-		}, 4000);
+	});
+	$('#artInfoClose').one('click',function() {
+		$('#artInfo').fadeOut(1000);
 	});
 };
 
@@ -64,6 +64,11 @@ var showHtml = function(html) {
 	$('#artClearView').one('click', function(eventName) {
 		remHtml();
 	});
+
+	for(i=0; i<sounds.length; i++) {
+		sounds[i].audio.pause();
+	}
+
 };
 
 var remHtml = function() {
@@ -71,6 +76,14 @@ var remHtml = function() {
 	$('#artClearView').fadeOut(1000, function() {
 		$('#artClearView').empty();
 	});
+	$('#artInfo').fadeOut(1000);
+
+	for(i=0; i<sounds.length; i++) {
+		if(sounds[i].playNow) {
+			sounds[i].audio.play();
+		}
+	}
+
 };
 
 

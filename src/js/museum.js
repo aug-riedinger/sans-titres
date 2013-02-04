@@ -9748,25 +9748,6 @@ Screen.prototype.initEvents = function() {
 			window.fullScreenApi.requestFullScreen(document.getElementsByTagName('body')[0]);
 		}
 	});
-
-	$('#volume').live('click',function(e) {
-		var i;
-		if(!$('#volume').hasClass('muted')) {
-			$('#volume').addClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				sounds[i].audio.pause();
-			}
-		} else {
-			$('#volume').removeClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				if(sounds[i].playNow) {
-					sounds[i].adjustVolume();
-					sounds[i].audio.play();
-				}
-			}
-		}
-	});
-	
 };
 var Camera = function(_x, _z) {
 	this.focalLength = params.focalLength;
@@ -9927,24 +9908,6 @@ var Cursor = function(canvas_ID, segmentX, segmentY) {
 Cursor.prototype.initEvents = function() {
 	var that = this;
 
-	$('#volume').live('click',function(e) {
-		var i;
-		if(!$('#volume').hasClass('muted')) {
-			$('#volume').addClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				sounds[i].audio.pause();
-			}
-		} else {
-			$('#volume').removeClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				if(sounds[i].playNow) {
-					sounds[i].adjustVolume();
-					sounds[i].audio.play();
-				}
-			}
-		}
-	});
-
 	this.container.onmspointermove = this.container.ontouchmove = this.container.onmousemove = function(e) {
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
@@ -10072,6 +10035,12 @@ Cursor.prototype.calcStrength = function() {
 
 	this.strengthX = this.strengthX*0.5;
 	this.strengthY = this.strengthY*0.5;
+
+	if(this.strengthX > 0 && this.strengthY !== 0) {
+		this.strengthX = 0;
+		this.strengthY = 0;
+	}
+
 };
 
 Cursor.prototype.inTriangle = function(p1, p2, p3) {
@@ -11094,6 +11063,21 @@ var renderer = {
 			face.projection();
 			scr.ctx.beginPath();
 			scr.ctx.lineTo(face.p0.X, face.p0.Y);
+			scr.ctx.lineTo(face.p1.X, face.p1.Y);
+			scr.ctx.lineTo(face.p2.X, face.p2.Y);
+			scr.ctx.lineTo(face.p3.X, face.p3.Y);
+			scr.ctx.lineTo(face.p0.X, face.p0.Y);
+			scr.ctx.closePath();
+			scr.ctx.fillStyle = colors['aimedFloor'];
+			scr.ctx.fill();
+		}
+	},
+	renderAiming2: function() {
+		if(cursor.aimedFace && cursor.aimedFace.f.type === 'floor') {
+			face = cursor.aimedFace;
+			face.projection();
+			scr.ctx.beginPath();
+			scr.ctx.lineTo(face.p0.X, face.p0.Y);
 			if(!cursor.aimedFace.f.art) {
 				scr.ctx.lineTo((face.p0.X * 5 + face.p1.X) / 6, (face.p0.Y * 5 + face.p1.Y) / 6);
 				scr.ctx.moveTo((face.p0.X + face.p1.X * 5) / 6, (face.p0.Y + face.p1.Y * 5) / 6);
@@ -11151,46 +11135,46 @@ var renderer = {
 
 		for(i = 0; i < toRender.length; i++) {
 			// if(toRender[i].type === 'top' || toRender[i].type === 'bottom' || toRender[i].type === 'left' || toRender[i].type === 'right') {
-			if(toRender[i].type !== 'art') {
-				renderer.facesMerged(toRender[i]);
+				if(toRender[i].type !== 'art') {
+					renderer.facesMerged(toRender[i]);
+				}
+				if(toRender[i].type === 'art') {
+					face = toRender[i].art;
+					face.render();
+				}
 			}
-			if(toRender[i].type === 'art') {
-				face = toRender[i].art;
-				face.render();
+		},
+		facesMerged: function(pointList) {
+			var grd;
+			var point;
+			var points = pointList.points;
+			var color = pointList.color || colors[pointList.type];
+
+			if(points.length > 2) {
+				scr.ctx.beginPath();
+				for(var k = 0; k < points.length; k++) {
+					point = points[k];
+					scr.ctx.lineTo(point.X, point.Y);
+				}
+				scr.ctx.closePath();
+				if(colors['gradient'] === undefined || SLOW) {
+					scr.ctx.fillStyle = color || '#F9F9F9';
+				} else {
+					grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
+					grd.addColorStop(0, color);
+					grd.addColorStop(1, colors['gradient']);
+					scr.ctx.fillStyle = grd;
+				}
+				scr.ctx.lineWidth = 1;
+				scr.ctx.strokeStyle = '#E4E4E4';
+				scr.ctx.fill();
+				scr.ctx.stroke();
 			}
 		}
-	},
-	facesMerged: function(pointList) {
-		var grd;
-		var point;
-		var points = pointList.points;
-		var color = pointList.color || colors[pointList.type];
+	};
 
-		if(points.length > 2) {
-			scr.ctx.beginPath();
-			for(var k = 0; k < points.length; k++) {
-				point = points[k];
-				scr.ctx.lineTo(point.X, point.Y);
-			}
-			scr.ctx.closePath();
-			if(colors['gradient'] === undefined || SLOW) {
-				scr.ctx.fillStyle = color || '#F9F9F9';
-			} else {
-				grd = scr.ctx.createLinearGradient(points[points.length - 1].X, points[points.length - 1].Y, points[parseInt((points.length - 1) / 2, 10)].X, points[parseInt((points.length - 1) / 2, 10)].Y);
-				grd.addColorStop(0, color);
-				grd.addColorStop(1, colors['gradient']);
-				scr.ctx.fillStyle = grd;
-			}
-			scr.ctx.lineWidth = 1;
-			scr.ctx.strokeStyle = '#E4E4E4';
-			scr.ctx.fill();
-			scr.ctx.stroke();
-		}
-	}
-};
-
-var CanvasEl = {
-	Triangle: function(parent, p0, p1, p2) {
+	var CanvasEl = {
+		Triangle: function(parent, p0, p1, p2) {
 		// this.randColor = 'rgb('+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+','+parseInt(Math.random()*256)+')';
 		this.p0 = p0;
 		this.p1 = p1;
@@ -11407,9 +11391,9 @@ var showArtInfo = function(artFace) {
 	$('#artAuthor').html(artFace.f.info.artiste || '');
 	$('#artDescription').html(artFace.f.info.description  || '');
 	$('#artInfo').fadeIn(1000, function() {
-		setTimeout(function() {
-			$('#artInfo').fadeOut(1000);
-		}, 4000);
+	});
+	$('#artInfoClose').one('click',function() {
+		$('#artInfo').fadeOut(1000);
 	});
 };
 
@@ -11420,6 +11404,11 @@ var showHtml = function(html) {
 	$('#artClearView').one('click', function(eventName) {
 		remHtml();
 	});
+
+	for(i=0; i<sounds.length; i++) {
+		sounds[i].audio.pause();
+	}
+
 };
 
 var remHtml = function() {
@@ -11427,6 +11416,14 @@ var remHtml = function() {
 	$('#artClearView').fadeOut(1000, function() {
 		$('#artClearView').empty();
 	});
+	$('#artInfo').fadeOut(1000);
+
+	for(i=0; i<sounds.length; i++) {
+		if(sounds[i].playNow) {
+			sounds[i].audio.play();
+		}
+	}
+
 };
 
 

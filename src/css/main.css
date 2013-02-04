@@ -319,7 +319,7 @@ footer li {
 	height: 100%;
 	background: #F9F9F9;
 	overflow: hidden;
-/*	font-family: Segoe UI, Verdana, Arial, Sans-Serif;*/
+	/*	font-family: Segoe UI, Verdana, Arial, Sans-Serif;*/
 	/*color: #fff;*/
 
 }
@@ -520,21 +520,6 @@ footer li {
 	margin: 10px;
 }
 
-.info-displayer {
-	position: absolute;
-	margin: 30px;
-	padding: 5px;
-	bottom: 0;
-	right: 0;
-	max-width: 200px;
-	background: white;
-	color: black;
-}
-
-#minimap {
-	cursor: pointer;
-}
-
 #back {
 	cursor: pointer;
 	-ms-transform:rotate(90deg); 
@@ -551,9 +536,25 @@ footer li {
 	font-size: 1.5em;
 }
 
+.info-displayer {
+	position: absolute;
+	margin: 30px;
+	padding: 5px;
+	bottom: 0;
+	right: 0;
+	max-width: 200px;
+	background: white;
+	color: black;
+}
+
+#minimap {
+	cursor: pointer;
+}
+
 #artInfo {
 	display: none;
 	z-index: 30;
+	padding: 15px;
 }
 
 #artTitle {
@@ -578,3 +579,9 @@ footer li {
 	margin-left: 0px;
 }
 
+#artInfoClose {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}

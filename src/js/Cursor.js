@@ -18,24 +18,6 @@ var Cursor = function(canvas_ID, segmentX, segmentY) {
 Cursor.prototype.initEvents = function() {
 	var that = this;
 
-	$('#volume').live('click',function(e) {
-		var i;
-		if(!$('#volume').hasClass('muted')) {
-			$('#volume').addClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				sounds[i].audio.pause();
-			}
-		} else {
-			$('#volume').removeClass('muted');
-			for(i = 0; i < sounds.length; i++) {
-				if(sounds[i].playNow) {
-					sounds[i].adjustVolume();
-					sounds[i].audio.play();
-				}
-			}
-		}
-	});
-
 	this.container.onmspointermove = this.container.ontouchmove = this.container.onmousemove = function(e) {
 
 		that.X = (e.clientX !== undefined ? e.clientX : e.touches[0].clientX);
@@ -163,6 +145,12 @@ Cursor.prototype.calcStrength = function() {
 
 	this.strengthX = this.strengthX*0.5;
 	this.strengthY = this.strengthY*0.5;
+
+	if(this.strengthX > 0 && this.strengthY !== 0) {
+		this.strengthX = 0;
+		this.strengthY = 0;
+	}
+
 };
 
 Cursor.prototype.inTriangle = function(p1, p2, p3) {
