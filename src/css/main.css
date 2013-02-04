@@ -126,8 +126,8 @@ h1 {
 	font-size: 1.5em;
 }
 #visite{
-	top: 5px;
-	right: 0;
+	top: 30px;
+	right: 20px;
 	margin-top: 20px;
 	position: absolute;
 }
@@ -150,14 +150,14 @@ a.drop{
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	width:70px;
-	height: 70px;
+	width:80px;
+	height: 80px;
 	border-width:3px;
 	padding:20px;
-	-moz-border-radius: 60px;
-	-webkit-border-radius:60px;
-	-khtml-border-radius:60px;
-	border-radius:60px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius:75px;
+	-khtml-border-radius:75px;
+	border-radius:75px;
 	border:3px dashed white;
 }
 
@@ -168,12 +168,13 @@ a.drop{
 .drop_content {
 	position: absolute;
 	width:90px;
-	height: 80px;
+	height: 78px;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: auto;
+	font-size: 1.1em;
 }
 
 #mani_controls {
@@ -227,15 +228,16 @@ a.drop{
 #menu_list {
 	margin: 0;
 	font-size: 1.1em;
-	padding: 0 16px;
-	width: 400px;
+	width: 530px;
 	text-align: center;
+	padding: 0;
 }
 
 #menu_list li {
 	display: inline-block;
-	margin: 0 22px;
+	margin: 0;
 	margin-bottom: 10px;
+	width: 24%;
 }
 
 #menu_list li .active {
@@ -244,7 +246,7 @@ a.drop{
 
 #menu_list li.left {
 	text-align: left;
-	width: 47%;
+	width: 54%;
 	font-size: 1.5em;
 }
 
