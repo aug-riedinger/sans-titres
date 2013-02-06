@@ -65,10 +65,6 @@ var showHtml = function(html) {
 		remHtml();
 	});
 
-	for(i=0; i<sounds.length; i++) {
-		sounds[i].audio.pause();
-	}
-
 };
 
 var remHtml = function() {
@@ -79,7 +75,7 @@ var remHtml = function() {
 	$('#artInfo').fadeOut(1000);
 
 	for(i=0; i<sounds.length; i++) {
-		if(sounds[i].playNow) {
+		if(sounds[i].playNow && sounds[i].paused) {
 			sounds[i].audio.play();
 		}
 	}

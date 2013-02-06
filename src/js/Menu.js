@@ -275,7 +275,7 @@ $('#start').click(function() {
 
 var show_Manifeste = function() {
 	$('#menuIframeView').append('<iframe src="manifeste-editorial.html" class="manifest"></iframe>');
-	$('#menuIframeView').append('<a class="rotate_3PM">Sommaire</a>');
+	$('#menuIframeView').append('<a class="rotate_3PM"><span>Sommaire<span></a>');
 	$('#menuIframeView').fadeIn(1000);
 	$('#menuIframeView a').click(function(){
 		enterMenu();

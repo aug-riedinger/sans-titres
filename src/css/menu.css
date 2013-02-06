@@ -319,7 +319,7 @@ footer ul {
 
 footer li {
 	display: inline-block;
-	padding: 0 30px;
+	padding: 0 10px;
 }
 
 
@@ -342,6 +342,15 @@ footer li {
 	-o-transform:rotate(90deg); 
 	transform:rotate(90deg); 
 	font-size: 2em;
+}
+
+.rotate_3PM:hover {
+	text-decoration: none;
+}
+
+.rotate_3PM span:hover {
+	text-decoration: none;
+	border-bottom: 3px solid white;
 }
 
 .manifest {

@@ -43,6 +43,13 @@ Cursor.prototype.initEvents = function() {
 				artId = that.aimedFace.f.artId || null;
 				showHtml(that.aimedFace.html);
 				showArtInfo(that.aimedFace);
+
+				if(that.aimedFace.f.subtype === 'text' || that.aimedFace.f.subtype === 'video') {
+					for(i=0; i<sounds.length; i++) {
+						sounds[i].audio.pause();
+					}
+				}
+
 			}
 
 			if(that.aimedFace.f.type === 'floor') {
