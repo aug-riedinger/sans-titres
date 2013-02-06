@@ -12060,25 +12060,22 @@ $('#start').click(function() {
 	$('#intro').fadeOut(1000, function(){
 		$(this).remove();
 	});
-	enterMenu();
+	show_Manifeste();
 });
 
-$('#manifeste').click(function(){
-	$('#menuIframeView').append('<iframe src="manifeste-editorial.html" class="manifest"></iframe><div id="mani_controls"></div>');
-	$('#mani_controls').append('<a id="back_mani" class="drop"><div class="drop_content">Retour<br/>au<br/>sommaire</div><div  class="drop_contour"></div></a>');
-	$('#mani_controls').append('<a id="visite_mani" class="drop enter"><div class="drop_content">Accéder directement à la visite</div><div  class="drop_contour"></div></a>');
+var show_Manifeste = function() {
+	$('#menuIframeView').append('<iframe src="manifeste-editorial.html" class="manifest"></iframe>');
+	$('#menuIframeView').append('<a class="rotate_3PM">Sommaire</a>');
 	$('#menuIframeView').fadeIn(1000);
-	$('#back_mani').click(function(){
+	$('#menuIframeView a').click(function(){
+		enterMenu();
 		$('#menuIframeView').fadeOut(1000, function(){
 			$('#menuIframeView').empty();
 		});
 	});
-	$('#visite_mani').click(function(){
-		$('#menuIframeView').fadeOut(1000, function(){
-			$('#menuIframeView').empty();
-		});
-	});
-});
+};
+
+$('#manifeste').click(show_Manifeste);
 
 
 $('.enter').live('click',function(e){

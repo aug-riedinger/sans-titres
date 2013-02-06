@@ -79,6 +79,7 @@ new compressor.minify({
     type: 'sqwish',
     fileIn: [
     'src/css/oswald.css',
+    'src/css/menu.css',
     'src/css/main.css'
     ],
     fileOut: 'src/css/main.min.css',
