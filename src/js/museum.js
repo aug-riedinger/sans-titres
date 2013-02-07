@@ -12057,28 +12057,37 @@ var enterMenu = function() {
 
 };
 
-$('#minimap').click(enterMenu);
+$('#minimap').click(function(e) {
+	enterMenu();
+	e.preventDefault();
+	return false;
+});
 
 $('#start').click(function() {
 	$('#intro').fadeOut(1000, function(){
 		$(this).remove();
 	});
-	show_Manifeste();
+	enterMenu();
+	$.proxy(show_Page, $('.iframeLink[data-link="manifeste-editorial.html"]'))();
 });
 
-var show_Manifeste = function() {
-	$('#menuIframeView').append('<iframe src="manifeste-editorial.html" class="manifest"></iframe>');
+
+
+var show_Page = function() {
+	$('#menuIframeView').attr('height',($(this).attr('data-height')||'100%'));
+	$('#menuIframeView').html('<iframe src="menu_pages/'+$(this).attr('data-link')+'" class="menu_page" height="'+($(this).attr('data-height')||'100%')+'"></iframe>');
 	$('#menuIframeView').append('<a class="rotate_3PM"><span>Sommaire<span></a>');
 	$('#menuIframeView').fadeIn(1000);
-	$('#menuIframeView a').click(function(){
-		enterMenu();
+	$('#menuIframeView a').one('click',function(){
 		$('#menuIframeView').fadeOut(1000, function(){
 			$('#menuIframeView').empty();
 		});
 	});
 };
 
-$('#manifeste').click(show_Manifeste);
+$('.iframeLink').click(function() {
+	$.proxy(show_Page, $(this))();
+});
 
 
 $('.enter').live('click',function(e){
@@ -12107,7 +12116,8 @@ $('.close').one('click', function(e) {
 	return false;
 });
 
-$('#volume').live('click',function(e) {
+// $('#volume').live('click',function(e) {
+$('#volume').click(function(e) {
 	var i;
 	if(!$('#volume').hasClass('muted')) {
 		$('#volume').addClass('muted');
@@ -12123,13 +12133,15 @@ $('#volume').live('click',function(e) {
 			}
 		}
 	}
+	e.preventDefault();
+	return false;
 });
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36223212-4']);
+_gaq.push(['_setAccount', 'UA-38271419-1']);
 _gaq.push(['_trackPageview']);
 
 (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();

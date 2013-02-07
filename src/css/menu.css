@@ -20,6 +20,25 @@
 	position: relative;
 }
 
+#intro p {
+	bottom: 0;
+	text-transform: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	font-weight: 300;
+	font-size: 0.8em;
+}
+
+#intro a {
+	text-decoration: underline;
+}
+
+#intro a:hover {
+	text-decoration: none;
+}
+
 .menu {
 	/*font-variant: small-caps;*/
 	position: absolute;
@@ -326,14 +345,20 @@ footer li {
 #menuIframeView {
 	background: #1D1D4F;
 	z-index: 15;
+	top: 60px;
+	margin: auto;
+	min-height: 590px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: none;
 }
 
 .rotate_3PM {
 	position: absolute;
-	width: 100%;
 	text-align: center;
 	top: 50%;
-	left: 47%;
+	right: 0;
 	margin-top: -15px;
 	height:30px;  
 	-ms-transform:rotate(90deg); 
@@ -342,6 +367,7 @@ footer li {
 	-o-transform:rotate(90deg); 
 	transform:rotate(90deg); 
 	font-size: 2em;
+	text-transform: uppercase;
 }
 
 .rotate_3PM:hover {
@@ -353,15 +379,13 @@ footer li {
 	border-bottom: 3px solid white;
 }
 
-.manifest {
+.menu_page {
 	position: absolute;
 	margin: auto;
 	top: 0;
-	bottom: 0;
 	left: 0;
 	right: 0;
 	background: white;
 	border: none;
 	width: 850px;
-	height: 100%;
 }

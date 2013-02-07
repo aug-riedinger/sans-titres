@@ -16,125 +16,123 @@
 			<img src="images/intro.png" />
 			<h2 id="start">Entrer</h2>
 		</div>
-	</section>
-
-	<section id="menu" class="menu">
-		<nav>
-			<div class="nav left"><span class="innerLink">Appel à projet #1</span></div>
-			<div class="nav middle"><span id="manifeste" class="innerLink">Manifeste Editorial</span></div>
-			<div class="nav right"><span class="innerLink">Soutenir le projet</span></div>
-		</nav>
-		<div id="visite" class="enter">
-			<a class="drop">
-				<div class="drop_content">
-					Démarrer <br/> la <br/> visite
-				</div>
-				<div  class="drop_contour">
-				</div>
-			</a>
-		</div>
-
-		<section id="menu_content" class="menu">
-			<h1>Sans-Titres #0</h1>
-			<div id="content_middle">
-				<div id="map">
-					<div class="rotate_9PM">Table des matières</div>
-					<div id="youarehere"><img src="images/ici.png"/> Vous êtes ici</div>
-				</div>
-				<div id="arts_list">
-					<ul id="menu_list">
-						<li class="left"><span id="menu_participants" class="menu_sort innerLink">/// Participants</span></li>
-						<li class="right"><span id="menu_salles" class="menu_sort innerLink">/// Salles</span></li>
-						<br />
-						<li><span id="menu_images" class="menu_type innerLink green">Images</span></li>
-						<li><span id="menu_sounds" class="menu_type innerLink yellow">Sons</span></li>
-						<li><span id="menu_texts" class="menu_type innerLink purple">Textes</span></li>
-						<li><span id="menu_videos" class="menu_type innerLink blue">Vidéos</span></li>
-					</ul>
-					<ul id="content_list">
-					</ul>
-				</div>
-
-			</div>
+		<p> Ce site internet de nouvelle génération est optimisé pour les navigateurs <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Chrome</a> et <a href="http://support.apple.com/kb/DL1531" target="_blank">Safari</a>, ces navigateurs sont gratuits, n'hésitez pas à les <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">télécharger</a>. <br />
+			Il est possible que vous rencontriez certaines difficultés de navigation dans les premiers instants, 
+			cela ne durera pas, la fluidité de vos déplacements s'améliorera à chaque nouvelle visite !</p>
 		</section>
 
+		<section id="menu" class="menu">
+			<nav>
+				<div class="nav left"><span class="innerLink iframeLink" data-link="appelaprojets.html" data-height="583px">Appel à projet #1</span></div>
+				<div class="nav middle"><span id="manifeste" class="innerLink iframeLink" data-link="manifeste-editorial.html" data-height="1597px">Manifeste Editorial</span></div>
+				<div class="nav right"><span class="innerLink iframeLink" data-link="soutenir.html" data-height="583px">Soutenir le projet</span></div>
+			</nav>
+			<div id="visite" class="enter">
+				<a class="drop">
+					<div class="drop_content">
+						Démarrer <br/> la <br/> visite
+					</div>
+					<div  class="drop_contour">
+					</div>
+				</a>
+			</div>
 
-		<footer>
-			<ul id="footer">
-				<li><a href="#">Mentions légales</a></li>
-				<li><a href="#">Qui nous sommes</a></li>
-				<li><a href="#">Nous contacter</a></li>
-				<li><a href="#">Partenaires</a></li>
-			</ul>
-		</footer>
+			<section id="menu_content" class="menu">
+				<h1>Sans-Titres #0</h1>
+				<div id="content_middle">
+					<div id="map">
+						<div class="rotate_9PM">Table des matières</div>
+						<div id="youarehere"><img src="images/ici.png"/> Vous êtes ici</div>
+					</div>
+					<div id="arts_list">
+						<ul id="menu_list">
+							<li class="left"><span id="menu_participants" class="menu_sort innerLink">/// Participants</span></li>
+							<li class="right"><span id="menu_salles" class="menu_sort innerLink">/// Salles</span></li>
+							<br />
+							<li><span id="menu_images" class="menu_type innerLink green">Images</span></li>
+							<li><span id="menu_sounds" class="menu_type innerLink yellow">Sons</span></li>
+							<li><span id="menu_texts" class="menu_type innerLink purple">Textes</span></li>
+							<li><span id="menu_videos" class="menu_type innerLink blue">Vidéos</span></li>
+						</ul>
+						<ul id="content_list">
+						</ul>
+					</div>
+
+				</div>
+			</section>
 
 
-	</section>
+			<footer>
+				<ul id="footer">
+					<li><span class="innerLink iframeLink" data-link="mentionslegales.html" data-height="1405px">Mentions légales</span></li>
+					<li><span class="innerLink iframeLink" data-link="quinoussommes.html" data-height="784px">Qui nous sommes</span></li>
+					<li><span class="innerLink iframeLink" data-link="contact.html" data-height="584px">Nous contacter</span></li>
+					<li><span class="innerLink iframeLink" data-link="partenaires.html" data-height="585px">Partenaires</span></li>
+				</ul>
+			</footer>
 
-	<div id="menuIframeView" class="iframeTop">
-	</div>
 
-	<div id="screen">
-		<canvas id="canvas"></canvas>
+		</section>
 
-		<div id="full-screen">
-			<h3>Contrôles</h3>
-			<div class="close"><img src="images/close.png"/></div>
-			<ul>
-				<li>
-					<img src="images/key-enter.png" class="fleft" /> 
-					<img src="images/fullscreen.png" class="fright" />
-					Pour passer en mode plein écran, appuyer sur "Entrer" (Echap pour quitter).
-				</li>
-				<li>
-					<img src="images/mouse48.png" class="fleft" />
-					<img src="images/icons_foot_01.png" class="fright" />
-					Pour se déplacer, cliquer sur le sol.
-				</li>
-				<li>
-					<img src="images/mouse48.png" class="fleft" />
-					<img src="images/k-view.png" class="fright" />
-					Cliquer sur une oeuvre pour l'afficher en plein écran.
-				</li>
-				<li>
-					<img src="images/mouse48.png" class="fleft" />
-					<img src="images/volume_mute.png" width="48" height="48" class="fright" />
-					Lorsqu'un son se déclenche automatiquement, il peut être mis en pause en cliquant sur l'icône en haut à droite.
-				</li>
-				<li>
-					<img src="images/mouse48.png" class="fleft" />
-					<div class="plan fright">PLAN</div>
-					Il est possible de revenir au menu à tout moment en cliquant en bas à droite sur le plan.
-				</li>
-				<li>
-					<img src="images/chrome.png" class="fleft" />
-					<img src="images/safari.png" class="fright" />
-					Sans-titres est optimisé pour les navigateurs <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Chrome</a> et <a href="http://support.apple.com/kb/DL1531" target="_blank">Safari</a>. N'hésitez pas à la télécharger.
-				</li>
-			</ul>
+		<div id="menuIframeView">
 		</div>
 
-		<div id="volume">
+		<div id="screen">
+			<canvas id="canvas"></canvas>
+
+			<div id="full-screen">
+				<h3>Contrôles</h3>
+				<div class="close"><img src="images/close.png"/></div>
+				<ul>
+					<li>
+						<img src="images/key-enter.png" class="fleft" /> 
+						<img src="images/fullscreen.png" class="fright" />
+						Pour passer en mode plein écran, appuyer sur "Entrer" (Echap pour quitter).
+					</li>
+					<li>
+						<img src="images/mouse48.png" class="fleft" />
+						<img src="images/icons_foot_01.png" class="fright" />
+						Pour se déplacer, cliquer sur le sol.
+					</li>
+					<li>
+						<img src="images/mouse48.png" class="fleft" />
+						<img src="images/k-view.png" class="fright" />
+						Cliquer sur une oeuvre pour l'afficher en plein écran.
+					</li>
+					<li>
+						<img src="images/mouse48.png" class="fleft" />
+						<img src="images/volume_mute.png" width="48" height="48" class="fright" />
+						Lorsqu'un son se déclenche automatiquement, il peut être mis en pause en cliquant sur l'icône en haut à droite.
+					</li>
+					<li>
+						<img src="images/mouse48.png" class="fleft" />
+						<img src="images/icomap48.png" class="fright" />
+						Il est possible de revenir au menu à tout moment en cliquant en bas à droite sur le plan.
+					</li>
+				</ul>
+			</div>
+
+			<div id="volume">
+			</div>
+
+			<div class="info-displayer">
+				<div id="minimap"><img src="images/icomap.png"/></div>
+			</div>
+
+			<div id="artInfo" class="info-displayer">
+				<div id="artTitle">Sans-titres</div>
+				<div id="artSerie"></div>
+				<div id="artAuthor">de la team Sans-titres</div>
+				<div id="artDescription">Bienvenue sur notre musée virtuel</div>
+				<div id="artInfoClose"><img src="images/close24.png" /></div>
+			</div>
 		</div>
 
-		<div class="info-displayer">
-			<div id="minimap">PLAN</div>
+		<div id="artClearView" class="iframeTop">
 		</div>
 
-		<div id="artInfo" class="info-displayer">
-			<div id="artTitle">Sans-titres</div>
-			<div id="artSerie"></div>
-			<div id="artAuthor">de la team Sans-titres</div>
-			<div id="artDescription">Bienvenue sur notre musée virtuel</div>
-			<div id="artInfoClose"><img src="images/close24.png" /></div>
-		</div>
-	</div>
 
-	<div id="artClearView" class="iframeTop">
-	</div>
+		<script type="text/javascript" src="./js/museum.js"></script>
 
-
-	<script type="text/javascript" src="./js/museum.min.js"></script>
-
-</body>
-</html>
+	</body>
+	</html>
