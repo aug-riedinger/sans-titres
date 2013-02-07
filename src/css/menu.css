@@ -125,7 +125,7 @@ h1 {
 a.drop{
 	position: relative;
 	display: block;
-	color:white;
+	color: red;
 	text-align: center;
 	text-decoration:none;
 	font-family:'Oswald', sans-serif;
@@ -134,7 +134,7 @@ a.drop{
 	z-index: 40;
 }
 a.drop:hover{
-	color: red;
+	color: white;
 }
 
 .drop_contour {
@@ -152,12 +152,12 @@ a.drop:hover{
 	-webkit-border-radius:75px;
 	-khtml-border-radius:75px;
 	border-radius:75px;
-	border:3px dashed red;
+	border:3px dashed white;
 }
 
 .drop_contour:hover{
 	border-style: solid;
-	border-color: white;
+	border-color: red;
 }
 
 .drop_content {
