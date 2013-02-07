@@ -15,20 +15,6 @@
         "z": 2.5
     },
     {
-        "artId": "c",
-        "room": 1,
-        "src": "salle1/manifeste-editorial.html",
-        "type": "text",
-        "info": {
-            "artiste": "",
-            "titre": "Manifeste Editorial",
-            "description": "texte"
-        },
-        "artistId": "inconnu",
-        "x": 25,
-        "z": 2.5
-    },
-    {
         "artId": "a",
         "room": 2,
         "src": "salle2/Guillaume+Musset/GuillaumeMusset.sanstitre1_1600x1067.jpg",
@@ -332,7 +318,7 @@
         "info": {
             "artiste": "Clémence Gachot",
             "titre": "Faces",
-            "description": "essai critique"
+            "description": "poésie"
         },
         "artistId": "clmence-gachot",
         "x": 23.5,
@@ -698,7 +684,7 @@
         "info": {
             "artiste": "Mahé Ripoll",
             "titre": "sans titre",
-            "description": "Peinture sur toile, techniques mixtes, 150 x 150 cm"
+            "description": "Peinture sur toile, techniques mixtes, 90x90 cm"
         },
         "artistId": "mah-ripoll",
         "x": 21.5,
@@ -756,7 +742,7 @@
             "artiste": "Yves André & Guillaume Musset",
             "titre": "Dialogue dans un monde en hiver",
             "ensemble": "Photographie extraite de la série + - ∞",
-            "description": "Caméra : Pierre Choqueux"
+            "description": "Caméra : Pierre Choqueux<br /> Interprétation : Taïla Onraedt & Yves André"
         },
         "artistId": "yves-andr--guillaume-musset",
         "x": 25,

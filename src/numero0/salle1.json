@@ -17,16 +17,16 @@
     {
         "id": "a",
         "type" : "text",
-        "width" : 1000,
-        "height" : 1000,
+        "width" : 800,
+        "height" : 368,
         "y": -200,
         "x": 500,
-        "thumb" : "salle1/carteblanche.png",
-        "src" : "",  
+        "thumb" : "salle1/titre.png",
+        "src" : "salle1/lafindumonde.html",  
         "info" : {
             "artiste" : "",
-            "titre" : "Plan du Numéro #0",
-            "description": "plan"
+            "titre" : "Sans-Titres #0 - La fin du monde",
+            "description": "texte introductif"
         },
         "noMenu": true
     },
@@ -43,21 +43,6 @@
             "titre" : "sans titre",
             "ensemble" : "série + - ∞",
             "description": "photographie"
-        }
-    },
-    {
-        "id": "c",
-        "type" : "text",
-        "width" : 3600,
-        "height" : 900,
-        "y": -400,
-        "level": 4,
-        "thumb" : "salle1/titre.png",
-        "src" : "salle1/manifeste-editorial.html",  
-        "info" : {
-            "artiste" : "",
-            "titre" : "Manifeste Editorial",
-            "description": "texte"
         }
     }
     ]
