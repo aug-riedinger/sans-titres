@@ -35,7 +35,7 @@
                 "left": "salle5/monolythe/gauche_89x583.png",
                 "right": "salle5/monolythe/droite_89x598.png"
             },
-        "src" : "http://heeeeeeeey.com",  
+        "src" : "salle5/monolythe/page.html",  
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Résistance",
