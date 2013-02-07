@@ -23,7 +23,7 @@ var params = {
 	cursorY: 6
 };
 
-var OeuvresURL = 'https://numero0.s3-external-3.amazonaws.com/';
+var OeuvresURL = 'http://numero0.s3-external-3.amazonaws.com/';
 
 var colors = {
 	'floor': '#80827d',
