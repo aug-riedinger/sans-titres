@@ -17,7 +17,7 @@ app.use("/menu_pages", express.static(__dirname + '/src/menu_pages'));
 app.use(express.errorHandler());
 
 app.get('/', function(request, response) {
-	response.sendfile(__dirname + "/src/index.html");
+	response.sendfile(__dirname + "/src/comingsoon.html");
 });
 
 // app.get('/manifeste-editorial.html', function(request, response) {
