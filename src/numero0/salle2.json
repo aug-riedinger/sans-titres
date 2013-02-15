@@ -206,7 +206,7 @@
             "type" : "sound",
             "mp3": "salle3/Tout+est+en+place/toutestenplace-01.mp3",
             "ogg": "salle3/Tout+est+en+place/toutestenplace-01.ogg",
-            "play": "true",
+            "play": true,
             "rooms": [3, 4],  
         "info" : {
             "artiste" : "Quentin Bambuck",

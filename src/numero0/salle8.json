@@ -57,9 +57,10 @@
         "src" : "salle8/transversalisme/page.html",  
         "info" : {
             "artiste" : "Laurent d'Ursel",
-            "titre" : "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! Ou, contre la religions religions",
+            "titre" : "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! <i>ou</i> Contre la religion de la religion",
             "description": "photomontage 100x100cm"
-        }
+        },
+        "sound" : "D"
     },
     {
         "id": "d",
@@ -140,7 +141,7 @@
         "type" : "sound",
         "mp3": "salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.mp3",
         "ogg": "salle8/dialogue%20de%20sourds%20qui%20s'entendent/Dialogue%20de%20sourds%20qui%20s'entendent.ogg",
-        "play": "true", 
+        "play": false, 
         "soundText": "c",
         "rooms": [9],  
         "info" : {

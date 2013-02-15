@@ -180,7 +180,7 @@
         "thumb" : "salle5/apocalypses/apocalypses_962x541.jpg",
         "src" : "salle5/apocalypses/page.html",  
         "info" : {
-            "artiste" : "Lucile Rimbert & Arthur Baude",
+            "artiste" : "Lucile Rimbert, Gwendolyn Boudon & Arthur Baude",
             "titre" : "Les apocalypses ont déjà eu lieu mais personne n'a voulu s'en rendre compte",
             "description": "court-métrage dansant"
         }
@@ -367,7 +367,7 @@
         "type" : "sound",
         "mp3": "salle5/resistance/resistance.mp3",
         "ogg": "salle5/resistance/resistance.ogg",
-        "play": "true",
+        "play": true,
         "position" : {
             "x": 3,
             "z": 8

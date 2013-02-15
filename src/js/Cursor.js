@@ -35,6 +35,7 @@ Cursor.prototype.initEvents = function() {
 
 	this.container.onclick = function(e) {
 		var roomId, artId, title;
+		var i;
 
 		if(that.aimedFace) {
 			roomId = that.aimedFace.f.roomId;
@@ -48,25 +49,23 @@ Cursor.prototype.initEvents = function() {
 					for(i=0; i<sounds.length; i++) {
 						sounds[i].audio.pause();
 					}
+				} else {
+					if(that.aimedFace.f.sound) {
+						for(i=0; i<sounds.length; i++) {
+							if(sounds[i].id === that.aimedFace.f.sound) {
+								sounds[i].audio.play();
+								sounds[i].playNow = true;
+								$('#volume').fadeIn(1000);
+							}
+						}
+					}
+					
 				}
+
 
 			}
 
 			if(that.aimedFace.f.type === 'floor') {
-				// if(that.aimedFace.f.art) {
-				// 	artId = that.aimedFace.f.art.f.artId || null;
-				// 	$(scr.canvas).one('inPosition', $.proxy(function() {
-				// 		cursor.mute();
-				// 		$('#artTitle').html(this.f.art.f.info.title || 'Inconnu');
-				// 		$('#artAuthor').html(this.f.art.f.info.author || 'Inconnu');
-				// 		$('#artDescription').html(this.f.art.f.info.description || 'Inconnu');
-				// 		$('#artInfo').fadeIn(1000, function() {
-				// 			setTimeout(function() {
-				// 				$('#artInfo').fadeOut(1000);
-				// 			}, 3000);
-				// 		});
-				// 	},that.aimedFace));
-				// }
 				camera.targetToFace(that.aimedFace);
 
 				if(roomId !== rooms[0].id) {

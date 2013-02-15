@@ -193,18 +193,22 @@ Room.prototype.readMap = function() {
 						if(this.isTop(artConstr.side || charType)) {
 							art = faceMaker.art(this, top || faceMaker.top(this, x, z), artConstr);
 							this.arts.push(art);
+							this.floors[this.floors.length-1].f.art = art;
 						}
 						if(this.isBottom(artConstr.side || charType)) {
 							art = faceMaker.art(this, bottom || faceMaker.bottom(this, x, z), artConstr);
 							this.arts.push(art);
+							this.floors[this.floors.length-1].f.art = art;
 						}
 						if(this.isLeft(artConstr.side || charType)) {
 							art = faceMaker.art(this, left || faceMaker.left(this, x, z), artConstr);
 							this.arts.push(art);
+							this.floors[this.floors.length-1].f.art = art;
 						}
 						if(this.isRight(artConstr.side || charType)) {
 							art = faceMaker.art(this, right || faceMaker.right(this, x, z), artConstr);
 							this.arts.push(art);
+							this.floors[this.floors.length-1].f.art = art;
 						}
 						if(this.isNoWall(artConstr.side || charType)) {
 							if(artConstr.type === 'monolythe') {

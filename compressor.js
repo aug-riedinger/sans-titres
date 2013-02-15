@@ -62,7 +62,8 @@ new compressor.minify({
     'src/js/Util.js',
     'src/js/Main.js',
     'src/js/Menu.js',
-    'src/js/Sound.js'
+    'src/js/Sound.js',
+    'src/js/Analytics.js'
     ],
     fileOut: 'src/js/museum.min.js',
     callback: function(err){

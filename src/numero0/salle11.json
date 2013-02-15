@@ -24,7 +24,8 @@
             "titre" : "Les mots de l'autre",
             "description": "poésie"
         },
-        "border": false
+        "border": false,
+        "sound" : "E"
     },
     {
         "id": "b",
@@ -48,7 +49,7 @@
         "type" : "sound",
         "mp3": "salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.mp3",
         "ogg": "salle11/les%20mots%20de%20lautre/Les%20mots%20de%20l'autre.ogg",
-        "play": "true",
+        "play": false,
         "soundText": "a",
         "rooms": [10],  
         "info" : {

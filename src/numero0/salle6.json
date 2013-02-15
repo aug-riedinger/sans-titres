@@ -38,7 +38,8 @@
             "titre" : "Ils étaient cinq dans un vieux bar",
             "description": "poésie"
         },
-        "noMap": true
+        "noMap": true,
+        "sound" : "C"
     },
     {
         "id": "c",
@@ -118,7 +119,7 @@
             "type" : "sound",
             "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
             "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
-            "play": "true",
+            "play": false,
             "soundText": "b",
             "info" : {
                 "artiste" : "Yves André",

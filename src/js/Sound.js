@@ -9,8 +9,12 @@ var Sound = function(room, constr) {
 		this.audio.type= 'audio/ogg';
 		this.audio.src= OeuvresURL + constr.ogg;
 	}
-	this.autoPlay = (constr.play === 'true');
-	this.startRoom = [room.id];
+	this.autoPlay = constr.play;
+	if(this.autoPlay) {
+		this.startRoom = [room.id];
+	} else {
+		this.startRoom = [];
+	}
 	this.rooms = [room.id];
 	if(constr.rooms) {
 		this.rooms = this.rooms.concat(constr.rooms);

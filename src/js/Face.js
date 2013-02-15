@@ -307,7 +307,8 @@
 				iFrameWidth: artConstr.iFrameWidth,
 				level: artConstr.level,
 				artId: artConstr.id,
-				select: true
+				select: true,
+				sound: artConstr.sound
 			};
 			return new Face(f);
 		},
