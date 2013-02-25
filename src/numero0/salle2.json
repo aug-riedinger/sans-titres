@@ -42,7 +42,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         }   
     },
     {
@@ -55,7 +55,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },
         "noMenu": true
     },
@@ -69,7 +69,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },
         "noMenu": true
     },
@@ -84,7 +84,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },
         "noMenu": true
     },
@@ -99,7 +99,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         }, 
         "noMenu": true
     },
@@ -113,7 +113,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },
         "noMenu": true  
     },
@@ -127,7 +127,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },   
         "noMenu": true
     },
@@ -141,7 +141,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },  
         "noMenu": true
     },
@@ -155,7 +155,7 @@
         "info" : {
             "artiste" : "Nicolas Marchant",
             "titre" : "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },  
         "noMenu": true
     },
@@ -208,11 +208,12 @@
             "ogg": "salle3/Tout+est+en+place/toutestenplace-01.ogg",
             "play": true,
             "rooms": [3, 4],  
-        "info" : {
-            "artiste" : "Quentin Bambuck",
-            "titre" : "Tout est en place",
-            "description": "Texte et musique de Quentin Bambuck"
-        }
+            "info" : {
+                "artiste" : "Quentin Bambuck",
+                "titre" : "Tout est en place",
+                "description": "Texte et musique de Quentin Bambuck"
+            },
+            "noMenu": true
         }
     ]
 }

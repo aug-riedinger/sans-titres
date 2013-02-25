@@ -29,16 +29,16 @@
     {
         "id": "b",
         "type" : "text",
-        "width" : 1588,
-        "height" : 300,
-        "thumb" : "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ils%20etaient%20cinq%20dans%20un%20vieux%20bar%20titre.png",
+        "width" : 1514,
+        "height" : 196,
+        "thumb" : "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbarsigned.png",
         "src" : "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",  
         "info" : {
             "artiste" : "Yves André",
             "titre" : "Ils étaient cinq dans un vieux bar",
             "description": "poésie"
         },
-        "noMap": true,
+        "noMenu": true,
         "sound" : "C"
     },
     {
@@ -118,9 +118,10 @@
             "id": "C",
             "type" : "sound",
             "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
-            "mp3": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+            "ogg": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
             "play": false,
             "soundText": "b",
+            "rooms": [],
             "info" : {
                 "artiste" : "Yves André",
                 "titre" : "Ils étaient cinq dans un vieux bar",

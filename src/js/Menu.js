@@ -209,6 +209,10 @@ var showCircles = function(arts) {
 
 		art.circle.attr('href', '/#!room=' + art.room + '&art=' + art.artId);
 
+		art.circle.click($.proxy(function () {
+			enterMuseum(this.room);
+		}, art));
+
 		art.circle.hover(circleHover, circleOutHover);
 
 		$('#' + art.room + '-' + art.artId).hover($.proxy(circleHover, art.circle), $.proxy(circleOutHover, art.circle));

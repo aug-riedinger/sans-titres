@@ -49,20 +49,17 @@ Cursor.prototype.initEvents = function() {
 					for(i=0; i<sounds.length; i++) {
 						sounds[i].audio.pause();
 					}
-				} else {
-					if(that.aimedFace.f.sound) {
-						for(i=0; i<sounds.length; i++) {
-							if(sounds[i].id === that.aimedFace.f.sound) {
-								sounds[i].audio.play();
-								sounds[i].playNow = true;
-								$('#volume').fadeIn(1000);
-							}
+				}
+				if(that.aimedFace.f.sound) {
+					console.log('here');
+					for(i=0; i<sounds.length; i++) {
+						if(sounds[i].id === that.aimedFace.f.sound) {
+							sounds[i].audio.play();
+							sounds[i].playNow = true;
+							$('#volume').fadeIn(1000);
 						}
 					}
-					
 				}
-
-
 			}
 
 			if(that.aimedFace.f.type === 'floor') {

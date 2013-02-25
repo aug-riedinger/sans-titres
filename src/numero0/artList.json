@@ -80,7 +80,7 @@
         "info": {
             "artiste": "Nicolas Marchant",
             "titre": "La vie sous les mouches",
-            "description": "(en attente)"
+            "description": "carnet"
         },
         "artistId": "nicolas-marchant",
         "x": 19.5,
@@ -302,11 +302,11 @@
         "src": "salle5/apocalypses/page.html",
         "type": "video",
         "info": {
-            "artiste": "Lucile Rimbert & Arthur Baude",
+            "artiste": "Lucile Rimbert, Gwendolyn Boudon & Arthur Baude",
             "titre": "Les apocalypses ont déjà eu lieu mais personne n'a voulu s'en rendre compte",
             "description": "court-métrage dansant"
         },
-        "artistId": "lucile-rimbert--arthur-baude",
+        "artistId": "lucile-rimbert-gwendolyn-boudon--arthur-baude",
         "x": 22.5,
         "z": 31
     },
@@ -593,20 +593,6 @@
         "z": 23.5
     },
     {
-        "artId": "b",
-        "room": 6,
-        "src": "salle6/ils%20etaient%20cinq%20dans%20un%20vieux%20bar/ilsetaientcinqdansunvieuxbar.html",
-        "type": "text",
-        "info": {
-            "artiste": "Yves André",
-            "titre": "Ils étaient cinq dans un vieux bar",
-            "description": "poésie"
-        },
-        "artistId": "yves-andr",
-        "x": 26.5,
-        "z": 22
-    },
-    {
         "artId": "f",
         "room": 6,
         "src": "salle6/images/mexicain_558x1024.jpg",
@@ -637,7 +623,7 @@
     {
         "artId": "C",
         "room": 6,
-        "src": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.ogg",
+        "src": "salle6/ils+etaient+cinq+dans+un+vieux+bar/Ils+%C3%A9taient+cinq+dans+un+vieux+bar.mp3",
         "type": "sound",
         "info": {
             "artiste": "Yves André",
@@ -825,7 +811,7 @@
         "type": "image",
         "info": {
             "artiste": "Laurent d'Ursel",
-            "titre": "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! Ou, contre la religions religions",
+            "titre": "Vive les valeureux pourfendeurs du transversalisme obligé, fallacieux, jésuite, gluant, consensuel, mou, féminin et bien pensant! <i>ou</i> Contre la religion de la religion",
             "description": "photomontage 100x100cm"
         },
         "artistId": "laurent-dursel",
