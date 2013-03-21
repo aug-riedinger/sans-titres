@@ -15,8 +15,8 @@ var circleOutHover = function() {
 var filterType = function(artsMenu, criteria) {
 	var res = [];
 
-	for(var i=0; i<artsMenu.length; i++) {
-		if(criteria.type === 'all' || criteria.type === artsMenu[i].type) {
+	for (var i = 0; i < artsMenu.length; i++) {
+		if (criteria.type === 'all' || criteria.type === artsMenu[i].type) {
 			res.push(artsMenu[i]);
 		}
 	}
@@ -31,8 +31,8 @@ var makeGroups = function(artsMenu, criteria) {
 	var art;
 
 	arts = filterType(artsMenu, criteria).sort(function(el1, el2) {
-		if(el1[criteria.sort] < el2[criteria.sort]) return -1;
-		if(el1[criteria.sort] > el2[criteria.sort]) return 1;
+		if (el1[criteria.sort] < el2[criteria.sort]) return -1;
+		if (el1[criteria.sort] > el2[criteria.sort]) return 1;
 
 		return 0;
 	});
@@ -40,14 +40,14 @@ var makeGroups = function(artsMenu, criteria) {
 	formerCriteria = arts[0][criteria.sort];
 	artGroup.push(arts[0]);
 
-	for(i = 1; i < arts.length; i++) {
+	for (i = 1; i < arts.length; i++) {
 		art = arts[i];
-		if(formerCriteria !== art[criteria.sort]) {
-			el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
-			ul = $('<ul class="full_info" id="'+criteria.sort+'-'+arts[i-1][criteria.sort]+'"></ul>');
+		if (formerCriteria !== art[criteria.sort]) {
+			el = $('<li class="left">' + criteria.label(arts[i - 1]) + '</li>');
+			ul = $('<ul class="full_info" id="' + criteria.sort + '-' + arts[i - 1][criteria.sort] + '"></ul>');
 
-			for(j=0; j<artGroup.length; j++) {
-				ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble||'') + ' ' + (artGroup[j].info.description||'') + '</span></li');
+			for (j = 0; j < artGroup.length; j++) {
+				ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble || '') + ' ' + (artGroup[j].info.description || '') + '</span></li');
 			}
 
 			$(el).append(ul);
@@ -59,17 +59,17 @@ var makeGroups = function(artsMenu, criteria) {
 			});
 			artGroup = [];
 		}
-		
+
 		formerCriteria = art[criteria.sort];
 		artGroup.push(art);
 
 	}
 
-	el = $('<li class="left">'+criteria.label(arts[i-1])+'</li>');
-	ul = $('<ul class="full_info" id="'+criteria.sort+'-'+arts[i-1][criteria.sort]+'"></ul>');
+	el = $('<li class="left">' + criteria.label(arts[i - 1]) + '</li>');
+	ul = $('<ul class="full_info" id="' + criteria.sort + '-' + arts[i - 1][criteria.sort] + '"></ul>');
 
-	for(j=0; j<artGroup.length; j++) {
-		ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble||'') + ' ' + (artGroup[j].info.description||'') + '</span></li');
+	for (j = 0; j < artGroup.length; j++) {
+		ul.append('<li id="' + artGroup[j].room + '-' + artGroup[j].artId + '"><a class="enter" href="/#!room=' + artGroup[j].room + '&art=' + artGroup[j].artId + '">' + (artGroup[j].info.titre || 'sans titre') + '</a> <span class="small">' + (artGroup[j].info.ensemble || '') + ' ' + (artGroup[j].info.description || '') + '</span></li');
 	}
 
 	$(el).append(ul);
@@ -117,11 +117,11 @@ $.getJSON('numero0/artList.json', function(data) {
 		type: 'all',
 		sort: 'artistId',
 		label: function(art) {
-			if(this.sort === 'artistId') {
+			if (this.sort === 'artistId') {
 				return art.info.artiste;
 			}
-			if(this.sort === 'room') {
-				return '<a href="#!room='+art.room+'" class="enter">Salle '+art.room+'</a>';
+			if (this.sort === 'room') {
+				return '<a href="#!room=' + art.room + '" class="enter">Salle ' + art.room + '</a>';
 			}
 		}
 	};
@@ -185,23 +185,23 @@ $.getJSON('numero0/artList.json', function(data) {
 var showCircles = function(arts) {
 	var ratio = 479 / 54;
 	map.clear();
-	if(camera) {
-		setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	if (camera) {
+		setPosition(camera.x.value / params.unit * ratio, 479 - camera.z.value / params.unit * ratio);
 	}
 
 	$.each(arts, function(index, art) {
 		art.circle = map.circle(art.x * ratio, 479 - art.z * ratio, 5);
 
-		if(art.type === 'text') {
+		if (art.type === 'text') {
 			art.circle.attr("fill", "purple");
 		}
-		if(art.type === 'image') {
+		if (art.type === 'image') {
 			art.circle.attr("fill", "green");
 		}
-		if(art.type === 'video') {
+		if (art.type === 'video') {
 			art.circle.attr("fill", "blue");
 		}
-		if(art.type === 'sound') {
+		if (art.type === 'sound') {
 			art.circle.attr("fill", "yellow");
 		}
 
@@ -209,7 +209,7 @@ var showCircles = function(arts) {
 
 		art.circle.attr('href', '/#!room=' + art.room + '&art=' + art.artId);
 
-		art.circle.click($.proxy(function () {
+		art.circle.click($.proxy(function() {
 			enterMuseum(this.room);
 		}, art));
 
@@ -222,9 +222,9 @@ var showCircles = function(arts) {
 };
 
 var setPosition = function(x, z) {
-	if(x && z) {
+	if (x && z) {
 		var cross_size = 5;
-		var path = 'M'+(x-cross_size)+','+(z-cross_size)+'L'+(x+cross_size)+','+(z+cross_size)+'M'+(x+cross_size)+','+(z-cross_size)+'L'+(x-cross_size)+','+(z+cross_size);
+		var path = 'M' + (x - cross_size) + ',' + (z - cross_size) + 'L' + (x + cross_size) + ',' + (z + cross_size) + 'M' + (x + cross_size) + ',' + (z - cross_size) + 'L' + (x - cross_size) + ',' + (z + cross_size);
 		var cross = map.path(path);
 		cross.attr('stroke', 'red');
 		cross.attr('stroke-width', 3);
@@ -236,61 +236,80 @@ var enterMuseum = function(roomId) {
 	$('#screen').fadeIn(1000);
 	MENU = false;
 
-	if(rooms.length && rooms[0].id === roomId) {
+	if (rooms.length && rooms[0].id === roomId) {
 		rooms[0].enter();
 		run();
 	} else {
-		rooms= [];
+		rooms = [];
 		init(roomId);
 	}
+
+	$('#minimap').click(enterMenu);
 
 };
 
 
-var enterMenu = function() {
+var enterMenu = function(e) {
+	if (e) {
+		e.preventDefault();
+		console.log(e.srcElement);
+		if (e.srcElement.id === 'minimap') {
+			$('#visite').find('.drop_content').html('Retourner<br /> à la <br />visite');
+		}
+	}
 	var ratio = 479 / 54;
 	var i;
-	// $('#visite').html('Retourner directement à la visite');
 	$('#menu').fadeIn(1000);
 	$('#screen').fadeOut(1000);
 	MENU = true;
 
 	map.clear();
-	if(camera) {
-		setPosition(camera.x.value/params.unit * ratio, 479 - camera.z.value/params.unit * ratio);
+	if (camera) {
+		setPosition(camera.x.value / params.unit * ratio, 479 - camera.z.value / params.unit * ratio);
 	}
 
-	if(sounds.length) {
-		for(i=0; i<sounds.length; i++) {
+	if (sounds.length) {
+		for (i = 0; i < sounds.length; i++) {
 			sounds[i].audio.pause();
 		}
 	}
 
+
+	// $('.enter').live('click', function(e) {
+	$('.enter').click(function(e) {
+		var room;
+
+		room = parseInt(getParameters($(this).attr('href') || window.location.href).room, 10);
+		if (room) {
+			return enterMuseum(room);
+		}
+
+		if (rooms[0]) {
+			return enterMuseum(rooms[0].id);
+		}
+		return enterMuseum(1);
+	});
+
+	return false;
 };
 
-$('#minimap').click(function(e) {
-	enterMenu();
-	e.preventDefault();
-	return false;
-});
-
-$('#start').click(function() {
-	$('#intro').fadeOut(1000, function(){
+var firstEnterMenu = function() {
+	$('#intro').fadeOut(1000, function() {
 		$(this).remove();
 	});
 	enterMenu();
 	$.proxy(show_Page, $('.iframeLink[data-link="manifeste-editorial.html"]'))();
-});
 
+};
 
 
 var show_Page = function() {
-	$('#menuIframeView').attr('height',($(this).attr('data-height')||'100%'));
-	$('#menuIframeView').html('<iframe src="menu_pages/'+$(this).attr('data-link')+'" class="menu_page" height="'+($(this).attr('data-height')||'100%')+'"></iframe>');
+	$('#menuIframeView').attr('height', ($(this).attr('data-height') || '100%'));
+	$('#menuIframeView').html('<iframe src="menu_pages/' + $(this).attr('data-link') + '" class="menu_page" height="' + ($(this).attr('data-height') || '100%') + '"></iframe>');
 	$('#menuIframeView').append('<a class="rotate_3PM"><span>Sommaire<span></a>');
 	$('#menuIframeView').fadeIn(1000);
-	$('#menuIframeView a').one('click',function(){
-		$('#menuIframeView').fadeOut(1000, function(){
+	$('#menuIframeView a').one('click', function() {
+		$('#menuIframeView').fadeOut(1000, function() {
 			$('#menuIframeView').empty();
 		});
 	});
@@ -298,21 +317,6 @@ var show_Page = function() {
 
 $('.iframeLink').click(function() {
 	$.proxy(show_Page, $(this))();
-});
-
-
-$('.enter').live('click',function(e){
-	var room;
-
-	room = parseInt(getParameters($(this).attr('href')||window.location.href).room, 10);
-	if(room) {
-		return enterMuseum(room);
-	}
-
-	if(rooms[0]) {
-		return enterMuseum(rooms[0].id);
-	}
-	return enterMuseum(1);
 });
 
 
@@ -330,15 +334,15 @@ $('.close').one('click', function(e) {
 // $('#volume').live('click',function(e) {
 $('#volume').click(function(e) {
 	var i;
-	if(!$('#volume').hasClass('muted')) {
+	if (!$('#volume').hasClass('muted')) {
 		$('#volume').addClass('muted');
-		for(i = 0; i < sounds.length; i++) {
+		for (i = 0; i < sounds.length; i++) {
 			sounds[i].audio.pause();
 		}
 	} else {
 		$('#volume').removeClass('muted');
-		for(i = 0; i < sounds.length; i++) {
-			if(sounds[i].playNow) {
+		for (i = 0; i < sounds.length; i++) {
+			if (sounds[i].playNow) {
 				sounds[i].adjustVolume();
 				sounds[i].audio.play();
 			}
@@ -347,3 +351,17 @@ $('#volume').click(function(e) {
 	e.preventDefault();
 	return false;
 });
+
+var onload = function() {
+	var room = parseInt(getParameters(window.location.href).room, 10);
+
+	if (room) {
+		$('#intro').remove();
+		$('#menuIframeView').empty();
+		enterMuseum(room);
+	} else {
+		$('#start').click(firstEnterMenu);
+	}
+};
+
+onload();

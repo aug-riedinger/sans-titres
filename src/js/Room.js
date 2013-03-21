@@ -315,6 +315,7 @@ Room.prototype.enter = function() {
 		$('#volume').fadeOut(1000);
 	}
 
+	_gaq.push(['_trackEvent', 'room '+this.id]);
 
 };
 
