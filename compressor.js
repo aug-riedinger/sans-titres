@@ -12,26 +12,27 @@ var compressor = require('node-minify');
 new compressor.minify({
     type: 'no-compress',
     fileIn: [
-    'src/libs/jquery-1.8.3.js',
-    'src/libs/raphael-min.js',
-    // 'src/libs/jquery.tinyscrollbar.js',
-    'src/libs/jquery.fullscreen.js',
-    'src/js/EasingInOut.js',
-    'src/js/Global.js',
-    'src/js/Screen.js',
-    'src/js/Camera.js',
-    'src/js/Cursor.js',
-    'src/js/Keyboard.js',
-    'src/js/Point.js',
-    'src/js/Face.js',
-    'src/js/Monolythe.js',
-    'src/js/Room.js',
-    'src/js/Renderer.js',
-    'src/js/Util.js',
-    'src/js/Main.js',
-    'src/js/Sound.js',
-    'src/js/Menu.js',
-    'src/js/Analytics.js'
+    // LIBRAIRIES
+    'src/libs/jquery-1.8.3.min.js', // jQuery
+    'src/libs/raphael-min.js', // Raphael.js, librairie permettant les animations du plan sur le menu
+    'src/libs/jquery.fullscreen.js', // Plugin jQuery permettant de passer en plein écran
+    'src/js/EasingInOut.js', // Librairie dévelopée par ce type : http://www.dhteumeuleu.com/ permettant les transitions douces de la caméra
+    // SOURCES
+    'src/js/Global.js', // Définition des variables globales
+    'src/js/Screen.js', // Gestion de l'écran, écoute les redimensionnements etc.
+    'src/js/Camera.js', // Gestion de la caméra : ses coordonnées 3D, ses méthodes de déplacement etc.
+    'src/js/Cursor.js', // Gestion de la souris : écoute évènement de déplacement de la souris et déplace la caméra en conséquence
+    'src/js/Keyboard.js', // Déplacements par le clavier. Sert à débugger mais désactivé en production.
+    'src/js/Point.js', // Création de l'objet Point
+    'src/js/Face.js', // Création de l'objet Face
+    'src/js/Monolythe.js', // Spécifique au numéro 0 : Création du monolythe d'Edwin dans la salle 5 (4 faces un peu penchées)
+    'src/js/Room.js', // Création d'une pièce, calcul sur les faces qui doivent être dessinées, sur les oeuvres à charger etc.
+    'src/js/Renderer.js', // Ce qui est calculé à chaque Frame pour afficher chaque face et chaque oeuvre
+    'src/js/Util.js', // Fonctions utilitaires
+    'src/js/Main.js', // Boucle infini si MENU=false pour générer une nouvelle image à chaque 'AnimationFrame'
+    'src/js/Menu.js', // Gestion du basculement Menu/Musée. A REECRIRE POUR UN NOUVEAU NUMERO
+    'src/js/Sound.js', // Gestion des sons
+    'src/js/Analytics.js' // Plugin Google Analytics
     ],
     fileOut: 'src/js/museum.js',
     callback: function(err){
@@ -45,25 +46,26 @@ new compressor.minify({
 new compressor.minify({
     type: 'gcc',
     fileIn: [
-    'src/libs/jquery-1.8.3.min.js',
-    'src/libs/raphael-min.js',
-    // 'src/libs/jquery.tinyscrollbar.min.js',
-    'src/libs/jquery.fullscreen.js',
-    'src/js/EasingInOut.js',
-    'src/js/Global.js',
-    'src/js/Screen.js',
-    'src/js/Camera.js',
-    'src/js/Cursor.js',
-    'src/js/Point.js',
-    'src/js/Face.js',
-    'src/js/Monolythe.js',
-    'src/js/Room.js',
-    'src/js/Renderer.js',
-    'src/js/Util.js',
-    'src/js/Main.js',
-    'src/js/Menu.js',
-    'src/js/Sound.js',
-    'src/js/Analytics.js'
+    // LIBRAIRIES
+    'src/libs/jquery-1.8.3.min.js', // jQuery
+    'src/libs/raphael-min.js', // Raphael.js, librairie permettant les animations du plan sur le menu
+    'src/libs/jquery.fullscreen.js', // Plugin jQuery permettant de passer en plein écran
+    'src/js/EasingInOut.js', // Librairie dévelopée par ce type : http://www.dhteumeuleu.com/ permettant les transitions douces de la caméra
+    // SOURCES
+    'src/js/Global.js', // Définition des variables globales
+    'src/js/Screen.js', // Gestion de l'écran, écoute les redimensionnements etc.
+    'src/js/Camera.js', // Gestion de la caméra : ses coordonnées 3D, ses méthodes de déplacement etc.
+    'src/js/Cursor.js', // Gestion de la souris : écoute évènement de déplacement de la souris et déplace la caméra en conséquence
+    'src/js/Point.js', // Création de l'objet Point
+    'src/js/Face.js', // Création de l'objet Face
+    'src/js/Monolythe.js', // Spécifique au numéro 0 : Création du monolythe d'Edwin dans la salle 5 (4 faces un peu penchées)
+    'src/js/Room.js', // Création d'une pièce, calcul sur les faces qui doivent être dessinées, sur les oeuvres à charger etc.
+    'src/js/Renderer.js', // Ce qui est calculé à chaque Frame pour afficher chaque face et chaque oeuvre
+    'src/js/Util.js', // Fonctions utilitaires
+    'src/js/Main.js', // Boucle infini si MENU=false pour générer une nouvelle image à chaque 'AnimationFrame'
+    'src/js/Menu.js', // Gestion du basculement Menu/Musée. A REECRIRE POUR UN NOUVEAU NUMERO
+    'src/js/Sound.js', // Gestion des sons
+    'src/js/Analytics.js' // Plugin Google Analytics
     ],
     fileOut: 'src/js/museum.min.js',
     callback: function(err){
