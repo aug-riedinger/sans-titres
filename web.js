@@ -1,6 +1,6 @@
 var express = require('express');
 
-var app = express.createServer(express.logger());
+var app = express();
 // var oneYear = 31557600000;
 // app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
 
@@ -13,11 +13,8 @@ app.use("/numero0", express.static(__dirname + '/src/numero0'));
 app.use("/arts", express.static(__dirname + '/src/arts'));
 app.use("/menu_pages", express.static(__dirname + '/src/menu_pages'));
 
-
-app.use(express.errorHandler());
-
 app.get('/', function(request, response) {
-	response.sendfile(__dirname + "/src/index.html");
+	response.sendfile(__dirname + '/src/index.html');
 });
 
 var port = process.env.PORT || 5000;

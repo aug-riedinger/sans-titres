@@ -2,7 +2,8 @@
   "name": "Sans-titres",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.5.x"
+    "node-minify": "~0.7.5",
+    "express": "~3.3.4"
   },
   "engines": {
     "node": "0.8.x",
