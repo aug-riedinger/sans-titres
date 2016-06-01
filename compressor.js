@@ -34,7 +34,7 @@ new compressor.minify({
     'src/js/Sound.js', // Gestion des sons
     'src/js/Analytics.js' // Plugin Google Analytics
     ],
-    fileOut: 'src/js/museum.js',
+    fileOut: 'build/js/museum.js',
     callback: function(err){
         if(err) {
             console.log(err);
